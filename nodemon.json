@@ -1,0 +1,13 @@
+{
+  "ignore": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "node_modules",
+    "src/client"
+  ],
+  "watch": [
+    "src/"
+  ],
+  "exec": "npx tsc && node server/",
+  "ext": "ts"
+}
