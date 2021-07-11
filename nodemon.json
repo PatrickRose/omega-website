@@ -6,8 +6,9 @@
     "src/client"
   ],
   "watch": [
-    "src/"
+    "src/",
+    "client/"
   ],
-  "exec": "npx tsc && node server/",
+  "exec": "npx tsc && node server/src/",
   "ext": "ts"
 }

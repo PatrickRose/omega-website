@@ -1,4 +1,7 @@
 export type LinkDef = {
     linkPath: string,
-    linkText: string
+    linkText: string,
+    exact?: boolean
 }
+
+
