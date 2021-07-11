@@ -9,22 +9,23 @@ import {LinkDef} from "../utils/utils";
 const links: LinkDef[] = [
     {
         linkPath: '/',
-        linkText: 'Home'
+        linkText: 'Home',
+        exact: true
     },
     {
-        linkPath: 'games',
+        linkPath: '/games',
         linkText: 'Games'
     },
     {
-        linkPath: 'other-events',
+        linkPath: '/other-events',
         linkText: 'Other Events'
     },
     {
-        linkPath: 'planning',
+        linkPath: '/planning',
         linkText: 'Planning'
     },
     {
-        linkPath: 'contact',
+        linkPath: '/contact',
         linkText: 'Contact'
     },
 ];
@@ -43,6 +44,7 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
                     className={baseClass}
                     activeClassName={activeClass}
                     key={linkdef.linkPath}
+                    exact={linkdef.exact || false}
                 >
                     {linkdef.linkText}
                 </NavLink>
@@ -120,7 +122,7 @@ const Navbar = () => {
         {
             // Mobile menu, show/hide based on menu state.
         }
-        <div className={'sm:hidden transition-all duration-500 ease-in ' + (hidden ? 'max-h-0' : maxHeight)} id="mobile-menu">
+        <div className={'sm:hidden transition-all duration-500 ease-in ' + (hidden ? 'max-h-0 opacity-0' : maxHeight)} id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
                 <NavigationLinks mobile={true}/>
             </div>
