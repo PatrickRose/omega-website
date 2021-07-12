@@ -56,7 +56,7 @@ const DateDecode = t.type({
     day: DayDecode
 });
 
-const OnlineGameDecode = t.type({
+export const OnlineGameDecode = t.type({
     id: t.string,
     name: t.string,
     date: DateDecode,
@@ -66,7 +66,7 @@ const OnlineGameDecode = t.type({
     type: t.union([t.literal('Online game'), t.literal('Play-By-Email')]),
 });
 
-const PlayByEmailGameDecode = t.type({
+export const PlayByEmailGameDecode = t.type({
     id: t.string,
     name: t.string,
     date: DateDecode,

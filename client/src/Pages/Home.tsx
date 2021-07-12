@@ -21,7 +21,7 @@ const homeLinks:LinkDef[] = [
 function HomePageLinks() {
     return <div className="flex justify-center sm:px-4 pb-16 flex-col sm:flex-row">
         {
-            homeLinks.map(value => <Link className="flex-1 flex justify-center flex-col sm:m-1 m-4 rounded border-2 border-gray-800 duration-500 bg-omega-dark text-white hover:text-black text-center p-4 transition-colors hover:bg-omega-light" to={value.linkPath} key={value.linkText}>
+            homeLinks.map(value => <Link className="flex-1 flex justify-center flex-col sm:m-1 m-4 p-4 btn-link" to={value.linkPath} key={value.linkText}>
                 {value.linkText}
             </Link>)
         }
@@ -41,7 +41,6 @@ export default function Home() {
             <HomePageLinks />
         </Hero>
         <div className="flex-auto">
-
             <div className="px-4">
                 A BUNCH OF FILLER CONTENT SHOULD PROBABLY GO HERE
             </div>

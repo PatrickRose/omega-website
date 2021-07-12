@@ -15,6 +15,15 @@ module.exports = {
       },
       minHeight: {
         hero: '12rem'
+      },
+      animation: {
+        placeholder: 'placeholder 2s ease-in-out infinite'
+      },
+      keyframes: {
+        placeholder: {
+          '0%, 100%': { opacity: 0},
+          '50%': { opacity: 0.5}
+        }
       }
     },
   },

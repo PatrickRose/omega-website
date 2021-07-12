@@ -1,6 +1,12 @@
 import React from "react";
 
+export function TextRow(props: {className: string, height?: number}) {
+    const height = props.height || 8
 
-export function TextRow(props: {background: string}) {
-    return <div className={`${props.background} w-full h-8 rounded animate-pulse`}/>;
+    return <div className={`${props.className} w-full delay-100 h-${height} rounded animate-placeholder`}/>;
 }
+
+export function Circle(props: {className: string}) {
+    return <div className={`${props.className} delay-100 rounded-full text-center h-16 w-16 rounded animate-placeholder`}/>;
+}
+

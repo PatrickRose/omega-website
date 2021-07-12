@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    a {
+        @apply underline hover:text-omega-dark
+    }
+
+    .btn-link {
+        @apply rounded-lg border-2 border-gray-800 duration-500 bg-omega-dark text-white hover:text-black text-center transition-colors hover:bg-omega-light
+    }
+
+    a.btn-link {
+        @apply no-underline
+    }
+}
+

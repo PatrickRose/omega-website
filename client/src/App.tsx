@@ -51,7 +51,7 @@ function NoMatch() {
                     Looks like you might have got lost somewhere! It happens to the best of us.
                 </p>
                 <p>
-                    Try going back in your browser and trying again. If that doesn't work, <Link to="contact" className="underline hover:text-omega-dark">send the webmaster a message through the contact page</Link>
+                    Try going back in your browser and trying again. If that doesn't work, <Link to="contact">send the webmaster a message through the contact page</Link>
                 </p>
             </div>
         </Fragment>

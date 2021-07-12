@@ -6,8 +6,8 @@ export function Hero(props: { children: ReactNode, extraClasses?: string }) {
     </div>;
 }
 
-export function HeroHeading(props: { extraClasses?: string, children: ReactNode }) {
-    return  <h1 className={`text-center text-3xl p-10 ${props.extraClasses || ""}`}>
+export function HeroHeading(props: { className?: string, children: ReactNode, padding?: number }) {
+    return  <h1 className={`text-center text-3xl p-${props.padding || 10} ${props.className || ""}`}>
         {props.children}
     </h1>;
 }

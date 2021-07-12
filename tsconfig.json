@@ -12,7 +12,8 @@
         "allowSyntheticDefaultImports": true,
         "outDir": "./server",
         "moduleResolution": "node",
-        "sourceMap": true
+        "sourceMap": true,
+        "resolveJsonModule": true
     },
     "compileOnSave": true,
     "include": [
