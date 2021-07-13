@@ -1,0 +1,13 @@
+language: node
+install:
+  - yarn install
+  - cd client && yarn install
+script:
+  - yarn build
+  - cd client && yarn build
+deploy:
+  provider: heroku
+  app: omega-staging
+  api_key:
+    secure: tHmOGInApwFWpD6hiHEFn2Ixyzaa3XpLMrOT0L1OivpzHOAD0hMvQqIgq0SUHrCytScJz1fU8AiqwSycY2q0zMsvTGO+4ppGGhTEx4jBooEYiJpBOF/p1ijbjCUM1+4lQaJzxg2+OcbLXH9Pu2FaP/jk6uvo/QZYy9xJAhugeneR8AytWDJCmP1vQaAeMyhsp+t/YBjYhZZ7iFL11CoFpTEyf71uFVua++PLfSzIXxqNgOort18dfJE/4b39EYR3q27xXilaJ+ev3hXbKbzQJHSBTO0O8TcJdVtlD/WckwBxJptE2sbGd6yDbKx8WRi3HeDohDnFApPNk9X1heF5qtqDxGp77v2JifUuuOStAfROUf6CW43ANt7iBM0d/M1tPByqbdVkHiFqnBAiltsW/CelyMIGT9xcoe4UDsqL7oBxwZB40UbWlccKEyeARhOD0hITs5/KR2D1kffIgBBcJFDuUOfEUZS1eqSMkFbVKCCYFWRKZF63Bg31WzfsYWW/BN3MLftdZDMP4cIIUo5thR2r5TbbwfaO2Y+5ZJxb1afXVnkNOROkdCSKJFIiQJhO+eGWyHdkSeaFfcTsjQMLZtgIfxZX96k0VIOgDrMvrlzxvbDVvX4rHchuZOZhbJYovT4EvKKhE6qf5QNayVFEipRGrz06QO3uVH14uBKnmDY=
+  skip_cleanup: true

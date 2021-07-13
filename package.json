@@ -8,8 +8,7 @@
     "server": "npx nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/src/index.js",
-    "build": "tsc",
-    "postinstall": "tsc && cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn run build"
+    "build": "tsc"
   },
   "dependencies": {
     "@tsconfig/node12": "^1.0.7",
