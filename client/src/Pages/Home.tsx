@@ -40,9 +40,19 @@ export default function Home() {
             </p>
             <HomePageLinks />
         </Hero>
-        <div className="flex-auto">
-            <div className="px-4">
-                A BUNCH OF FILLER CONTENT SHOULD PROBABLY GO HERE
+        <div className="flex-auto px-4">
+            <h2 className="text-2xl">Our next events</h2>
+            <div className="w-full flex flex-col sm:flex-row ">
+                {
+                    [
+                        {heading: 'Online megagame', link:'/games/RH210808'},
+                        {heading: 'Play by Email', link:'/games/RH210812'},
+                        {heading: 'Non megagame', link:'/events/...'},
+                    ].map(value => <div className="flex-1" key={value.link}>
+                        <h3 className="text-center"><Link to={value.link}>{value.heading}</Link></h3>
+                        <p>Lorem ipsum</p>
+                    </div>)
+                }
             </div>
         </div>
     </React.Fragment>;

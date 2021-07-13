@@ -29,7 +29,7 @@ abstract class GameStructure<T> extends React.Component<T> {
         return <React.Fragment>
             <Hero>
                 <div className="text-center">
-                    <HeroHeading className="flex justify-center" padding={3}>
+                    <HeroHeading className="flex justify-center pb-3" padding={false}>
                         {this.getHeading()}
                     </HeroHeading>
                     {
@@ -107,10 +107,10 @@ class LoadingGame extends GameStructure<{}> {
     protected getSubHeading(): React.ReactElement {
         return <div className="flex flex-col items-center justify-center">
             <div className="w-2/6 pb-2">
-                <TextRow className="bg-white" height={6}/>
+                <TextRow className="bg-white h-6" height={false}/>
             </div>
             <div className="w-1/6">
-                <TextRow className="bg-white" height={6}/>
+                <TextRow className="bg-white h-6" height={false}/>
             </div>
         </div>;
     }

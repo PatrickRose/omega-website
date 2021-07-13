@@ -1,9 +1,9 @@
 import React from "react";
 
-export function TextRow(props: {className: string, height?: number}) {
-    const height = props.height || 8
+export function TextRow(props: {className: string, height?: boolean}) {
+    const height = props.height !== false ? 'h-8' : '';
 
-    return <div className={`${props.className} w-full delay-100 h-${height} rounded animate-placeholder`}/>;
+    return <div className={`${props.className} w-full delay-100 ${height} rounded animate-placeholder`}/>;
 }
 
 export function Circle(props: {className: string}) {

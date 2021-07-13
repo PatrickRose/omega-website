@@ -21,7 +21,7 @@ module.exports = {
       },
       keyframes: {
         placeholder: {
-          '0%, 100%': { opacity: 0},
+          '0%, 100%': { opacity: 0.25},
           '50%': { opacity: 0.5}
         }
       }

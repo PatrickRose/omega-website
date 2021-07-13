@@ -64,7 +64,7 @@ class UnfetchedMegagame extends MegagameList<{}> {
 
 
     protected getDate(): React.ReactElement {
-        return <div className="w-1/4"><TextRow className="bg-gray-500 mb-2" height={3}/></div>;
+        return <div className="w-1/4"><TextRow className="bg-gray-500 mb-2 h-3" height={false}/></div>;
     }
 
     protected getHeading(): React.ReactElement {
@@ -72,14 +72,16 @@ class UnfetchedMegagame extends MegagameList<{}> {
     }
 
     protected getSubtitle(): React.ReactElement {
-        return <div className="w-2/6"><TextRow className="bg-gray-500 mb-2" height={3}/></div>;
+        return <div className="w-2/6"><TextRow className="bg-gray-500 mb-2 h-3" height={false}/></div>;
     }
 
     protected getPreamble(): React.ReactElement {
         return <div className="w-5/6">
-            <TextRow className="bg-gray-500 mb-2" height={4}/>
-            <TextRow className="bg-gray-500 mb-2" height={4}/>
-            <TextRow className="bg-gray-500 mb-2" height={4}/>
+            {
+                (new Array(3))
+                    .fill(null)
+                    .map((value, index) => <TextRow key={index} className="bg-gray-500 mb-2 h-4" height={false}/>)
+            }
         </div>;
     }
 
