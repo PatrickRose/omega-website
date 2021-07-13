@@ -3,6 +3,9 @@
   "description": "Website for the Omega Megagames group",
   "version": "1.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "client": "cd client && yarn start",
     "server": "npx nodemon server.js",
