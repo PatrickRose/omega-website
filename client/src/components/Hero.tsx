@@ -7,7 +7,7 @@ export function Hero(props: { children: ReactNode, extraClasses?: string }) {
 }
 
 export function HeroHeading(props: { className?: string, children: ReactNode, padding?: boolean }) {
-    const padding = props.padding === false ? 'p-10' : ''
+    const padding = props.padding !== false ? 'p-10' : ''
 
     return  <h1 className={`text-center text-3xl ${padding} ${props.className || ""}`}>
         {props.children}
