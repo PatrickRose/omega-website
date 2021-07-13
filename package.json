@@ -12,7 +12,8 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/src/index.js",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "heroku-postbuild": "echo 'Nothing to do'"
   },
   "dependencies": {
     "@tsconfig/node12": "^1.0.7",
