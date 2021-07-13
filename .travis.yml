@@ -6,9 +6,16 @@ node_js:
 install:
 - yarn install
 - "( cd client && yarn install )"
-script:
-- yarn build
-- "( cd client && yarn build )"
+jobs:
+  include:
+    - stage: test
+      name: "Server tests"
+      script: yarn install
+    - name: "Client tests"
+      script: "( cd client && yarn test )"
+before_deploy:
+  - yarn build
+  - "( cd client && yarn build )"
 deploy:
   provider: heroku
   strategy: api
