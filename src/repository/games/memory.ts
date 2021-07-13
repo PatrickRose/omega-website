@@ -38,15 +38,25 @@ const allGames: Game[] = [
 ];
 
 export class MemoryRepository implements GamesRepository {
+    private games: Game[];
+
+    static APIInstance(): MemoryRepository {
+        return new MemoryRepository(allGames)
+    }
+
+    constructor(games: Game[]) {
+        this.games = games;
+    }
+
     all(): Either<Error, Game[]> {
         return {
             _tag: 'Right',
-            right: allGames
+            right: this.games
         }
     }
 
     get(id: string): Either<Error, Game> {
-        for (let game of allGames) {
+        for (let game of this.games) {
             if (game.id === id) {
                 return {
                     _tag: 'Right',

@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {Link, Route, Switch, useParams} from "react-router-dom";
+import {BrowserRouter, Link, Route, Switch, useParams} from "react-router-dom";
 import {Footer} from './components/Footer';
 import Header from './components/Header';
 import Home from './Pages/Home';
@@ -15,7 +15,7 @@ function WrappedSingleGame() {
 
 class App extends Component<{}> {
     render() {
-        return <Fragment>
+        return <BrowserRouter>
             <Header/>
             <main className='flex-1 flex flex-col'>
                 <Switch>
@@ -34,7 +34,7 @@ class App extends Component<{}> {
                 </Switch>
             </main>
             <Footer/>
-        </Fragment>
+        </BrowserRouter>
     }
 }
 
