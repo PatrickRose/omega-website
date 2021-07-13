@@ -8,5 +8,5 @@ export default interface GamesRepository {
 }
 
 export function getGamesRepo(): GamesRepository {
-    return new MemoryRepository();
+    return MemoryRepository.APIInstance();
 }
