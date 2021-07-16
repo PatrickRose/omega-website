@@ -1,9 +1,9 @@
-import path from "path";
 import {Request, Response} from "express";
-import {GameAPI} from "../client/src/types/types";
+import {GameAPI} from "../types/types";
 import {getGamesRepo} from "./repository/games";
 import {isRight} from "fp-ts/Either";
 
+const path = require("path");
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -46,11 +46,11 @@ app.get('/api/games/:game', (req: Request, res: Response) => {
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
-    app.use(express.static(path.join(__dirname, '../../client/build')));
+    app.use(express.static(path.join(__dirname, '../../build')));
 
     // Handle React routing, return all requests to React app
     app.get('*', function (req: {}, res: Response) {
-        res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+        res.sendFile(path.join(__dirname, '../../build', 'index.html'));
     });
 }
 

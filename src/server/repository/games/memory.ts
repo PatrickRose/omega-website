@@ -1,7 +1,8 @@
 import GamesRepository from "./index";
 
 import {Either} from "fp-ts/Either";
-import {Game} from "../../../client/src/types/types";
+import {Game} from "../../../types/types";
+
 
 const allGames: Game[] = [
     {

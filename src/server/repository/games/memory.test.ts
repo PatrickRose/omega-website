@@ -1,6 +1,6 @@
-import {Game} from "../../../client/src/types/types";
 import {MemoryRepository} from "./memory";
 import {isRight} from "fp-ts/Either";
+import {Game} from "../../../types/types";
 
 const cases: [string, Game[]][] = [
     [
@@ -17,7 +17,7 @@ describe("Memory games repository - all games", () => {
             const result = repo.all();
 
             if (!isRight(result)) {
-                fail('Should have received a "right"');
+                throw Error('Should have received a "right"');
             }
 
             expect(result.right).toEqual(expected);
