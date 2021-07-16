@@ -1,6 +1,6 @@
 import {Either} from "fp-ts/Either";
-import {Game} from "../../../client/src/types/types";
 import {MemoryRepository} from "./memory";
+import {Game} from "../../../types/types";
 
 export default interface GamesRepository {
     all: () => Either<Error, Game[]>
