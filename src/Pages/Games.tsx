@@ -31,7 +31,7 @@ abstract class MegagameList<T> extends React.Component<T> {
     render() {
 
         return <li className="grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4">
-            <div className="col-span-1 text-center flex flex-col justify-center">
+            <div className="col-span-1 text-center flex flex-col justify-center items-center">
                 {this.getIcon()}
             </div>
             <div className="sm:col-span-11 col-span-4">
