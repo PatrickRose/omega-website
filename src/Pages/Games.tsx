@@ -56,12 +56,11 @@ abstract class MegagameList<T> extends React.Component<T> {
     protected abstract getIcon(): ReactElement;
 }
 
-class UnfetchedMegagame extends MegagameList<{}> {
+class UnfetchedMegagame extends MegagameList<{key:number}> {
 
     protected getIcon(): React.ReactElement {
         return <Circle className="bg-gray-500"/>;
     }
-
 
     protected getDate(): React.ReactElement {
         return <div className="w-1/4"><TextRow className="bg-gray-500 mb-2 h-3" height={false}/></div>;
@@ -114,8 +113,12 @@ class FetchedMegagame extends MegagameList<Game> {
 
 }
 
-function
-GameListFilter(props: { onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void, value?: Game["type"] }) {
+function GameListFilter(
+    props: {
+        onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
+        value?: Game["type"]
+    }
+) {
     return <div className="pb-4">
         <label htmlFor="game-filter">Showing</label>
         <select id="game-filter" onChange={props.onChange} value={props.value}>
@@ -151,7 +154,7 @@ function GameList(props: GameListParams) {
                     .map(
                         value =>
                             typeof value === 'number'
-                                ? <UnfetchedMegagame key={value}/>
+                                ? <UnfetchedMegagame key={value} />
                                 : <FetchedMegagame key={value.id} {...value} />
                     )
             }
