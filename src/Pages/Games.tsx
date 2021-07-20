@@ -56,7 +56,7 @@ abstract class MegagameList<T> extends React.Component<T> {
     protected abstract getIcon(): ReactElement;
 }
 
-class UnfetchedMegagame extends MegagameList<{key:number}> {
+class UnfetchedMegagame extends MegagameList<{ key: number }> {
 
     protected getIcon(): React.ReactElement {
         return <Circle className="bg-gray-500"/>;
@@ -154,7 +154,7 @@ function GameList(props: GameListParams) {
                     .map(
                         value =>
                             typeof value === 'number'
-                                ? <UnfetchedMegagame key={value} />
+                                ? <UnfetchedMegagame key={value}/>
                                 : <FetchedMegagame key={value.id} {...value} />
                     )
             }
@@ -196,15 +196,15 @@ export class Games extends React.Component<GamesProps, GamesState> {
                     const aDate = a.date;
                     const bDate = b.date;
 
-                    if (aDate.year !== bDate.year) {
-                        return aDate.year - bDate.year
+                    let keys: (keyof typeof aDate)[] = ['year', 'month', 'day'];
+
+                    for (let key of keys) {
+                        if (aDate[key] !== bDate[key]) {
+                            return aDate[key] - bDate[key]
+                        }
                     }
 
-                    if (aDate.month !== bDate.month) {
-                        return aDate.month - bDate.month
-                    }
-
-                    return aDate.day - bDate.day;
+                    return 0;
                 });
 
                 this.setState({
