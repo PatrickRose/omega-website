@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import {Hero, HeroHeading} from "./components/Hero";
 import {Games} from "./Pages/Games";
 import {SingleGame} from "./Pages/SingleGame";
+import {Events} from "./Pages/Events";
 
 function WrappedSingleGame() {
     const game = useParams<{game:string}>()["game"];
@@ -27,6 +28,9 @@ class App extends Component<{}> {
                     </Route>
                     <Route path="/games/:game">
                         <WrappedSingleGame />
+                    </Route>
+                    <Route path="/other-events">
+                        <Events />
                     </Route>
                     <Route path="*">
                         <NoMatch/>

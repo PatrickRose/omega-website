@@ -1,7 +1,8 @@
 import {Request, Response} from "express";
-import {GameAPI} from "../types/types";
+import {EventAPI, Game, GameAPI} from "../types/types";
 import {getGamesRepo} from "./repository/games";
 import {isRight} from "fp-ts/Either";
+import {getEventRepo} from "./repository/events";
 
 const path = require("path");
 const express = require('express');
@@ -12,10 +13,23 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const gameRespository = getGamesRepo();
+app.get('/api/events', (req: Request, res: Response<EventAPI|Error>) => {
+    const allEvents = getEventRepo().all();
 
-app.get('/api/games', (req: Request, res: Response) => {
-    const allGames = gameRespository.all();
+    if (isRight(allEvents)) {
+        const apiResponse: EventAPI = {
+            events: allEvents.right
+        }
+
+        res.send(apiResponse);
+        return;
+    }
+
+    res.status(500).send(allEvents.left)
+})
+
+app.get('/api/games', (req: Request, res: Response<GameAPI|Error>) => {
+    const allGames = getGamesRepo().all();
 
     if (isRight(allGames)) {
         const apiResponse: GameAPI = {
@@ -29,12 +43,12 @@ app.get('/api/games', (req: Request, res: Response) => {
     res.status(500).send(allGames.left)
 });
 
-app.get('/api/games/:game', (req: Request, res: Response) => {
+app.get('/api/games/:game', (req: Request, res: Response<Game|Error>) => {
     // For now, we'll just filter in code
     // In the future, we'll do actual look ups
     const gameID = req.params.game;
 
-    const game = gameRespository.get(gameID);
+    const game = getGamesRepo().get(gameID);
 
     if (isRight(game)) {
         res.send(game.right);

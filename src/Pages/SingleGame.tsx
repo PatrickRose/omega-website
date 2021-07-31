@@ -118,6 +118,7 @@ class LoadingGame extends GameStructure<{}> {
 }
 
 export class SingleGame extends React.Component<SingleGameProps, GamesState> {
+    private controller?: AbortController;
     constructor(props: SingleGameProps) {
         super(props);
 
@@ -130,8 +131,16 @@ export class SingleGame extends React.Component<SingleGameProps, GamesState> {
         this.getGame();
     }
 
+    componentWillUnmount() {
+        this.controller?.abort();
+    }
+
     private getGame() {
-        const api = apiCall(`games/${this.props.game}`);
+        this.controller?.abort();
+
+        this.controller = new AbortController();
+
+        const api = apiCall(`games/${this.props.game}`, this.controller);
 
         api.then(response => {
             if (!response.ok) {

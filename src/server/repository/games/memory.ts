@@ -1,7 +1,7 @@
 import GamesRepository from "./index";
 
-import {Either} from "fp-ts/Either";
 import {Game} from "../../../types/types";
+import BaseMemoryRepository from "../BaseMemoryRepository";
 
 
 const allGames: Game[] = [
@@ -38,37 +38,8 @@ const allGames: Game[] = [
     }
 ];
 
-export class MemoryRepository implements GamesRepository {
-    private games: Game[];
-
+export class MemoryRepository extends BaseMemoryRepository<Game> implements GamesRepository {
     static APIInstance(): MemoryRepository {
         return new MemoryRepository(allGames)
-    }
-
-    constructor(games: Game[]) {
-        this.games = games;
-    }
-
-    all(): Either<Error, Game[]> {
-        return {
-            _tag: 'Right',
-            right: this.games
-        }
-    }
-
-    get(id: string): Either<Error, Game> {
-        for (let game of this.games) {
-            if (game.id === id) {
-                return {
-                    _tag: 'Right',
-                    right: game
-                }
-            }
-        }
-
-        return {
-            _tag: 'Left',
-            left: new Error(`Game with id ${id} not found`)
-        }
     }
 }
