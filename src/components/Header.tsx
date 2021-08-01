@@ -16,10 +16,10 @@ const links: LinkDef[] = [
         linkPath: '/games',
         linkText: 'Games'
     },
-    {
-        linkPath: '/other-events',
-        linkText: 'Other Events'
-    },
+    // {
+    //     linkPath: '/other-events',
+    //     linkText: 'Other Events'
+    // },
     {
         linkPath: '/planning',
         linkText: 'Planning'
