@@ -8,7 +8,7 @@ import {Circle, TextRow} from "../components/Placeholders";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 import {Hero, HeroHeading} from "../components/Hero";
-import {getStringFromGameDate} from "../utils";
+import {getJSDateFromGameDate, getStringFromGameDate} from "../utils";
 import {apiCall} from "../utils/api";
 
 function isGameApi(value: any): value is GameAPI {
@@ -19,7 +19,8 @@ function isGameApi(value: any): value is GameAPI {
 type GamesState = {
     fetched: boolean,
     gameList: Game[],
-    filter?: Game["type"]
+    filter?: Game["type"],
+    past?: boolean
 }
 
 const icons = {
@@ -115,48 +116,82 @@ class FetchedMegagame extends MegagameList<Game> {
 
 function GameListFilter(
     props: {
-        onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
-        value?: Game["type"]
+        onChange: GameListParams["changeFilter"],
+        value?: Game["type"],
+        past: boolean
     }
 ) {
     return <div className="pb-4">
-        <label htmlFor="game-filter">Showing</label>
-        <select id="game-filter" onChange={props.onChange} value={props.value}>
-            <option value={undefined}>all games</option>
-            <option value="Play-By-Email">play-by-email games</option>
-            <option value="Online game">online games</option>
-        </select>
+        <div className="flex md:flex-row flex-col">
+            <div className="flex-1 flex flex-col justify-center">
+                <div>
+                    <label className="pr-1" htmlFor="game-filter">Showing</label>
+                    <select id="game-filter" onChange={props.onChange} value={props.value}>
+                        <option value={undefined}>all games</option>
+                        <option value="Play-By-Email">play-by-email games</option>
+                        <option value="Online game">online games</option>
+                    </select>
+                </div>
+            </div>
+            <div className="flex-1 flex flex-col justify-center">
+                <div>
+                    <input id="only-future" type="checkbox" checked={props.past} onChange={props.onChange}/>
+                    <label className="pl-1" htmlFor="only-future">Show past games</label>
+                </div>
+            </div>
+        </div>
     </div>;
 }
 
 type GameListParams = {
     gameList: Game[],
     filter?: Game["type"],
-    changeFilter: (event: React.ChangeEvent<HTMLSelectElement>) => void,
+    changeFilter: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void,
+    past: boolean,
     fetched: boolean
 }
 
 function GameList(props: GameListParams) {
-    const {fetched, filter, changeFilter} = props;
+    const {fetched, filter, changeFilter, past} = props;
 
     let gameList: Array<Game | number> = fetched
         ? props.gameList
         : [1, 2];
 
 
+    const filterGame = (value: Game | number): boolean => {
+        // Always include numbers
+        if (typeof value === 'number') {
+            return true;
+        }
+
+        if (!past && (getJSDateFromGameDate(value.date) < new Date())) {
+            return false;
+        }
+
+        if (filter !== undefined && (value.type !== filter)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // We filter on the client side because we're not going to have a lot of things to filter
+    const filteredGames = gameList.filter(filterGame);
+
     return <React.Fragment>
-        <GameListFilter onChange={changeFilter} value={filter}/>
+        <GameListFilter onChange={changeFilter} value={filter} past={past}/>
         <ul>
             {
-                gameList
-                    // We filter on the client side because we're not going to have a lot of things to filter
-                    .filter(value => typeof value === 'number' || (filter === undefined || value.type === filter))
-                    .map(
-                        value =>
-                            typeof value === 'number'
-                                ? <UnfetchedMegagame key={value}/>
-                                : <FetchedMegagame key={value.id} {...value} />
-                    )
+                filteredGames.length > 0
+                    ? filteredGames
+                        .map(
+                            value =>
+                                typeof value === 'number'
+                                    ? <UnfetchedMegagame key={value}/>
+                                    : <FetchedMegagame key={value.id} {...value} />
+                        )
+                    : <p>No games matched your criteria - try again!</p>
             }
         </ul>
     </React.Fragment>
@@ -216,8 +251,15 @@ export class Games extends React.Component<GamesProps, GamesState> {
     }
 
     render() {
-        const {gameList, fetched, filter} = this.state;
+        const {gameList, fetched, filter, past} = this.state;
 
+        const changeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+            if (event.target instanceof HTMLSelectElement) {
+                this.changeFilter(event.target.value);
+            } else {
+                this.setState({past: event.target.checked})
+            }
+        }
         return <React.Fragment>
             <Hero>
                 <HeroHeading>Upcoming games</HeroHeading>
@@ -227,7 +269,8 @@ export class Games extends React.Component<GamesProps, GamesState> {
                     fetched={fetched}
                     gameList={gameList}
                     filter={filter}
-                    changeFilter={(event) => this.changeFilter(event.target.value)}
+                    changeFilter={changeFilter}
+                    past={past === undefined ? false : past}
                 />
             </div>
         </React.Fragment>;
