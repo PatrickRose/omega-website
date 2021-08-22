@@ -14,5 +14,9 @@
     a.btn-link {
         @apply no-underline
     }
+
+    .basis-50 {
+        flex-basis: 50%;
+    }
 }
 
