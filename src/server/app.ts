@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {GameAPI} from "../types/types";
+import {GameAPI, UpcomingEventsAPI} from "../types/types";
 import {getGamesRepo} from "./repository/games";
 import {isRight} from "fp-ts/Either";
 
@@ -42,6 +42,21 @@ app.get('/api/games/:game', (req: Request, res: Response) => {
     }
 
     res.status(404).send(game.left)
+});
+
+app.get('/api/upcoming', (req: Request, res:Response<UpcomingEventsAPI|Error>) => {
+   const games = gameRespository.upcomingEvents(3);
+
+   let status: UpcomingEventsAPI|Error;
+
+   if (isRight(games)) {
+       status = {events: games.right}
+   } else {
+       status = games.left
+       res.status(404);
+   }
+
+   res.send(status);
 });
 
 if (process.env.NODE_ENV === 'production') {
