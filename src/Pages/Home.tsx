@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {LinkDef} from "../utils/utils";
-import {Hero, HeroHeading} from "../components/Hero";
+import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {Game} from "../types/types";
 import {apiCall} from "../utils/api";
 import {UpcomingEventsAPIDecode} from "../types/io-ts-def";
@@ -17,7 +17,7 @@ const homeLinks: LinkDef[] = [
         linkText: "What is a megagame? Find out more!"
     },
     {
-        linkPath: "games",
+        linkPath: "planning",
         linkText: "Join our planning team, or pitch your game design"
     }
 ]
@@ -154,10 +154,10 @@ export default class Home extends React.Component<{}, HomeState> {
                 </p>
                 <HomePageLinks/>
             </Hero>
-            <div className="flex-auto p-4">
+            <MainContent>
                 <h2 className="text-2xl">Our next events</h2>
                 <UpcomingEvents events={fetched}/>
-            </div>
+            </MainContent>
         </React.Fragment>;
     }
 }

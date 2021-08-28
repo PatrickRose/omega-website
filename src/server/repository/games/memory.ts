@@ -8,36 +8,165 @@ import {dateSorter, getJSDateFromGameDate} from "../../../utils";
 
 const allGames: Game[] = [
     {
-        "id": "RH210808",
-        "name": "ONLINE MEGAGAME",
+        "id": "RPR201212",
+        "name": "Red Planet Rising",
         "date": {
-            "year": 2021,
-            "month": 9,
-            "day": 7
+            "year": 2020,
+            "month": 12,
+            "day": 12
         },
-        "designer": "Online Designer",
-        "preamble": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sem odio, tristique dignissim nibh quis, porttitor dictum mi. Nullam auctor odio eget ex aliquam, eu lobortis elit sodales. Praesent sit amet arcu a erat pulvinar vehicula. Curabitur nibh nunc, bibendum nec sollicitudin ac, interdum nec enim. Vestibulum semper nisi eleifend nulla euismod dapibus.",
-        "fullDescription": "Lorem markdownum, neve pars, stet capiti in munusque, contraria. Cornigeris\nprimum et litus honore praedator formidine infelix omnique aequoribus.\n\n1. Cornu Iapyge\n2. Haemus pecudes et grata vestes locus movebatur\n3. Alta ne perque seque nutrix spoliata\n4. Reserabo inpulsu\n\nAditus inde capientur corona, sua *Pleiadasque notam oborto* mansit Aeaciden\ntraharis hodierna poterat, timor. Vivit modusque fertur haeret ipse visi guttae\nlicuit. Arvis quae canit ecce cadis quondam dixit sub distent propiore vimina,\n**qua ingemit medicamina** et enim recessus, et. Ad harena spectans simillima,\net adfer vetustos hic nefas, liquidas! Nostro est putat iactatis lapidis illa,\ncertaque felicia ut qui fibras [illa domoque\nvelles](http://undamarte.io/ignesceretibi) et vox fuit insignis iacuit.\n\nSecutum ad matrem nata! De Somnus, paulatim dicens Tenedonque inquit cultuque,\nextemplo alumnae. Dabunt ferrum crudelius locum, fuit *timorem* modo. Postquam\naddidit, **periit**, nec iussos quidem Gange adflatuque periclo primo ecquem\niterum num. Bella veteremque fuit terra [preme\niam](http://sonant.net/sibi-transit.html) quae male desistunt portantes quis\n[Threiciam](http://graves.com/properamus) Romane faciat procubuere artus, et.\n\nNiteant regnique vellent elusaque eripuit **potens paterque fiducia**, me cibi\ntecta. Quam insonuit arboreae antemnis sidera Cenaeo victis. Si et Thaumantidos\nfervens cornua prole orbi saevit domo! Tamen di corpora obviaque agnovit\nhorrescere obvia cineres pater in longa.\n\n- Tantique nepotes in prima\n- Coniurata annis herba miserabile et emeritis claris\n- Iuvenem Phocaica ab hinc inesset tamen\n\nTenui mente domito manet Pharonque aequora est nymphis bellum fulgentia volumina\nficto crematisregia simul nam puraque tura *mea est oscula*. Quidque faciles\neligit protinus et nereides signum?\n\nDe tempora requievit meministis hunc expertus, vici regem nova fluctibus dicunt\nunus potuisse talia! Exclamat viro et certaminis et eodem decimo, adit sinunt\nesse. Qui **undis ad vota** Nyseides est: undis in in vulnus bella. Sit hic\nterritus pariter adclivis qui coepi atria.",
+        "designer": "Andrew Shiel Dods",
+        "preamble": "A century after the colonization of Mars, disaster struck, and the survivors of the once-great colony now vie for supremacy amongst themselves.",
+        "fullDescription": `We are thrilled to announce that with the support of the game's designer, we will be running ‘Red Planet Rising,’ a True North Megagame. Red Planet Rising is a science fiction economic and political megagame, set in the ruined husk of Mariner Valley, once Earth's greatest colony on Mars.
+
+A century after the colonization of Mars, disaster struck, and the survivors of the once-great colony now vie for supremacy amongst themselves.
+
+Players will take on leadership roles among the various factions in Mariner Valley, produce and trade resources, explore, and form governments and alliances in this 4X-inspired experience.
+
+[Ticketing now available!](https://www.eventbrite.com/e/red-planet-rising-december-2020-tickets-125268155425)`,
         "type": "Online game"
     },
     {
-        "id": "RH210812",
-        "name": "PLAY BY EMAIL GAME",
+        "id": "RH210227",
+        "name": "Running Hot",
         "date": {
             "year": 2021,
-            "month": 9,
-            "day": 20
+            "month": 2,
+            "day": 27
+        },
+        "designer": "Patrick Rose",
+        "preamble": "In the near future, Britain is facing economic ruin. Following the success of the “Megacorp” experiment in the United States they attempt to do the same – they offer several multi-billion corporations the chance to buy a large part of the British landscape and create their own city state, where they can make their own laws if they wish.",
+        "fullDescription": `We are proud to announce the third running of Running Hot, which debuted at Online Megagame Con earlier this year, featuring the designer Patrick Rose. I was able to play in the first two games, and we've made substantial improvements since then, that we're excited to show you.
+
+[Tickets available through Eventbrite now!](https://www.eventbrite.com/e/running-hot-february-27-2021-tickets-131734201543)
+
+Running Hot is a “pre-cyberpunk” megagame. Players will play either the corporations trying to make money and further their political agendas or the runners who are the deniable resources that the corporations may use to achieve said resources. This game takes a slightly different tack to most cyberpunk settings, in that the game will explore the beginning of the dystopia that is to be expected of a cyberpunk setting. `,
+        "type": "Online game"
+    },
+    {
+        "id": "ATC210522",
+        "name": "As Thou Commands",
+        "date": {
+            "year": 2021,
+            "month": 5,
+            "day": 22
+        },
+        "designer": "Ben Kanelos",
+        "preamble": "The monarch has united the realm and birthed a new kingdom. That was the easy part...",
+        "fullDescription": `The monarch has united the realm and birthed a new kingdom. That was the easy part... Now it's time to carve the land into duchies and rule over them. What will your noble house prioritize? Will you make friends or enemies with your neighbors? Will the kingdom survive or fall apart and be forgotten? Your choices decide!
+
+As Thou Commands is a rules-light megagame where the players create and run fictional feudal duchies. These duchies comprise an entire medieval kingdom, and players’ decisions will have impacts both near and far. Play alternates between drafting narrative elements and participating in council sessions where players will try to negotiate beneficial outcomes to the thorny issues bedeviling the kingdom.
+
+[Tickets available through EventBrite](https://www.eventbrite.com/e/as-thou-commands-tickets-149484892337)`,
+        "type": "Online game"
+    },
+    {
+        "id": "RH210807",
+        "name": "Running Hot",
+        "date": {
+            "year": 2021,
+            "month": 8,
+            "day": 7
+        },
+        "designer": "Patrick Rose",
+        "preamble": "In the near future, Britain is facing economic ruin. Following the success of the “Megacorp” experiment in the United States they attempt to do the same – they offer several multi-billion corporations the chance to buy a large part of the British landscape and create their own city state, where they can make their own laws if they wish.",
+        "fullDescription": `We are proud to announce the fifth running of Running Hot, which debuted at Online Megagame Con earlier this year, featuring the designer Patrick Rose. I was able to play in the first two games, and we've made substantial improvements since then, that we're excited to show you.
+
+Running Hot is a “pre-cyberpunk” megagame. Players will play either the corporations trying to make money and further their political agendas or the runners who are the deniable resources that the corporations may use to achieve said resources. This game takes a slightly different tack to most cyberpunk settings, in that the game will explore the beginning of the dystopia that is to be expected of a cyberpunk setting. 
+
+[Tickets available through Eventbrite now!](https://www.eventbrite.com/e/running-hot-august-7-2021-tickets-149489309549)`,
+        "type": "Online game"
+    },
+    {
+        "id": "TATP210508",
+        "name": "Club Games (The Assault, The Plan)",
+        "date": {
+            "year": 2021,
+            "month": 5,
+            "day": 8
+        },
+        "designer": "Jim Wallman",
+        "preamble": "Join the OMEGA community for two short length megagame-like experiences (The Assault and The Plan)",
+        "fullDescription": `Join the OMEGA community as they play two short length megagame-experiences, designed by [Jim Wallman](https://www.stonepaperscissors.co.uk/) (*Watch The Skies*, *Urban Nightmare*)
+        
+[To sign up, please fill out this Google Docs spreadsheet](https://docs.google.com/spreadsheets/d/1NsVZn-Zbw-xT0eFgzN6x59P7W0mNEUAgeMv5p7QgFXY/edit?fbclid=IwAR2PV7SrxWcQdwUGHlaAI_nxIDfPRTIgov7l-qNTaxF5z3UCE6IL9lGeVcg#gid=0)
+
+### The Plan
+
+The Game about Negotiation, Committees and Planning
+
+The Plan is a game ostensibly about a strategic planning committee in a time of war. The players are the key senior decision makers and planners of 'Freedonia'. In the game they have to communicate, negotiate and problem solve with their fellow committee members to come up with a successful War Plan.
+
+### The Assault
+
+Good vs Evil… vs personal gain?
+
+A fantasy-themed Council meeting game looking at interpersonal behaviours whilst planning the final assault to overthrow the Dark Lord.
+
+The forces of Good have been struggling against the onslaught of the Dark Lord for many years, and, after many reverses, trials and setbacks, finally the tide has turned. A Grand Alliance of Humans, Dwarves, Free Folk and Elves have thrown back the Hordes of the Dark Lord, back to the lair of that master of Evil in the famous (and feared) Warlock Castle in the land of Daunt. Now is the moment of the final campaign to enter the Dark Lord's Domain and rid the world of this evil, once and for all.
+
+The players represent leaders of the Grand Alliance of Good Folk. Each of the elements of the Alliance has been fighting the Dark Lord's forces for many years. The leaders of these contingents form the Council Of Good.
+`,
+        "type": "Online game"
+    },
+    {
+        "id": "UR20210727",
+        "name": "Ur: Cataclysm",
+        "date": {
+            "year": 2021,
+            "month": 7,
+            "day": 27
         },
         "endDate": {
             "year": 2021,
-            "month": 9,
-            "day": 20
+            "month": 8,
+            "day": 15
         },
-        "designer": "Play By Email Designer",
-        "preamble": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sem odio, tristique dignissim nibh quis, porttitor dictum mi. Nullam auctor odio eget ex aliquam, eu lobortis elit sodales. Praesent sit amet arcu a erat pulvinar vehicula. Curabitur nibh nunc, bibendum nec sollicitudin ac, interdum nec enim. Vestibulum semper nisi eleifend nulla euismod dapibus.",
-        "fullDescription": "Lorem markdownum *ambo captantia tellus* monitusque, ego filia documenta fecit\nsubiere tamen diem. Et [parvo](http://ensecanor.com/tibi-ortus). Copia expetitur\netiam iussus vana Tyndaridae prima Phoebeis ad capiunt tibia.\n\nHaruspex Denique servaverat, quae despectat numinis quicquam templa,\n[sed](http://simul.net/te-dona.html). Thesea conponere querellae suaque\nPanopeusque superi loqui diversa: puerum clausas dixit busto: lintea opposui\ncandentia ibimus, eas.\n\n- Trahitur vix madidus nonaque Venus\n- Lacertis dominae erat tertia et a Alcyone\n- Scire Phoeboque fugit Aethionque spirandi discederet ossibus\n\nCessit movit hoc vita, Hypseus perstant, per gramen, ille. Sparsus [Aetna\nmollirique undis](http://tangor-scopulis.org/et-facunde) revocata primus clarum\nadopertam Calliope lyraeque unde scitantibus seducta pecori voce adfectu et.\nLatus ait sorores, cepisse, oris umero Lucifer volucres, prius rubor omnes\ndominum.\n\nUmeris nunc dextera oneratos; ligo rapuit Siculo victa ut quotiens. Fragor\ndatos; umbrosum, cava mea violari, hos.\n\nAperite spatium; ille, non, habentem, penna vincirem. Peccasse ignava!\n\n1. Sidera quadriiugi adspicis ingenti gratesque Nemeaeo piorum\n2. Nec pignus\n3. Elei fortiter et notum cruore recentes fallere\n4. Pennas Tectaphon Naides\n5. Ibi ilia violave\n6. Cum has tibi turba\n\nViribus iaces. Nec ortus sit [et](http://nec.io/iam-ali) mihi vix pectore, quae\nhoc, tumet ipse. Hoc finita undis cecidere montibus manemus Praescia iacerent\nOrtygiam aliorum rimas armata capillos, quondam hortanda? Munera loca pars voce\nreceptae iuvenci nocet.\n\nEt dentibus insidias praetendens tamen ex arabat tibi Hyperionis ardente et sit\nad correptus fletus, spicea lux lumina! Tantorum operisque timeri.",
+        "designer": "John Keyworth",
+        "preamble": "A great pre-godswar civilization on the world of “Lumen” falls in a great cataclysm.",
+        "fullDescription": `Ur: Cataclysm is a low-commitment PBEM game that takes place over 3 weeks. It is set in the same fantasy universe as last year’s Ur: Nexus City game but is mechanically very different.
+
+The game focuses on a mystery, so further information will only be forthcoming once you have been cast.
+
+Sign ups close on the 18th July and the game will take place between the 27th of July and the 15th of August. Please fill out this questionnaire to sign up, it is not first come first serve instead we will use a lottery system to choose players.
+
+* The format for this game will be quite different to previous OMEGA PBEMs.
+* You do not have to have played the last Ur game to play this one, and it does not follow on directly from the events of the first game.
+* We will happily answer questions about the game, but some details will remain secret.
+
+[To sign up, fill in this Google Form](https://forms.gle/aVhZcBraMcLjeHPD8)
+`,
         "type": "Play-By-Email"
-    }
+    },
+//     {
+//         "id": "DC20210727",
+//         "name": "Dusk City",
+//         "date": {
+//             "year": 2021,
+//             "month": 7,
+//             "day": 27
+//         },
+//         "endDate": {
+//             "year": 2021,
+//             "month": 8,
+//             "day": 15
+//         },
+//         "designer": "John Keyworth",
+//         "preamble": "A great pre-godswar civilization on the world of “Lumen” falls in a great cataclysm.",
+//         "fullDescription": `Ur: Cataclysm is a low-commitment PBEM game that takes place over 3 weeks. It is set in the same fantasy universe as last year’s Ur: Nexus City game but is mechanically very different.
+//
+// The game focuses on a mystery, so further information will only be forthcoming once you have been cast.
+//
+// Sign ups close on the 18th July and the game will take place between the 27th of July and the 15th of August. Please fill out this questionnaire to sign up, it is not first come first serve instead we will use a lottery system to choose players.
+//
+// * The format for this game will be quite different to previous OMEGA PBEMs.
+// * You do not have to have played the last Ur game to play this one, and it does not follow on directly from the events of the first game.
+// * We will happily answer questions about the game, but some details will remain secret.
+//
+// [To sign up, fill in this Google Form](https://forms.gle/aVhZcBraMcLjeHPD8)
+// `,
+//         "type": "Play-By-Email"
+//     },
 ];
 
 export class MemoryRepository implements GamesRepository {

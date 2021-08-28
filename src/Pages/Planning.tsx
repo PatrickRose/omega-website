@@ -1,5 +1,5 @@
 import React from "react";
-import {Hero, HeroHeading} from "../components/Hero";
+import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {Game} from "../types/types";
 
 function GameDescriptions() {
@@ -39,7 +39,7 @@ export default function Planning() {
                 Planning
             </HeroHeading>
         </Hero>
-        <div className="p-2">
+        <MainContent>
             <p>
                 OMEGA aims to put a selection of games on each year, normally falling under one of two types:
             </p>
@@ -47,7 +47,7 @@ export default function Planning() {
             <h2 className="text-3xl py-3">Running a game with us</h2>
             <p>
                 OMEGA are always looking for new game designs to run online.
-                The Steering Committee will put out a call for game pitches.
+                Throughout the year, the Steering Committee will put out a call for game pitches.
                 Games can be in any state at this point - maybe you just have a good idea for a game,
                 maybe you have a full design ready to go.
                 If your game is selected for the OMEGA calendar, then the Steering Committee will work
@@ -71,6 +71,6 @@ export default function Planning() {
                 for a megagame every so often is highly recommended, especially for those who play a
                 lot of games!
             </p>
-        </div>
+        </MainContent>
     </React.Fragment>
 }

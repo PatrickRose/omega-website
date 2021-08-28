@@ -1,5 +1,5 @@
 import React from "react";
-import {Hero, HeroHeading} from "../components/Hero";
+import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons/faFacebook";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
@@ -19,7 +19,7 @@ function ContactMethods() {
             icon: faFacebook,
             title: 'Facebook',
             description: <p>
-                We also have a Facebook presence, which will have a list of any upcoming events.
+                We also have a <a href="https://www.facebook.com/OMEGAmegagames">Facebook presence</a>, which will have a list of any upcoming events.
             </p>
         },
         {
@@ -30,7 +30,7 @@ function ContactMethods() {
                     You can email us at test@example.com
                 </p>
                 <p>
-                    For issues relating to the website, email test@example.com
+                    <a href="mailto:pjr0911025+omega@googlemail.com">For issues relating to the website, please use pjr0911025+omega@googlemail.com</a>
                 </p>
             </React.Fragment>
         }
@@ -55,9 +55,9 @@ export default function Contact() {
                 Contact us!
             </HeroHeading>
         </Hero>
-        <div className="p-2">
+        <MainContent>
             You can get in contact with the OMEGA team in one of the following ways
             <ContactMethods/>
-        </div>
+        </MainContent>
     </React.Fragment>
 }

@@ -3,7 +3,7 @@ import {Game, PlayByEmailGame} from "../types/types";
 import {apiCall} from "../utils/api";
 import {GameDecode, PlayByEmailGameDecode} from "../types/io-ts-def";
 import {isRight} from "fp-ts/Either";
-import {Hero, HeroHeading} from "../components/Hero";
+import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {TextRow} from "../components/Placeholders";
 import {getStringFromGameDate} from "../utils";
 import Markdown from "../components/Markdown";
@@ -37,14 +37,14 @@ abstract class GameStructure<T> extends React.Component<T> {
                     }
                 </div>
             </Hero>
-            <div className="p-4">
+            <MainContent>
                 <div className="flex justify-center">
                     <Link to="/games" className="btn-link my-4 px-4 py-2">
                         &laquo; Back to games list
                     </Link>
                 </div>
                 {this.getMainContent()}
-            </div>
+            </MainContent>
         </React.Fragment>;
     }
 
@@ -66,7 +66,7 @@ class FetchedGame extends GameStructure<{ game: Game }> {
     protected getSubHeading(): React.ReactElement {
         const {game} = this.props;
 
-        return <h2 className="font-bold pb-8">
+        return <p className="font-bold pb-8">
             <span className="text-xl">
                 {game.designer}
             </span>
@@ -75,7 +75,7 @@ class FetchedGame extends GameStructure<{ game: Game }> {
             {
                 isPBEM(game) ? ` - ${getStringFromGameDate(game.endDate)}` : null
             }
-        </h2>;
+        </p>;
     }
 
     protected getMainContent(): React.ReactElement {

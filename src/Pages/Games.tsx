@@ -7,7 +7,7 @@ import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
 import {Circle, TextRow} from "../components/Placeholders";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
-import {Hero, HeroHeading} from "../components/Hero";
+import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../utils";
 import {apiCall} from "../utils/api";
 
@@ -251,7 +251,7 @@ export class Games extends React.Component<GamesProps, GamesState> {
             <Hero>
                 <HeroHeading>Upcoming games</HeroHeading>
             </Hero>
-            <div className="p-4">
+            <MainContent>
                 <GameList
                     fetched={fetched}
                     gameList={gameList}
@@ -259,7 +259,7 @@ export class Games extends React.Component<GamesProps, GamesState> {
                     changeFilter={changeFilter}
                     past={past === undefined ? false : past}
                 />
-            </div>
+            </MainContent>
         </React.Fragment>;
     }
 

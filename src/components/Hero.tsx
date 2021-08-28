@@ -13,3 +13,7 @@ export function HeroHeading(props: { className?: string, children: ReactNode, pa
         {props.children}
     </h1>;
 }
+
+export function MainContent(props: { children: ReactNode }) {
+    return <div className="p-8">{props.children}</div>;
+}
