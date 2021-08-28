@@ -82,3 +82,7 @@ export const GameDecode = t.union([PlayByEmailGameDecode, OnlineGameDecode]);
 export const GameAPIDecode = t.type({
     games: t.array(GameDecode)
 });
+
+export const UpcomingEventsAPIDecode = t.type({
+    events: t.array(GameDecode)
+})

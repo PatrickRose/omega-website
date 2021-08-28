@@ -5,6 +5,8 @@ import {Game} from "../../../types/types";
 export default interface GamesRepository {
     all: () => Either<Error, Game[]>
     get: (id: string) => Either<Error, Game>
+
+    upcomingEvents(limit: number): Either<Error, Game[]>;
 }
 
 export function getGamesRepo(): GamesRepository {

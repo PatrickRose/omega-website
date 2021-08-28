@@ -8,7 +8,7 @@ import {Circle, TextRow} from "../components/Placeholders";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 import {Hero, HeroHeading} from "../components/Hero";
-import {getJSDateFromGameDate, getStringFromGameDate} from "../utils";
+import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../utils";
 import {apiCall} from "../utils/api";
 
 function isGameApi(value: any): value is GameAPI {
@@ -227,20 +227,7 @@ export class Games extends React.Component<GamesProps, GamesState> {
                     throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
                 }
 
-                value.games.sort((a, b): number => {
-                    const aDate = a.date;
-                    const bDate = b.date;
-
-                    let keys: (keyof typeof aDate)[] = ['year', 'month', 'day'];
-
-                    for (let key of keys) {
-                        if (aDate[key] !== bDate[key]) {
-                            return aDate[key] - bDate[key]
-                        }
-                    }
-
-                    return 0;
-                });
+                value.games.sort(dateSorter);
 
                 this.setState({
                     fetched: true,
