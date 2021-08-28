@@ -93,7 +93,7 @@ const gameFourYear: Game = {
     type: 'Online game'
 }
 
-const upcoming = [
+const upcoming: [string, number, Game[], Game[]][] = [
     ['Returns nothing if no games', 3, [], []],
     ['Game in the past not returned', 3, [pastGame], []],
     ['Returns all future games', 3, [gameNextYear, gameTwoYear, gameThreeYear], [gameNextYear, gameTwoYear, gameThreeYear]],

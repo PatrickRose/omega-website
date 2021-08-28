@@ -12,7 +12,7 @@ const allGames: Game[] = [
         "name": "ONLINE MEGAGAME",
         "date": {
             "year": 2021,
-            "month": 8,
+            "month": 9,
             "day": 7
         },
         "designer": "Online Designer",
@@ -25,7 +25,7 @@ const allGames: Game[] = [
         "name": "PLAY BY EMAIL GAME",
         "date": {
             "year": 2021,
-            "month": 8,
+            "month": 9,
             "day": 20
         },
         "endDate": {
