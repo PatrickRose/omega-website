@@ -1,7 +1,7 @@
 import React, {ReactNode} from "react";
 
 export function Hero(props: { children: ReactNode, extraClasses?: string }) {
-    return <div className={`flex flex-col justify-center content-center min-h-hero text-white bg-gradient-to-b from-gray-800 via-omega ${props.extraClasses || ""}`}>
+    return <div className={`flex flex-col justify-center content-center min-h-hero text-white bg-omega ${props.extraClasses || ""}`}>
         {props.children}
     </div>;
 }
