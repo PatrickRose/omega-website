@@ -138,35 +138,62 @@ Sign ups close on the 18th July and the game will take place between the 27th of
 `,
         "type": "Play-By-Email"
     },
-//     {
-//         "id": "DC20210727",
-//         "name": "Dusk City",
-//         "date": {
-//             "year": 2021,
-//             "month": 7,
-//             "day": 27
-//         },
-//         "endDate": {
-//             "year": 2021,
-//             "month": 8,
-//             "day": 15
-//         },
-//         "designer": "John Keyworth",
-//         "preamble": "A great pre-godswar civilization on the world of “Lumen” falls in a great cataclysm.",
-//         "fullDescription": `Ur: Cataclysm is a low-commitment PBEM game that takes place over 3 weeks. It is set in the same fantasy universe as last year’s Ur: Nexus City game but is mechanically very different.
-//
-// The game focuses on a mystery, so further information will only be forthcoming once you have been cast.
-//
-// Sign ups close on the 18th July and the game will take place between the 27th of July and the 15th of August. Please fill out this questionnaire to sign up, it is not first come first serve instead we will use a lottery system to choose players.
-//
-// * The format for this game will be quite different to previous OMEGA PBEMs.
-// * You do not have to have played the last Ur game to play this one, and it does not follow on directly from the events of the first game.
-// * We will happily answer questions about the game, but some details will remain secret.
-//
-// [To sign up, fill in this Google Form](https://forms.gle/aVhZcBraMcLjeHPD8)
-// `,
-//         "type": "Play-By-Email"
-//     },
+    {
+        id: "AL20211701",
+        name: "Afterlife",
+        date: {
+            month: 1,
+            day: 17,
+            year: 2021
+        },
+        endDate: {
+            month: 3,
+            day: 7,
+            year: 2021
+        },
+        preamble: "You died. After death you emerged from the river, your memory shot to pieces, in the city of the dead. Unlock your memories. Choose your path. Decide the future of the afterlife.",
+        designer: "Stuart Martyn",
+        fullDescription: `You died. After death you emerged from the river, your memory shot to pieces, in the city of the dead.
+
+The Necropolis is a bizarre city. Everything here – even the objects - is a ghost, a memory. The buildings that stand here all collapsed into rubble on Earth. Modern skyscrapers stand alongside Gothic cathedrals and earthwork huts. Souls walks the patchwork streets dressed in rags, tee-shirts, ballgowns and clanking metal armour.
+For longer than most souls can remember, the Silent King sat upon his throne in an ancient tower at the heart of the city. The Silent King was a distant and feared ruler with the power to strip away the memories of his subjects. Under his regime fragments of memory and self became a form of currency. But now the Silent King has disappeared. His throne lies vacant and many of the dead look upon it with envious or fearful eyes.
+
+In a world without permanent death it is difficult to seize the throne by force. Any claimant must rally support, find a way to win the loyalty of other souls, before they ascend the Throne. Angels and demons lurk on the periphery of the political conflict, empowering those who accept their gifts.
+
+Most of the poorest souls are now little more than shells of what they once were, engaged in their labour or wandering listlessly through the streets. With the King’s demise, souls have noticed some of their memories returning to them. These memories bring the purpose some yearn for and unlock the power craved by others. The fight for the Throne is something many have little interest in; with the Silent King gone, perhaps the afterlife can change in more than just political terms. Perhaps there are other ways to live after death.
+
+Unlock your memories. Choose your path. Decide the future of the afterlife.`,
+        type: "Play-By-Email",
+    },
+    {
+        "id": "DC20210727",
+        "name": "Dusk City By Night",
+        "date": {
+            "year": 2021,
+            "month": 5,
+            "day": 16
+        },
+        "endDate": {
+            "year": 2021,
+            "month": 7,
+            "day": 16
+        },
+        "designer": "Kyle Tinga",
+        "preamble": "Once, you lived in slumber, existing idly among the masses without any understanding of the truths of the world. But you were chosen, snatched from the threshold between life and death, given the secrets to eternal life and an ever-present hunger in your soul.",
+        "fullDescription": `Once, you lived in slumber, existing idly among the masses without any understanding of the truths of the world. But you were chosen, snatched from the threshold between life and death, given the secrets to eternal life and an ever-present hunger in your soul. You have joined the ranks of the Awakened - immortals with powers far beyond human understanding, weakened in sunlight and bound in blood, pursued by the eternal spectre of the creature known as HIM.
+
+You and your brethren coexist in an uneasy truce, battle lines drawn in ideology instead of violence. Some believe in power and dominance over humanity, banding together to create a world for the Awakened. Some have made it their calling to shepherd mankind, believing themselves truly just in their manipulations. Some wish to coexist peacefully with the Unawakened, stifling the hunger that gnaws incessantly within them. And some walk their own path, beholden to no gods or masters.
+
+By purpose or coincidence you have found yourself in the City of Doxley, hiding from the ever-watchful eye of HIM. It is a place of darkened alleyways and shattered dreams, of haves living gated lives, separated from have nots. A place ripe for the picking. On these streets, human life lacks meaning to the Awakened, valuable only as a commodity, fuel for the ceaseless hunger of their kin, pawns in games of deceit. Yet hope blossoms even in the smallest of places. Mankind has risen up, their hopes and dreams rising with them, ushering in a new age where your kind may no longer be needed.
+
+Of course, as all things grow, so must all things change.
+
+The Keeper of the city, your guardian and protector, has announced his intent to relinquish his position. There is a ripple of unease in each of you, a realization that without the Keeper HE may soon arrive at your doorstep. It is imperative the Land be protected, imperative that one of us is bound as its Keeper so that many will survive. The highest honor an Awakened may have, and the greatest sacrifice they shall undertake. A Selection must be initiated. A worthy successor must be found.
+
+Fight for the right to be the city’s protector, or aid in the quest to find one suitable for the task. Gain Influence by resolving society’s ills or benefit from its decline. Feed the beast within, or deny it. Forge valuable bonds that may make or break you. And, above all things, remember that you are not the only one who sees what you are in the dark.
+`,
+        "type": "Play-By-Email"
+    },
 ];
 
 export class MemoryRepository implements GamesRepository {
