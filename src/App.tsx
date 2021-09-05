@@ -8,6 +8,7 @@ import {Games} from "./Pages/Games";
 import {SingleGame} from "./Pages/SingleGame";
 import Planning from './Pages/Planning';
 import Contact from './Pages/Contact';
+import CodeOfConduct from "./Pages/CodeOfConduct";
 
 function WrappedSingleGame() {
     const game = useParams<{game:string}>()["game"];
@@ -35,6 +36,9 @@ class App extends Component<{}> {
                     </Route>
                     <Route path="/contact">
                         <Contact />
+                    </Route>
+                    <Route path="/code-of-conduct">
+                        <CodeOfConduct />
                     </Route>
                     <Route path="*">
                         <NoMatch/>

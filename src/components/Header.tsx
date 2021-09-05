@@ -28,6 +28,10 @@ const links: LinkDef[] = [
         linkPath: '/contact',
         linkText: 'Contact'
     },
+    {
+        linkPath: '/code-of-conduct',
+        linkText: 'Code of Conduct'
+    }
 ];
 
 const NavigationLinks = (props: { mobile?: boolean }) => {
