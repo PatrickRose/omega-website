@@ -51,8 +51,8 @@ Running Hot is a “pre-cyberpunk” megagame. Players will play either the corp
             "month": 5,
             "day": 22
         },
-        "designer": "Ben Kanelos",
-        "preamble": "The monarch has united the realm and birthed a new kingdom. That was the easy part...",
+        "designer": "Peter Nixon (original design), Benjamin Kanelos (development)",
+        "preamble": "Inspired by Horrible Games The King's Dilemma, As Thou Commands is a council-driven megagame where players cooperatively generate a medieval kingdom and then try to shape its path through history.",
         "fullDescription": `The monarch has united the realm and birthed a new kingdom. That was the easy part... Now it's time to carve the land into duchies and rule over them. What will your noble house prioritize? Will you make friends or enemies with your neighbors? Will the kingdom survive or fall apart and be forgotten? Your choices decide!
 
 As Thou Commands is a rules-light megagame where the players create and run fictional feudal duchies. These duchies comprise an entire medieval kingdom, and players’ decisions will have impacts both near and far. Play alternates between drafting narrative elements and participating in council sessions where players will try to negotiate beneficial outcomes to the thorny issues bedeviling the kingdom.
