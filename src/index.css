@@ -15,8 +15,8 @@
         @apply no-underline
     }
 
-    .basis-50 {
-        flex-basis: 50%;
+    .responsive-width {
+        @apply w-full md:w-2/4 xl:w-1/3
     }
 }
 

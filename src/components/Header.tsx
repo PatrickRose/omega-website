@@ -13,6 +13,10 @@ const links: LinkDef[] = [
         exact: true
     },
     {
+        linkPath: '/about-megagames',
+        linkText: 'What is a megagame?',
+    },
+    {
         linkPath: '/games',
         linkText: 'Games'
     },
@@ -64,6 +68,7 @@ function getMaxHeight(): string {
         case 3: return 'max-h-48';
         case 4: return 'max-h-64';
         case 5: return 'max-h-72';
+        case 6: return 'max-h-80';
         default: throw Error(`Don't know what the max height for a menu with ${links.length} items in it`)
     }
 }

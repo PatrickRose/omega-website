@@ -39,9 +39,9 @@ function ContactMethods() {
 
     return <div className="flex md:flex-row md:flex-wrap justify-center flex-col py-2">
         {
-            contactMethods.map(value => <div className="basis-50 text-center px-2" key={value.title}>
+            contactMethods.map(value => <div className="responsive-width text-center py-2 px-2" key={value.title}>
                 <FontAwesomeIcon icon={value.icon} size="10x" className="w-full" title={value.title}/>
-                <h2 className="text-2xl py-2">{value.title}</h2>
+                <h2 className="text-2xl py-4">{value.title}</h2>
                 {value.description}
             </div>)
         }
