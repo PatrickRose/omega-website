@@ -1,15 +1,15 @@
-import React, {Component, Fragment} from 'react';
-import {BrowserRouter, Link, Route, Switch, useParams} from "react-router-dom";
+import React, {Component} from 'react';
+import {BrowserRouter, Route, Switch, useParams} from "react-router-dom";
 import {Footer} from './components/Footer';
 import Header from './components/Header';
 import Home from './Pages/Home';
-import {Hero, HeroHeading} from "./components/Hero";
 import {Games} from "./Pages/Games";
 import {SingleGame} from "./Pages/SingleGame";
 import Planning from './Pages/Planning';
 import Contact from './Pages/Contact';
 import CodeOfConduct from "./Pages/CodeOfConduct";
 import AboutMegagames from "./Pages/AboutMegagames";
+import {NoMatch} from "./components/NoMatch";
 
 function WrappedSingleGame() {
     const game = useParams<{game:string}>()["game"];
@@ -52,26 +52,6 @@ class App extends Component<{}> {
             <Footer/>
         </BrowserRouter>
     }
-}
-
-function NoMatch() {
-    return (
-        <Fragment>
-            <Hero>
-                <HeroHeading>
-                    Sorry, that page wasn't found!
-                </HeroHeading>
-            </Hero>
-            <div className="p-4">
-                <p>
-                    Looks like you might have got lost somewhere! It happens to the best of us.
-                </p>
-                <p>
-                    Try going back in your browser and trying again. If that doesn't work, <Link to="contact">send the webmaster a message through the contact page</Link>
-                </p>
-            </div>
-        </Fragment>
-    );
 }
 
 export default App;

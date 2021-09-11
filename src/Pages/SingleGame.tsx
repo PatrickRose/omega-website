@@ -2,18 +2,20 @@ import React from "react";
 import {Game, PlayByEmailGame} from "../types/types";
 import {apiCall} from "../utils/api";
 import {GameDecode, PlayByEmailGameDecode} from "../types/io-ts-def";
-import {isRight} from "fp-ts/Either";
+import {Either, isRight} from "fp-ts/Either";
 import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {TextRow} from "../components/Placeholders";
 import {getStringFromGameDate} from "../utils";
 import Markdown from "../components/Markdown";
 import {Link} from "react-router-dom";
+import {NoMatch} from "../components/NoMatch";
+import {MakeLeft, MakeRight} from "../utils/io-ts-helpers";
 
 type SingleGameProps = {
     game: string
 };
 type GamesState = {
-    game: Game | false
+    game: Either<Error, Game> | false
 }
 
 function isGame(value: any): value is Game {
@@ -118,8 +120,12 @@ class LoadingGame extends GameStructure<{}> {
 }
 
 export class SingleGame extends React.Component<SingleGameProps, GamesState> {
+    private controller: AbortController|undefined;
+
     constructor(props: SingleGameProps) {
         super(props);
+
+        this.controller = undefined;
 
         this.state = {
             game: false,
@@ -131,9 +137,13 @@ export class SingleGame extends React.Component<SingleGameProps, GamesState> {
     }
 
     private getGame() {
-        const api = apiCall(`games/${this.props.game}`);
+        const {controller, response: api} = apiCall(`games/${this.props.game}`);
+
+        this.controller = controller;
 
         api.then(response => {
+            this.controller = undefined;
+
             if (!response.ok) {
                 throw new Error('Failed to fetch');
             }
@@ -144,17 +154,37 @@ export class SingleGame extends React.Component<SingleGameProps, GamesState> {
                     throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
                 }
                 this.setState({
-                    game: value
+                    game: MakeRight(value)
                 });
             }
+        ).catch(
+            reason => {
+                if (!(reason instanceof DOMException)) {
+                    this.setState({
+                        game: MakeLeft(reason)
+                    })
+                }
+            }
         );
+    }
+
+    componentWillUnmount() {
+        if (this.controller) {
+            this.controller.abort();
+        }
     }
 
     render() {
         const {game} = this.state;
 
-        return game !== false
-            ? <FetchedGame game={game}/>
-            : <LoadingGame/>
+        if (game === false) {
+            return <LoadingGame />
+        }
+
+        if (isRight(game)) {
+            return <FetchedGame game={game.right} />
+        }
+
+        return <NoMatch />;
     }
 }

@@ -5,7 +5,7 @@ import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {Game} from "../types/types";
 import {apiCall} from "../utils/api";
 import {UpcomingEventsAPIDecode} from "../types/io-ts-def";
-import { TextRow } from "../components/Placeholders";
+import {TextRow} from "../components/Placeholders";
 
 const homeLinks: LinkDef[] = [
     {
@@ -65,7 +65,7 @@ class Megagame extends UpcomingEvent<Game> {
         return <React.Fragment>
             <p>{value.preamble}</p>
             <div className="flex">
-            <Link to={`/games/${value.id}`} className="btn-link m-4 p-4 w-full">Book a space</Link>
+                <Link to={`/games/${value.id}`} className="btn-link m-4 p-4 w-full">Book a space</Link>
             </div>
         </React.Fragment>;
     }
@@ -77,17 +77,18 @@ class UnFetched extends UpcomingEvent<number> {
     }
 
     protected getSubtitle(): React.ReactElement {
-        const repeat = [1,2,3]
+        const repeat = [1, 2, 3]
         return <React.Fragment>
             {
-                repeat.map(value => <div key={value} className="w-full"><TextRow className="bg-gray-500 mb-2 h-3" height={false}/></div>)
+                repeat.map(value => <div key={value} className="w-full"><TextRow className="bg-gray-500 mb-2 h-3"
+                                                                                 height={false}/></div>)
             }
         </React.Fragment>;
     }
 }
 
 function UpcomingEvents(props: { events: false | Game[] }) {
-    const toDisplay: UpcomingEventTypes[] = props.events || [1,2,3];
+    const toDisplay: UpcomingEventTypes[] = props.events || [1, 2, 3];
 
     let eventList;
 
@@ -111,6 +112,7 @@ function UpcomingEvents(props: { events: false | Game[] }) {
 }
 
 export default class Home extends React.Component<{}, HomeState> {
+    private controller: AbortController | undefined;
 
     constructor(props: {}) {
         super(props);
@@ -122,9 +124,12 @@ export default class Home extends React.Component<{}, HomeState> {
     }
 
     private getUpcomingEvents() {
-        const api = apiCall('upcoming');
+        const {controller, response: api} = apiCall('upcoming');
+
+        this.controller = controller;
 
         api.then(response => {
+            this.controller = undefined;
             if (!response.ok) {
                 throw new Error('Failed to fetch');
             }
@@ -137,7 +142,21 @@ export default class Home extends React.Component<{}, HomeState> {
 
                 this.setState({fetched: value.events});
             }
+        ).catch(
+            reason => {
+                if (!(reason instanceof DOMException)) {
+                    this.setState({
+                        fetched: []
+                    })
+                }
+            }
         );
+    }
+
+    componentWillUnmount() {
+        if (this.controller) {
+            this.controller.abort();
+        }
     }
 
     render() {

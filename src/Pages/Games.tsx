@@ -10,6 +10,8 @@ import {Link} from "react-router-dom";
 import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../utils";
 import {apiCall} from "../utils/api";
+import {MakeLeft, MakeRight} from "../utils/io-ts-helpers";
+import {Either, isLeft} from "fp-ts/es6/Either";
 
 function isGameApi(value: any): value is GameAPI {
     let ma = GameAPIDecode.decode(value);
@@ -18,7 +20,7 @@ function isGameApi(value: any): value is GameAPI {
 
 type GamesState = {
     fetched: boolean,
-    gameList: Game[],
+    gameList: Either<Error, Game[]>,
     filter?: Game["type"],
     past?: boolean
 }
@@ -144,7 +146,7 @@ function GameListFilter(
 }
 
 type GameListParams = {
-    gameList: Game[],
+    gameList: GamesState["gameList"],
     filter?: Game["type"],
     changeFilter: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void,
     past: boolean,
@@ -154,10 +156,25 @@ type GameListParams = {
 function GameList(props: GameListParams) {
     const {fetched, filter, changeFilter, past} = props;
 
-    let gameList: Array<Game | number> = fetched
-        ? props.gameList
-        : [1, 2];
+    let gameList: Array<Game | number>;
 
+    if (!fetched) {
+        gameList = [1, 2]
+    }
+    else if (isLeft(props.gameList)) {
+        return <React.Fragment>
+            <p className="py-2">
+                Looks like an error occurred while getting the list of games.
+            </p>
+            <p className="py-2">
+                Try refreshing your browser and trying again. If that doesn't work, <Link to="contact">send the
+                webmaster a message through the contact page</Link>
+            </p>
+        </React.Fragment>
+    }
+    else {
+        gameList = props.gameList.right;
+    }
 
     const filterGame = (value: Game | number): boolean => {
         // Always include numbers
@@ -169,11 +186,7 @@ function GameList(props: GameListParams) {
             return false;
         }
 
-        if (filter !== undefined && (value.type !== filter)) {
-            return false;
-        }
-
-        return true;
+        return !(filter !== undefined && (value.type !== filter));
     }
 
     // We filter on the client side because we're not going to have a lot of things to filter
@@ -200,6 +213,7 @@ function GameList(props: GameListParams) {
 type GamesProps = {};
 
 export class Games extends React.Component<GamesProps, GamesState> {
+    private controller: AbortController | undefined;
     constructor(props: GamesProps) {
         super(props);
 
@@ -211,7 +225,7 @@ export class Games extends React.Component<GamesProps, GamesState> {
 
         this.state = {
             fetched: false,
-            gameList: [],
+            gameList: MakeRight([]),
             past: past
         };
     }
@@ -220,10 +234,20 @@ export class Games extends React.Component<GamesProps, GamesState> {
         this.getAllGames();
     }
 
+    componentWillUnmount() {
+        if (this.controller) {
+            this.controller.abort();
+        }
+    }
+
     private getAllGames() {
-        const api = apiCall('games');
+        const {controller, response: api} = apiCall('games');
+
+        this.controller = controller;
 
         api.then(response => {
+            this.controller = undefined;
+
             if (!response.ok) {
                 throw new Error('Failed to fetch');
             }
@@ -238,8 +262,17 @@ export class Games extends React.Component<GamesProps, GamesState> {
 
                 this.setState({
                     fetched: true,
-                    gameList: value.games
+                    gameList: MakeRight(value.games)
                 });
+            }
+        ).catch(
+            reason => {
+                if (!(reason instanceof DOMException)) {
+                    this.setState({
+                        fetched: true,
+                        gameList: MakeLeft(reason)
+                    })
+                }
             }
         );
     }
