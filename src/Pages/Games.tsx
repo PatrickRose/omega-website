@@ -1,5 +1,5 @@
 import React, {ReactElement} from "react";
-import {isRight} from "fp-ts/Either";
+import {isRight, Either, isLeft} from "fp-ts/Either";
 import {Game, GameAPI} from "../types/types";
 import {GameAPIDecode} from "../types/io-ts-def";
 import {faEnvelopeOpenText} from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
@@ -11,7 +11,6 @@ import {Hero, HeroHeading, MainContent} from "../components/Hero";
 import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../utils";
 import {apiCall} from "../utils/api";
 import {MakeLeft, MakeRight} from "../utils/io-ts-helpers";
-import {Either, isLeft} from "fp-ts/es6/Either";
 
 function isGameApi(value: any): value is GameAPI {
     let ma = GameAPIDecode.decode(value);
