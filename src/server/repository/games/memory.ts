@@ -79,25 +79,17 @@ Running Hot is a “pre-cyberpunk” megagame. Players will play either the corp
     },
     {
         "id": "TATP210508",
-        "name": "Club Games (The Assault, The Plan)",
+        "name": "Club Games (The Assault)",
         "date": {
             "year": 2021,
             "month": 5,
             "day": 8
         },
-        "designer": "Jim Wallman",
-        "preamble": "Join the OMEGA community for two short length megagame-like experiences (The Assault and The Plan)",
-        "fullDescription": `Join the OMEGA community as they play two short length megagame-experiences, designed by [Jim Wallman](https://www.stonepaperscissors.co.uk/) (*Watch The Skies*, *Urban Nightmare*)
+        "designer": "Peter Nixon (original designs by Jim Wallman)",
+        "preamble": "A fantasy-themed Council meeting game looking at interpersonal behaviours whilst planning the final assault to overthrow the Dark Lord",
+        "fullDescription": `Join the OMEGA community as they play a short length megagame-experience, designed by [Jim Wallman](https://www.stonepaperscissors.co.uk/) (*Watch The Skies*, *Urban Nightmare*)
         
 [To sign up, please fill out this Google Docs spreadsheet](https://docs.google.com/spreadsheets/d/1NsVZn-Zbw-xT0eFgzN6x59P7W0mNEUAgeMv5p7QgFXY/edit?fbclid=IwAR2PV7SrxWcQdwUGHlaAI_nxIDfPRTIgov7l-qNTaxF5z3UCE6IL9lGeVcg#gid=0)
-
-### The Plan
-
-The Game about Negotiation, Committees and Planning
-
-The Plan is a game ostensibly about a strategic planning committee in a time of war. The players are the key senior decision makers and planners of 'Freedonia'. In the game they have to communicate, negotiate and problem solve with their fellow committee members to come up with a successful War Plan.
-
-### The Assault
 
 Good vs Evil… vs personal gain?
 
@@ -108,6 +100,24 @@ The forces of Good have been struggling against the onslaught of the Dark Lord f
 The players represent leaders of the Grand Alliance of Good Folk. Each of the elements of the Alliance has been fighting the Dark Lord's forces for many years. The leaders of these contingents form the Council Of Good.
 `,
         "type": "Online game"
+    },
+    {
+        "id": "UR20201005",
+        "name": "Ur: Season One",
+        "date": {
+            "year": 2020,
+            "month": 10,
+            "day": 5
+        },
+        "endDate": {
+            "year": 2020,
+            "month": 12,
+            "day": 6
+        },
+        "designer": "John Keyworth",
+        "preamble": "Ur is a great city at the center of the multiverse - inspired by Planescape and Fallen London - and players take the role of notable characters from the city during a time of turmoil.",
+        "fullDescription": `Ur is a play by email game, ran over the course of 8 weeks, where players took the roles of notable characters within the city - politicians, nobles, diplomats, academics, priests and criminals - exploring mysteries, furthering their goals and trying to survive as the city is rocked by one than one existential disaster. Each week was one turn and players would submit their characters actions for the control team to resolve using a light rules system.`,
+        "type": "Play-By-Email"
     },
     {
         "id": "UR20210727",
@@ -123,18 +133,8 @@ The players represent leaders of the Grand Alliance of Good Folk. Each of the el
             "day": 15
         },
         "designer": "John Keyworth",
-        "preamble": "A great pre-godswar civilization on the world of “Lumen” falls in a great cataclysm.",
-        "fullDescription": `Ur: Cataclysm is a low-commitment PBEM game that takes place over 3 weeks. It is set in the same fantasy universe as last year’s Ur: Nexus City game but is mechanically very different.
-
-The game focuses on a mystery, so further information will only be forthcoming once you have been cast.
-
-Sign ups close on the 18th July and the game will take place between the 27th of July and the 15th of August. Please fill out this questionnaire to sign up, it is not first come first serve instead we will use a lottery system to choose players.
-
-* The format for this game will be quite different to previous OMEGA PBEMs.
-* You do not have to have played the last Ur game to play this one, and it does not follow on directly from the events of the first game.
-* We will happily answer questions about the game, but some details will remain secret.
-
-[To sign up, fill in this Google Form](https://forms.gle/aVhZcBraMcLjeHPD8)
+        "preamble": "30,000 years ago a great civilisation rose and fell on the back of the god-creature known as Lumen. Play through the fall, or sift through its ashes in the aftermath.",
+        "fullDescription": `*Ur: Cataclysm* was set in the same world as [the previous Ur game](https://omega-mega.games/games/UR20201005), but explored a civilisation that existed thousands of years before. One group of players took the role of the civilisation's Prefects as they tried to save what they could from catastrophe, while a second group of players took the role of academics in the 'present' sifting through the remains and trying to work out what happened. Both groups played their 3 turns at the same time, with the groups voting on a course of action each week, and actions in the past affecting the outcome in the present.
 `,
         "type": "Play-By-Email"
     },
@@ -191,6 +191,37 @@ Of course, as all things grow, so must all things change.
 The Keeper of the city, your guardian and protector, has announced his intent to relinquish his position. There is a ripple of unease in each of you, a realization that without the Keeper HE may soon arrive at your doorstep. It is imperative the Land be protected, imperative that one of us is bound as its Keeper so that many will survive. The highest honor an Awakened may have, and the greatest sacrifice they shall undertake. A Selection must be initiated. A worthy successor must be found.
 
 Fight for the right to be the city’s protector, or aid in the quest to find one suitable for the task. Gain Influence by resolving society’s ills or benefit from its decline. Feed the beast within, or deny it. Forge valuable bonds that may make or break you. And, above all things, remember that you are not the only one who sees what you are in the dark.
+`,
+        "type": "Play-By-Email"
+    },
+    {
+        "id": "GW20211017",
+        "name": "Gods' Wars",
+        "date": {
+            "year": 2021,
+            "month": 10,
+            "day": 17
+        },
+        "endDate": {
+            "year": 2021,
+            "month": 12,
+            "day": 12
+        },
+        "designer": "Steph Rothman",
+        "preamble": "You are a demigod, competing against others in Victorian London during the 1880 season to impress the Olympian gods and win Ascension to Godhood.",
+        "fullDescription": `You are a demigod, a child of one of the Olympian Gods, invited to London to compete in the Gods’ Wars. With what you assume is a little bit of divine intervention, your dream job and lodgings are conveniently available there for you to easily relocate and participate.
+
+The Gods’ Wars- a competition among demigods in which the winners become Gods themselves- have been run countless times across countless worlds, with countless themes. Demigods have intervened to rig elections, intercede in succession crises, start wars, and more! This time, the Olympians of the Greek pantheon are hosting it and the theme is love. 
+
+It is the start of the season in (near) London 1880. People are scrambling to find love and acquire proposals from the most eligible members of society. Attend balls and other social events, and romance and befriend mortals and demigods alike.
+
+However, in order to Ascend, demigod participants must please the Gods. The Gods are fickle and varied. Some may urge war, others peace, and still others, love. In order to truly understand and satisfy them, you will have to develop relationships with them and score points in their Aspect. Aspects suggested by this year’s Godly spectators include Bonding, Justice, Arts, Sporting, Scholarship, Pugilism, Fabrication, Balance, Trickery, and Hedonism. Complete Quests for specific Gods or take other actions related to these Aspects and win their favor. 
+
+Will you win the honor and privilege of ascending to Godhood or will you pursue love, wherever it may lead?
+
+ - [Please complete the interest form here](https://forms.gle/egAwWbNw7VRwLjfA6) - **This is just the interest form. Signups for this game will be sent out around October 1st to the email provided in the interest form.** 
+ - [You can also read our preliminary rulebook here](https://docs.google.com/document/d/1nQtxo_y9eROU3a2WwY24SlX8c8GEj65i04NnkLuKbRo/edit#) 
+ - [You can read some in game lore here](https://docs.google.com/document/d/1FLLwYwSP5mOw0SFCp9WlhwHLwuNoqjuST7g5loX52mI/edit#) 
 `,
         "type": "Play-By-Email"
     },
