@@ -247,7 +247,7 @@ export class MemoryRepository implements GamesRepository {
                 return getJSDateFromGameDate(game.date) >= currDate
             }
         )
-        games.sort(dateSorter);
+        games.sort((a, b) => -dateSorter(a, b));
 
         return MakeRight(games.slice(0, limit));
     }

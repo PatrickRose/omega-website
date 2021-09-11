@@ -13,7 +13,7 @@ const homeLinks: LinkDef[] = [
         linkText: "See our upcoming games, and book a space"
     },
     {
-        linkPath: "games",
+        linkPath: "about-megagames",
         linkText: "What is a megagame? Find out more!"
     },
     {
