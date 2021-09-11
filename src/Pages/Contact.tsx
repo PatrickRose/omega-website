@@ -5,6 +5,7 @@ import {faFacebook} from "@fortawesome/free-brands-svg-icons/faFacebook";
 import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 import {faDiscord} from "@fortawesome/free-brands-svg-icons/faDiscord";
 import {faEnvelope} from "@fortawesome/free-solid-svg-icons/faEnvelope";
+import {ResponsiveItemList} from "../components/ResponsiveItemList";
 
 function ContactMethods() {
     const contactMethods: { icon: IconDefinition, title: string, description: React.ReactElement }[] = [
@@ -19,7 +20,8 @@ function ContactMethods() {
             icon: faFacebook,
             title: 'Facebook',
             description: <p>
-                We also have a <a href="https://www.facebook.com/OMEGAmegagames">Facebook presence</a>, which will have a list of any upcoming events.
+                We also have a <a href="https://www.facebook.com/OMEGAmegagames">Facebook presence</a>, which will have
+                a list of any upcoming events.
             </p>
         },
         {
@@ -30,22 +32,22 @@ function ContactMethods() {
                     You can email us at test@example.com
                 </p>
                 <p>
-                    <a href="mailto:pjr0911025+omega@googlemail.com">For issues relating to the website, please use pjr0911025+omega@googlemail.com</a>
+                    <a href="mailto:pjr0911025+omega@googlemail.com">For issues relating to the website, please use
+                        pjr0911025+omega@googlemail.com</a>
                 </p>
             </React.Fragment>
         }
     ]
 
 
-    return <div className="flex md:flex-row md:flex-wrap justify-center flex-col py-2">
-        {
-            contactMethods.map(value => <div className="responsive-width text-center py-2 px-2" key={value.title}>
-                <FontAwesomeIcon icon={value.icon} size="10x" className="w-full" title={value.title}/>
-                <h2 className="text-2xl py-4">{value.title}</h2>
-                {value.description}
-            </div>)
-        }
-    </div>;
+    const items = contactMethods.map(
+        value => <React.Fragment>
+            <FontAwesomeIcon icon={value.icon} size="10x" className="w-full" title={value.title}/>
+            <h2 className="text-2xl py-4">{value.title}</h2>
+            {value.description}
+        </React.Fragment>
+    );
+    return <ResponsiveItemList items={items} itemClasses="text-center" />;
 }
 
 export default function Contact() {

@@ -14,9 +14,5 @@
     a.btn-link {
         @apply no-underline
     }
-
-    .responsive-width {
-        @apply w-full md:w-2/4 xl:w-1/3
-    }
 }
 

@@ -1,10 +1,11 @@
 import React from "react";
 import {Hero, HeroHeading, MainContent} from "../components/Hero";
+import {ResponsiveItemList} from "../components/ResponsiveItemList";
 
 type MegagameVideoProps = { title: string, youtubeID: string };
 
 function MegagameVideo({youtubeID, title}: MegagameVideoProps) {
-    return <div className="responsive-width py-2 px-2 flex flex-col">
+    return <React.Fragment>
         <h3 className="flex-1 text-xl font-bold text-center pb-4">{title}</h3>
         <div className="aspect-w-16 aspect-h-9">
             <iframe
@@ -13,7 +14,7 @@ function MegagameVideo({youtubeID, title}: MegagameVideoProps) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen/>
         </div>
-    </div>
+    </React.Fragment>
 }
 
 function MegagameVideos() {
@@ -32,11 +33,9 @@ function MegagameVideos() {
         }
     ];
 
-    return <div className="flex flex-col md:flex-row md:flex-wrap w-full justify-center">
-        {
-            videos.map(value => <MegagameVideo title={value.title} youtubeID={value.youtubeID} key={value.youtubeID}/>)
-        }
-    </div>
+    const items = videos.map(value => <MegagameVideo title={value.title} youtubeID={value.youtubeID} key={value.youtubeID}/>)
+
+    return <ResponsiveItemList items={items} itemClasses="flex flex-col" />;
 }
 
 export default function AboutMegagames() {
