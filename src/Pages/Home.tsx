@@ -23,7 +23,7 @@ const homeLinks: LinkDef[] = [
 ]
 
 function HomePageLinks() {
-    return <div className="flex justify-center sm:px-4 pb-16 flex-col sm:flex-row">
+    return <div className="flex justify-center pb-16 flex-col sm:flex-row">
         {
             homeLinks.map(value => <Link className="flex-1 flex justify-center flex-col sm:m-1 m-4 p-4 btn-link"
                                          to={value.linkPath} key={value.linkText}>
@@ -148,7 +148,7 @@ export default class Home extends React.Component<{}, HomeState> {
                 <HeroHeading>
                     OMEGA hosts and produces online megagames.
                 </HeroHeading>
-                <p className="text-xl pb-16 px-4">
+                <p className="text-xl pb-16">
                     From grand strategy to roleplay, economics to fireballs, our games blend serious
                     political simulation with emergent storytelling in settings both mundane and fantastical.
                 </p>
