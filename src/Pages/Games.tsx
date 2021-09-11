@@ -203,9 +203,16 @@ export class Games extends React.Component<GamesProps, GamesState> {
     constructor(props: GamesProps) {
         super(props);
 
+        let past = undefined;
+
+        if (window.location.hash) {
+            past = window.location.hash === '#past';
+        }
+
         this.state = {
             fetched: false,
             gameList: [],
+            past: past
         };
     }
 

@@ -94,7 +94,7 @@ function UpcomingEvents(props: { events: false | Game[] }) {
     if (toDisplay.length === 0) {
         eventList = <div>
             <p>We don't have any upcoming events announced yet!</p>
-            <p>However, feel free to look at <Link to={"/games"}>our past games</Link></p>
+            <p>However, feel free to look at <Link to={"/games#past"}>our past games</Link></p>
         </div>
     } else {
         eventList = <div className="lg:w-3/4 flex flex-col sm:flex-row"> {toDisplay.map(
