@@ -23,7 +23,7 @@ export function dateSorter(a: Game, b: Game): number {
 
     for (let key of keys) {
         if (aDate[key] !== bDate[key]) {
-            return aDate[key] - bDate[key]
+            return bDate[key] - aDate[key]
         }
     }
 
