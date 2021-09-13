@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import OmegaLogo from '../logo.svg';
-import {NavLink} from 'react-router-dom';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faBars} from "@fortawesome/free-solid-svg-icons/faBars";
-import {faTimes} from '@fortawesome/free-solid-svg-icons/faTimes';
-import {LinkDef} from "../utils/utils";
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { LinkDef } from "../utils/utils";
+import * as paths from "../utils/path";
 
 const links: LinkDef[] = [
     {
@@ -13,11 +14,11 @@ const links: LinkDef[] = [
         exact: true
     },
     {
-        linkPath: '/about-megagames',
+        linkPath: paths.aboutMegagames({}),
         linkText: 'What is a megagame?',
     },
     {
-        linkPath: '/games',
+        linkPath: paths.gameList({}),
         linkText: 'Games'
     },
     // {
@@ -25,21 +26,21 @@ const links: LinkDef[] = [
     //     linkText: 'Other Events'
     // },
     {
-        linkPath: '/planning',
+        linkPath: paths.planning({}),
         linkText: 'Planning'
     },
     {
-        linkPath: '/contact',
+        linkPath: paths.contact({}),
         linkText: 'Contact'
     },
     {
-        linkPath: '/code-of-conduct',
+        linkPath: paths.codeOfConduct({}),
         linkText: 'Code of Conduct'
     }
 ];
 
 const NavigationLinks = (props: { mobile?: boolean }) => {
-    const {mobile} = props;
+    const { mobile } = props;
 
     const baseClass = mobile ? "text-omega-light hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" : "text-omega-light hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
     const activeClass = mobile ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" : "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -62,7 +63,7 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
 }
 
 function getMaxHeight(): string {
-    switch(links.length) {
+    switch (links.length) {
         case 1: return 'max-h-16';
         case 2: return 'max-h-32';
         case 3: return 'max-h-48';
@@ -92,9 +93,9 @@ const Navbar = () => {
                         // Mobile menu button-->
                     }
                     <button type="button"
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                            aria-controls="mobile-menu" aria-expanded={ariaExpanded}
-                            onClick={changeHidden}
+                        className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded={ariaExpanded}
+                        onClick={changeHidden}
                     >
                         <span className="sr-only">Open main menu</span>
                         {
@@ -102,23 +103,23 @@ const Navbar = () => {
                             // Heroicon name: outline/menu
                             // Menu open: "hidden", Menu closed: "block"
                         }
-                        <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'block' : 'hidden')} icon={faBars}/>
+                        <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'block' : 'hidden')} icon={faBars} />
                         {
                             // Icon when menu is open.
                             // Heroicon name: outline/x
                             // Menu open: "block", Menu closed: "hidden"
                         }
-                        <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'hidden' : 'block')} icon={faTimes}/>
+                        <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'hidden' : 'block')} icon={faTimes} />
                     </button>
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div className="flex-shrink-0 flex items-center">
                         <img className="block h-8 w-auto"
-                             src={OmegaLogo} alt="OMEGA logo"/>
+                            src={OmegaLogo} alt="OMEGA logo" />
                     </div>
                     <div className="hidden sm:block sm:ml-6">
                         <div className="flex space-x-4">
-                            <NavigationLinks/>
+                            <NavigationLinks />
                             {
                                 //Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white"
                             }
@@ -133,7 +134,7 @@ const Navbar = () => {
         }
         <div className={'sm:hidden transition-all duration-500 ease-in ' + (hidden ? 'max-h-0 opacity-0' : maxHeight)} id="mobile-menu">
             <div className="px-2 pt-2 pb-3 space-y-1">
-                <NavigationLinks mobile={true}/>
+                <NavigationLinks mobile={true} />
             </div>
         </div>
     </nav>
@@ -143,7 +144,7 @@ const Navbar = () => {
 const Header = () => {
     return (
         <header>
-            <Navbar/>
+            <Navbar />
         </header>
     );
 }

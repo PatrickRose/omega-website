@@ -1,15 +1,16 @@
 import React from "react";
-import {Game, PlayByEmailGame} from "../types/types";
-import {apiCall} from "../utils/api";
-import {GameDecode, PlayByEmailGameDecode} from "../types/io-ts-def";
-import {Either, isRight} from "fp-ts/Either";
-import {Hero, HeroHeading, MainContent} from "../components/Hero";
-import {TextRow} from "../components/Placeholders";
-import {getStringFromGameDate} from "../utils";
+import { Game, PlayByEmailGame } from "../types/types";
+import { apiCall } from "../utils/api";
+import { GameDecode, PlayByEmailGameDecode } from "../types/io-ts-def";
+import { Either, isRight } from "fp-ts/Either";
+import { Hero, HeroHeading, MainContent } from "../components/Hero";
+import { TextRow } from "../components/Placeholders";
+import { getStringFromGameDate } from "../utils";
 import Markdown from "../components/Markdown";
-import {Link} from "react-router-dom";
-import {NoMatch} from "../components/NoMatch";
-import {MakeLeft, MakeRight} from "../utils/io-ts-helpers";
+import { Link } from "react-router-dom";
+import { NoMatch } from "../components/NoMatch";
+import { MakeLeft, MakeRight } from "../utils/io-ts-helpers";
+import * as paths from "../utils/path";
 
 type SingleGameProps = {
     game: string
@@ -41,7 +42,7 @@ abstract class GameStructure<T> extends React.Component<T> {
             </Hero>
             <MainContent>
                 <div className="flex justify-center">
-                    <Link to="/games" className="btn-link my-4 px-4 py-2">
+                    <Link to={paths.gameList({})} className="btn-link my-4 px-4 py-2">
                         &laquo; Back to games list
                     </Link>
                 </div>
@@ -60,19 +61,19 @@ abstract class GameStructure<T> extends React.Component<T> {
 class FetchedGame extends GameStructure<{ game: Game }> {
 
     protected getHeading(): React.ReactElement {
-        const {game} = this.props;
+        const { game } = this.props;
 
         return <React.Fragment>{game.name}</React.Fragment>;
     }
 
     protected getSubHeading(): React.ReactElement {
-        const {game} = this.props;
+        const { game } = this.props;
 
         return <p className="font-bold pb-8">
             <span className="text-xl">
                 {game.designer}
             </span>
-            <br/>
+            <br />
             {getStringFromGameDate(game.date)}
             {
                 isPBEM(game) ? ` - ${getStringFromGameDate(game.endDate)}` : null
@@ -81,16 +82,16 @@ class FetchedGame extends GameStructure<{ game: Game }> {
     }
 
     protected getMainContent(): React.ReactElement {
-        const {game} = this.props;
+        const { game } = this.props;
 
-        return <Markdown markdown={game.fullDescription}/>;
+        return <Markdown markdown={game.fullDescription} />;
     }
 }
 
 class LoadingGame extends GameStructure<{}> {
 
     protected getHeading(): React.ReactElement {
-        return <div className="w-2/4"><TextRow className="bg-white"/></div>;
+        return <div className="w-2/4"><TextRow className="bg-white" /></div>;
     }
 
     protected getMainContent(): React.ReactElement {
@@ -100,7 +101,7 @@ class LoadingGame extends GameStructure<{}> {
                     .fill(null)
                     .map((value, index) =>
                         <TextRow key={index}
-                                 className="bg-gray-500 mb-2"/>
+                            className="bg-gray-500 mb-2" />
                     )
             }
         </React.Fragment>
@@ -109,10 +110,10 @@ class LoadingGame extends GameStructure<{}> {
     protected getSubHeading(): React.ReactElement {
         return <div className="flex flex-col items-center justify-center">
             <div className="w-2/6 pb-2">
-                <TextRow className="bg-white h-6" height={false}/>
+                <TextRow className="bg-white h-6" height={false} />
             </div>
             <div className="w-1/6">
-                <TextRow className="bg-white h-6" height={false}/>
+                <TextRow className="bg-white h-6" height={false} />
             </div>
         </div>;
     }
@@ -120,7 +121,7 @@ class LoadingGame extends GameStructure<{}> {
 }
 
 export class SingleGame extends React.Component<SingleGameProps, GamesState> {
-    private controller: AbortController|undefined;
+    private controller: AbortController | undefined;
 
     constructor(props: SingleGameProps) {
         super(props);
@@ -137,7 +138,7 @@ export class SingleGame extends React.Component<SingleGameProps, GamesState> {
     }
 
     private getGame() {
-        const {controller, response: api} = apiCall(`games/${this.props.game}`);
+        const { controller, response: api } = apiCall(`games/${this.props.game}`);
 
         this.controller = controller;
 
@@ -150,13 +151,13 @@ export class SingleGame extends React.Component<SingleGameProps, GamesState> {
 
             return response.json();
         }).then(value => {
-                if (!isGame(value)) {
-                    throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
-                }
-                this.setState({
-                    game: MakeRight(value)
-                });
+            if (!isGame(value)) {
+                throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
             }
+            this.setState({
+                game: MakeRight(value)
+            });
+        }
         ).catch(
             reason => {
                 if (!(reason instanceof DOMException)) {
@@ -175,7 +176,7 @@ export class SingleGame extends React.Component<SingleGameProps, GamesState> {
     }
 
     render() {
-        const {game} = this.state;
+        const { game } = this.state;
 
         if (game === false) {
             return <LoadingGame />

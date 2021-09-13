@@ -1,16 +1,17 @@
-import React, {ReactElement} from "react";
-import {isRight, Either, isLeft} from "fp-ts/Either";
-import {Game, GameAPI} from "../types/types";
-import {GameAPIDecode} from "../types/io-ts-def";
-import {faEnvelopeOpenText} from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
-import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
-import {Circle, TextRow} from "../components/Placeholders";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Link} from "react-router-dom";
-import {Hero, HeroHeading, MainContent} from "../components/Hero";
-import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../utils";
-import {apiCall} from "../utils/api";
-import {MakeLeft, MakeRight} from "../utils/io-ts-helpers";
+import React, { ReactElement } from "react";
+import { isRight, Either, isLeft } from "fp-ts/Either";
+import { Game, GameAPI } from "../types/types";
+import { GameAPIDecode } from "../types/io-ts-def";
+import { faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
+import { faDesktop } from "@fortawesome/free-solid-svg-icons/faDesktop";
+import { Circle, TextRow } from "../components/Placeholders";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import { Hero, HeroHeading, MainContent } from "../components/Hero";
+import { dateSorter, getJSDateFromGameDate, getStringFromGameDate } from "../utils";
+import { apiCall } from "../utils/api";
+import { MakeLeft, MakeRight } from "../utils/io-ts-helpers";
+import * as paths from "../utils/path";
 
 function isGameApi(value: any): value is GameAPI {
     let ma = GameAPIDecode.decode(value);
@@ -61,19 +62,19 @@ abstract class MegagameList<T> extends React.Component<T> {
 class UnfetchedMegagame extends MegagameList<{ key: number }> {
 
     protected getIcon(): React.ReactElement {
-        return <Circle className="bg-gray-500"/>;
+        return <Circle className="bg-gray-500" />;
     }
 
     protected getDate(): React.ReactElement {
-        return <div className="w-1/4"><TextRow className="bg-gray-500 mb-2 h-3" height={false}/></div>;
+        return <div className="w-1/4"><TextRow className="bg-gray-500 mb-2 h-3" height={false} /></div>;
     }
 
     protected getHeading(): React.ReactElement {
-        return <div className="w-2/4"><TextRow className="bg-gray-500 mb-2"/></div>;
+        return <div className="w-2/4"><TextRow className="bg-gray-500 mb-2" /></div>;
     }
 
     protected getSubtitle(): React.ReactElement {
-        return <div className="w-2/6"><TextRow className="bg-gray-500 mb-2 h-3" height={false}/></div>;
+        return <div className="w-2/6"><TextRow className="bg-gray-500 mb-2 h-3" height={false} /></div>;
     }
 
     protected getPreamble(): React.ReactElement {
@@ -81,7 +82,7 @@ class UnfetchedMegagame extends MegagameList<{ key: number }> {
             {
                 (new Array(3))
                     .fill(null)
-                    .map((value, index) => <TextRow key={index} className="bg-gray-500 mb-2 h-4" height={false}/>)
+                    .map((value, index) => <TextRow key={index} className="bg-gray-500 mb-2 h-4" height={false} />)
             }
         </div>;
     }
@@ -91,11 +92,11 @@ class UnfetchedMegagame extends MegagameList<{ key: number }> {
 class FetchedMegagame extends MegagameList<Game> {
 
     protected getIcon(): ReactElement {
-        return <FontAwesomeIcon icon={icons[this.props.type]} title={this.props.type} className="h-full text-5xl"/>;
+        return <FontAwesomeIcon icon={icons[this.props.type]} title={this.props.type} className="h-full text-5xl" />;
     }
 
     protected getHeading(): React.ReactElement {
-        return <Link to={`/games/${this.props.id}`}>{this.props.name}</Link>;
+        return <Link to={paths.singleGame({ game: this.props.id })}> {this.props.name}</Link >;
     }
 
     protected getDate(): React.ReactElement {
@@ -136,7 +137,7 @@ function GameListFilter(
             </div>
             <div className="flex-1 flex flex-col justify-center">
                 <div>
-                    <input id="only-future" type="checkbox" checked={props.past} onChange={props.onChange}/>
+                    <input id="only-future" type="checkbox" checked={props.past} onChange={props.onChange} />
                     <label className="pl-1" htmlFor="only-future">Show past games</label>
                 </div>
             </div>
@@ -153,7 +154,7 @@ type GameListParams = {
 }
 
 function GameList(props: GameListParams) {
-    const {fetched, filter, changeFilter, past} = props;
+    const { fetched, filter, changeFilter, past } = props;
 
     let gameList: Array<Game | number>;
 
@@ -166,8 +167,8 @@ function GameList(props: GameListParams) {
                 Looks like an error occurred while getting the list of games.
             </p>
             <p className="py-2">
-                Try refreshing your browser and trying again. If that doesn't work, <Link to="contact">send the
-                webmaster a message through the contact page</Link>
+                Try refreshing your browser and trying again. If that doesn't work, <Link to={paths.contact({})}>send the
+                    webmaster a message through the contact page</Link>
             </p>
         </React.Fragment>
     }
@@ -192,7 +193,7 @@ function GameList(props: GameListParams) {
     const filteredGames = gameList.filter(filterGame);
 
     return <React.Fragment>
-        <GameListFilter onChange={changeFilter} value={filter} past={past}/>
+        <GameListFilter onChange={changeFilter} value={filter} past={past} />
         <ul>
             {
                 filteredGames.length > 0
@@ -200,7 +201,7 @@ function GameList(props: GameListParams) {
                         .map(
                             value =>
                                 typeof value === 'number'
-                                    ? <UnfetchedMegagame key={value}/>
+                                    ? <UnfetchedMegagame key={value} />
                                     : <FetchedMegagame key={value.id} {...value} />
                         )
                     : <p>No games matched your criteria - try again!</p>
@@ -240,7 +241,7 @@ export class Games extends React.Component<GamesProps, GamesState> {
     }
 
     private getAllGames() {
-        const {controller, response: api} = apiCall('games');
+        const { controller, response: api } = apiCall('games');
 
         this.controller = controller;
 
@@ -253,17 +254,17 @@ export class Games extends React.Component<GamesProps, GamesState> {
 
             return response.json();
         }).then(value => {
-                if (!isGameApi(value)) {
-                    throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
-                }
-
-                value.games.sort(dateSorter);
-
-                this.setState({
-                    fetched: true,
-                    gameList: MakeRight(value.games)
-                });
+            if (!isGameApi(value)) {
+                throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
             }
+
+            value.games.sort(dateSorter);
+
+            this.setState({
+                fetched: true,
+                gameList: MakeRight(value.games)
+            });
+        }
         ).catch(
             reason => {
                 if (!(reason instanceof DOMException)) {
@@ -277,13 +278,13 @@ export class Games extends React.Component<GamesProps, GamesState> {
     }
 
     render() {
-        const {gameList, fetched, filter, past} = this.state;
+        const { gameList, fetched, filter, past } = this.state;
 
         const changeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
             if (event.target instanceof HTMLSelectElement) {
                 this.changeFilter(event.target.value);
             } else {
-                this.setState({past: event.target.checked})
+                this.setState({ past: event.target.checked })
             }
         }
         return <React.Fragment>
@@ -309,6 +310,6 @@ export class Games extends React.Component<GamesProps, GamesState> {
             newVal = value
         }
 
-        this.setState({filter: newVal})
+        this.setState({ filter: newVal })
     }
 }
