@@ -9,7 +9,7 @@ import * as paths from "../utils/path";
 
 const links: LinkDef[] = [
     {
-        linkPath: '/',
+        linkPath: paths.home({}),
         linkText: 'Home',
         exact: true
     },
