@@ -12,7 +12,7 @@ module.exports = {
         omega: {
           light: "#88C9EC",
           DEFAULT: "#2291CD",
-          dark: "#186691"
+          dark: "#124E6E"
         }
       },
       minHeight: {

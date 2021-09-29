@@ -13,7 +13,8 @@ function ContactMethods() {
             icon: faDiscord,
             title: 'Discord',
             description: <p>
-                Most organisation, announcements and general discussions happen on our Discord server.
+                Most organisation, announcements and general discussions happen
+                on <a href="https://discord.gg/gVxGUERQTq">our Discord server</a>.
             </p>
         },
         {
@@ -29,11 +30,13 @@ function ContactMethods() {
             title: 'Email',
             description: <React.Fragment>
                 <p>
-                    You can email us at test@example.com
+                    You can email us at <a href="mailto:contact@omega-mega.games"
+                                           title="Main email address">contact@omega-mega.games</a>.
                 </p>
                 <p>
-                    <a href="mailto:pjr0911025+omega@googlemail.com">For issues relating to the website, please use
-                        pjr0911025+omega@googlemail.com</a>
+                    For issues relating to the website, please
+                    use <a href="mailto:webmaster@omega-mega.games"
+                           title="Webmaster email address">webmaster@omega-mega.games</a>.
                 </p>
             </React.Fragment>
         }
@@ -47,7 +50,7 @@ function ContactMethods() {
             {value.description}
         </React.Fragment>
     );
-    return <ResponsiveItemList items={items} itemClasses="text-center" />;
+    return <ResponsiveItemList items={items} itemClasses="text-center"/>;
 }
 
 export default function Contact() {

@@ -25,7 +25,7 @@ const homeLinks: LinkDef[] = [
 function HomePageLinks() {
     return <div className="flex justify-center pb-16 flex-col sm:flex-row">
         {
-            homeLinks.map(value => <Link className="flex-1 flex justify-center flex-col sm:m-1 m-4 p-4 btn-link"
+            homeLinks.map(value => <Link className="flex-1 flex justify-center flex-col sm:m-1 m-4 p-4 btn-link border-2"
                                          to={value.linkPath} key={value.linkText}>
                 {value.linkText}
             </Link>)
