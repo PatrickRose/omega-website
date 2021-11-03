@@ -225,6 +225,45 @@ Will you win the honor and privilege of ascending to Godhood or will you pursue 
 `,
         "type": "Play-By-Email"
     },
+    {
+        "id": "AM220205",
+        "name": "Aftermath",
+        "date": {
+            "year": 2022,
+            "month": 2,
+            "day": 5
+        },
+        "designer": "Zane Gunton",
+        "preamble": "The world just ended. What comes next?",
+        "fullDescription": `Tickets for Aftermath will be sold via the Megacon website, and will be made available soon.
+
+Funny how no one really thinks about what comes next.
+
+Something happened, and the world turned upside-down. No one really knows what it was, this event – you could go mad speculating, and I know a few people who did. One or two others went looking for answers... we never saw them again. Good people, the kind we couldn’t afford to lose... but it ate them up. What does it matter, here in the aftermath?
+
+The Event happened, and maybe one in a thousand survived. What is important? You were one of them, and so were the people around you. Maybe they’re friends and family, maybe they’re just people that circumstances threw you together with...it doesn’t matter what came before. When you needed them, they were there for you. Together, you did what you had to in order to survive. But before it had even re-
+ally begun, before anyone knew what was happening, the winter storms hit. Sub-zero temperatures, driving snows... all anyone could do was hunker down and take shelter. There was no time to prepare – but plenty of time to hope and pray. To chew through whatever rations were left, make bitter jokes about global warming, and try to wait it out.
+
+Now it’s spring, everyone who’s left – yourselves included – has realised they’ve got their work cut out if they intend to see out the year.`,
+        "type": "Online game"
+    },
+    {
+        "id": "ATC220205",
+        "name": "As Thou Commands",
+        "date": {
+            "year": 2022,
+            "month": 2,
+            "day": 5
+        },
+        "designer": "Peter Nixon (original design), Benjamin Kanelos (development)",
+        "preamble": "Inspired by Horrible Games The King's Dilemma, As Thou Commands is a council-driven megagame where players cooperatively generate a medieval kingdom and then try to shape its path through history.",
+        "fullDescription": `Tickets for As Thou Commands will be sold via the Megacon website, and will be made available soon.
+        
+The monarch has united the realm and birthed a new kingdom. That was the easy part... Now it's time to carve the land into duchies and rule over them. What will your noble house prioritize? Will you make friends or enemies with your neighbors? Will the kingdom survive or fall apart and be forgotten? Your choices decide!
+
+As Thou Commands is a rules-light megagame where the players create and run fictional feudal duchies. These duchies comprise an entire medieval kingdom, and players’ decisions will have impacts both near and far. Play alternates between drafting narrative elements and participating in council sessions where players will try to negotiate beneficial outcomes to the thorny issues bedeviling the kingdom.`,
+        "type": "Online game"
+    },
 ];
 
 export class MemoryRepository implements GamesRepository {
