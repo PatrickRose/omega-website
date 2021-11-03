@@ -41,7 +41,7 @@ type UpcomingEventTypes = Game | number;
 
 abstract class UpcomingEvent<T extends UpcomingEventTypes> extends React.Component<{ value: T }> {
     render() {
-        return <div className="flex-1 px-3">
+        return <div className="flex-1 px-3 flex flex-col">
             <h3 className="text-center text-xl pb-2">{this.getHeading()}</h3>
             {this.getSubtitle()}
         </div>
@@ -63,7 +63,7 @@ class Megagame extends UpcomingEvent<Game> {
         const {value} = this.props;
 
         return <React.Fragment>
-            <p>{value.preamble}</p>
+            <p className="flex-1">{value.preamble}</p>
             <div className="flex">
                 <Link to={`/games/${value.id}`} className="btn-link m-4 p-4 w-full">Book a space</Link>
             </div>
