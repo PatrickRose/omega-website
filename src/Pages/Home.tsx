@@ -176,6 +176,9 @@ export default class Home extends React.Component<{}, HomeState> {
             <MainContent>
                 <h2 className="text-2xl">Our next events</h2>
                 <UpcomingEvents events={fetched}/>
+                <div className="w-full flex justify-center">
+                    <img className="lg:w-2/4" src="/gods-wars.jpg" alt="" />
+                </div>
             </MainContent>
         </React.Fragment>;
     }

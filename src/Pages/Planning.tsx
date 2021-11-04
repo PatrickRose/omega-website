@@ -61,9 +61,12 @@ export default function Planning() {
                 the team at OMEGA has an existing track record of porting games to an online format.
             </p>
             <p>
-                If you're interested in having your game ported, feel free to get in touch and see how
-                we can help you.
+                If you're interested in having your game ported, feel free to <a href="/contact">get in touch and see how
+                we can help you</a>.
             </p>
+            <div className="w-full flex justify-center p-2">
+                <img className="lg:w-3/4" src="/completed-action.png" alt="" />
+            </div>
             <h2 className="text-3xl py-3">Help to run games</h2>
             <p>
                 The OMEGA group is always looks for people to help run games, either by providing
