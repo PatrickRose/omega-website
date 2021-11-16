@@ -11,11 +11,11 @@ export function Hero(props: { children: ReactNode, extraClasses?: string }) {
 export function HeroHeading(props: { className?: string, children: ReactNode, padding?: boolean }) {
     const padding = props.padding !== false ? 'p-10' : ''
 
-    return  <h1 className={`text-center text-3xl ${padding} ${props.className || ""}`}>
+    return <h1 className={`text-center text-3xl ${padding} ${props.className || ""}`}>
         {props.children}
     </h1>;
 }
 
 export function MainContent(props: { children: ReactNode }) {
-    return <div className={`${padding} py-8`}>{props.children}</div>;
+    return <div className={`${padding} py-8 flex-1`}>{props.children}</div>;
 }
