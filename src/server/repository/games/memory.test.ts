@@ -1,6 +1,6 @@
-import {MemoryRepository} from "./memory";
-import {isRight} from "fp-ts/Either";
-import {Game} from "../../../types/types";
+import { MemoryRepository } from "./memory";
+import { isRight } from "fp-ts/Either";
+import { Game } from "../../../types/types";
 
 const cases: [string, Game[]][] = [
     [
@@ -11,10 +11,10 @@ const cases: [string, Game[]][] = [
 describe("Memory games repository - all games", () => {
     test.each(cases)(
         "%p",
-        (name, expected) => {
+        async (name, expected) => {
             const repo = new MemoryRepository(expected);
 
-            const result = repo.all();
+            const result = await repo.all();
 
             if (!isRight(result)) {
                 throw Error('Should have received a "right"');
@@ -103,18 +103,18 @@ const upcoming: [string, number, Game[], Game[]][] = [
 ]
 
 describe('Returns upcoming games', () => {
-   test.each(upcoming)(
-       "%p",
-       (name: string, limit: number, input: Game[], expected: Game[]) => {
-           const repo = new MemoryRepository(input);
+    test.each(upcoming)(
+        "%p",
+        async (name: string, limit: number, input: Game[], expected: Game[]) => {
+            const repo = new MemoryRepository(input);
 
-           const result = repo.upcomingEvents(limit);
+            const result = await repo.upcomingEvents(limit);
 
-           if (!isRight(result)) {
-               throw Error('Should have received a "right"');
-           }
+            if (!isRight(result)) {
+                throw Error('Should have received a "right"');
+            }
 
-           expect(result.right).toEqual(expected);
-       }
-   )
+            expect(result.right).toEqual(expected);
+        }
+    )
 });

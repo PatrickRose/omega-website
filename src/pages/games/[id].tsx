@@ -159,7 +159,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // Get the next 3 games
     // These are the ones that get displayed on the home page so we
     // assume that these are most likely to be visited
-    const upcomingGames = gamesRepo.upcomingEvents(3);
+    const upcomingGames = await gamesRepo.upcomingEvents(3);
 
     const paths: { params: { id: string } }[] = [];
 

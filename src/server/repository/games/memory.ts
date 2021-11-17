@@ -1,9 +1,9 @@
 import GamesRepository from "./index";
 
-import {Either} from "fp-ts/Either";
-import {Game} from "../../../types/types";
-import {MakeLeft, MakeRight} from "../../../utils/io-ts-helpers";
-import {dateSorter, getJSDateFromGameDate} from "../../../utils";
+import { Either } from "fp-ts/Either";
+import { Game } from "../../../types/types";
+import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
+import { dateSorter, getJSDateFromGameDate } from "../../../utils";
 
 
 const allGames: Game[] = [
@@ -276,7 +276,7 @@ export class MemoryRepository implements GamesRepository {
         this.games = games;
     }
 
-    upcomingEvents(limit: number): Either<Error, Game[]> {
+    async upcomingEvents(limit: number): Promise<Either<Error, Game[]>> {
         const currDate = new Date();
         currDate.setHours(0, 0, 0, 0);
 
@@ -290,14 +290,14 @@ export class MemoryRepository implements GamesRepository {
         return MakeRight(games.slice(0, limit));
     }
 
-    all(): Either<Error, Game[]> {
+    async all(): Promise<Either<Error, Game[]>> {
         return {
             _tag: 'Right',
             right: this.games
         }
     }
 
-    get(id: string): Either<Error, Game> {
+    async get(id: string): Promise<Either<Error, Game>> {
         for (let game of this.games) {
             if (game.id === id) {
                 return MakeRight(game);

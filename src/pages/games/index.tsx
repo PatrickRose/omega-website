@@ -128,7 +128,7 @@ function GameList(props: GameListParams) {
 }
 
 export const getStaticProps: GetStaticProps<{ gameList: Either<Error, Game[]> }> = async () => {
-    const gameList = getGamesRepo().all();
+    const gameList = await getGamesRepo().all();
 
     if (isRight(gameList)) {
         // Sort mutates the value

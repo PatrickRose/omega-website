@@ -77,7 +77,7 @@ function UpcomingEvents({ events }: { events: Game[] }) {
 }
 
 export const getStaticProps: GetStaticProps<{ upcomingGames: Game[] }> = async () => {
-    const upcomingGames = getGamesRepo().upcomingEvents(3);
+    const upcomingGames = await getGamesRepo().upcomingEvents(3);
 
     return {
         props: {
