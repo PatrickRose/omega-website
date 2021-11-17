@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { isRight, Either, isLeft } from "fp-ts/Either";
 import { Game, GameAPI } from "../../types/types";
 import { GameAPIDecode } from "../../types/io-ts-def";
@@ -9,14 +9,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import { dateSorter, getJSDateFromGameDate, getStringFromGameDate } from "../../utils";
-import { apiCall } from "../../utils/api";
-import { MakeLeft, MakeRight } from "../../utils/io-ts-helpers";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import GamesRepository, { getGamesRepo } from "../../server/repository/games";
 
-
-function isGameApi(value: any): value is GameAPI {
-    let ma = GameAPIDecode.decode(value);
-    return isRight(ma);
-}
 
 type GamesState = {
     fetched: boolean,
@@ -30,91 +25,24 @@ const icons = {
     'Online game': faDesktop
 }
 
-abstract class MegagameList<T> extends React.Component<T> {
-    render() {
-
-        return <li className="grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4">
-            <div className="col-span-1 text-center flex flex-col justify-center items-center">
-                {this.getIcon()}
-            </div>
-            <div className="sm:col-span-11 col-span-4">
-                <h2 className="text-2xl hover:text-omega">
-                    {this.getHeading()}
-                </h2>
-                {this.getSubtitle()}
-                {this.getDate()}
-                {this.getPreamble()}
-            </div>
-        </li>
-    }
-
-    protected abstract getPreamble(): ReactElement;
-
-    protected abstract getSubtitle(): ReactElement;
-
-    protected abstract getDate(): ReactElement;
-
-    protected abstract getHeading(): ReactElement;
-
-    protected abstract getIcon(): ReactElement;
-}
-
-class UnfetchedMegagame extends MegagameList<{ key: number }> {
-
-    protected getIcon(): React.ReactElement {
-        return <Circle className="bg-gray-500" />;
-    }
-
-    protected getDate(): React.ReactElement {
-        return <div className="w-1/4"><TextRow className="bg-gray-500 mb-2 h-3" height={false} /></div>;
-    }
-
-    protected getHeading(): React.ReactElement {
-        return <div className="w-2/4"><TextRow className="bg-gray-500 mb-2" /></div>;
-    }
-
-    protected getSubtitle(): React.ReactElement {
-        return <div className="w-2/6"><TextRow className="bg-gray-500 mb-2 h-3" height={false} /></div>;
-    }
-
-    protected getPreamble(): React.ReactElement {
-        return <div className="w-5/6">
-            {
-                (new Array(3))
-                    .fill(null)
-                    .map((value, index) => <TextRow key={index} className="bg-gray-500 mb-2 h-4" height={false} />)
-            }
-        </div>;
-    }
-
-}
-
-class FetchedMegagame extends MegagameList<Game> {
-
-    protected getIcon(): ReactElement {
-        return <FontAwesomeIcon icon={icons[this.props.type]} title={this.props.type} className="h-full text-5xl" />;
-    }
-
-    protected getHeading(): React.ReactElement {
-        return <Link href={`/games/${this.props.id}`}>
-            <a>{this.props.name}</a>
-        </Link>;
-    }
-
-    protected getDate(): React.ReactElement {
-        let jsDate = getStringFromGameDate(this.props.date);
-        return <p>{jsDate}</p>;
-    }
-
-    protected getSubtitle(): React.ReactElement {
-        return <p className="font-bold">
-            {this.props.designer}
-        </p>;
-    }
-
-    protected getPreamble() {
-        return <p>{this.props.preamble}</p>;
-    }
+function FetchedMegagame(props: Game) {
+    return <li className="grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4">
+        <div className="col-span-1 text-center flex flex-col justify-center items-center">
+            <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full text-5xl" />
+        </div>
+        <div className="sm:col-span-11 col-span-4">
+            <h2 className="text-2xl hover:text-omega">
+                <Link href={`/games/${props.id}`}>
+                    <a>{props.name}</a>
+                </Link>
+            </h2>
+            <p className="font-bold">
+                {props.designer}
+            </p>
+            <p>{getStringFromGameDate(props.date)}</p>
+            <p>{props.preamble}</p>
+        </div>
+    </li>
 }
 
 function GameListFilter(
@@ -150,19 +78,15 @@ type GameListParams = {
     gameList: GamesState["gameList"],
     filter?: Game["type"],
     changeFilter: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void,
-    past: boolean,
-    fetched: boolean
+    past: boolean
 }
 
 function GameList(props: GameListParams) {
-    const { fetched, filter, changeFilter, past } = props;
+    const { filter, changeFilter, past } = props;
 
-    let gameList: Array<Game | number>;
+    let gameList: Array<Game>;
 
-    if (!fetched) {
-        gameList = [1, 2]
-    }
-    else if (isLeft(props.gameList)) {
+    if (isLeft(props.gameList)) {
         return <React.Fragment>
             <p className="py-2">
                 Looks like an error occurred while getting the list of games.
@@ -177,12 +101,7 @@ function GameList(props: GameListParams) {
         gameList = props.gameList.right;
     }
 
-    const filterGame = (value: Game | number): boolean => {
-        // Always include numbers
-        if (typeof value === 'number') {
-            return true;
-        }
-
+    const filterGame = (value: Game): boolean => {
         if (!past && (getJSDateFromGameDate(value.date) < new Date())) {
             return false;
         }
@@ -200,10 +119,7 @@ function GameList(props: GameListParams) {
                 filteredGames.length > 0
                     ? filteredGames
                         .map(
-                            value =>
-                                typeof value === 'number'
-                                    ? <UnfetchedMegagame key={value} />
-                                    : <FetchedMegagame key={value.id} {...value} />
+                            value => <FetchedMegagame key={value.id} {...value} />
                         )
                     : <p>No games matched your criteria - try again!</p>
             }
@@ -211,112 +127,62 @@ function GameList(props: GameListParams) {
     </React.Fragment>
 }
 
-type GamesProps = {};
+export const getStaticProps: GetStaticProps<{ gameList: Either<Error, Game[]> }> = async () => {
+    const gameList = getGamesRepo().all();
 
-export default class Games extends React.Component<GamesProps, GamesState> {
-    private controller: AbortController | undefined;
-    constructor(props: GamesProps) {
-        super(props);
-
-        let past = undefined;
-
-        if (typeof window !== 'undefined') {
-            if (window.location.hash) {
-                past = window.location.hash === '#past';
-            }
-        }
-
-        this.state = {
-            fetched: false,
-            gameList: MakeRight([]),
-            past: past
-        };
+    if (isRight(gameList)) {
+        // Sort mutates the value
+        gameList.right.sort(dateSorter);
     }
 
-    componentDidMount() {
-        if (!this.state.fetched && typeof window !== 'undefined') {
-            this.getAllGames();
-        }
+    return {
+        props: {
+            gameList
+        },
+        revalidate: 60
     }
+}
 
-    componentWillUnmount() {
-        if (this.controller) {
-            this.controller.abort();
+export default function Games(props: InferGetStaticPropsType<typeof getStaticProps>) {
+    const gameList = props.gameList;
+
+    let pastDefault = undefined;
+
+    if (typeof window !== 'undefined') {
+        if (window.location.hash) {
+            pastDefault = window.location.hash === '#past';
         }
     }
 
-    private getAllGames() {
-        const { controller, response: api } = apiCall('games');
+    const [past, setPast] = useState(pastDefault);
+    const [filter, setFilter] = useState<Game["type"] | undefined>(undefined);
 
-        this.controller = controller;
 
-        api.then(response => {
-            this.controller = undefined;
+    const changeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+        if (event.target instanceof HTMLSelectElement) {
+            const value = event.target.value;
+            let newVal: GamesState["filter"] = undefined;
 
-            if (!response.ok) {
-                throw new Error('Failed to fetch');
+            if (value === 'Online game' || value === 'Play-By-Email') {
+                newVal = value
             }
 
-            return response.json();
-        }).then(value => {
-            if (!isGameApi(value)) {
-                throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
-            }
-
-            value.games.sort(dateSorter);
-
-            this.setState({
-                fetched: true,
-                gameList: MakeRight(value.games)
-            });
+            setFilter(newVal);
+        } else {
+            setPast(event.target.checked);
         }
-        ).catch(
-            reason => {
-                if (!(reason instanceof DOMException)) {
-                    this.setState({
-                        fetched: true,
-                        gameList: MakeLeft(reason)
-                    })
-                }
-            }
-        );
     }
-
-    render() {
-        const { filter, past, gameList } = this.state;
-
-        const changeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
-            if (event.target instanceof HTMLSelectElement) {
-                this.changeFilter(event.target.value);
-            } else {
-                this.setState({ past: event.target.checked })
-            }
-        }
-        return <React.Fragment>
-            <Hero>
-                <HeroHeading>Upcoming games</HeroHeading>
-            </Hero>
-            <MainContent>
-                <GameList
-                    fetched={true}
-                    gameList={gameList}
-                    filter={filter}
-                    changeFilter={changeFilter}
-                    past={past === undefined ? false : past}
-                />
-            </MainContent>
-        </React.Fragment>;
-    }
-
-    private changeFilter(value: string) {
-        let newVal: GamesState["filter"] = undefined;
-
-        if (value === 'Online game' || value === 'Play-By-Email') {
-            newVal = value
-        }
-
-        this.setState({ filter: newVal })
-    }
-};
-
-
+    return <React.Fragment>
+        <Hero>
+            <HeroHeading>Upcoming games</HeroHeading>
+        </Hero>
+        <MainContent>
+            <GameList
+                gameList={gameList}
+                filter={filter}
+                changeFilter={changeFilter}
+                past={past === undefined ? false : past}
+            />
+        </MainContent>
+    </React.Fragment>;
+}
