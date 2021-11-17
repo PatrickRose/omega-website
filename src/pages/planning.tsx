@@ -1,6 +1,9 @@
 import React from "react";
-import {Hero, HeroHeading, MainContent} from "../components/Hero";
-import {Game} from "../types/types";
+import { Hero, HeroHeading, MainContent } from "../components/Hero";
+import { Game } from "../types/types";
+import Link from "next/link";
+import Image from "next/image";
+import completedAction from "../../public/completed-action.png";
 
 function GameDescriptions() {
     const gameTypes: { type: Game["type"], description: React.ReactElement }[] = [
@@ -13,7 +16,7 @@ function GameDescriptions() {
         },
         {
             type: "Online game",
-            description: <>An <em>online game</em> takes the "traditional" one day megagame experience
+            description: <>An <em>online game</em> takes the &quot;traditional&quot; one day megagame experience
                 and moves it online, with players using online tools like Discord, Miro or Google Sheets</>
         }
     ];
@@ -43,7 +46,7 @@ export default function Planning() {
             <p>
                 OMEGA aims to put a selection of games on each year, normally falling under one of two types:
             </p>
-            <GameDescriptions/>
+            <GameDescriptions />
             <h2 className="text-3xl py-3">Running a game with us</h2>
             <p>
                 OMEGA are always looking for new game designs to run online.
@@ -57,15 +60,15 @@ export default function Planning() {
                 Existing in-person designs
             </h3>
             <p>
-                If you have an existing megagame design that you've run in person and want to run online,
+                If you have an existing megagame design that you&apos;ve run in person and want to run online,
                 the team at OMEGA has an existing track record of porting games to an online format.
             </p>
             <p>
-                If you're interested in having your game ported, feel free to <a href="/contact">get in touch and see how
-                we can help you</a>.
+                If you&apos;re interested in having your game ported, feel free to <Link href="/contact"><a>get in touch and see how
+                    we can help you</a></Link>.
             </p>
             <div className="w-full flex justify-center p-2">
-                <img className="lg:w-3/4" src="/completed-action.png" alt="" />
+                <Image className="lg:w-3/4" src={completedAction} alt="" />
             </div>
             <h2 className="text-3xl py-3">Help to run games</h2>
             <p>

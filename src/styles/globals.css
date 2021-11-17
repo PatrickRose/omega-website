@@ -14,4 +14,8 @@
     a.btn-link, .navbar a {
         @apply no-underline
     }
+
+    #__next {
+        @apply flex-1 flex flex-col
+    }
 }

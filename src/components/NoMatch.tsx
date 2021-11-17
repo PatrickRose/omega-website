@@ -1,13 +1,13 @@
-import React, {Fragment} from "react";
-import {Hero, HeroHeading} from "./Hero";
-import {Link} from "react-router-dom";
+import React, { Fragment } from "react";
+import { Hero, HeroHeading } from "./Hero";
+import Link from "next/link";
 
 export function NoMatch() {
     return (
         <Fragment>
             <Hero>
                 <HeroHeading>
-                    Sorry, that page wasn't found!
+                    Sorry, that page wasn&apos;t found!
                 </HeroHeading>
             </Hero>
             <div className="p-4">
@@ -15,8 +15,11 @@ export function NoMatch() {
                     Looks like you might have got lost somewhere! It happens to the best of us.
                 </p>
                 <p>
-                    Try going back in your browser and trying again. If that doesn't work, <Link to="contact">send the
-                    webmaster a message through the contact page</Link>
+                    Try going back in your browser and trying again. If that doesn&apos;t work,
+                    <Link href="contact">
+                        <a>send the webmaster a message through the contact page
+                        </a>
+                    </Link>
                 </p>
             </div>
         </Fragment>

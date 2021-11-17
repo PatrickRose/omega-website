@@ -1,10 +1,10 @@
 import React from "react";
-import {Hero, HeroHeading, MainContent} from "../components/Hero";
-import {ResponsiveItemList} from "../components/ResponsiveItemList";
+import { Hero, HeroHeading, MainContent } from "../components/Hero";
+import { ResponsiveItemList } from "../components/ResponsiveItemList";
 
 type MegagameVideoProps = { title: string, youtubeID: string };
 
-function MegagameVideo({youtubeID, title}: MegagameVideoProps) {
+function MegagameVideo({ youtubeID, title }: MegagameVideoProps) {
     return <React.Fragment>
         <h3 className="flex-1 text-xl font-bold text-center pb-4">{title}</h3>
         <div className="aspect-w-16 aspect-h-9">
@@ -12,7 +12,7 @@ function MegagameVideo({youtubeID, title}: MegagameVideoProps) {
                 src={`https://www.youtube.com/embed/${youtubeID}`} title={`YouTube video player: ${title}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen/>
+                allowFullScreen />
         </div>
     </React.Fragment>
 }
@@ -33,7 +33,7 @@ function MegagameVideos() {
         }
     ];
 
-    const items = videos.map(value => <MegagameVideo title={value.title} youtubeID={value.youtubeID} key={value.youtubeID}/>)
+    const items = videos.map(value => <MegagameVideo title={value.title} youtubeID={value.youtubeID} key={value.youtubeID} />)
 
     return <ResponsiveItemList items={items} itemClasses="flex flex-col" />;
 }
@@ -73,10 +73,10 @@ export default function AboutMegagames() {
 
             <p className="py-2">
                 In 2015, popular UK Board Game site <a href="https://www.shutupandsitdown.com/">Shut Up & Sit
-                Down</a> were invited to come and film the first run of Jim Wallman's Watch The Skies, heralding a major
+                    Down</a> were invited to come and film the first run of Jim Wallman&apos;s Watch The Skies, heralding a major
                 explosion of interest in the hobby. These videos are a great introduction to how a megagame can play.
             </p>
-            <MegagameVideos/>
+            <MegagameVideos />
         </MainContent>
     </React.Fragment>
 }
