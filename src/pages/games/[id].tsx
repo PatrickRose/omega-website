@@ -1,4 +1,5 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType, PreviewData } from 'next';
+import { ParsedUrlQuery } from "querystring";
 import React from "react";
 import { Game, PlayByEmailGame } from "../../types/types";
 import { apiCall } from "../../utils/api";
@@ -11,14 +12,11 @@ import Markdown from "../../components/Markdown";
 import Link from "next/link";
 import { NoMatch } from "../../components/NoMatch";
 import { MakeLeft, MakeRight } from "../../utils/io-ts-helpers";
+import { getGamesRepo } from '../../server/repository/games';
 
 type SingleGameProps = {
-    game: string
+    game: Either<Error, Game>
 };
-type GamesState = {
-    game: Either<Error, Game> | false
-}
-
 function isGame(value: any): value is Game {
     return isRight(GameDecode.decode(value));
 }
@@ -122,94 +120,61 @@ class LoadingGame extends GameStructure<{}> {
 
 }
 
-class SingleGame extends React.Component<SingleGameProps, GamesState> {
-    private controller: AbortController | undefined;
+export const getStaticProps: GetStaticProps<SingleGameProps> = async (context) => {
+    const id = context?.params?.id;
 
-    constructor(props: SingleGameProps) {
-        super(props);
-
-        this.controller = undefined;
-
-        this.state = {
-            game: false,
-        };
+    if (typeof id != 'string') {
+        throw Error(`Should not have called this page without a string. Params were: ${context?.params}`);
     }
 
-    componentDidMount() {
-        if (typeof window !== 'undefined') {
-            this.getGame();
-        }
+    const gamesRepo = getGamesRepo();
+
+    const game = gamesRepo.get(id);
+
+    return {
+        props: { game },
+        revalidate: 60
+    }
+}
+
+// Intentionally use Partial here
+// This is because we use the fallback feature of nextjs, so we can't guarentee
+// that the game will be set
+export default function SingleGame({ game }: Partial<InferGetStaticPropsType<typeof getStaticProps>>) {
+    if (!game) {
+        // Then we're in a fallback state
+        return <LoadingGame />
     }
 
-    private getGame() {
-        const { controller, response: api } = apiCall(`games/${this.props.game}`);
+    if (isRight(game)) {
+        return <FetchedGame game={game.right} />
+    }
 
-        this.controller = controller;
+    return <NoMatch />;
+}
 
-        api.then(response => {
-            this.controller = undefined;
+export const getStaticPaths: GetStaticPaths = async () => {
+    const gamesRepo = getGamesRepo();
 
-            if (!response.ok) {
-                throw new Error('Failed to fetch');
-            }
+    // Get the next 3 games
+    // These are the ones that get displayed on the home page so we
+    // assume that these are most likely to be visited
+    const upcomingGames = gamesRepo.upcomingEvents(3);
 
-            return response.json();
-        }).then(value => {
-            if (!isGame(value)) {
-                throw new Error('API response wasn\'t right? ' + JSON.stringify(value))
-            }
-            this.setState({
-                game: MakeRight(value)
-            });
-        }
-        ).catch(
-            reason => {
-                if (!(reason instanceof DOMException)) {
-                    this.setState({
-                        game: MakeLeft(reason)
-                    })
-                }
+    const paths: { params: { id: string } }[] = [];
+
+    // If we have some games, add them to the list
+    if (isRight(upcomingGames)) {
+        upcomingGames.right.forEach(
+            ({ id }) => {
+                paths.push({ params: { id } })
             }
         );
     }
 
-    componentWillUnmount() {
-        if (this.controller) {
-            this.controller.abort();
-        }
-    }
-
-    render() {
-        const { game } = this.state;
-
-        if (game === false) {
-            return <LoadingGame />
-        }
-
-        if (isRight(game)) {
-            return <FetchedGame game={game.right} />
-        }
-
-        return <NoMatch />;
-    }
-}
-
-export default SingleGame
-
-export const getStaticProps: GetStaticProps = async (context) => {
-    const params = context.params;
-
     return {
-        props: {
-            game: params.id
-        }
-    }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [],
-        fallback: 'blocking',
+        paths: paths,
+        fallback: true,
     }
 }
 
