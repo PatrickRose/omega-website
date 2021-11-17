@@ -9,6 +9,10 @@ jobs:
       script:
         - yarn install
         - yarn test
+    - stage: build
+      script:
+        - yarn install
+        - yarn build
     - stage: deploy
       before_deploy:
         - yarn install
