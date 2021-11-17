@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import { LinkDef } from "../utils/utils";
-import omegaLogo from "../public/logo.svg";
+import omegaLogo from "../../public/logo.svg";
 
 const links: LinkDef[] = [
     {
@@ -63,7 +63,7 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
                     }
 
                     return <Link
-                        href={linkdef.linkPath} se
+                        href={linkdef.linkPath}
                         key={linkdef.linkPath}
                     >
                         <a className={className}>

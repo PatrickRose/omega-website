@@ -1,6 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import React from "react";
-import { withRouter, NextRouter } from 'next/router';
 import { Game, PlayByEmailGame } from "../../types/types";
 import { apiCall } from "../../utils/api";
 import { GameDecode, PlayByEmailGameDecode } from "../../types/io-ts-def";
@@ -198,9 +197,11 @@ class SingleGame extends React.Component<SingleGameProps, GamesState> {
 export default SingleGame
 
 export const getStaticProps: GetStaticProps = async (context) => {
+    const params = context.params;
+
     return {
         props: {
-            game: context.params.id
+            game: params.id
         }
     }
 }

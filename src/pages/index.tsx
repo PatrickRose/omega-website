@@ -7,7 +7,7 @@ import { Game } from "../types/types";
 import { apiCall } from "../utils/api";
 import { UpcomingEventsAPIDecode } from "../types/io-ts-def";
 import { TextRow } from "../components/Placeholders";
-import godsWar from '../public/gods-wars.jpg';
+import godsWar from '../../public/gods-wars.jpg';
 
 const homeLinks: LinkDef[] = [
     {

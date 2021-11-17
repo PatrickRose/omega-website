@@ -11,7 +11,6 @@ import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import { dateSorter, getJSDateFromGameDate, getStringFromGameDate } from "../../utils";
 import { apiCall } from "../../utils/api";
 import { MakeLeft, MakeRight } from "../../utils/io-ts-helpers";
-import { getGamesRepo } from "../../server/repository/games";
 
 
 function isGameApi(value: any): value is GameAPI {
@@ -284,7 +283,8 @@ export default class Games extends React.Component<GamesProps, GamesState> {
     }
 
     render() {
-        const { gameList, fetched, filter, past } = this.state;
+        const { gameList } = this.props;
+        const { filter, past } = this.state;
 
         const changeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
             if (event.target instanceof HTMLSelectElement) {
@@ -299,7 +299,7 @@ export default class Games extends React.Component<GamesProps, GamesState> {
             </Hero>
             <MainContent>
                 <GameList
-                    fetched={fetched}
+                    fetched={true}
                     gameList={gameList}
                     filter={filter}
                     changeFilter={changeFilter}

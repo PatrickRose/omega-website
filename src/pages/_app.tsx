@@ -1,10 +1,11 @@
+import {AppProps} from "next/app";
 import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
     return <>
         <Head>
             <title>OMEGA - Online Megagame and Email Game Association </title>
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         </Head>
         <Header />
         <Component {...pageProps} />
-		<Footer />
+        <Footer />
     </>
 }
 

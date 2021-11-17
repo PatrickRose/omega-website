@@ -21,6 +21,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/uuid": "^8.3.0",
     "body-parser": "^1.18.3",
+    "fork-ts-checker-webpack-plugin": "^6.4.0",
     "fp-ts": "^2.9.5",
     "io-ts": "^2.2.14",
     "io-ts-types": "^0.5.13",
@@ -42,7 +43,8 @@
     "heroku-postbuild": "echo 'Nothing to do'",
     "start": "next start",
     "test": "jest",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts:watch": "tsc --noEmit --incremental --watch"
   },
   "browserslist": {
     "production": [

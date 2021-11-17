@@ -3,7 +3,7 @@ import { Hero, HeroHeading, MainContent } from "../components/Hero";
 import { Game } from "../types/types";
 import Link from "next/link";
 import Image from "next/image";
-import completedAction from "../public/completed-action.png";
+import completedAction from "../../public/completed-action.png";
 
 function GameDescriptions() {
     const gameTypes: { type: Game["type"], description: React.ReactElement }[] = [
