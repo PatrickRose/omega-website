@@ -283,8 +283,7 @@ export default class Games extends React.Component<GamesProps, GamesState> {
     }
 
     render() {
-        const { gameList } = this.props;
-        const { filter, past } = this.state;
+        const { filter, past, gameList } = this.state;
 
         const changeFilter = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
             if (event.target instanceof HTMLSelectElement) {
