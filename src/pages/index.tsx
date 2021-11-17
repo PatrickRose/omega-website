@@ -14,15 +14,15 @@ import godsWar from '../../public/gods-wars.jpg';
 
 const homeLinks: LinkDef[] = [
     {
-        linkPath: "games",
+        linkPath: "/games",
         linkText: "See our upcoming games, and book a space"
     },
     {
-        linkPath: "about-megagames",
+        linkPath: "/about-megagames",
         linkText: "What is a megagame? Find out more!"
     },
     {
-        linkPath: "planning",
+        linkPath: "/planning",
         linkText: "Join our planning team, or pitch your game design"
     }
 ]
