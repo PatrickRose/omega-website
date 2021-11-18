@@ -276,7 +276,7 @@ export class MemoryRepository implements GamesRepository {
         this.games = games;
     }
 
-    async upcomingEvents(limit: number): Promise<Either<Error, Game[]>> {
+    async upcomingEvents(limit: number): Promise<Either<false, Game[]>> {
         const currDate = new Date();
         currDate.setHours(0, 0, 0, 0);
 
@@ -290,20 +290,22 @@ export class MemoryRepository implements GamesRepository {
         return MakeRight(games.slice(0, limit));
     }
 
-    async all(): Promise<Either<Error, Game[]>> {
+    async all(): Promise<Either<false, Game[]>> {
         return {
             _tag: 'Right',
             right: this.games
         }
     }
 
-    async get(id: string): Promise<Either<Error, Game>> {
+    async get(id: string): Promise<Either<false, Game>> {
         for (let game of this.games) {
             if (game.id === id) {
                 return MakeRight(game);
             }
         }
 
-        return MakeLeft(new Error(`Game with id ${id} not found`));
+        console.log(`Game with id ${id} not found`);
+
+        return MakeLeft(false);
     }
 }

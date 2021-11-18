@@ -24,7 +24,4 @@
       "src",
       "custom.d.ts"
   ],
-  "exclude": [
-    "src/server"
-  ]
 }
