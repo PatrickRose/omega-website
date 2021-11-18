@@ -1,6 +1,7 @@
 {
   "name": "omega",
   "description": "Website for the Omega Megagames group",
+  "cacheDirectories": [".next/cache"],
   "version": "1.0.0",
   "license": "MIT",
   "engines": {

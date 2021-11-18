@@ -1,6 +1,11 @@
 dist: xenial
 os: linux
 language: node_js
+cache:
+  directories:
+    - $HOME/.cache/yarn
+    - node_modules
+    - .next/cache
 node_js:
 - 16
 jobs:
