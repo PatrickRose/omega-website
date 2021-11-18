@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Hero, HeroHeading } from "./Hero";
+import { Hero, HeroHeading, MainContent } from "./Hero";
 import Link from "next/link";
 
 export function NoMatch() {
@@ -10,18 +10,18 @@ export function NoMatch() {
                     Sorry, that page wasn&apos;t found!
                 </HeroHeading>
             </Hero>
-            <div className="p-4">
+            <MainContent>
                 <p>
                     Looks like you might have got lost somewhere! It happens to the best of us.
                 </p>
                 <p>
                     Try going back in your browser and trying again. If that doesn&apos;t work,
-                    <Link href="contact">
+                    <Link href="/contact">
                         <a>send the webmaster a message through the contact page
                         </a>
                     </Link>
                 </p>
-            </div>
+            </MainContent>
         </Fragment>
     );
 }

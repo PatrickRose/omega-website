@@ -57,7 +57,7 @@ const DateDecode = t.type({
 });
 
 export const OnlineGameDecode = t.type({
-    id: t.string,
+    _id: t.string,
     name: t.string,
     date: DateDecode,
     designer: t.string,
@@ -67,7 +67,7 @@ export const OnlineGameDecode = t.type({
 });
 
 export const PlayByEmailGameDecode = t.type({
-    id: t.string,
+    _id: t.string,
     name: t.string,
     date: DateDecode,
     endDate: DateDecode,

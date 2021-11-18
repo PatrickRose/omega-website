@@ -5,10 +5,10 @@ import { isRight } from "fp-ts/Either";
 
 const gameRespository = getGamesRepo();
 
-const handler = (req: NextApiRequest, res: NextApiResponse<UpcomingEventsAPI | Error>) => {
-    const games = gameRespository.upcomingEvents(3);
+const handler = async (req: NextApiRequest, res: NextApiResponse<UpcomingEventsAPI | false>) => {
+    const games = await gameRespository.upcomingEvents(3);
 
-    let status: UpcomingEventsAPI | Error;
+    let status: UpcomingEventsAPI | false;
 
     if (isRight(games)) {
         status = { events: games.right }

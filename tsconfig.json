@@ -21,10 +21,10 @@
     "jsx": "preserve"
   },
   "include": [
-      "src",
-      "custom.d.ts"
+    "src",
+    "custom.d.ts"
   ],
   "exclude": [
-    "src/server"
+    "node_modules"
   ]
 }

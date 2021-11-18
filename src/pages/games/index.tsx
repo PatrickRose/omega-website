@@ -15,7 +15,7 @@ import GamesRepository, { getGamesRepo } from "../../server/repository/games";
 
 type GamesState = {
     fetched: boolean,
-    gameList: Either<Error, Game[]>,
+    gameList: Either<false, Game[]>,
     filter?: Game["type"],
     past?: boolean
 }
@@ -32,7 +32,7 @@ function FetchedMegagame(props: Game) {
         </div>
         <div className="sm:col-span-11 col-span-4">
             <h2 className="text-2xl hover:text-omega">
-                <Link href={`/games/${props.id}`}>
+                <Link href={`/games/${props._id}`}>
                     <a>{props.name}</a>
                 </Link>
             </h2>
@@ -119,7 +119,7 @@ function GameList(props: GameListParams) {
                 filteredGames.length > 0
                     ? filteredGames
                         .map(
-                            value => <FetchedMegagame key={value.id} {...value} />
+                            value => <FetchedMegagame key={value._id} {...value} />
                         )
                     : <p>No games matched your criteria - try again!</p>
             }
@@ -127,8 +127,8 @@ function GameList(props: GameListParams) {
     </React.Fragment>
 }
 
-export const getStaticProps: GetStaticProps<{ gameList: Either<Error, Game[]> }> = async () => {
-    const gameList = getGamesRepo().all();
+export const getStaticProps: GetStaticProps<{ gameList: Either<false, Game[]> }> = async () => {
+    const gameList = await getGamesRepo().all();
 
     if (isRight(gameList)) {
         // Sort mutates the value

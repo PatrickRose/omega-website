@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { GameAPI} from "../../../types/types";
+import { GameAPI } from "../../../types/types";
 import { getGamesRepo } from "../../../server/repository/games";
 import { isRight } from "fp-ts/Either";
 
 const gameRespository = getGamesRepo();
 
-const handler = (req: NextApiRequest, res: NextApiResponse) => {
-    const allGames = gameRespository.all();
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    const allGames = await gameRespository.all();
 
     if (isRight(allGames)) {
         const apiResponse: GameAPI = {

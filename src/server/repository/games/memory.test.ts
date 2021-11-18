@@ -1,6 +1,6 @@
-import {MemoryRepository} from "./memory";
-import {isRight} from "fp-ts/Either";
-import {Game} from "../../../types/types";
+import { MemoryRepository } from "./memory";
+import { isRight } from "fp-ts/Either";
+import { Game } from "../../../types/types";
 
 const cases: [string, Game[]][] = [
     [
@@ -11,10 +11,10 @@ const cases: [string, Game[]][] = [
 describe("Memory games repository - all games", () => {
     test.each(cases)(
         "%p",
-        (name, expected) => {
+        async (name, expected) => {
             const repo = new MemoryRepository(expected);
 
-            const result = repo.all();
+            const result = await repo.all();
 
             if (!isRight(result)) {
                 throw Error('Should have received a "right"');
@@ -35,7 +35,7 @@ const pastGame: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'PAST_GAME',
+    _id: 'PAST_GAME',
     name: 'PAST GAME',
     preamble: 'TEST',
     type: 'Online game'
@@ -48,7 +48,7 @@ const gameNextYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'NEXT YEAR',
+    _id: 'NEXT YEAR',
     name: 'NEXT YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -61,7 +61,7 @@ const gameTwoYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'TWO YEAR',
+    _id: 'TWO YEAR',
     name: 'TWO YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -74,7 +74,7 @@ const gameThreeYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'THREE YEAR',
+    _id: 'THREE YEAR',
     name: 'THREE YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -87,7 +87,7 @@ const gameFourYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'FOUR YEAR',
+    _id: 'FOUR YEAR',
     name: 'FOUR YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -103,18 +103,18 @@ const upcoming: [string, number, Game[], Game[]][] = [
 ]
 
 describe('Returns upcoming games', () => {
-   test.each(upcoming)(
-       "%p",
-       (name: string, limit: number, input: Game[], expected: Game[]) => {
-           const repo = new MemoryRepository(input);
+    test.each(upcoming)(
+        "%p",
+        async (name: string, limit: number, input: Game[], expected: Game[]) => {
+            const repo = new MemoryRepository(input);
 
-           const result = repo.upcomingEvents(limit);
+            const result = await repo.upcomingEvents(limit);
 
-           if (!isRight(result)) {
-               throw Error('Should have received a "right"');
-           }
+            if (!isRight(result)) {
+                throw Error('Should have received a "right"');
+            }
 
-           expect(result.right).toEqual(expected);
-       }
-   )
+            expect(result.right).toEqual(expected);
+        }
+    )
 });
