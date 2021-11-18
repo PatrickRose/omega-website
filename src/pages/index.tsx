@@ -45,11 +45,11 @@ type UpcomingEventTypes = Game | number;
 function Megagame({ value }: { value: Game }) {
     return <div className="flex-1 px-3 flex flex-col">
         <h3 className="text-center text-xl pb-2">
-            <Link href={`/games/${value.id}`}><a>{value.name}</a></Link>
+            <Link href={`/games/${value._id}`}><a>{value.name}</a></Link>
         </h3>
         <p className="flex-1">{value.preamble}</p>
         <div className="flex">
-            <Link href={`/games/${value.id}`}>
+            <Link href={`/games/${value._id}`}>
                 <a className="btn-link m-4 p-4 w-full">Book a space</a>
             </Link>
         </div>
@@ -66,7 +66,7 @@ function UpcomingEvents({ events }: { events: Game[] }) {
         </div>
     } else {
         eventList = <div className="lg:w-3/4 flex flex-col sm:flex-row"> {events.map(
-            value => <Megagame value={value} key={value.id} />
+            value => <Megagame value={value} key={value._id} />
         )
         }
         </div>

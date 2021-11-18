@@ -41,7 +41,7 @@ export class MongoRepository implements GamesRepository {
         try {
             await this.mongo.connect();
 
-            const database = this.mongo.db('omega');
+            const database = this.mongo.db();
 
             const gamesCollection = database.collection<Game>("games");
 
@@ -62,11 +62,11 @@ export class MongoRepository implements GamesRepository {
         try {
             await this.mongo.connect();
 
-            const database = this.mongo.db('omega');
+            const database = this.mongo.db();
 
             const gamesCollection = database.collection<Game>("games");
 
-            const cursor = await gamesCollection.find<Game>({ id });
+            const cursor = gamesCollection.find<Game>({ _id: id });
 
             const game = await cursor.next();
 
@@ -75,6 +75,27 @@ export class MongoRepository implements GamesRepository {
             }
 
             return MakeRight(game);
+        }
+        catch (e) {
+            console.log(e);
+            return MakeLeft(false);
+        }
+        finally {
+            await this.mongo.close();
+        }
+    }
+
+    async insert(game: Game): Promise<Either<false, true>> {
+        try {
+            await this.mongo.connect();
+
+            const database = this.mongo.db();
+
+            const gamesCollection = database.collection<Game>("games");
+
+            await gamesCollection.insertOne(game);
+
+            return MakeRight(true);
         }
         catch (e) {
             console.log(e);

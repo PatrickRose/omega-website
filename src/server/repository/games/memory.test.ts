@@ -35,7 +35,7 @@ const pastGame: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'PAST_GAME',
+    _id: 'PAST_GAME',
     name: 'PAST GAME',
     preamble: 'TEST',
     type: 'Online game'
@@ -48,7 +48,7 @@ const gameNextYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'NEXT YEAR',
+    _id: 'NEXT YEAR',
     name: 'NEXT YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -61,7 +61,7 @@ const gameTwoYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'TWO YEAR',
+    _id: 'TWO YEAR',
     name: 'TWO YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -74,7 +74,7 @@ const gameThreeYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'THREE YEAR',
+    _id: 'THREE YEAR',
     name: 'THREE YEAR',
     preamble: 'TEST',
     type: 'Online game'
@@ -87,7 +87,7 @@ const gameFourYear: Game = {
     },
     designer: 'TEST',
     fullDescription: 'TEST',
-    id: 'FOUR YEAR',
+    _id: 'FOUR YEAR',
     name: 'FOUR YEAR',
     preamble: 'TEST',
     type: 'Online game'

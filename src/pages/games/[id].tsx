@@ -15,7 +15,7 @@ import { MakeLeft, MakeRight } from "../../utils/io-ts-helpers";
 import { getGamesRepo } from '../../server/repository/games';
 
 type SingleGameProps = {
-    game: Either<Error, Game>
+    game: Either<false, Game>
 };
 function isGame(value: any): value is Game {
     return isRight(GameDecode.decode(value));
@@ -129,7 +129,7 @@ export const getStaticProps: GetStaticProps<SingleGameProps> = async (context) =
 
     const gamesRepo = getGamesRepo();
 
-    const game = gamesRepo.get(id);
+    const game = await gamesRepo.get(id);
 
     return {
         props: { game },
@@ -166,8 +166,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // If we have some games, add them to the list
     if (isRight(upcomingGames)) {
         upcomingGames.right.forEach(
-            ({ id }) => {
-                paths.push({ params: { id } })
+            ({ _id }) => {
+                paths.push({ params: { id: _id } })
             }
         );
     }

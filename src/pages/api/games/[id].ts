@@ -4,7 +4,7 @@ import { isRight } from "fp-ts/Either";
 
 const gameRespository = getGamesRepo();
 
-const handler = (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const gameID = req.query.id;
 
     if (typeof gameID !== 'string') {
@@ -12,7 +12,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
         return;
     }
 
-    const game = gameRespository.get(gameID);
+    const game = await gameRespository.get(gameID);
 
     if (isRight(game)) {
         res.send(game.right);
