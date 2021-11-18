@@ -45,7 +45,7 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
 
     const { mobile } = props;
 
-    const baseClass = mobile ? "text-omega-light hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" : "text-omega-light hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
+    const baseClass = mobile ? "text-omega-light hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" : "text-omega-light hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium text-center flex justify-center flex-col";
     const activeClass = mobile ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" : "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
 
     return <React.Fragment>
