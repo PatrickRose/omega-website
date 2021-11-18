@@ -41,7 +41,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "heroku-postbuild": "echo 'Nothing to do'",
     "start": "next start",
     "test": "jest",
     "lint": "next lint",
