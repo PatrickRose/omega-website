@@ -1,3 +1,4 @@
+import { either } from 'io-ts-types/lib/either';
 import * as t from 'io-ts';
 
 const DayDecode = t.union([
@@ -86,3 +87,59 @@ export const GameAPIDecode = t.type({
 export const UpcomingEventsAPIDecode = t.type({
     events: t.array(GameDecode)
 })
+
+export const LoginFormValuesDecode = t.type({
+    username: t.string,
+    password: t.string
+});
+
+export const DBUserDecode = t.type({
+    _id: t.string,
+    password: t.string,
+    passwordNeedsReset: t.boolean
+});
+
+export const UserDecode = t.type({
+    isLoggedIn: t.boolean,
+    login: t.string,
+    passwordNeedsReset: t.boolean,
+});
+
+export const LoginFailedDecode = t.type({
+    message: t.string
+});
+
+export const CreateUserFormValuesDecode = t.type({
+    username: t.string,
+});
+
+export const CreateUserSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+});
+
+export const CreateUserFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const CreateUserResultDecode = either(CreateUserFailedDecode, CreateUserSuccessDecode);
+
+export const ChangePasswordFormValuesDecode = t.type({
+    originalPassword: t.string,
+    newPassword: t.string,
+    confirmPassword: t.string,
+});
+
+export const ChangePasswordSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+    user: UserDecode
+});
+
+export const ChangePasswordFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const ChangePasswordResultDecode = either(ChangePasswordFailedDecode, ChangePasswordSuccessDecode);
