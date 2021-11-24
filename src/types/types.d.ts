@@ -28,4 +28,9 @@ export type ChangePasswordSuccess = t.TypeOf<typeof types.ChangePasswordSuccessD
 export type ChangePasswordFailed = t.TypeOf<typeof types.ChangePasswordFailedDecode>
 export type ChangePasswordResult = t.TypeOf<typeof types.ChangePasswordResultDecode>
 
+export type CreateGameFormValues = t.TypeOf<typeof types.CreateGameFormValuesDecode>;
+export type CreateGameSuccess = t.TypeOf<typeof types.CreateGameSuccessDecode>
+export type CreateGameFailed = t.TypeOf<typeof types.CreateGameFailedDecode>
+export type CreateGameResult = t.TypeOf<typeof types.CreateGameResultDecode>
+
 

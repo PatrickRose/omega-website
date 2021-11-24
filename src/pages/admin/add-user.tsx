@@ -110,7 +110,6 @@ export default function AdminPage() {
                     }
                 }
             </Formik>
-
         </MainContent>
     </React.Fragment>;
 }

@@ -1,6 +1,42 @@
 import { useField } from "formik";
 import React, { ReactNode } from "react";
 
+// Error type for a given form
+// This essentially says "For any key of the given value, we accept a string if it isn't an object, otherwise we recurse into the type definition for that key"
+export type FormError<Type extends { [key: string]: any }> = Partial<{ [Prop in keyof Type]: (Type[Prop] extends { [key: string]: any } ? FormError<Type[Prop]> : string) }>;
+
+export function SelectInput({ label, name, ...props }: { label: string, name: string } & JSX.IntrinsicElements['select']) {
+    const [field, meta] = useField({ name, ...props });
+
+    const showError = meta.touched && meta.error;
+    const validationClass = "text-red-600 font-bold"
+
+    return <div className="py-2">
+        <div className={`flex flex-col sm:flex-row ${showError ? validationClass : ''}`}>
+            <label htmlFor={props.id || name} className="w-1/5">{label}</label>
+
+            <select className="flex-1" {...field} aria-describedby={`${props.id || name}-validation`} {...props} />
+        </div>
+        <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
+    </div>
+}
+
+export function TextAreaInput({ label, name, ...props }: { label: string, name: string } & JSX.IntrinsicElements['textarea']) {
+    const [field, meta] = useField({ name, ...props });
+
+    const showError = meta.touched && meta.error;
+    const validationClass = "text-red-600 font-bold"
+
+    return <div className="py-2">
+        <div className={`flex flex-col sm:flex-row ${showError ? validationClass : ''}`}>
+            <label htmlFor={props.id || name} className="w-1/5">{label}</label>
+
+            <textarea className="flex-1" {...field} aria-describedby={`${props.id || name}-validation`} {...props} />
+        </div>
+        <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
+    </div>
+}
+
 export function TextInput({ label, name, ...props }: { label: string, name: string } & JSX.IntrinsicElements['input']) {
     const [field, meta] = useField({ name, ...props });
 
@@ -13,7 +49,7 @@ export function TextInput({ label, name, ...props }: { label: string, name: stri
 
             <input className="flex-1" {...field} aria-describedby={`${props.id || name}-validation`} {...props} />
         </div>
-        <div aria-live="polite" className={`${showError ? '' : 'd-none'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
+        <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
     </div>
 }
 
