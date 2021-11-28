@@ -7,7 +7,7 @@ cache:
     - node_modules
     - .next/cache
 node_js:
-- 16
+- 14
 jobs:
   include:
     - stage: test
@@ -18,13 +18,3 @@ jobs:
       script:
         - yarn install
         - yarn build
-    - stage: deploy
-      before_deploy:
-        - yarn install
-        - yarn build
-      deploy:
-        - provider: heroku
-          strategy: api
-          app: omega-staging
-          api_key:
-            secure: hlxA1Bjgj0wdX2kLZxWvVW7sfSnB3mzS6708IjGcKBzL+4qWK6ZytIdS6cS6RP/ZByghF9gVyl9p8jgfEMqQOA8e9dekpxG8crtCGT92c3HTAE4n0jJyQZcj10qXmTTkJeJ0hV5DfBnsV7CFjxfOw+QxbkM/2vGvAotRYLilsAkN89LmvcywoSPKxMnasHRUZlbc+RT7/H4KGn9kSbpL67396NvtAHUQEkFpZGs4SFwPv/j6vTxn/Qmtn86OYF76uClB4uJpnPAFvqwwrz2pDHALvLOHdyg8zB9sKOSnvGX4UyULmAQlxTR4V/Hf7Nf9kq2YowntdtaSOZRf4g4idVVkibGNuihTfCHeTRtWTWjs8w4ilrk/C5+ElieJ8ryv1NaYcVKqncMXABVfK48yV4mhBNGNYwNBd/XI1RLKhGzwpRuH5sOOtSTFJe5v859ZO3RMJxSwhdbAfzuRucrbH7/JEKs04DpYcxBwVcLBliez+5kbjXuUhp81Acn7WmpBOeJj53JVj+W0yxS8jJ8lGppVRTy2vffnrjvEKpgO1ImBVTZsesEcHDDwjAOxm5Ow3u0/hCB47TSZVIRqWU1/L4VRGm5p+tepTwatNnsGq9ye4Nm1o7dX9RTaxt7OCaz4rudezgfpFVrpLV2o6C6Ems+9zoNq4AGN6ka1oThWFkk=
