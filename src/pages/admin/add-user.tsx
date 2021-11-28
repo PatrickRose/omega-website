@@ -18,7 +18,7 @@ export default function AdminPage() {
 
     // It's possible for this to be undefined if the user hasn't logged in yet
     // Since we have to wait for the api response, make sure this returns an empty page
-    if (!user) {
+    if (!user?.isLoggedIn) {
         return <MainContent><p>Loading admin page</p></MainContent>
     }
 

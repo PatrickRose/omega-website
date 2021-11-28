@@ -1,10 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { isLeft, isRight, Left, Right } from "fp-ts/Either";
+import { isRight, Left, Right } from "fp-ts/Either";
 import { getUserRepo } from '../../../server/repository/user';
 import { ApiResult, CreateUserFailed, CreateUserResult, CreateUserSuccess } from '../../../types/types';
 import { CreateUserFormValuesDecode } from '../../../types/io-ts-def';
 import { MakeLeft, MakeRight } from '../../../utils/io-ts-helpers';
 import { DEFAULT_PASSWORD } from '../../../server/repository/user/consts';
+import {sessionOptions} from "../../../lib/session";
+import {withIronSessionApiRoute} from "iron-session/next";
 
 function makeSuccessResult(message: string): Right<CreateUserSuccess> {
     return MakeRight({
@@ -55,8 +57,16 @@ async function getResult(body: unknown): Promise<ApiResult<CreateUserResult>> {
         body: makeFailedResult(`Failed to create user, please wait and try again: ${create.left}`)
     };
 }
-export default async function loginRoute(req: NextApiRequest, res: NextApiResponse<CreateUserResult>) {
+
+export default withIronSessionApiRoute(loginRoute, sessionOptions)
+
+async function loginRoute(req: NextApiRequest, res: NextApiResponse<CreateUserResult>) {
     const data = await req.body;
+
+    if (!req.session?.user?.isLoggedIn) {
+        res.status(403).json(makeFailedResult('You are not logged in'));
+        return;
+    }
 
     const { status, body } = await getResult(data);
 

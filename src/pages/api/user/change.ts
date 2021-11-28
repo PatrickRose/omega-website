@@ -88,6 +88,11 @@ async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePa
 async function changePassword(req: NextApiRequest, res: NextApiResponse<ChangePasswordResult>) {
     const data = await req.body;
 
+    if (!req.session?.user?.isLoggedIn) {
+        res.status(403).json(makeFailure('You are not logged in'));
+        return;
+    }
+
     const { status, body } = await getResult(data, req.session.user);
 
     if (isRight(body)) {

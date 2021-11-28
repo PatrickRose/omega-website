@@ -51,7 +51,7 @@ export class MemoryRepository implements GamesRepository {
         return MakeLeft(false);
     }
 
-    async insert(game: Game): Promise<Either<false, true>> {
+    async insert(game: Game): Promise<Either<string, true>> {
         this.games.push(game);
 
         return MakeRight(true);

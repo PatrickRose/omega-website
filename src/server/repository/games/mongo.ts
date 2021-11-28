@@ -85,7 +85,7 @@ export class MongoRepository implements GamesRepository {
         }
     }
 
-    async insert(game: Game): Promise<Either<false, true>> {
+    async insert(game: Game): Promise<Either<string, true>> {
         try {
             await this.mongo.connect();
 
@@ -98,8 +98,7 @@ export class MongoRepository implements GamesRepository {
             return MakeRight(true);
         }
         catch (e) {
-            console.log(e);
-            return MakeLeft(false);
+            return MakeLeft((e as Error).message);
         }
         finally {
             await this.mongo.close();

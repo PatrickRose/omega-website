@@ -1,9 +1,9 @@
-import { Form, Formik, FormikHelpers, FormikValues, useField } from "formik";
+import { Form, Formik, FormikHelpers, FormikValues} from "formik";
 import React from "react";
 import { SubmitButton, TextInput } from "../../components/Form";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import useUser from "../../lib/useUser";
-import { LoginFailedDecode, LoginFormValuesDecode, UserDecode } from "../../types/io-ts-def";
+import { LoginFailedDecode, UserDecode } from "../../types/io-ts-def";
 import { LoginFormValues } from "../../types/types";
 
 export default function Login() {
@@ -56,7 +56,7 @@ export default function Login() {
                 });
             }
 
-            mutateUser(data);
+            await mutateUser(data);
         }
         finally {
             setSubmitting(false);

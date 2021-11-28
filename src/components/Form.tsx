@@ -5,11 +5,16 @@ import React, { ReactNode } from "react";
 // This essentially says "For any key of the given value, we accept a string if it isn't an object, otherwise we recurse into the type definition for that key"
 export type FormError<Type extends { [key: string]: any }> = Partial<{ [Prop in keyof Type]: (Type[Prop] extends { [key: string]: any } ? FormError<Type[Prop]> : string) }>;
 
+const validationClass = "text-red-600 font-bold"
+
+export function ValidationError({showError, id, message, children}: {showError:boolean, id: string, message?: string, children?:ReactNode}) {
+    return <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={id}>{message}{children}</div>
+}
+
 export function SelectInput({ label, name, ...props }: { label: string, name: string } & JSX.IntrinsicElements['select']) {
     const [field, meta] = useField({ name, ...props });
 
-    const showError = meta.touched && meta.error;
-    const validationClass = "text-red-600 font-bold"
+    const showError = Boolean(meta.touched && meta.error);
 
     return <div className="py-2">
         <div className={`flex flex-col sm:flex-row ${showError ? validationClass : ''}`}>
@@ -17,15 +22,14 @@ export function SelectInput({ label, name, ...props }: { label: string, name: st
 
             <select className="flex-1" {...field} aria-describedby={`${props.id || name}-validation`} {...props} />
         </div>
-        <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
+        <ValidationError showError={showError} id={`${props.id || name}-validation`} message={meta.error} />
     </div>
 }
 
 export function TextAreaInput({ label, name, ...props }: { label: string, name: string } & JSX.IntrinsicElements['textarea']) {
     const [field, meta] = useField({ name, ...props });
 
-    const showError = meta.touched && meta.error;
-    const validationClass = "text-red-600 font-bold"
+    const showError = Boolean(meta.touched && meta.error);
 
     return <div className="py-2">
         <div className={`flex flex-col sm:flex-row ${showError ? validationClass : ''}`}>
@@ -33,15 +37,14 @@ export function TextAreaInput({ label, name, ...props }: { label: string, name: 
 
             <textarea className="flex-1" {...field} aria-describedby={`${props.id || name}-validation`} {...props} />
         </div>
-        <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
+        <ValidationError showError={showError} id={`${props.id || name}-validation`} message={meta.error} />
     </div>
 }
 
 export function TextInput({ label, name, ...props }: { label: string, name: string } & JSX.IntrinsicElements['input']) {
     const [field, meta] = useField({ name, ...props });
 
-    const showError = meta.touched && meta.error;
-    const validationClass = "text-red-600 font-bold"
+    const showError = Boolean(meta.touched && meta.error);
 
     return <div className="py-2">
         <div className={`flex flex-col sm:flex-row ${showError ? validationClass : ''}`}>
@@ -49,13 +52,13 @@ export function TextInput({ label, name, ...props }: { label: string, name: stri
 
             <input className="flex-1" {...field} aria-describedby={`${props.id || name}-validation`} {...props} />
         </div>
-        <div aria-live="polite" className={`${showError ? '' : 'hidden'} ${validationClass}`} id={`${props.id || name}-validation`}>{meta.error}</div>
+        <ValidationError showError={showError} id={`${props.id || name}-validation`} message={meta.error} />
     </div>
 }
 
 export function SubmitButton({ disabled, children, ...props }: { disabled: boolean } & JSX.IntrinsicElements['button']) {
     return <div className="flex" >
-        <button type="submit" className="btn-link m-4 p-4 w-full" disabled={disabled} {...props}>{children}</button >
+        <button type="submit" className="btn-link m-4 p-4 w-full" disabled={disabled} {...props}>{children} </button >
     </div >
 }
 

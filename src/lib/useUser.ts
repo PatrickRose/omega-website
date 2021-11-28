@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Router from 'next/router'
-import useSWR from 'swr'
+import useSWR, {SWRResponse} from 'swr'
 import { User } from '../types/types';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
@@ -9,8 +9,8 @@ export default function useUser({
     redirectTo = '',
     redirectIfFound = false,
     forcePasswordChange = true
-} = {}) {
-    const { data: user, mutate: mutateUser } = useSWR<User>('/api/user', fetcher)
+} = {}): {user: User|undefined, mutateUser: SWRResponse<User|undefined, any>['mutate']} {
+    const { data: user, mutate: mutateUser } = useSWR<User|undefined>('/api/user', fetcher)
 
     useEffect(() => {
         // if no redirect needed, just return (example: already on /dashboard)
@@ -27,7 +27,7 @@ export default function useUser({
         } else if (user?.isLoggedIn && user?.passwordNeedsReset && forcePasswordChange) {
             Router.push('/admin/change-password')
         }
-    }, [user, redirectIfFound, redirectTo])
+    }, [user, redirectIfFound, redirectTo, forcePasswordChange])
 
     return { user, mutateUser }
 }

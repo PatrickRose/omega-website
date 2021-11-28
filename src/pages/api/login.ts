@@ -33,13 +33,13 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse<User | Login
     // a hash, which potentially opens us up to a timing attack to leak the existence of a user but:
     // a) An attacker would still have to deal with the argon verification hash in all cases, so it should
     //    be infeasible for them to bruteforce the existence of a user
-    // b) That just tells you that the user exists - you'd still have to get the password out (which has 
+    // b) That just tells you that the user exists - you'd still have to get the password out (which has
     //    the argon2 protections)
-    // c) The data you get out of this is the OMEGA games list, which is a low value target anyway   
+    // c) The data you get out of this is the OMEGA games list, which is a low value target anyway
     // TODO: Add rate limiting
     const dbHash = isLeft(user) ? (await hashPassword(body.password + 'ALWAYS FAIL')) : user.right.password;
 
-    let loggedIn = true; false;
+    let loggedIn = false;
 
     try {
         loggedIn = await argon2.verify(dbHash, password);

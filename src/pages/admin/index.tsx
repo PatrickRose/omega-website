@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import useUser from '../../lib/useUser';
 import { GameAPIDecode, UserDecode } from "../../types/io-ts-def";
-import { GameAPI } from "../../types/types";
+import {Game, GameAPI} from "../../types/types";
 import { dateSorter } from "../../utils";
 import { LinkDef } from "../../utils/utils";
 
@@ -48,7 +48,7 @@ export default function AdminPage() {
 
     // It's possible for this to be undefined if the user hasn't logged in yet
     // Since we have to wait for the api response, make sure this returns an empty page
-    if (!user) {
+    if (!user?.isLoggedIn) {
         return <MainContent><p>Loading admin page</p></MainContent>
     }
 
@@ -71,13 +71,15 @@ export default function AdminPage() {
         }
     ];
 
-    if (games) {
+    if (GameAPIDecode.is(games) && games) {
         games.games.sort(dateSorter);
         games.games.forEach(
-            game => gameLinks.push({
-                linkPath: `/admin/games/${game._id}`,
-                linkText: `Edit "${game.name}"`
-            })
+            (game: Game) => {
+                gameLinks.push({
+                    linkPath: `/admin/games/${game._id}`,
+                    linkText: `Edit "${game.name}"`
+                })
+            }
         )
     }
 
@@ -95,9 +97,6 @@ export default function AdminPage() {
                 reason => console.log(reason)
             ).finally(() => setLoggingOut(false));
     }
-
-    const buttonClasses = "btn-link min-w-full md:min-w-3/4 p-2";
-
     return <React.Fragment>
         <Hero>
             <HeroHeading>Admin panel</HeroHeading>

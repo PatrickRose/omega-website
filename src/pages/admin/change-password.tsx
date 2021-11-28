@@ -1,17 +1,17 @@
-import { Form, Formik, FormikHelpers, FormikValues } from "formik";
-import { isLeft } from "fp-ts/lib/Either";
-import React, { useState } from "react";
-import { SubmitButton, SuccessMessage, TextInput } from "../../components/Form";
-import { Hero, HeroHeading, MainContent } from "../../components/Hero";
+import {Form, Formik, FormikHelpers, FormikValues} from "formik";
+import {isLeft} from "fp-ts/lib/Either";
+import React, {useState} from "react";
+import {SubmitButton, SuccessMessage, TextInput} from "../../components/Form";
+import {Hero, HeroHeading, MainContent} from "../../components/Hero";
 import useUser from "../../lib/useUser";
-import { DEFAULT_PASSWORD } from "../../server/repository/user/consts";
-import { ChangePasswordResultDecode, CreateUserResultDecode } from "../../types/io-ts-def";
-import { ChangePasswordFormValues, ChangePasswordResult, CreateUserFormValues, CreateUserResult } from "../../types/types";
-import { MakeLeft } from "../../utils/io-ts-helpers";
+import {DEFAULT_PASSWORD} from "../../server/repository/user/consts";
+import {ChangePasswordResultDecode} from "../../types/io-ts-def";
+import {ChangePasswordFormValues, ChangePasswordResult} from "../../types/types";
+import {MakeLeft} from "../../utils/io-ts-helpers";
 
 export default function AdminPage() {
     // If the user isn't logged in, send them to the admin page
-    const { user, mutateUser } = useUser({
+    const {user, mutateUser} = useUser({
         redirectTo: '/admin/login',
     });
 
@@ -19,7 +19,7 @@ export default function AdminPage() {
 
     // It's possible for this to be undefined if the user hasn't logged in yet
     // Since we have to wait for the api response, make sure this returns an empty page
-    if (!user) {
+    if (!user?.isLoggedIn) {
         return <MainContent><p>Loading admin page</p></MainContent>
     }
 
@@ -29,7 +29,11 @@ export default function AdminPage() {
         confirmPassword: '',
     }
 
-    const onSubmit = async (values: FormikValues, { setSubmitting, setErrors, setValues }: FormikHelpers<ChangePasswordFormValues>) => {
+    const onSubmit = async (values: FormikValues, {
+        setSubmitting,
+        setErrors,
+        setValues
+    }: FormikHelpers<ChangePasswordFormValues>) => {
         try {
             setSuccessMessage('');
             const response = await fetch(
@@ -57,8 +61,7 @@ export default function AdminPage() {
                         message: `Error when sending API request (unknown API result - ${origData})`
                     })
                 }
-            }
-            catch (e) {
+            } catch (e) {
                 data = MakeLeft({
                     result: "Failure",
                     message: 'Error when sending API request, please wait and try again'
@@ -66,7 +69,7 @@ export default function AdminPage() {
             }
 
             if (isLeft(data)) {
-                setErrors({ originalPassword: data.left.message });
+                setErrors({originalPassword: data.left.message});
             } else {
                 setSuccessMessage(data.right.message);
                 setValues(
@@ -75,8 +78,7 @@ export default function AdminPage() {
                 );
                 mutateUser(data.right.user);
             }
-        }
-        finally {
+        } finally {
             setSubmitting(false);
         }
     }
@@ -90,11 +92,9 @@ export default function AdminPage() {
 
         if (values.newPassword == '') {
             errors.newPassword = 'Specify your new password';
-        }
-        else if (values.newPassword == DEFAULT_PASSWORD) {
+        } else if (values.newPassword == DEFAULT_PASSWORD) {
             errors.newPassword = `You may not use the default password (${DEFAULT_PASSWORD})`;
-        }
-        else {
+        } else {
             if (values.newPassword != values.confirmPassword) {
                 errors.confirmPassword = 'New passwords must match';
             }
@@ -112,7 +112,9 @@ export default function AdminPage() {
             <HeroHeading>Add new user</HeroHeading>
         </Hero>
         <MainContent>
-            {user.passwordNeedsReset && <div className="py-2 w-full bg-red-200 rounded"><p className="p-2 text-center">You must change your password before you can access the rest of the admin functions</p></div>}
+            {user.passwordNeedsReset &&
+            <div className="py-2 w-full bg-red-200 rounded"><p className="p-2 text-center">You must change your password
+                before you can access the rest of the admin functions</p></div>}
             <Formik
                 initialValues={originalValues}
                 onSubmit={onSubmit}
