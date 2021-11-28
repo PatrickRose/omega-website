@@ -63,6 +63,8 @@ async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePa
     }
 
     dbUser.password = await hashPassword(body.newPassword);
+    // We've just reset it, so it shouldn't need to be reset
+    dbUser.passwordNeedsReset = false;
 
     const updateResult = await userRepo.update(user.login, dbUser);
 
