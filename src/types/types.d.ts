@@ -33,4 +33,9 @@ export type CreateGameSuccess = t.TypeOf<typeof types.CreateGameSuccessDecode>
 export type CreateGameFailed = t.TypeOf<typeof types.CreateGameFailedDecode>
 export type CreateGameResult = t.TypeOf<typeof types.CreateGameResultDecode>
 
+export type EditGameFormValues = t.TypeOf<typeof types.EditGameFormValuesDecode>;
+export type EditGameSuccess = t.TypeOf<typeof types.EditGameSuccessDecode>
+export type EditGameFailed = t.TypeOf<typeof types.EditGameFailedDecode>
+export type EditGameResult = t.TypeOf<typeof types.EditGameResultDecode>
+
 

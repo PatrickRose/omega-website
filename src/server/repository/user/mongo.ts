@@ -70,17 +70,25 @@ export class MongoRepository implements UserRepository {
         }
     }
 
+    private readonly _collectionName = "users";
+
     async update(username: string, user: DBUser): Promise<Either<string, true>> {
         try {
             await this.mongo.connect();
 
             const database = this.mongo.db();
 
-            const userCollection = database.collection<DBUser>("users");
+            const userCollection = database.collection<DBUser>(this._collectionName);
 
-            await userCollection.updateOne({ _id: username }, { "$set": user });
+            const result = await userCollection.updateOne({ _id: username }, { "$set": user });
 
-            return MakeRight(true);
+            if (result.matchedCount == 1) {
+                return MakeRight(true);
+            }
+
+            console.log(result);
+
+            return MakeLeft(`Failed to update - matched ${result.matchedCount} when updating ${username}`);
         }
         catch (e) {
             return MakeLeft((e as Error).message)

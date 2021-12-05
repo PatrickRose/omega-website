@@ -166,3 +166,26 @@ export const CreateGameFailedDecode = t.type({
 });
 
 export const CreateGameResultDecode = either(CreateGameFailedDecode, CreateGameSuccessDecode);
+
+export const EditGameFormValuesDecode = t.type({
+    name: t.string,
+    date: DateDecode,
+    endDate: DateDecode,
+    designer: t.string,
+    preamble: t.string,
+    fullDescription: t.string,
+    type: t.union([t.literal(''), t.literal('Online game'), t.literal('Play-By-Email')]),
+});
+
+export const EditGameSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+    game: GameDecode
+});
+
+export const EditGameFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const EditGameResultDecode = either(EditGameFailedDecode, EditGameSuccessDecode);

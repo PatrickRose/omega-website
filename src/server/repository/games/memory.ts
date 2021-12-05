@@ -56,4 +56,17 @@ export class MemoryRepository implements GamesRepository {
 
         return MakeRight(true);
     }
+
+    async update(id: string, game: Game): Promise<Either<string, true>> {
+        for (let gameKey in this.games) {
+            const existingGame = this.games[gameKey];
+            if (existingGame._id === id) {
+                this.games[gameKey] = game;
+
+                return MakeRight(true)
+            }
+        }
+
+        return MakeLeft('Did not find game');
+    }
 }
