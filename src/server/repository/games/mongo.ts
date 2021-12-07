@@ -85,21 +85,48 @@ export class MongoRepository implements GamesRepository {
         }
     }
 
-    async insert(game: Game): Promise<Either<false, true>> {
+    private readonly _collectionName = "games";
+
+    async insert(game: Game): Promise<Either<string, true>> {
         try {
             await this.mongo.connect();
 
             const database = this.mongo.db();
 
-            const gamesCollection = database.collection<Game>("games");
+            const gamesCollection = database.collection<Game>(this._collectionName);
 
             await gamesCollection.insertOne(game);
 
             return MakeRight(true);
         }
         catch (e) {
-            console.log(e);
-            return MakeLeft(false);
+            return MakeLeft((e as Error).message);
+        }
+        finally {
+            await this.mongo.close();
+        }
+    }
+
+    async update(id: string, game: Game): Promise<Either<string, true>> {
+        try {
+            await this.mongo.connect();
+
+            const database = this.mongo.db();
+
+            const userCollection = database.collection<Game>("games");
+
+            const result = await userCollection.updateOne({ _id: id }, { "$set": game });
+
+            if (result.matchedCount == 1) {
+                return MakeRight(true);
+            }
+
+            console.log(result);
+
+            return MakeLeft(`Failed to update - matched ${result.matchedCount} when updating ${id}`);
+        }
+        catch (e) {
+            return MakeLeft((e as Error).message)
         }
         finally {
             await this.mongo.close();
