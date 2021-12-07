@@ -7,6 +7,10 @@ export default interface GamesRepository {
     get: (id: string) => Promise<Either<false, Game>>
 
     upcomingEvents(limit: number): Promise<Either<false, Game[]>>;
+
+    insert(game: Game): Promise<Either<string, true>>;
+
+    update(id: string, game: Game): Promise<Either<string, true>>;
 }
 
 export function getGamesRepo(): GamesRepository {

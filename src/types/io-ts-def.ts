@@ -1,3 +1,4 @@
+import { either } from 'io-ts-types/lib/either';
 import * as t from 'io-ts';
 
 const DayDecode = t.union([
@@ -86,3 +87,105 @@ export const GameAPIDecode = t.type({
 export const UpcomingEventsAPIDecode = t.type({
     events: t.array(GameDecode)
 })
+
+export const LoginFormValuesDecode = t.type({
+    username: t.string,
+    password: t.string
+});
+
+export const DBUserDecode = t.type({
+    _id: t.string,
+    password: t.string,
+    passwordNeedsReset: t.boolean
+});
+
+export const UserDecode = t.type({
+    isLoggedIn: t.boolean,
+    login: t.string,
+    passwordNeedsReset: t.boolean,
+});
+
+export const LoginFailedDecode = t.type({
+    message: t.string
+});
+
+export const CreateUserFormValuesDecode = t.type({
+    username: t.string,
+});
+
+export const CreateUserSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+});
+
+export const CreateUserFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const CreateUserResultDecode = either(CreateUserFailedDecode, CreateUserSuccessDecode);
+
+export const ChangePasswordFormValuesDecode = t.type({
+    originalPassword: t.string,
+    newPassword: t.string,
+    confirmPassword: t.string,
+});
+
+export const ChangePasswordSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+    user: UserDecode
+});
+
+export const ChangePasswordFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const ChangePasswordResultDecode = either(ChangePasswordFailedDecode, ChangePasswordSuccessDecode);
+
+export const CreateGameFormValuesDecode = t.type({
+    name: t.string,
+    date: DateDecode,
+    endDate: DateDecode,
+    designer: t.string,
+    preamble: t.string,
+    fullDescription: t.string,
+    type: t.union([t.literal(''), t.literal('Online game'), t.literal('Play-By-Email')]),
+});
+
+export const CreateGameSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+    game: GameDecode
+});
+
+export const CreateGameFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const CreateGameResultDecode = either(CreateGameFailedDecode, CreateGameSuccessDecode);
+
+export const EditGameFormValuesDecode = t.type({
+    name: t.string,
+    date: DateDecode,
+    endDate: DateDecode,
+    designer: t.string,
+    preamble: t.string,
+    fullDescription: t.string,
+    type: t.union([t.literal(''), t.literal('Online game'), t.literal('Play-By-Email')]),
+});
+
+export const EditGameSuccessDecode = t.type({
+    result: t.literal('Success'),
+    message: t.string,
+    game: GameDecode
+});
+
+export const EditGameFailedDecode = t.type({
+    result: t.literal('Failure'),
+    message: t.string,
+});
+
+export const EditGameResultDecode = either(EditGameFailedDecode, EditGameSuccessDecode);

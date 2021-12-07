@@ -6,7 +6,7 @@ export default function initialiseMongo(): MongoClient {
     const password = process.env.MONGO_PASSWORD;
     const database = process.env.MONGO_DATABASE;
 
-    const connStr = `mongodb+srv://${username}:${password}@${host}/${database}?retryWrites=true&w=majority}`;
+    const connStr = `mongodb+srv://${username}:${password}@${host}/${database}?retryWrites=true&w=majority`;
 
     return new MongoClient(connStr);
 }

@@ -37,6 +37,10 @@ const links: LinkDef[] = [
     {
         linkPath: '/code-of-conduct',
         linkText: 'Code of Conduct'
+    },
+    {
+        linkPath: '/admin',
+        linkText: 'Admin',
     }
 ];
 
@@ -84,6 +88,7 @@ function getMaxHeight(): string {
         case 4: return 'max-h-64';
         case 5: return 'max-h-72';
         case 6: return 'max-h-80';
+        case 7: return 'max-h-96';
         default: throw Error(`Don't know what the max height for a menu with ${links.length} items in it`)
     }
 }
