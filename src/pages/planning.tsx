@@ -70,7 +70,7 @@ export default function Planning() {
             </p>
             <h2 className="text-3xl py-3">Help to run games</h2>
             <p>
-                The OMEGA group is always looking for people to help run games, either by providing
+                OMEGA is always looking for people to help run games, either by providing
                 technical expertise or by being part of the Control team. Being part of the Control team
                 for a megagame every so often is highly recommended, especially for those who play a
                 lot of games! To find out more, <a href={DISCORD_LINK}>join our Discord server</a>.
