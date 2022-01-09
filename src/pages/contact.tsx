@@ -7,6 +7,8 @@ import { faDiscord } from "@fortawesome/free-brands-svg-icons/faDiscord";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
 import { ResponsiveItemList } from "../components/ResponsiveItemList";
 
+export const DISCORD_LINK = "https://discord.gg/gVxGUERQTq";
+
 function ContactMethods() {
     const contactMethods: { icon: IconDefinition, title: string, description: React.ReactElement }[] = [
         {
@@ -14,7 +16,7 @@ function ContactMethods() {
             title: 'Discord',
             description: <p>
                 Most organisation, announcements and general discussions happen
-                on <a href="https://discord.gg/gVxGUERQTq">our Discord server</a>.
+                on <a href={DISCORD_LINK}>our Discord server</a>.
             </p>
         },
         {

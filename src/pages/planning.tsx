@@ -4,6 +4,7 @@ import { Game } from "../types/types";
 import Link from "next/link";
 import Image from "next/image";
 import completedAction from "../../public/completed-action.png";
+import {DISCORD_LINK} from "./contact";
 
 function GameDescriptions() {
     const gameTypes: { type: Game["type"], description: React.ReactElement }[] = [
@@ -67,16 +68,16 @@ export default function Planning() {
                 If you&apos;re interested in having your game ported, feel free to <Link href="/contact"><a>get in touch and see how
                     we can help you</a></Link>.
             </p>
-            <div className="w-full flex justify-center p-2">
-                <Image className="lg:w-3/4" src={completedAction} alt="" />
-            </div>
             <h2 className="text-3xl py-3">Help to run games</h2>
             <p>
                 The OMEGA group is always looks for people to help run games, either by providing
                 technical expertise or by being part of the Control team. Being part of the Control team
                 for a megagame every so often is highly recommended, especially for those who play a
-                lot of games!
+                lot of games! To find out more, <a href={DISCORD_LINK}>join our Discord server</a>.
             </p>
+            <div className="w-full flex justify-center p-2">
+                <Image className="lg:w-3/4" src={completedAction} alt="" />
+            </div>
         </MainContent>
     </React.Fragment>
 }
