@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ReactNode, useState} from "react";
 import useUser from "../../../lib/useUser";
 import {Hero, HeroHeading, MainContent} from "../../../components/Hero";
 import {FormikHelpers, FormikValues} from "formik";
@@ -6,7 +6,6 @@ import {SuccessMessage} from "../../../components/Form";
 import {EditGameResultDecode, PlayByEmailGameDecode} from "../../../types/io-ts-def";
 import {MakeLeft} from "../../../utils/io-ts-helpers";
 import {isLeft} from "fp-ts/Either";
-import {ReactNode} from "react-markdown";
 import Link from "next/link";
 import {GetStaticPaths, GetStaticProps, InferGetStaticPropsType} from "next";
 import GamesRepository, {getGamesRepo} from "../../../server/repository/games";
