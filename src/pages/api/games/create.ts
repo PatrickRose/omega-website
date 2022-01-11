@@ -78,7 +78,16 @@ async function getResult(body: unknown): Promise<ApiResult<CreateGameResult>> {
         type: body.type
     }
 
-    const gamesRepo = getGamesRepo();
+    const gameRepoBase = getGamesRepo();
+
+    if (isLeft(gameRepoBase)) {
+        return {
+            status: 500,
+            body: makeFailedResult(`Database was not set up correctly - please contact the webmaster: ${gameRepoBase.left}`)
+        };
+    }
+
+    const gamesRepo = gameRepoBase.right;
 
     let existingGame = await gamesRepo.get(game._id);
     let count = 1;

@@ -156,7 +156,15 @@ export const getStaticProps: GetStaticProps<EditGameProps> = async (context) => 
 
     const gamesRepo = getGamesRepo();
 
-    const game = await gamesRepo.get(id);
+    if (isLeft(gamesRepo)) {
+        return {
+            props: {
+                game: MakeLeft(false)
+            }
+        }
+    }
+
+    const game = await gamesRepo.right.get(id);
 
     return {
         props: {game},
