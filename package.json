@@ -37,8 +37,7 @@
     "react-markdown": "^7.1.2",
     "swr": "^1.0.1",
     "typescript": "^4.5.2",
-    "uuid": "^8.3.2",
-    "web-vitals": "^1.0.1"
+    "uuid": "^8.3.2"
   },
   "scripts": {
     "dev": "next dev",
