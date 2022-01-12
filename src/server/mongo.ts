@@ -13,7 +13,7 @@ export default function initialiseMongo(): Either<string, MongoClient> {
         ['MONGO_USERNAME', username],
         ['MONGO_PASSWORD', password],
         ['MONGO_DATABASE', database],
-    ].filter(([, value]) => value);
+    ].filter(([, value]) => value === undefined);
 
     if (missing.length) {
         return MakeLeft('Some environment variables were not set: ' + missing.map(([envVar]) => envVar).join(', '));
