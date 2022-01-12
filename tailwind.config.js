@@ -1,14 +1,11 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: {
-    content: [
-      './src/**/*.{js,jsx,ts,tsx}',
-      './public/index.html',
-    ],
-    safelist: ['__next']
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+  ],
+  safelist: ['__next'],
   theme: {
     extend: {
       fontFamily: {
@@ -39,12 +36,10 @@ module.exports = {
           '0%, 100%': { opacity: 0.25},
           '50%': { opacity: 0.5}
         }
+      },
+      transitionProperty: {
+        'link': 'opacity, color, background-color, border-color, text-decoration-color'
       }
-    },
-  },
-  variants: {
-    extend: {
-      opacity: ['disabled']
     },
   },
   plugins: [
