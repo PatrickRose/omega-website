@@ -8,6 +8,6 @@ export default interface UserRepository {
     update: (id: string, user: DBUser) => Promise<Either<string, true>>,
 }
 
-export function getUserRepo(): UserRepository {
+export function getUserRepo(): Either<string, UserRepository> {
     return MongoRepository.APIInstance();
 }

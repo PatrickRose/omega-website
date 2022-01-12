@@ -27,8 +27,18 @@ function makeFailedResult(message: string): Left<EditGameFailed> {
 }
 
 async function getResult(body: unknown, id: string): Promise<ApiResult<EditGameResult>> {
+    const gamesRepoBase = getGamesRepo();
 
-    const gamesRepo = getGamesRepo();
+    if (isLeft(gamesRepoBase)) {
+        return {
+            status: 500,
+            body: makeFailedResult(`Database was not set up correctly - please contact the webmaster: ${gamesRepoBase.left}`)
+        }
+    }
+
+    const gamesRepo = gamesRepoBase.right;
+
+
     if (isLeft(await gamesRepo.get(id))) {
         return {
             status: 404,
@@ -117,7 +127,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             return;
         }
 
-        const game = await gameRespository.get(gameID);
+        if (isLeft(gameRespository)) {
+            res.status(500).send(gameRespository.left)
+            return;
+        }
+
+        const game = await gameRespository.right.get(gameID);
 
         if (isRight(game)) {
             res.send(game.right);

@@ -2,7 +2,7 @@ import GamesRepository from "./index";
 
 import { MongoClient } from 'mongodb';
 
-import { isRight, Either } from "fp-ts/Either";
+import {isRight, Either, isLeft} from "fp-ts/Either";
 import { Game } from "../../../types/types";
 import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
 import { dateSorter, getJSDateFromGameDate } from "../../../utils";
@@ -12,10 +12,14 @@ export class MongoRepository implements GamesRepository {
 
     constructor(private readonly mongo: MongoClient) { }
 
-    static APIInstance(): MongoRepository {
+    static APIInstance(): Either<string, MongoRepository> {
         const client = initialiseMongo();
 
-        return new MongoRepository(client);
+        if (isLeft(client)) {
+            return client;
+        }
+
+        return MakeRight(new MongoRepository(client.right));
     }
 
     async upcomingEvents(limit: number): Promise<Either<false, Game[]>> {

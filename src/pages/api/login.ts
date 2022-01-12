@@ -23,7 +23,15 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse<User | Login
 
     const password = body.password;
 
-    const userRepo = getUserRepo();
+    const userRepoBase = getUserRepo();
+    if (isLeft(userRepoBase)) {
+        res.status(500).json({
+            message: (`Database was not set up correctly - please contact the webmaster: ${userRepoBase.left}`)
+        });
+        return;
+    }
+
+    const userRepo = userRepoBase.right;
 
     const user = await userRepo.get(body.username);
 

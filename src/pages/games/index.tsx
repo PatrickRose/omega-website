@@ -1,16 +1,15 @@
-import React, { ReactElement, useState } from "react";
-import { isRight, Either, isLeft } from "fp-ts/Either";
-import { Game, GameAPI } from "../../types/types";
-import { GameAPIDecode } from "../../types/io-ts-def";
-import { faEnvelopeOpenText } from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
-import { faDesktop } from "@fortawesome/free-solid-svg-icons/faDesktop";
-import { Circle, TextRow } from "../../components/Placeholders";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, {useState} from "react";
+import {Either, isLeft, isRight} from "fp-ts/Either";
+import {Game} from "../../types/types";
+import {faEnvelopeOpenText} from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
+import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { Hero, HeroHeading, MainContent } from "../../components/Hero";
-import { dateSorter, getJSDateFromGameDate, getStringFromGameDate } from "../../utils";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import GamesRepository, { getGamesRepo } from "../../server/repository/games";
+import {Hero, HeroHeading, MainContent} from "../../components/Hero";
+import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../../utils";
+import {GetStaticProps, InferGetStaticPropsType} from "next";
+import {getGamesRepo} from "../../server/repository/games";
+import {MakeLeft} from "../../utils/io-ts-helpers";
 
 
 type GamesState = {
@@ -28,7 +27,7 @@ const icons = {
 function FetchedMegagame(props: Game) {
     return <li className="grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4">
         <div className="col-span-1 text-center flex flex-col justify-center items-center">
-            <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full text-5xl" />
+            <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full text-5xl"/>
         </div>
         <div className="sm:col-span-11 col-span-4">
             <h2 className="text-2xl hover:text-omega">
@@ -66,7 +65,7 @@ function GameListFilter(
             </div>
             <div className="flex-1 flex flex-col justify-center">
                 <div>
-                    <input id="only-future" type="checkbox" checked={props.past} onChange={props.onChange} />
+                    <input id="only-future" type="checkbox" checked={props.past} onChange={props.onChange}/>
                     <label className="pl-1" htmlFor="only-future">Show past games</label>
                 </div>
             </div>
@@ -82,7 +81,7 @@ type GameListParams = {
 }
 
 function GameList(props: GameListParams) {
-    const { filter, changeFilter, past } = props;
+    const {filter, changeFilter, past} = props;
 
     let gameList: Array<Game>;
 
@@ -92,12 +91,12 @@ function GameList(props: GameListParams) {
                 Looks like an error occurred while getting the list of games.
             </p>
             <p className="py-2">
-                Try refreshing your browser and trying again. If that doesn&apos;t work, <Link href="contact"><a>send the
-                    webmaster a message through the contact page</a></Link>
+                Try refreshing your browser and trying again. If that doesn&apos;t work, <Link href="contact"><a>send
+                the
+                webmaster a message through the contact page</a></Link>
             </p>
         </React.Fragment>
-    }
-    else {
+    } else {
         gameList = props.gameList.right;
     }
 
@@ -113,7 +112,7 @@ function GameList(props: GameListParams) {
     const filteredGames = gameList.filter(filterGame);
 
     return <React.Fragment>
-        <GameListFilter onChange={changeFilter} value={filter} past={past} />
+        <GameListFilter onChange={changeFilter} value={filter} past={past}/>
         <ul>
             {
                 filteredGames.length > 0
@@ -128,7 +127,15 @@ function GameList(props: GameListParams) {
 }
 
 export const getStaticProps: GetStaticProps<{ gameList: Either<false, Game[]> }> = async () => {
-    const gameList = await getGamesRepo().all();
+    const gamesRepo = getGamesRepo();
+
+    if (isLeft(gamesRepo)) {
+        return {
+            props: {gameList: MakeLeft(false)}
+        }
+    }
+
+    const gameList = await gamesRepo.right.all();
 
     if (isRight(gameList)) {
         // Sort mutates the value

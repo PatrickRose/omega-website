@@ -13,6 +13,6 @@ export default interface GamesRepository {
     update(id: string, game: Game): Promise<Either<string, true>>;
 }
 
-export function getGamesRepo(): GamesRepository {
+export function getGamesRepo(): Either<string, GamesRepository> {
     return MongoRepository.APIInstance();
 }

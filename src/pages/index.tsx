@@ -1,15 +1,12 @@
 import React from "react";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { isRight } from "fp-ts/Either";
-import { getGamesRepo } from "../server/repository/games";
+import {GetStaticProps, InferGetStaticPropsType} from "next";
+import {isLeft, isRight} from "fp-ts/Either";
+import {getGamesRepo} from "../server/repository/games";
 import Link from "next/link";
 import Image from "next/image";
-import { LinkDef } from "../utils/utils";
-import { Hero, HeroHeading, MainContent } from "../components/Hero";
-import { Game } from "../types/types";
-import { apiCall } from "../utils/api";
-import { UpcomingEventsAPIDecode } from "../types/io-ts-def";
-import { TextRow } from "../components/Placeholders";
+import {LinkDef} from "../utils/utils";
+import {Hero, HeroHeading, MainContent} from "../components/Hero";
+import {Game} from "../types/types";
 import godsWar from '../../public/gods-wars.jpg';
 
 const homeLinks: LinkDef[] = [
@@ -40,9 +37,7 @@ function HomePageLinks() {
     </div>
 }
 
-type UpcomingEventTypes = Game | number;
-
-function Megagame({ value }: { value: Game }) {
+function Megagame({value}: { value: Game }) {
     return <div className="flex-1 px-3 flex flex-col">
         <h3 className="text-center text-xl pb-2">
             <Link href={`/games/${value._id}`}><a>{value.name}</a></Link>
@@ -56,7 +51,7 @@ function Megagame({ value }: { value: Game }) {
     </div>
 }
 
-function UpcomingEvents({ events }: { events: Game[] }) {
+function UpcomingEvents({events}: { events: Game[] }) {
     let eventList;
 
     if (events.length === 0) {
@@ -66,7 +61,7 @@ function UpcomingEvents({ events }: { events: Game[] }) {
         </div>
     } else {
         eventList = <div className="lg:w-3/4 flex flex-col sm:flex-row"> {events.map(
-            value => <Megagame value={value} key={value._id} />
+            value => <Megagame value={value} key={value._id}/>
         )
         }
         </div>
@@ -77,7 +72,17 @@ function UpcomingEvents({ events }: { events: Game[] }) {
 }
 
 export const getStaticProps: GetStaticProps<{ upcomingGames: Game[] }> = async () => {
-    const upcomingGames = await getGamesRepo().upcomingEvents(3);
+    const gamesRepo = getGamesRepo();
+
+    if (isLeft(gamesRepo)) {
+        return {
+            props: {
+                upcomingGames: []
+            },
+        };
+    }
+
+    const upcomingGames = await gamesRepo.right.upcomingEvents(3);
 
     return {
         props: {
@@ -87,7 +92,7 @@ export const getStaticProps: GetStaticProps<{ upcomingGames: Game[] }> = async (
     }
 }
 
-export default function Home({ upcomingGames }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({upcomingGames}: InferGetStaticPropsType<typeof getStaticProps>) {
     return <React.Fragment>
         <Hero>
             <HeroHeading>
@@ -97,13 +102,13 @@ export default function Home({ upcomingGames }: InferGetStaticPropsType<typeof g
                 From grand strategy to roleplay, economics to fireballs, our games blend serious
                 political simulation with emergent storytelling in settings both mundane and fantastical.
             </p>
-            <HomePageLinks />
+            <HomePageLinks/>
         </Hero>
         <MainContent>
             <h2 className="text-2xl">Our next events</h2>
-            <UpcomingEvents events={upcomingGames} />
+            <UpcomingEvents events={upcomingGames}/>
             <div className="w-full flex justify-center">
-                <Image src={godsWar} className="lg:w-2/4" alt="" />
+                <Image src={godsWar} className="lg:w-2/4" alt=""/>
             </div>
         </MainContent>
     </React.Fragment>;
