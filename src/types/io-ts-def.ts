@@ -1,4 +1,4 @@
-import { either } from 'io-ts-types/lib/either';
+import {either} from 'io-ts-types/lib/either';
 import * as t from 'io-ts';
 
 const DayDecode = t.union([
@@ -64,7 +64,7 @@ export const OnlineGameDecode = t.type({
     designer: t.string,
     preamble: t.string,
     fullDescription: t.string,
-    type: t.union([t.literal('Online game'), t.literal('Play-By-Email')]),
+    type: t.literal('Online game'),
 });
 
 export const PlayByEmailGameDecode = t.type({
@@ -75,7 +75,7 @@ export const PlayByEmailGameDecode = t.type({
     designer: t.string,
     preamble: t.string,
     fullDescription: t.string,
-    type: t.union([t.literal('Online game'), t.literal('Play-By-Email')]),
+    type: t.literal('Play-By-Email'),
 });
 
 export const GameDecode = t.union([PlayByEmailGameDecode, OnlineGameDecode]);
