@@ -5,8 +5,9 @@ import { MongoClient } from 'mongodb';
 import {isRight, Either, isLeft} from "fp-ts/Either";
 import { Game } from "../../../types/types";
 import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
-import { dateSorter, getJSDateFromGameDate } from "../../../utils";
+import { dateSorter} from "../../../utils";
 import initialiseMongo from '../../mongo';
+import {gameUtils} from "../../../utils/games";
 
 export class MongoRepository implements GamesRepository {
 
@@ -28,14 +29,7 @@ export class MongoRepository implements GamesRepository {
         if (!isRight(all)) {
             return all;
         }
-        const currDate = new Date();
-        currDate.setHours(0, 0, 0, 0);
-
-        const games = all.right.filter(
-            (game: Game): boolean => {
-                return getJSDateFromGameDate(game.date) >= currDate
-            }
-        )
+        const games = all.right.filter((game) => gameUtils.isUpcoming(game))
         games.sort((a, b) => -dateSorter(a, b));
 
         return MakeRight(games.slice(0, limit));

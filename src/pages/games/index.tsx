@@ -6,10 +6,11 @@ import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import {Hero, HeroHeading, MainContent} from "../../components/Hero";
-import {dateSorter, getJSDateFromGameDate, getStringFromGameDate} from "../../utils";
+import {dateSorter, getStringFromGameDate} from "../../utils";
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {getGamesRepo} from "../../server/repository/games";
 import {MakeLeft} from "../../utils/io-ts-helpers";
+import {gameUtils} from "../../utils/games";
 
 
 type GamesState = {
@@ -101,7 +102,8 @@ function GameList(props: GameListParams) {
     }
 
     const filterGame = (value: Game): boolean => {
-        if (!past && (getJSDateFromGameDate(value.date) < new Date())) {
+        console.log({date: value.date, isUpcoming: gameUtils.isUpcoming(value)});
+        if (!past && !gameUtils.isUpcoming(value)) {
             return false;
         }
 
