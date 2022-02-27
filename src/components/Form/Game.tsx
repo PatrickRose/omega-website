@@ -80,8 +80,8 @@ function MonthOptions({prefix}: { prefix: string }) {
     return <>
         {
             [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
-            ].map(val => <option key={`${prefix}${val}`} value={val}>{monthToLocale(val)}</option>)
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
+            ].map(val => <option key={`${prefix}${val}`} value={val+1}>{monthToLocale(val)}</option>)
         }
     </>
 }

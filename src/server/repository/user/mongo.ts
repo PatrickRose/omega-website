@@ -6,15 +6,20 @@ import initialiseMongo from '../../mongo';
 import { hashPassword } from './argon';
 import { DEFAULT_PASSWORD } from './consts';
 import UserRepository from "./index";
+import {isLeft} from "fp-ts/Either";
 
 export class MongoRepository implements UserRepository {
 
     constructor(private readonly mongo: MongoClient) { }
 
-    static APIInstance(): MongoRepository {
+    static APIInstance(): Either<string, MongoRepository> {
         const client = initialiseMongo();
 
-        return new MongoRepository(client);
+        if (isLeft(client)) {
+            return client;
+        }
+
+        return MakeRight(new MongoRepository(client.right));
     }
 
     async get(id: string): Promise<Either<false, DBUser>> {

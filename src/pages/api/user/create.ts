@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { isRight, Left, Right } from "fp-ts/Either";
+import {isLeft, isRight, Left, Right} from "fp-ts/Either";
 import { getUserRepo } from '../../../server/repository/user';
 import { ApiResult, CreateUserFailed, CreateUserResult, CreateUserSuccess } from '../../../types/types';
 import { CreateUserFormValuesDecode } from '../../../types/io-ts-def';
@@ -31,8 +31,16 @@ async function getResult(body: unknown): Promise<ApiResult<CreateUserResult>> {
         };
     }
 
-    const userRepo = getUserRepo();
+    const userRepoBase = getUserRepo();
 
+    if (isLeft(userRepoBase)) {
+        return {
+            status: 500,
+            body: makeFailedResult(`Database was not set up correctly - please contact the webmaster: ${userRepoBase.left}`)
+        }
+    }
+
+    const userRepo = userRepoBase.right;
     const existingUser = await userRepo.get(body.username);
 
     if (isRight(existingUser)) {

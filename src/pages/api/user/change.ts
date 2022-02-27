@@ -41,7 +41,16 @@ async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePa
         }
     }
 
-    const userRepo = getUserRepo();
+    const userRepoBase = getUserRepo();
+
+    if (isLeft(userRepoBase)) {
+        return {
+            status: 500,
+            body: makeFailure(`Failed to create user, please wait and try again: ${userRepoBase.left}`)
+        };
+    }
+
+    const userRepo = userRepoBase.right;
 
     const dbUserResult = await userRepo.get(user.login);
 

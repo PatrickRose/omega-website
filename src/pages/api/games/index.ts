@@ -1,24 +1,32 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { GameAPI } from "../../../types/types";
-import { getGamesRepo } from "../../../server/repository/games";
-import { isRight } from "fp-ts/Either";
+import type {NextApiRequest, NextApiResponse} from 'next'
+import {GameAPI} from "../../../types/types";
+import {getGamesRepo} from "../../../server/repository/games";
+import {isLeft, isRight} from "fp-ts/Either";
 
 const gameRespository = getGamesRepo();
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    const allGames = await gameRespository.all();
+let handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 
-    if (isRight(allGames)) {
-        const apiResponse: GameAPI = {
-            games: allGames.right
-        };
+if (isLeft(gameRespository)) {
+    handler = async (req: NextApiRequest, res: NextApiResponse) => {
+        res.status(500).json({message: gameRespository.left})
+    };
+} else {
+    handler = async (req: NextApiRequest, res: NextApiResponse) => {
+        const allGames = await gameRespository.right.all();
 
-        res.json(apiResponse);
-        return;
-    }
+        if (isRight(allGames)) {
+            const apiResponse: GameAPI = {
+                games: allGames.right
+            };
 
-    res.status(500).json(allGames.left)
-};
+            res.json(apiResponse);
+            return;
+        }
+
+        res.status(500).json(allGames.left)
+    };
+}
 
 
 export default handler;
