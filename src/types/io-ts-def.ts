@@ -189,3 +189,10 @@ export const EditGameFailedDecode = t.type({
 });
 
 export const EditGameResultDecode = either(EditGameFailedDecode, EditGameSuccessDecode);
+
+export const PodcastEpisodeDecode = t.type({
+    number: t.number,
+    title: t.string,
+    link: t.string,
+    description: t.string
+});

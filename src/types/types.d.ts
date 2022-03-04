@@ -38,4 +38,5 @@ export type EditGameSuccess = t.TypeOf<typeof types.EditGameSuccessDecode>
 export type EditGameFailed = t.TypeOf<typeof types.EditGameFailedDecode>
 export type EditGameResult = t.TypeOf<typeof types.EditGameResultDecode>
 
+export type PodcastEpisode = t.TypeOf<typeof types.PodcastEpisodeDecode>;
 
