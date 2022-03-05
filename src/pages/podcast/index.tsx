@@ -80,12 +80,12 @@ export default function Podcast(props: InferGetStaticPropsType<typeof getStaticP
     return <React.Fragment>
         <Hero>
             <HeroHeading>
-                Control Panel - a Play-by-Email megagame podcast
+                Control Panel - a Play-by-Email Megagame Podcast
             </HeroHeading>
             <p className="text-center pb-2">
                 Interested in the Play-by-Email games that OMEGA put on? Join Steph, Stu and Kyle as they
-                discuss Play-by-Email games in depth, from how to play them to the stories they&apos;ve
-                picked up along the way!
+                discuss Play-by-Email games in depth, from how to play them, to how to create them to
+                the stories they&apos;ve picked up along the way!
             </p>
         </Hero>
         <MainContent>
