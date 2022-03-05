@@ -4,7 +4,8 @@ import { MemoryRepository } from "./memory";
 import {MakeRight} from "../../../utils/io-ts-helpers";
 
 export default interface PodcastRepository {
-    all: () => Promise<Either<false, PodcastEpisode[]>>
+    all: () => Promise<Either<false, PodcastEpisode[]>>,
+    get(id: string): Promise<Either<false, PodcastEpisode>>
 }
 
 export function getPodcastRepo(): Either<string, PodcastRepository> {

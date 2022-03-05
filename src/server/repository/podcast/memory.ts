@@ -1,7 +1,7 @@
 import PodcastRepository from "./index";
 import {Either} from "fp-ts/Either";
 import {PodcastEpisode} from "../../../types/types";
-import {MakeRight} from "../../../utils/io-ts-helpers";
+import {MakeLeft, MakeRight} from "../../../utils/io-ts-helpers";
 import {getJSDateFromOmegaDate} from "../../../utils";
 
 const EPISODES: PodcastEpisode[] = [
@@ -53,5 +53,15 @@ export class MemoryRepository implements PodcastRepository {
 
     static APIInstance(): MemoryRepository {
         return new MemoryRepository(EPISODES);
+    }
+
+    async get(id: string): Promise<Either<false, PodcastEpisode>> {
+        for (const episode of this.episodes) {
+            if (`${episode.number}` == id) {
+                return MakeRight(episode);
+            }
+        }
+
+        return MakeLeft(false);
     }
 }
