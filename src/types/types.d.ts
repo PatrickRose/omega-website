@@ -7,6 +7,8 @@ export type ApiResult<T extends Either> = {
     body: T
 };
 
+export type OmegaDate = t.TypeOf<typeof types.DateDecode>;
+
 export type OnlineGame = t.TypeOf<typeof types.OnlineGameDecode>;
 export type PlayByEmailGame = t.TypeOf<typeof types.PlayByEmailGameDecode>;
 export type Game = t.TypeOf<typeof types.GameDecode>;
@@ -38,4 +40,5 @@ export type EditGameSuccess = t.TypeOf<typeof types.EditGameSuccessDecode>
 export type EditGameFailed = t.TypeOf<typeof types.EditGameFailedDecode>
 export type EditGameResult = t.TypeOf<typeof types.EditGameResultDecode>
 
+export type PodcastEpisode = t.TypeOf<typeof types.PodcastEpisodeDecode>;
 
