@@ -7,12 +7,44 @@ import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {MakeLeft} from "../../utils/io-ts-helpers";
 import {getPodcastRepo} from "../../server/repository/podcast";
 import {getStringFromOmegaDate} from "../../utils";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faRss} from "@fortawesome/free-solid-svg-icons/faRss";
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {faAtom} from "@fortawesome/free-solid-svg-icons/faAtom";
+import {faJs} from "@fortawesome/free-brands-svg-icons/faJs";
 
+type CatcherFeedProps = { link: string, description: string, icon: IconProp };
+const FEED_LINKS: CatcherFeedProps[] = [
+    {
+        link: '/podcast/feed',
+        description: 'RSS feed',
+        icon: faRss
+    },
+    {
+        link: '/podcast/feed/atom',
+        description: 'ATOM feed',
+        icon: faAtom
+    },
+    {
+        link: '/podcast/feed/json',
+        description: 'JSON feed',
+        icon: faJs
+    }
+]
+
+function CatcherFeed({link, description, icon}: CatcherFeedProps) {
+    return <Link href={link}>
+        <a title={description} className="p-4">
+            <FontAwesomeIcon icon={icon} size="2x"/>
+        </a>
+    </Link>
+}
 
 function PodcastEpisode(props: PodcastEpisode) {
     return <li className="py-2">
         <h2 className="text-2xl hover:text-omega">
-            <Link href={props.link}>
+            <Link
+                href={props.link}>
                 <a>Episode {props.number}: {props.title}</a>
             </Link>
         </h2>
@@ -91,7 +123,15 @@ export default function Podcast(props: InferGetStaticPropsType<typeof getStaticP
             </p>
         </Hero>
         <MainContent>
-            <PodcastList podcastList={podcastList}/>
+            <div className="flex justify-center pb-2">
+                {
+                    FEED_LINKS.map(feedLink => <CatcherFeed key={feedLink.link} link={feedLink.link}
+                                                            description={feedLink.description} icon={feedLink.icon}/>)
+                }
+            </div>
+            <div className="flex-1">
+                <PodcastList podcastList={podcastList}/>
+            </div>
         </MainContent>
     </React.Fragment>;
 }
