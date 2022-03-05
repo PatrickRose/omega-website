@@ -5,7 +5,7 @@ import {PlayByEmailGameDecode} from "../../types/io-ts-def";
 import {Either, isLeft, isRight} from "fp-ts/Either";
 import {Hero, HeroHeading, MainContent} from "../../components/Hero";
 import {TextRow} from "../../components/Placeholders";
-import {getStringFromGameDate} from "../../utils";
+import {getStringFromOmegaDate} from "../../utils";
 import Markdown from "../../components/Markdown";
 import Link from "next/link";
 import {NoMatch} from "../../components/NoMatch";
@@ -69,9 +69,9 @@ class FetchedGame extends GameStructure<{ game: Game }> {
                 {game.designer}
             </span>
             <br/>
-            {getStringFromGameDate(game.date)}
+            {getStringFromOmegaDate(game.date)}
             {
-                isPBEM(game) ? ` - ${getStringFromGameDate(game.endDate)}` : null
+                isPBEM(game) ? ` - ${getStringFromOmegaDate(game.endDate)}` : null
             }
         </p>;
     }

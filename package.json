@@ -21,6 +21,7 @@
     "@types/uuid": "^8.3.0",
     "argon2": "^0.28.2",
     "body-parser": "^1.18.3",
+    "feed": "^4.2.2",
     "fork-ts-checker-webpack-plugin": "^6.4.0",
     "formik": "^2.2.9",
     "fp-ts": "^2.9.5",

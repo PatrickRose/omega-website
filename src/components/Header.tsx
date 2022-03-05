@@ -31,6 +31,10 @@ const links: LinkDef[] = [
         linkText: 'Planning'
     },
     {
+        linkPath: '/podcast',
+        linkText: 'Podcast',
+    },
+    {
         linkPath: '/contact',
         linkText: 'Contact'
     },
@@ -89,6 +93,7 @@ function getMaxHeight(): string {
         case 5: return 'max-h-72';
         case 6: return 'max-h-80';
         case 7: return 'max-h-96';
+        case 8: return 'max-h-96';
         default: throw Error(`Don't know what the max height for a menu with ${links.length} items in it`)
     }
 }
@@ -107,7 +112,7 @@ const Navbar = () => {
     return <nav className="bg-gray-800 navbar">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                     {
                         // Mobile menu button-->
                     }
@@ -131,7 +136,7 @@ const Navbar = () => {
                         <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'hidden' : 'block')} icon={faTimes} />
                     </button>
                 </div>
-                <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex-1 flex items-center justify-center md:items-stretch md:justify-start">
                     <div className="shrink-0 flex items-center">
                         <Image
                             src={omegaLogo} alt="OMEGA logo"
