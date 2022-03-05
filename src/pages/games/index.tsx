@@ -6,7 +6,7 @@ import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import {Hero, HeroHeading, MainContent} from "../../components/Hero";
-import {dateSorter, getStringFromGameDate} from "../../utils";
+import {dateSorter, getStringFromOmegaDate} from "../../utils";
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {getGamesRepo} from "../../server/repository/games";
 import {MakeLeft} from "../../utils/io-ts-helpers";
@@ -39,7 +39,7 @@ function FetchedMegagame(props: Game) {
             <p className="font-bold">
                 {props.designer}
             </p>
-            <p>{getStringFromGameDate(props.date)}</p>
+            <p>{getStringFromOmegaDate(props.date)}</p>
             <p>{props.preamble}</p>
         </div>
     </li>

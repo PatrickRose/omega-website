@@ -10,7 +10,7 @@ import {
     TextInput,
     ValidationError
 } from "../Form";
-import {getJSDateFromGameDate} from "../../utils";
+import {getJSDateFromOmegaDate} from "../../utils";
 import Markdown from "../Markdown";
 
 export type SuccessMessage = {
@@ -268,7 +268,7 @@ export function validate(values: FormikValues) {
         day: values.date.day,
     }
 
-    const jsDate = getJSDateFromGameDate(date);
+    const jsDate = getJSDateFromOmegaDate(date);
 
     if (jsDate.getMonth() != (date.month - 1)) {
         // That means the day wasn't valid - set that as invalid
@@ -289,7 +289,7 @@ export function validate(values: FormikValues) {
             month: values.endDate.month,
             day: values.endDate.day,
         }
-        const jsEndDate = getJSDateFromGameDate(endDate);
+        const jsEndDate = getJSDateFromOmegaDate(endDate);
 
         if (jsEndDate.getMonth() != (endDate.month - 1)) {
             // That means the day wasn't valid - set that as invalid

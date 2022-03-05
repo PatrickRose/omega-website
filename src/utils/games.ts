@@ -1,6 +1,6 @@
 import {Game, OnlineGame, PlayByEmailGame} from "../types/types";
 import {OnlineGameDecode} from "../types/io-ts-def";
-import {getJSDateFromGameDate} from "./index";
+import {getJSDateFromOmegaDate} from "./index";
 
 
 type GameUtils<T extends Game> = {
@@ -9,7 +9,7 @@ type GameUtils<T extends Game> = {
 
 const onlineGameUtils: GameUtils<OnlineGame> = {
     isUpcoming(value: OnlineGame): boolean {
-        const dateFromThis = getJSDateFromGameDate(value.date);
+        const dateFromThis = getJSDateFromOmegaDate(value.date);
 
         const today = new Date();
 
@@ -22,7 +22,7 @@ const onlineGameUtils: GameUtils<OnlineGame> = {
 
 const pbemGameUtils: GameUtils<PlayByEmailGame> = {
     isUpcoming(value: PlayByEmailGame): boolean {
-        const dateFromThis = getJSDateFromGameDate(value.endDate);
+        const dateFromThis = getJSDateFromOmegaDate(value.endDate);
 
         const today = new Date();
 

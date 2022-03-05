@@ -6,6 +6,7 @@ import {Hero, HeroHeading, MainContent} from "../../components/Hero";
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {MakeLeft} from "../../utils/io-ts-helpers";
 import {getPodcastRepo} from "../../server/repository/podcast";
+import {getStringFromOmegaDate} from "../../utils";
 
 
 function PodcastEpisode(props: PodcastEpisode) {
@@ -15,6 +16,7 @@ function PodcastEpisode(props: PodcastEpisode) {
                 <a>Episode {props.number}: {props.title}</a>
             </Link>
         </h2>
+        <p>{getStringFromOmegaDate(props.date)}</p>
         <p className="mt-1 pb-2">
             {props.description}
         </p>

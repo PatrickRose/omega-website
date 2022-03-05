@@ -1,6 +1,6 @@
-import {Game} from "../types/types";
+import {Game, OmegaDate} from "../types/types";
 
-export function getJSDateFromGameDate(date: Game["date"]): Date {
+export function getJSDateFromOmegaDate(date: OmegaDate): Date {
     const val = new Date();
     val.setUTCFullYear(date.year, date.month - 1, date.day);
 
@@ -11,8 +11,8 @@ export function getStringFromJSDate(date: Date): string {
     return date.toLocaleDateString();
 }
 
-export function getStringFromGameDate(date: Game["date"]): string {
-    return getStringFromJSDate(getJSDateFromGameDate(date));
+export function getStringFromOmegaDate(date: OmegaDate): string {
+    return getStringFromJSDate(getJSDateFromOmegaDate(date));
 }
 
 export function dateSorter(a: Game, b: Game): number {
