@@ -37,6 +37,17 @@ const EPISODES: PodcastEpisode[] = [
             month: 3,
             year: 2022
         }
+    },
+    {
+        number: 3,
+        title: "NPCs",
+        link: "https://www.dropbox.com/s/p4eymtkkod2joc8/Ep%203%20NPCs.mp3?dl=0",
+        description: "In this episode, Steph, Stu, and Kyle talk NPCs! They’ll give They’ll cover topics like how they’re different from NPCs in video games and TTRPGs, designing NPCs, and some generally useful tips on interacting with NPCs in Play-by-Email games.",
+        date: {
+            day: 18,
+            month: 3,
+            year: 2022
+        }
     }
 ]
 
