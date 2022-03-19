@@ -32,6 +32,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         id: siteUrl,
         link: `${siteUrl}/podcast`,
         image: `${siteUrl}/logo.svg`,
+        language: 'English',
         favicon: `${siteUrl}/favicon.ico`,
         description: "Interested in the Play-by-Email games that OMEGA put on? Join Steph, Stu and Kyle as they discuss Play-by-Email games in depth, from how to play them, to how to create them to the stories they've picked up along the way!",
         copyright: 'All rights reserved 2022, Steph Rothman',
@@ -42,12 +43,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         },
         author: {
             name: 'Steph Rothman'
-        }
+        },
     });
 
     episodes.right.forEach(episode => {
         const date = getJSDateFromOmegaDate(episode.date);
         date.setHours(0, 0, 0);
+
         feed.addItem({
             title: `Episode ${episode.number}: ${episode.title}`,
             id: `${episode.number}`,
@@ -57,9 +59,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             description: episode.description,
 
             published: date,
-            enclosure: {
+            audio: {
                 url: episode.link,
-                type: 'audio/mp3'
+                type: episode.type,
+                title: `Episode ${episode.number}: ${episode.title}`,
+                length: episode.length
             }
         })
     })

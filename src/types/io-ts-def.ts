@@ -195,5 +195,7 @@ export const PodcastEpisodeDecode = t.type({
     title: t.string,
     link: t.string,
     description: t.string,
-    date: DateDecode
+    date: DateDecode,
+    length: t.number,
+    type: t.string
 });
