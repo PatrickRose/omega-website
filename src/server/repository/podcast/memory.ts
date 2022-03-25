@@ -52,7 +52,7 @@ const EPISODES: PodcastEpisode[] = [
     {
         number: 4,
         title: "How to Win Friends and Influence People with Mickey",
-        link: "https://www.dropbox.com/s/p4eymtkkod2joc8/Ep%203%20NPCs.mp3?dl=0",
+        link: "https://www.dropbox.com/s/wcsb9j7noh1way9/Ep4%20How%20to%20Win%20Friends%20and%20Influence%20People%20with%20Mickey.mp3?dl=0",
         description: "Special guest Mickey joins Steph, Stu, and Kyle on this week’s episode! Mickey has, arguably, “won” nearly every Play-by-Email game he has played- or controlled- in. What’s his secret? He’ll chat with your hosts about the most successful ways to interact with PCs and NPCs in PbEm games.",
         date: {
             day: 25,
