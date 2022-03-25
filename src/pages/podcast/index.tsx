@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps<{ podcastList: Either<false, Podcast
         props: {
             podcastList: podcastList
         },
-        revalidate: 3600
+        revalidate: 300
     }
 }
 
