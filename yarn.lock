@@ -4003,10 +4003,10 @@ mongodb@^4.2.0:
   optionalDependencies:
     saslprep "^1.0.3"
 
-monocle-ts@^2.3.10:
-  version "2.3.11"
-  resolved "https://registry.yarnpkg.com/monocle-ts/-/monocle-ts-2.3.11.tgz#562cd960bc24eaa84d9b6118d46a5441f3c0aac0"
-  integrity sha512-YJQdpDeKU0NNAecDjFgDDnDoivmf2nXsJZTRQdKh5jsPKG2lT/15dFnSuUcQoKB/VZN1z7jQ0B0bffbRFUtLmg==
+monocle-ts@^2.3.12:
+  version "2.3.12"
+  resolved "https://registry.yarnpkg.com/monocle-ts/-/monocle-ts-2.3.12.tgz#73e7d59841b3843bf76eb840735a9641fdd3bd93"
+  integrity sha512-mf753m69aRNApcL2KCKfLRwfWbraeqQfRRgm3a8D+5lvkhCcMtVp8/vnM04Cmhsd6YXJeInMeQFFETrd7jWYww==
 
 mri@^1.1.0:
   version "1.2.0"
@@ -4043,10 +4043,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-newtype-ts@^0.3.4:
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/newtype-ts/-/newtype-ts-0.3.4.tgz#65c74b7d5195edaa9abfcdba6549a33a5c0e298d"
-  integrity sha512-lFJnWAt0oXX1j1ErNy9RU5+FPNtVyzugHW2MchaaMiOeeS9LEmqAAOqyHPFQ0Uw895jStSYGSCslrByzYxFJYQ==
+newtype-ts@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/newtype-ts/-/newtype-ts-0.3.5.tgz#5c113d34a04938d9e90061437638260ea965c490"
+  integrity sha512-v83UEQMlVR75yf1OUdoSFssjitxzjZlqBAjiGQ4WJaML8Jdc68LJ+BaSAXUmKY4bNzp7hygkKLYTsDi14PxI2g==
 
 next@^12.1.1:
   version "12.1.1"
