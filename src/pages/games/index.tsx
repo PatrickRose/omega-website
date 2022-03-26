@@ -28,7 +28,7 @@ const icons = {
 function FetchedMegagame(props: Game) {
     return <li className="grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4">
         <div className="col-span-1 text-center flex flex-col justify-center items-center">
-            <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full text-5xl"/>
+            <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full w-full"/>
         </div>
         <div className="sm:col-span-11 col-span-4">
             <h2 className="text-2xl hover:text-omega">
