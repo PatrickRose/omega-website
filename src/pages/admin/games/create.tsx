@@ -26,12 +26,12 @@ export default function CreateGame() {
         endDate: {
             year: (new Date()).getFullYear(),
             month: 1,
-            day: 1
+            day: null
         },
         date: {
             year: (new Date()).getFullYear(),
             month: 1,
-            day: 1
+            day: null
         },
     };
 

@@ -36,7 +36,7 @@ function makeIDFromBody({name, date}: CreateGameFormValues): Game["_id"] {
 
     const numberFormat = new Intl.NumberFormat('en-GB', {minimumIntegerDigits: 2});
 
-    return `${nameCaps}${date.year}${numberFormat.format(date.month)}${numberFormat.format(date.day)}`;
+    return `${nameCaps}${date.year}${numberFormat.format(date.month)}${numberFormat.format(date.day??0)}`;
 }
 
 async function getResult(body: unknown): Promise<ApiResult<CreateGameResult>> {
