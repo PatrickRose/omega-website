@@ -128,7 +128,9 @@ export const getStaticProps: GetStaticProps<SingleGameProps> = async (context) =
 
     return {
         props: {game},
-        revalidate: 60
+        // Long-lived cache of a week
+        // We invalidate the cache when edited, so this is fine
+        revalidate: 604800
     }
 }
 
