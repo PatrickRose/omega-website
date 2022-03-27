@@ -110,6 +110,11 @@ async function updateGame(req: NextApiRequest, res: NextApiResponse) {
     if (typeof req.query.id === 'string') {
         const {status, body} = await getResult(data, req.query.id);
 
+        if (status === 200) {
+            await res.unstable_revalidate(`/games/${req.query.id}`)
+                .catch(reason => console.log(reason));
+        }
+
         res.status(status).json(body);
     } else {
         res.status(400).json(makeFailedResult('Did not get a single id in the query params'))
