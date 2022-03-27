@@ -54,7 +54,7 @@ const MonthDecode = t.union([
 export const DateDecode = t.type({
     year: t.number,
     month: MonthDecode,
-    day: DayDecode
+    day: t.union([DayDecode, t.null])
 });
 
 export const OnlineGameDecode = t.type({

@@ -90,8 +90,8 @@ function DayOptions({prefix}: { prefix: string }) {
     return <>
         {
             [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
-            ].map(val => <option key={`${prefix}${val}`} value={val}>{val}</option>)
+                'TBC', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+            ].map(val => <option key={`${prefix}${val}`} value={val === 'tbc' ? '' : val}>{val}</option>)
         }
     </>;
 }
@@ -245,6 +245,22 @@ export function GameAdmin(
     </Formik>
 }
 
+function formValuesToJSDate(values: FormikValues, key: 'date'|'endDate'): Date {
+    const date: EditGameFormValues[typeof key] = {
+        year: values[key].year,
+        month: values[key].month,
+        day: values[key].day ? null : values[key].day,
+    }
+
+    return getJSDateFromOmegaDate(date);
+}
+
+function validateDate(values: FormikValues, key: 'date'|'endDate'): boolean {
+    const jsDate = formValuesToJSDate(values, key);
+
+    return jsDate.getMonth() == (values[key].month - 1);
+}
+
 export function validate(values: FormikValues) {
     const errors: FormError<EditGameFormValues | CreateGameFormValues> = {};
 
@@ -262,15 +278,7 @@ export function validate(values: FormikValues) {
         }
     }
 
-    const date: EditGameFormValues['date'] = {
-        year: values.date.year,
-        month: values.date.month,
-        day: values.date.day,
-    }
-
-    const jsDate = getJSDateFromOmegaDate(date);
-
-    if (jsDate.getMonth() != (date.month - 1)) {
+    if (!validateDate(values, 'date')) {
         // That means the day wasn't valid - set that as invalid
         if (!errors.date) {
             errors.date = {}
@@ -284,14 +292,7 @@ export function validate(values: FormikValues) {
     }
 
     if (values.type == 'Play-By-Email') {
-        const endDate: EditGameFormValues['endDate'] = {
-            year: values.endDate.year,
-            month: values.endDate.month,
-            day: values.endDate.day,
-        }
-        const jsEndDate = getJSDateFromOmegaDate(endDate);
-
-        if (jsEndDate.getMonth() != (endDate.month - 1)) {
+        if (!validateDate(values, 'endDate')) {
             // That means the day wasn't valid - set that as invalid
             if (!errors.endDate) {
                 errors.endDate = {}
@@ -300,7 +301,7 @@ export function validate(values: FormikValues) {
             errors.endDate.day = 'That day does not exist for that month';
         }
 
-        if (!errors.date && !errors.endDate && jsEndDate < jsDate) {
+        if (!errors.date && !errors.endDate && formValuesToJSDate(values, 'endDate') < formValuesToJSDate(values, 'date')) {
             errors.endDate = {day: 'The end date must be after the start date'}
         }
     }
