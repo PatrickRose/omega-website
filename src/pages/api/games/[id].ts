@@ -6,6 +6,7 @@ import {sessionOptions} from '../../../lib/session';
 import {ApiResult, EditGameFailed, EditGameResult, EditGameSuccess, Game} from "../../../types/types";
 import {MakeLeft, MakeRight} from "../../../utils/io-ts-helpers";
 import {EditGameFormValuesDecode} from "../../../types/io-ts-def";
+import {clearGameCaches} from "../../../lib/cacheClear";
 
 const gameRespository = getGamesRepo();
 
@@ -110,9 +111,8 @@ async function updateGame(req: NextApiRequest, res: NextApiResponse) {
     if (typeof req.query.id === 'string') {
         const {status, body} = await getResult(data, req.query.id);
 
-        if (status === 200) {
-            await res.unstable_revalidate(`/games/${req.query.id}`)
-                .catch(reason => console.log(reason));
+        if (isRight(body)) {
+            await clearGameCaches(res, body.right.game._id);
         }
 
         res.status(status).json(body);
