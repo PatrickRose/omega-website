@@ -13,6 +13,7 @@ import { MakeLeft, MakeRight } from '../../../utils/io-ts-helpers';
 import {sessionOptions} from "../../../lib/session";
 import {withIronSessionApiRoute} from "iron-session/next";
 import {getGamesRepo} from "../../../server/repository/games";
+import {clearGameCaches} from "../../../lib/cacheClear";
 
 function makeSuccessResult(message: string, game: Game): Right<CreateGameSuccess> {
     return MakeRight({
@@ -125,5 +126,10 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse<CreateGameRe
 
     const { status, body } = await getResult(data);
 
+    if (isRight(body)) {
+        await clearGameCaches(res, body.right.game._id)
+    }
+
     res.status(status).json(body);
+
 }
