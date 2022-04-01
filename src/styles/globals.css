@@ -22,4 +22,11 @@
     .code-snippet {
         @apply bg-gray-300 text-pink-800
     }
+
+    .future hr, .past hr {
+        display: none;
+    }
+    .future + .past hr {
+        display: inherit;
+    }
 }

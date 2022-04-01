@@ -31,6 +31,23 @@ export function dateSorter(a: Game, b: Game): number {
     const aDate = a.date;
     const bDate = b.date;
 
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
+    const aDateAsJS = getJSDateFromOmegaDate(aDate);
+    const bDateAsJS = getJSDateFromOmegaDate(bDate);
+
+    let reverseOrder = true;
+
+    if (aDateAsJS < currentDate && bDateAsJS < currentDate) {
+        reverseOrder = false;
+    }
+    else if (aDateAsJS < currentDate) {
+        return 1;
+    } else if (bDateAsJS < currentDate) {
+        return -1;
+    }
+
     let keys: (keyof typeof aDate)[] = ['year', 'month', 'day'];
 
     for (let key of keys) {
@@ -38,19 +55,21 @@ export function dateSorter(a: Game, b: Game): number {
         const bDateKeyVal = bDate[key];
         if (aDateKeyVal === null) {
             if (bDateKeyVal !== null) {
-                return 1;
+                return reverseOrder ? -1 : 1;
             }
 
             continue;
         }
 
         if (bDateKeyVal === null) {
-            return -1;
+            return reverseOrder ? 1 : -1;
         }
 
 
         if (aDateKeyVal !== bDateKeyVal) {
-            return bDateKeyVal - aDateKeyVal
+            let diff = bDateKeyVal - aDateKeyVal
+
+            return reverseOrder ? -diff : diff;
         }
     }
 

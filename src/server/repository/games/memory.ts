@@ -22,7 +22,7 @@ export class MemoryRepository implements GamesRepository {
     async upcomingEvents(limit: number): Promise<Either<false, Game[]>> {
         const games: Game[] = this.games.filter((game) => gameUtils.isUpcoming(game));
 
-        games.sort((a, b) => -dateSorter(a, b));
+        games.sort(dateSorter);
 
         return MakeRight(games.slice(0, limit));
     }
