@@ -6,7 +6,7 @@ import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import {Hero, HeroHeading, MainContent} from "../../components/Hero";
-import {dateSorter, getStringFromOmegaDate} from "../../utils";
+import {dateSorter, getJSDateFromOmegaDate, getStringFromOmegaDate} from "../../utils";
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {getGamesRepo} from "../../server/repository/games";
 import {MakeLeft} from "../../utils/io-ts-helpers";
@@ -26,7 +26,8 @@ const icons = {
 }
 
 function FetchedMegagame(props: Game) {
-    return <li className="grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4">
+    return <li className={`grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4 ${getJSDateFromOmegaDate(props.date) > new Date() ? 'future' : 'past'}`}>
+        <hr className="col-span-12" />
         <div className="col-span-1 text-center flex flex-col justify-center items-center">
             <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full w-full"/>
         </div>

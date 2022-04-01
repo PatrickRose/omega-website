@@ -30,7 +30,7 @@ export class MongoRepository implements GamesRepository {
             return all;
         }
         const games = all.right.filter((game) => gameUtils.isUpcoming(game))
-        games.sort((a, b) => -dateSorter(a, b));
+        games.sort(dateSorter);
 
         return MakeRight(games.slice(0, limit));
     }
