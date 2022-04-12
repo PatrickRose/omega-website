@@ -2808,10 +2808,10 @@ ip@^1.1.5:
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
   integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
 
-iron-session@^6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/iron-session/-/iron-session-6.1.1.tgz#3957e4bab29c21a3cde7c52cdeee37e0905a3894"
-  integrity sha512-kTzE57X8aV02glZS5GoQHKZTfSyTgBaG2aMYOhQITUdvSD/RB4w0YZjUUzKC3uQrKWlXyjpnvROGwXtJOf1v7Q==
+iron-session@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/iron-session/-/iron-session-6.1.2.tgz#ae2f673409435c94fc4e9d93ea80c1965f3255c4"
+  integrity sha512-u1lTrT157sDz8UxCEANwdBUTUSYGbuySBjOcWVqdHCcCpgbO8CzguJBOaq/vpxJHQoIKZtD6MlzichhThRlq/A==
   dependencies:
     "@hapi/iron" "^6.0.0"
     "@types/cookie" "^0.4.0"
