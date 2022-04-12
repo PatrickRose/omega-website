@@ -64,8 +64,8 @@ export function SubmitButton({ disabled, children, ...props }: { disabled: boole
 
 export function SuccessMessage({ children }: { children: ReactNode }) {
     return <div className="py-2 w-full bg-green-200 rounded">
-        <p className="p-2">
+        <div className="p-2">
             {children}
-        </p>
+        </div>
     </div>
 }
