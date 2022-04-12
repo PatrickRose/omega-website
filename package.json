@@ -33,7 +33,7 @@
     "io-ts": "^2.2.14",
     "io-ts-types": "^0.5.13",
     "iron-session": "^6.1.2",
-    "mongodb": "^4.4.1",
+    "mongodb": "^4.5.0",
     "monocle-ts": "^2.3.12",
     "newtype-ts": "^0.3.5",
     "next": "^12.1.4",
