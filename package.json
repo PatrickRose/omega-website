@@ -58,7 +58,7 @@
     "@types/react-dom": "^18.0.3",
     "@types/react-test-renderer": "^18.0.0",
     "@types/uuid": "^8.3.4",
-    "autoprefixer": "^10.4.5",
+    "autoprefixer": "^10.4.7",
     "babel-jest": "^28.0.3",
     "eslint": "^8.13.0",
     "eslint-config-next": "^12.1.4",
