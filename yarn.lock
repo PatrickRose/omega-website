@@ -1027,10 +1027,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/cookie@^0.4.0":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
-  integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
+"@types/cookie@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.5.1.tgz#b29aa1f91a59f35e29ff8f7cb24faf1a3a750554"
+  integrity sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==
 
 "@types/debug@^4.0.0":
   version "4.1.7"
@@ -1882,10 +1882,10 @@ convert-source-map@^1.4.0, convert-source-map@^1.6.0, convert-source-map@^1.7.0:
   dependencies:
     safe-buffer "~5.1.1"
 
-cookie@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.2.tgz#0e41f24de5ecf317947c82fc789e06a884824432"
-  integrity sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==
+cookie@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
+  integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
 core-js-pure@^3.20.2:
   version "3.20.2"
@@ -2966,16 +2966,16 @@ ip@^1.1.5:
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
   integrity sha1-vd7XARQpCCjAoDnnLvJfWq7ENUo=
 
-iron-session@^6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/iron-session/-/iron-session-6.1.2.tgz#ae2f673409435c94fc4e9d93ea80c1965f3255c4"
-  integrity sha512-u1lTrT157sDz8UxCEANwdBUTUSYGbuySBjOcWVqdHCcCpgbO8CzguJBOaq/vpxJHQoIKZtD6MlzichhThRlq/A==
+iron-session@^6.1.3:
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/iron-session/-/iron-session-6.1.3.tgz#c900102560e7d19541a9e6b8bbabc5436b01a230"
+  integrity sha512-o5ErwzAtTBKPtxo4nDmxOZAjK4Stku//5sFM0vac3/Px34530gTwnXoa8zwsC4/koqCtKY0yC0KF/1K+ZMGuHA==
   dependencies:
     "@hapi/iron" "^6.0.0"
-    "@types/cookie" "^0.4.0"
+    "@types/cookie" "^0.5.1"
     "@types/express" "^4.17.13"
     "@types/node" "^16.11.7"
-    cookie "^0.4.2"
+    cookie "^0.5.0"
 
 is-arrayish@^0.2.1:
   version "0.2.1"
