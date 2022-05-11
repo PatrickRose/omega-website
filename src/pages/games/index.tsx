@@ -103,7 +103,6 @@ function GameList(props: GameListParams) {
     }
 
     const filterGame = (value: Game): boolean => {
-        console.log({date: value.date, isUpcoming: gameUtils.isUpcoming(value)});
         if (!past && !gameUtils.isUpcoming(value)) {
             return false;
         }
