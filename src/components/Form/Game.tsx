@@ -12,6 +12,9 @@ import {
 } from "../Form";
 import {getJSDateFromOmegaDate} from "../../utils";
 import Markdown from "../Markdown";
+import {Either} from "fp-ts/es6/Either";
+import {MakeLeft, MakeRight} from "../../utils/io-ts-helpers";
+import {isLeft} from "fp-ts/Either";
 
 export type SuccessMessage = {
     message: string,
@@ -249,16 +252,28 @@ function formValuesToJSDate(values: FormikValues, key: 'date'|'endDate'): Date {
     const date: EditGameFormValues[typeof key] = {
         year: values[key].year,
         month: values[key].month,
-        day: values[key].day ? null : values[key].day,
+        day: null
     }
 
     return getJSDateFromOmegaDate(date);
 }
 
-function validateDate(values: FormikValues, key: 'date'|'endDate'): boolean {
+function validateDate(values: FormikValues, key: 'date'|'endDate'): Either<string, true> {
     const jsDate = formValuesToJSDate(values, key);
 
-    return jsDate.getMonth() == (values[key].month - 1);
+    const currMonth = jsDate.getUTCMonth();
+
+    if (values[key].day) {
+        jsDate.setUTCDate(values[key].day);
+    }
+
+    if (currMonth == jsDate.getUTCMonth()) {
+        return MakeRight(true);
+    }
+    return MakeLeft(`The month didn't match.
+The passed form values were { year:${values[key].year}, month: ${values[key].month}, day: ${values[key].day ?? null } }. 
+The generated date was { year:${jsDate.getFullYear()}, month: ${jsDate.getMonth() - 1}, day: ${jsDate.getDay()} }
+Using getUTC etc gives us { year:${jsDate.getUTCFullYear()}, month: ${jsDate.getUTCMonth() - 1}, day: ${jsDate.getUTCDay()} }`);
 }
 
 export function validate(values: FormikValues) {
@@ -278,13 +293,14 @@ export function validate(values: FormikValues) {
         }
     }
 
-    if (!validateDate(values, 'date')) {
+    const validateDateRes = validateDate(values, 'date');
+    if (isLeft(validateDateRes)) {
         // That means the day wasn't valid - set that as invalid
         if (!errors.date) {
             errors.date = {}
         }
 
-        errors.date.day = 'That day does not exist for that month';
+        errors.date.day = validateDateRes.left;
     }
 
     if (!values.type) {
@@ -292,13 +308,14 @@ export function validate(values: FormikValues) {
     }
 
     if (values.type == 'Play-By-Email') {
-        if (!validateDate(values, 'endDate')) {
+        const validateDateRes = validateDate(values, 'endDate');
+        if (isLeft(validateDateRes)) {
             // That means the day wasn't valid - set that as invalid
             if (!errors.endDate) {
                 errors.endDate = {}
             }
 
-            errors.endDate.day = 'That day does not exist for that month';
+            errors.endDate.day =  validateDateRes.left;
         }
 
         if (!errors.date && !errors.endDate && formValuesToJSDate(values, 'endDate') < formValuesToJSDate(values, 'date')) {
