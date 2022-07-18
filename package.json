@@ -61,7 +61,7 @@
     "@types/uuid": "^8.3.4",
     "autoprefixer": "^10.4.7",
     "babel-jest": "^28.1.2",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "eslint-config-next": "^12.1.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.2",
