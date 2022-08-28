@@ -112,7 +112,7 @@ const Navbar = () => {
     return <nav className="bg-gray-800 navbar">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
-                <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
+                <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                     {
                         // Mobile menu button-->
                     }
@@ -136,7 +136,7 @@ const Navbar = () => {
                         <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'hidden' : 'block')} icon={faTimes} />
                     </button>
                 </div>
-                <div className="flex-1 flex items-center justify-center md:items-stretch md:justify-start">
+                <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
                     <div className="shrink-0 flex items-center">
                         <Image
                             src={omegaLogo} alt="OMEGA logo"
@@ -144,7 +144,7 @@ const Navbar = () => {
                             width="32"
                         />
                     </div>
-                    <div className="hidden sm:block sm:ml-6">
+                    <div className="hidden lg:block sm:ml-6">
                         <div className="flex space-x-4">
                             <NavigationLinks />
                             {
@@ -159,8 +159,8 @@ const Navbar = () => {
         {
             // Mobile menu, show/hide based on menu state.
         }
-        <div className={'sm:hidden transition-all duration-500 ease-in ' + (hidden ? 'max-h-0 opacity-0' : maxHeight)} id="mobile-menu">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className={'lg:hidden transition-all duration-500 ease-in ' + (hidden ? 'max-h-0 opacity-0' : maxHeight)} id="mobile-menu">
+            <div className={`px-2 pt-2 pb-3 space-y-1 ${hidden ? 'hidden' : ''}` }>
                 <NavigationLinks mobile={true} />
             </div>
         </div>
