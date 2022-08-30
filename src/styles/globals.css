@@ -29,4 +29,8 @@
     .future + .past hr {
         display: inherit;
     }
+
+    .resource-details p {
+        @apply py-1;
+    }
 }

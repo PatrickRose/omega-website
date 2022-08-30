@@ -1,6 +1,9 @@
 import {Game, OnlineGame, PlayByEmailGame} from "../types/types";
 import {OnlineGameDecode} from "../types/io-ts-def";
 import {getJSDateFromOmegaDate} from "./index";
+import {faEnvelopeOpenText} from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
+import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
+import {IconDefinition} from "@fortawesome/fontawesome-svg-core";
 
 
 type GameUtils<T extends Game> = {
@@ -45,4 +48,8 @@ export const gameUtils: GameUtils<Game> & {getUtils(game:Game): GameUtils<Game>}
     isUpcoming(value: Game): boolean {
         return this.getUtils(value).isUpcoming(value);
     }
+}
+export const GAME_ICONS: {[key in Game["type"]]: IconDefinition} = {
+    'Play-By-Email': faEnvelopeOpenText,
+    'Online game': faDesktop
 }
