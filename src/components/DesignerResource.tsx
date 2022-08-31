@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useId, useState} from "react";
 import {Hero, HeroHeading, MainContent} from "./Hero";
 import {Game} from "../types/types";
 import Link from "next/link";
@@ -28,9 +28,22 @@ export type GameResourceProps = SiteResource | ExternalResource;
 export function Footnote({name, children}: {name: string, children: React.ReactNode}) {
     const [display, setDisplay] = useState<boolean>(false);
 
+    const id = useId();
+
     return <React.Fragment>
-        <button className="ml-1 text-sm btn-link rounded-none" onClick={() => setDisplay(!display)}>[{name}]</button>
-        <span className={`${display ? '' : 'hidden'} p-2 text-center block text-base bg-omega-dark text-omega-light not-italic`}>{children}</span>
+        <button
+            className="ml-1 text-sm btn-link rounded-none"
+            onClick={() => setDisplay(!display)}
+            aria-controls={id}
+        >
+            [{name}]
+        </button>
+        <span
+            className={`${display ? '' : 'hidden'} p-2 text-center block text-base bg-omega-dark text-omega-light not-italic`}
+            id={id}
+        >
+            {children}
+        </span>
     </React.Fragment>
 }
 
