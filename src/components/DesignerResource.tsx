@@ -25,14 +25,14 @@ type ExternalResource = BaseResourceProps & {
 
 export type GameResourceProps = SiteResource | ExternalResource;
 
-export function Footnote({name, children}: {name: string, children: React.ReactNode}) {
+export function Footnote({name, children}: {name: string|number, children: React.ReactNode}) {
     const [display, setDisplay] = useState<boolean>(false);
 
     const id = useId();
 
     return <React.Fragment>
         <button
-            className="ml-1 text-sm btn-link rounded-none"
+            className="ml-1 px-1 text-sm btn-link"
             onClick={() => setDisplay(!display)}
             aria-controls={id}
         >
