@@ -30,7 +30,19 @@
         display: inherit;
     }
 
-    .resource-details p {
+    .resource-details * {
         @apply py-1;
+    }
+
+    .resource-details ul, .resource-details ol {
+        @apply pl-6
+    }
+
+    .resource-details h4 {
+        @apply text-xl
+    }
+
+    .resource-details h5 {
+        @apply text-lg
     }
 }
