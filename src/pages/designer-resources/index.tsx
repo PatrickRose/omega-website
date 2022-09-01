@@ -25,7 +25,22 @@ function Resource({resource}: { resource: GameResourceProps }) {
 }
 
 export default function DesignerResources() {
-    const resources = RESOURCES;
+    const resources = Object.entries(RESOURCES);
+
+    resources.sort(([_, a], [__, b]) => {
+        const aName = a.gameName;
+        const bName = b.gameName;
+
+        if (aName < bName) {
+            return -1;
+        }
+
+        if (aName > bName) {
+            return 1;
+        }
+
+        return 0;
+    });
 
     return <React.Fragment>
         <Hero>
@@ -41,7 +56,7 @@ export default function DesignerResources() {
                 explain how the game worked, what their design process was and a discussion on how they wrote their
                 rules.
             </p>
-            {Object.entries(resources).map(([index, resource]) => <Resource resource={resource} key={index}/>)}
+            {resources.map(([index, resource]) => <Resource resource={resource} key={index}/>)}
         </MainContent>
     </React.Fragment>;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import {GameResourceProps} from "../../../components/DesignerResource";
 import {Councils} from "./councils/councils";
+import GodsWars from "./gods-wars/gods-wars";
 
 const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
     'councils-of-elporia': {
@@ -25,6 +26,27 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
             </p>
         </React.Fragment>,
         content: <Councils/>
+    },
+    'gods-wars': {
+        id: 'gods-wars',
+        resourceType: 'site',
+        gameName: 'Gods\'s Wars',
+        type: 'Play-By-Email',
+        designerName: 'Steph Rothman',
+        details: <React.Fragment>
+            <p>
+                You are a demigod, a child of one of the Olympian Gods, invited to London to compete in the Gods’ Wars.
+                With what you assume is a little bit of divine intervention, your dream job and lodgings are
+                conveniently available there for you to easily relocate and participate.
+            </p>
+            <p>
+                The Gods’ Wars - a competition among demigods in which the winners become Gods themselves- have been run
+                countless times across countless worlds, with countless themes. Demigods have intervened to rig
+                elections, intercede in succession crises, start wars, and more! This time, the Olympians of the Greek
+                pantheon are hosting it and the theme is love.
+            </p>
+        </React.Fragment>,
+        content: <GodsWars/>
     }
 }
 
