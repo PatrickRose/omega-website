@@ -3,7 +3,7 @@ import {Hero, HeroHeading, MainContent} from "./Hero";
 import {Game} from "../types/types";
 import Link from "next/link";
 
-type GameID = 'councils-of-elporia' | 'gods-wars';
+type GameID = 'councils-of-elporia' | 'gods-wars' | 'tempest';
 
 type BaseResourceProps = {
     id: GameID,

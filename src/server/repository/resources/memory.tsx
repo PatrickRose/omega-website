@@ -1,7 +1,9 @@
 import React from "react";
-import {GameResourceProps} from "../../../components/DesignerResource";
-import {Councils} from "./councils/councils";
+import { GameResourceProps } from "../../../components/DesignerResource";
+import { Councils } from "./councils/councils";
 import GodsWars from "./gods-wars/gods-wars";
+import Tempest from "./tempest/tempest";
+
 
 const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
     'councils-of-elporia': {
@@ -25,7 +27,7 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
                 collaborative storytelling experience as much as an emulation of medieval power politics.
             </p>
         </React.Fragment>,
-        content: <Councils/>
+        content: <Councils />
     },
     'gods-wars': {
         id: 'gods-wars',
@@ -46,7 +48,20 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
                 pantheon are hosting it and the theme is love.
             </p>
         </React.Fragment>,
-        content: <GodsWars/>
+        content: <GodsWars />
+    },
+    "tempest": {
+        id: 'tempest',
+        resourceType: 'site',
+        gameName: 'Tempest',
+        type: 'Play-By-Email',
+        designerName: 'Stuart Martyn',
+        details: <React.Fragment>
+            <p>
+                Tempest is a play by e-mail game set in an ocean wracked by impossible, immobile storms for as long as mortal memory. The few who have braved it bring back treasures and strange rumours of what lies beyond are whispered throughout the world. Cities of the living dead. Unspeakable creatures that live beneath the waves. The unnatural storms receded a few weeks ago. Cautiously, the powers that neighbour this tempestuous sea sent ships to explore. What waits out there in the dark? What caused the impossible storms, and why have they stopped now? A game of exploration, politics and horror.
+            </p>
+        </React.Fragment>,
+        content: <Tempest />
     }
 }
 
