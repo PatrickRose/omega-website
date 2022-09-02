@@ -1,7 +1,7 @@
 import React from "react";
 
 import {Footnote} from "../../../../components/DesignerResource";
-import Image from "next/image";
+import Image, {ImageProps} from "next/image";
 
 import gameLogo from "./game-logo.png"
 import image2 from "./image2.jpg";
@@ -14,7 +14,7 @@ import image8 from "./image8.jpg";
 import image9 from "./image9.jpg";
 import image10 from "./image10.jpg";
 
-function GameImage({image, alt}: {image: StaticImport, alt: string}) {
+function GameImage({image, alt}: {image: ImageProps["src"], alt: string}) {
     return <div className="flex justify-items-center justify-center py-2">
         <div className="md:w-3/4 lg:w-1/2">
             <Image src={image} alt={alt} />
@@ -22,18 +22,18 @@ function GameImage({image, alt}: {image: StaticImport, alt: string}) {
     </div>
 }
 
-function TableHeader({children, scope}: {children: React.Node, scope?: 'col'|'row'}) {
+function TableHeader({children, scope}: {children: React.ReactNode, scope?: 'col'|'row'}) {
     return <th className="border border-omega-dark p-2" scope={scope ?? 'col'}>
         {children}
     </th>
 }
-function TableCell({children}: {children: React.Node}) {
+function TableCell({children}: {children?: React.ReactNode}) {
     return <td className="border border-omega-dark p-2">
         {children}
     </td>
 }
 
-function Quote({children}: {children: React.Node}) {
+function Quote({children}: {children: React.ReactNode}) {
     return <div className="italic text-center">
         {children}
     </div>
@@ -53,7 +53,7 @@ export default function Tempest() {
         <h2 className="text-2xl">
             Introduction
             <Footnote name={footnoteCount++}>
-                This intro is in two parts, thematic and practical. The 'hook' and the explanation. Here I'm trying to explain the core of the game; what the game is about. Tempest's exploration focus helps make this obvious but other game blurbs do a good job too.
+                This intro is in two parts, thematic and practical. The &apos;hook&apos; and the explanation. Here I&apos;m trying to explain the core of the game; what the game is about. Tempest&apos;s exploration focus helps make this obvious but other game blurbs do a good job too.
             </Footnote>
         </h2>
 
@@ -98,7 +98,7 @@ export default function Tempest() {
         <p>
             Each turn, you tell the Control team what you want to try and accomplish. This is done by submitting Actions (written summaries of what you are hoping to achieve and how). These Actions will be submitted and managed via our online system CANDI. The deadline for submitting your Actions is at <strong>1am Saturday BST/8pm Friday EDT</strong>
             <Footnote name={footnoteCount++}>
-                So much calculation goes into these, aiming for a time near to when people can expect to be awake. Now, few Brits are up at 1am, even on a Friday, but it means they can do last minute deciding. Americans are home from work (hopefully) and have time to think here too. Over in the Pacfic it's 8am, which is too early for me but you could get up, check emails and do a last minute decision.
+                So much calculation goes into these, aiming for a time near to when people can expect to be awake. Now, few Brits are up at 1am, even on a Friday, but it means they can do last minute deciding. Americans are home from work (hopefully) and have time to think here too. Over in the Pacfic it&apos;s 8am, which is too early for me but you could get up, check emails and do a last minute decision.
                 <br />
                 <br />
                 You could also just be lazy and pick a time that suits you, the Control.
@@ -112,19 +112,19 @@ export default function Tempest() {
                 Approx 2 Actions is the ideal for a PBEM. 1 Action is too few to get anything done and and HURTS when that fails. 3 is a lot for Control if everyone is doing it.
                 <br />
                 <br />
-                Nonetheless, I love the flexibilty ths system offers. It lets you go ALL IN or spread yourself wider. The effort system requires careful calibration to ensure it's not always mechanically optimal to go 3 actions. In this game, Effort dice making consequences less likely gently encourage stacking, and the more successes (3 or higher) you roll the bigger the success, meaning smaller but more powerful actions are encouraged but not essential.
+                Nonetheless, I love the flexibilty ths system offers. It lets you go ALL IN or spread yourself wider. The effort system requires careful calibration to ensure it&apos;s not always mechanically optimal to go 3 actions. In this game, Effort dice making consequences less likely gently encourage stacking, and the more successes (3 or higher) you roll the bigger the success, meaning smaller but more powerful actions are encouraged but not essential.
             </Footnote>
         </p>
 
         <h3 className="text-2xl">
             Rules Summary
             <Footnote name={footnoteCount++}>
-                A lot of players do not read rules, or skim them once then ask questions easily answered by the rulebook... or make assumptions, often to their detriment, as a result. To that end I tried to do an extra short and simple explanation for their benefit and basically said they don't <strong>have</strong> to read the full rules.
+                A lot of players do not read rules, or skim them once then ask questions easily answered by the rulebook... or make assumptions, often to their detriment, as a result. To that end I tried to do an extra short and simple explanation for their benefit and basically said they don&apos;t <strong>have</strong> to read the full rules.
             </Footnote>
         </h3>
 
         <p>
-            This game uses d6s, rolled each weekend by Control. There are four types of positive dice: Effort, Traits, Assets, and Arcane. As a general rule of thumb, adding more of these dice into an Action means that the Action is more likely to succeed. Rolling low on a Trait, Asset, or Arcane die can lead to a complication in addition to any successes you get, but it's a risk that is often worth taking.
+            This game uses d6s, rolled each weekend by Control. There are four types of positive dice: Effort, Traits, Assets, and Arcane. As a general rule of thumb, adding more of these dice into an Action means that the Action is more likely to succeed. Rolling low on a Trait, Asset, or Arcane die can lead to a complication in addition to any successes you get, but it&apos;s a risk that is often worth taking.
         </p>
 
         <p>
@@ -152,7 +152,7 @@ export default function Tempest() {
         <h3 className="text-2xl">
             Full Rules
             <Footnote name={footnoteCount++}>
-                The full rules are important, though. Some people care and it's especially important for things like 'what happens in a PVP draw'
+                The full rules are important, though. Some people care and it&apos;s especially important for things like &apos;what happens in a PVP draw&apos;
                 <br />
                 <br />
                 They may also inspire other future creators. Showing thought for things like edge cases and such is important!
@@ -168,7 +168,7 @@ export default function Tempest() {
                 The previous (d10) system had them tied together. a 10 would be a huge success with no consequence, a 5 a small success with a medium consequence and a 1 a failure with a nasty consequence.
                 <br />
                 <br />
-                In practise, this meant consequences got smaller and rarer and success greater as the game went on. I quite like this - a strong sense of levelling up - but for this game we're trying something new and decoupling them to allow for a more varied and interesting probability space. Also I love that in this system you want to roll high and low.
+                In practise, this meant consequences got smaller and rarer and success greater as the game went on. I quite like this - a strong sense of levelling up - but for this game we&apos;re trying something new and decoupling them to allow for a more varied and interesting probability space. Also I love that in this system you want to roll high and low.
             </Footnote>
         </h4>
 
@@ -188,7 +188,7 @@ export default function Tempest() {
             Combining Effort increases your chances of success and reduces the odds of complications, but means you have fewer Actions each turn. In addition, rolling multiple successes (i.e. more non-injury dice that rolled 3+) will lead to greater rewards. <strong>It is possible to fail entirely if you roll only 1s and 2s</strong>, which may be with or without complication. Please see the examples section below.
         </p>
 
-        <table class="border border-collapse w-full">
+        <table className="border border-collapse w-full">
             <thead>
                 <tr>
                     <TableHeader>
@@ -276,7 +276,7 @@ export default function Tempest() {
         <p>
             After applying 1-3 Effort, Trait, Asset, and Arcane dice can be assigned to Actions to improve the odds of securing a success. For each Trait, Asset or Arcane die put towards an Action, an additional die will be rolled. <strong>A maximum of 3 Trait/Asset/Arcane dice can be put towards any Action</strong>
             <Footnote name={footnoteCount++}>
-                Gotta have a upper limit to stop lucky players breaking away. Factor this into how much you give and how often. Players shouldn't be able to max out everything until near the end.
+                Gotta have a upper limit to stop lucky players breaking away. Factor this into how much you give and how often. Players shouldn&apos;t be able to max out everything until near the end.
             </Footnote>. There is no requirement for any such dice to be attached to an Action. However, Traits, Assets, and Arcane abilities need to be relevant/helpful for the additional dice to be rolled - this can be explained in your description of the Action. <strong>Control may reject a Trait/Asset/Arcane die if its use is not explained and/or does not make sense</strong>
             <Footnote name={footnoteCount++}>
                 Boring but important rule!
@@ -297,7 +297,7 @@ export default function Tempest() {
         <h4 className="text-xl">
             Attempting the Impossible
             <Footnote name={footnoteCount++}>
-                Sadly an important section, as it happens sometimes. It's kind covering yourself and warning players to expect consequences for their craziest shenanigans.
+                Sadly an important section, as it happens sometimes. It&apos;s kind covering yourself and warning players to expect consequences for their craziest shenanigans.
             </Footnote>
         </h4>
 
@@ -395,7 +395,7 @@ export default function Tempest() {
         <h5 className="text-lg">
             Example
             <Footnote name={footnoteCount++}>
-                Note this example shows the loser did not get nothing. It's a very easy example, though, in games these can be messier.
+                Note this example shows the loser did not get nothing. It&apos;s a very easy example, though, in games these can be messier.
             </Footnote>
         </h5>
 
@@ -500,7 +500,7 @@ export default function Tempest() {
             In the first (left) image, the player’s home port is shown in green. They can explore any of the blue hexes but not the red. In the second (right) green hexes show places already explored. They can explore any of the blue but not the red.
         </p>
 
-        <div class="flex">
+        <div className="flex">
             <GameImage image={image4} alt="" />
             <GameImage image={image6} alt="" />
         </div>
@@ -551,7 +551,7 @@ export default function Tempest() {
                 Copying and pasting the words of others
                 <em>ad verbatim</em>
                 <Footnote name={footnoteCount++}>
-                    This rule requires nuance. A bit of copy and paste, with source formatting, is fine? It's more about proving a person said something. I would <em>not</em> be an absolutist on this rule, especially for fun stuff between IC friends.
+                    This rule requires nuance. A bit of copy and paste, with source formatting, is fine? It&apos;s more about proving a person said something. I would <em>not</em> be an absolutist on this rule, especially for fun stuff between IC friends.
                 </Footnote>
             </li>
             <li>
@@ -568,15 +568,15 @@ export default function Tempest() {
         </p>
 
         <p>
-            These rules are important in order to allow players to maintain some mystery about each other's choices and to give players room to misdirect if they wish. Your emails will <em>never</em> be intercepted, shared, or read by anyone other than their intended recipients <strong>and actions undertaken to access another player’s emails will fail</strong>. In addition, while the Control team reads all emails - and greatly enjoys them - their NPCs do not.
+            These rules are important in order to allow players to maintain some mystery about each other&apos;s choices and to give players room to misdirect if they wish. Your emails will <em>never</em> be intercepted, shared, or read by anyone other than their intended recipients <strong>and actions undertaken to access another player’s emails will fail</strong>. In addition, while the Control team reads all emails - and greatly enjoys them - their NPCs do not.
             <Footnote name={footnoteCount++}>
                 I think explaining why rules exist helps to build trust, as these games can cause a lot of paranoia.
                 <br />
                 <br />
-                If you're considering letter players share or hack one another's communication for a pbem... take a step back. How might that change their behaviour? Does it encourage them to stop playing? To send fewer emails, or to speak in code? Is that something you want? Is that something they're going to enjoy?
+                If you&apos;re considering letter players share or hack one another&apos;s communication for a pbem... take a step back. How might that change their behaviour? Does it encourage them to stop playing? To send fewer emails, or to speak in code? Is that something you want? Is that something they&apos;re going to enjoy?
                 <br />
                 <br />
-                I'm an extremist and avoid even letting magical NPCs read player communications. It's not fun to deal with such beings, believe me - what if you want to complain behind their backs, or plot against them?
+                I&apos;m an extremist and avoid even letting magical NPCs read player communications. It&apos;s not fun to deal with such beings, believe me - what if you want to complain behind their backs, or plot against them?
             </Footnote>
         </p>
 
@@ -597,7 +597,7 @@ export default function Tempest() {
         <h3 className="text-2xl">
             Secrets and Spoilers
             <Footnote name={footnoteCount++}>
-                More important for this game than most, as I *love* my mysteries. Most games don't need this, just a line about 'don't chat to players OOC and spoil things'.
+                More important for this game than most, as I *love* my mysteries. Most games don&apos;t need this, just a line about &apos;don&apos;t chat to players OOC and spoil things&apos;.
             </Footnote>
         </h3>
 
@@ -648,10 +648,10 @@ export default function Tempest() {
         <p>
             You are welcome to note “red lines” in action submissions - things within your character’s control they would not do under any circumstance. For example, a player robbing a bank might note that physically harming anyone is a red line. This is helpful for Control to know, as this was a possible outcome, and they will respect this. This rule cannot be used to evade complications beyond your character’s direct control (“My character would never fumble a catch and this is a red line for me” or “This NPC being offended by action likely to offend them is a red line for me”); this rule is only there to ensure Control respects your character’s volition, morality, and values.
             <Footnote name={footnoteCount++}>
-                I tried to be too combative in this section, but as you can tell from reading people have tried to abuse a player safety rule and I'm now making it clear that, nope, not what this rule is about.
+                I tried to be too combative in this section, but as you can tell from reading people have tried to abuse a player safety rule and I&apos;m now making it clear that, nope, not what this rule is about.
                 <br />
                 <br />
-                It is an important rule, though. Action resolutions in these games - your PC being taken off you by Control - are always... tricky. Rememer my point earlier about agency. Players get <strong>very</strong> emotionally invested. Make their character do things they feel they would not and they're likely to be unhappy or complain.
+                It is an important rule, though. Action resolutions in these games - your PC being taken off you by Control - are always... tricky. Rememer my point earlier about agency. Players get <strong>very</strong> emotionally invested. Make their character do things they feel they would not and they&apos;re likely to be unhappy or complain.
             </Footnote>
         </p>
 
@@ -712,7 +712,7 @@ export default function Tempest() {
         <p>
             Some things are such a core part of the game they cannot be avoided.
             <Footnote name={footnoteCount++}>
-                Vital - these are things <em>you're not going to cut</em> because they're important to the game you wrote (though may downplay) and if these are things players will struggle with they need to tell you... or not play. That's a reason I shared this rulebook at signup and strongly, strongly encouraged people to read this section, complete with page reference in the signup.
+                Vital - these are things <em>you&apos;re not going to cut</em> because they&apos;re important to the game you wrote (though may downplay) and if these are things players will struggle with they need to tell you... or not play. That&apos;s a reason I shared this rulebook at signup and strongly, strongly encouraged people to read this section, complete with page reference in the signup.
             </Footnote>
         </p>
 
@@ -736,7 +736,7 @@ export default function Tempest() {
                 Some corners of the game may include <strong>illicit</strong> and <strong>performance-enhancing substances</strong>. We <strong>do not</strong> intend to feature any themes of addiction. If you wish, you can ask not to be placed in these parts of the game but we cannot guarantee you will avoid these fully and this cannot be easily resolved via the ‘Tap Out’.
             </li>
             <li>
-                >The game features geopolitics which means large scale violence such as <strong>war</strong> is possible. As such we cannot guarantee you will avoid these fully and this cannot be easily resolved via the ‘Tap Out’.
+                The game features geopolitics which means large scale violence such as <strong>war</strong> is possible. As such we cannot guarantee you will avoid these fully and this cannot be easily resolved via the ‘Tap Out’.
             </li>
             <li>
                 While arguably not a safety concern, some corners of the game may deal with <strong>bureaucracy</strong>. This is mostly optional, but you can nonetheless ask not to be placed in these parts of the game.
@@ -776,7 +776,7 @@ export default function Tempest() {
         <h4 className="text-lg">
             Will Injury dice prevent me from succeeding?
             <Footnote name={footnoteCount++}>
-                This is clear in the rules, but it a little complicated so here's I'm makng it extra clear. I fully expect to correct this during the game also.
+                This is clear in the rules, but it a little complicated so here&apos;s I&apos;m makng it extra clear. I fully expect to correct this during the game also.
             </Footnote>
         </h4>
 
@@ -795,7 +795,7 @@ export default function Tempest() {
         <p>
             This may seem an odd design decision but is in place for two reasons. Firstly, if the healing action succeeded with a complication, Control would prefer not to remove an Injury and then add an Injury. While complications other than Injury dice are common, most would not be logical for surgery/therapy/etc. In addition, an action spent healing an injury is reactive and does not advance your character’s story. We would prefer you to remain active. Injuries are there to provide meaningful complications, but we will not allow them to spoil your game.
             <Footnote name={footnoteCount++}>
-                Again, I think it's helpful to show your logic sometimes. Shows a level of trust and that you're thinking your decisions through.
+                Again, I think it&apos;s helpful to show your logic sometimes. Shows a level of trust and that you&apos;re thinking your decisions through.
             </Footnote>
         </p>
 
@@ -853,7 +853,7 @@ export default function Tempest() {
         <h4 className="text-lg">
             What is the purpose of NPCs?
             <Footnote name={footnoteCount++}>
-                NPCs... So popular, especially with experienced players, but often ignored or unrealised by new ones, who often regret this at debrief when they learn about the meaningful interactions, relationships, etc people formed. So here I'm trying to make it clear why they exist, what they can and can't do, why you might want to talk to them.
+                NPCs... So popular, especially with experienced players, but often ignored or unrealised by new ones, who often regret this at debrief when they learn about the meaningful interactions, relationships, etc people formed. So here I&apos;m trying to make it clear why they exist, what they can and can&apos;t do, why you might want to talk to them.
             </Footnote>
         </h4>
 
@@ -864,7 +864,7 @@ export default function Tempest() {
         <p>
             In some previous games NPC opinions were tracked, revealed to players and unlocked Traits to those they befriended. NPC opinions will still be tracked but this information is entirely hidden from players and you will not receive Traits/Assets merely by being friends with NPCs.
             <Footnote name={footnoteCount++}>
-                This is aimed for experienced players, as this is an intentional regression/divergence from previous rules. The bonding system was fun but lead to some thematic weirdness, like someone dating an NPC they were not Bonded with and being sad someone beat them to it. It also lead to some concerning behaiviours and trying to 'win' NPCs for mechanical reasons, which Control did not enjoy.
+                This is aimed for experienced players, as this is an intentional regression/divergence from previous rules. The bonding system was fun but lead to some thematic weirdness, like someone dating an NPC they were not Bonded with and being sad someone beat them to it. It also lead to some concerning behaiviours and trying to &apos;win&apos; NPCs for mechanical reasons, which Control did not enjoy.
             </Footnote>
         </p>
 
