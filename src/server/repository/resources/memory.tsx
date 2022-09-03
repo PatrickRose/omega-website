@@ -62,6 +62,51 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
             </p>
         </React.Fragment>,
         content: <Tempest />
+    },
+    "aftermath": {
+        id: "aftermath",
+        resourceType: "external",
+        gameName: "Aftermath",
+        type: "Online game",
+        designerName: "Zane Gunton (original game), adaption by OMEGA team",
+        details: <React.Fragment>
+            <p>
+                The world just ended. What comes next?
+            </p>
+            <p>
+                Funny how no one really thinks about what comes next.
+            </p>
+            <p>
+                Something happened, and the world turned upside-down. No one really knows what it was, this event – you could go mad speculating, and I know a few people who did. One or two others went looking for answers... we never saw them again. Good people, the kind we couldn’t afford to lose... but it ate them up. What does it matter, here in the aftermath?
+            </p>
+        </React.Fragment>,
+        link: 'https://docs.google.com/document/d/1T0SpjICaD2B5VfuJnj37kmolfVKP83j-/edit'
+    },
+    "red-planet-rising": {
+        id: "red-planet-rising",
+        resourceType: "external",
+        gameName: "Red Planet Rising",
+        type: "Online game",
+        designerName: "Andrew Shiel Dods",
+        details: <React.Fragment>
+            <p>
+                A century after the colonization of Mars, disaster struck, and the survivors of the once-great colony now vie for supremacy amongst themselves.
+            </p>
+        </React.Fragment>,
+        link: 'https://drive.google.com/file/d/1TyW8vZ2KUTOPzE92c2VDG4Z7MUyDorHh/view?usp=sharing'
+    },
+    'running-hot': {
+        id: 'running-hot',
+        resourceType: "site",
+        gameName: "Running Hot",
+        type: "Online game",
+        designerName: "Patrick Rose",
+        details: <React.Fragment>
+            <p>
+                In the near future, Britain is facing economic ruin. Following the success of the “Megacorp” experiment in the United States they attempt to do the same – they offer several multi-billion corporations the chance to buy a large part of the British landscape and create their own city state, where they can make their own laws if they wish.
+            </p>
+        </React.Fragment>,
+        content: <p>TODO</p>
     }
 }
 
