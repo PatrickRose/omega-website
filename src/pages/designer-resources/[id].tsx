@@ -3,7 +3,7 @@ import React from "react";
 import RESOURCES from "../../server/repository/resources/memory";
 import DesignerResource, {GameResourceProps} from "../../components/DesignerResource";
 
-export default function DesignerResourcePage({id}: {id: GameResourceProps["id"]}) {
+export default function DesignerResourcePage({id}: InferGetStaticPropsType<typeof getStaticProps>) {
     const details = RESOURCES[id];
 
     return <DesignerResource resource={details} />
@@ -35,17 +35,17 @@ export const getStaticProps: GetStaticProps<{id: GameResourceProps["id"]}> = asy
 }
 
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const paths: { params: { id: string } }[] = [];
+export const getStaticPaths: GetStaticPaths<InferGetStaticPropsType<typeof getStaticProps>> = async () => {
+    const paths: { params: { id: GameResourceProps["id"] } }[] = [];
 
     Object.keys(RESOURCES).forEach(
         (id) => {
-            paths.push({params: {id}})
+            paths.push({params: {id: id as GameResourceProps["id"]}})
         }
     );
 
     return {
         paths: paths,
-        fallback: true,
+        fallback: 'blocking',
     }
 }
