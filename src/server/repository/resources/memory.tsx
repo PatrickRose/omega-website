@@ -33,7 +33,7 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
     'gods-wars': {
         id: 'gods-wars',
         resourceType: 'site',
-        gameName: 'Gods\'s Wars',
+        gameName: 'Gods\' Wars',
         type: 'Play-By-Email',
         designerName: 'Steph Rothman',
         details: <React.Fragment>
