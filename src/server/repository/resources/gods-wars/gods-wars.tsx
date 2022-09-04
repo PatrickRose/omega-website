@@ -5,6 +5,7 @@ import {Footnote} from "../../../../components/DesignerResource";
 import gameLogo from "./game-logo.png";
 import victorian from "./victorian.png";
 import background from "./background-logo.png";
+import DescriptionList from "../../../../components/DescriptionList";
 
 type ExampleActionProps = {
     actionName: string,
@@ -586,87 +587,104 @@ export default function GodsWars() {
             </tbody>
         </table>
 
-        <dl className="sm:grid sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12">
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Neutral
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                The default position a PC will have with an NPC if they have not had an interaction or have lacked
-                meaningful interaction. At this level, NPCs will dutifully fulfil their functions, particularly if
-                provided compensation, but otherwise will not be willing to do favors for or give much information to
-                the PC.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Unfriendly
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                If a PC has, through their own actions or via rumours spread about their actions (based on their actions
-                or interactions with other PCs and NPCs), earned a poor reputation with an NPC, they will likely be
-                unfriendlier in email communications and reluctant to provide you with information. They will almost
-                certainly not assist you in actions.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Loathing
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                If a PC has earned the ire of an NPC, they will receive penalties to actions where they are involved and
-                they may flat out refuse to have anything to do with you, which could affect your relationship to the
-                NPCs they have connections with.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Warm
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                This is a level you can reach through interacting with NPCs through email and having positive
-                interactions with them.
-                <Footnote name={footnoteCount++}>
-                    The reason you cannot get higher than Warm without spending actions is that we did not want to
-                    mechanically benefit people who had more time to send emails.
-                </Footnote> Merely
-                positively communicating with an NPC a handful of times may be enough for some, but other NPCs
-                may need more or specific types of interactions. NPCs are people, and everyone is different!
-                <Footnote name={footnoteCount++}>
-                    I&apos;d say be careful with this- make sure that your control are relatively similar in what&apos;s
-                    necessary
-                    to get to warm with their NPCs. NPCs can differ, but you don&apos;t want some control giving this
-                    out
-                    after a single interaction and others not for several weeks.
-                </Footnote> NPCs
-                who are Warm with you will be more forthcoming in messages. There is no limit to the number of NPCs
-                you can attain Warm status with.
-            </dd>
+        <DescriptionList list={[
+            {
+                title: "Neutral",
+                content: <React.Fragment>
+                    The default position a PC will have with an NPC if they have not had an interaction or have lacked
+                    meaningful interaction. At this level, NPCs will dutifully fulfil their functions, particularly if
+                    provided compensation, but otherwise will not be willing to do favors for or give much information
+                    to
+                    the PC.
 
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Friendly
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                This level is only reachable by doing an Action involving the NPC in question. Depending on your role or
-                on the NPC, more than one Action may be required. When you reach Friendly status with an NPC, you will
-                acquire them as a Bond. This is a special type of Asset that you can use in your Actions. This
-                represents that your relationship with this person is now close enough to you that they are willing to
-                help you out with most requests. Be sure to discuss with them through role play (RP) over email what you
-                are asking them to do to ensure that they are interested and willing in helping you out with your
-                action. There is no limit to the number of NPCs you can attain Friendly status with.
-            </dd>
+                </React.Fragment>
+            },
+            {
+                title: "Unfriendly",
+                content: <React.Fragment>
+                    If a PC has, through their own actions or via rumours spread about their actions (based on their
+                    actions
+                    or interactions with other PCs and NPCs), earned a poor reputation with an NPC, they will likely be
+                    unfriendlier in email communications and reluctant to provide you with information. They will almost
+                    certainly not assist you in actions.
 
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Bonded
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                This level is only reachable by doing an Action involving the NPC in question, specifically something
-                they want to accomplish, in addition to regular email interaction. This NPC will trust you almost
-                implicitly and provide you with information, assistance, and resources as needed. When you reach Bonded
-                status with a character, you gain a permanent Trait or Asset that you can use for the rest of the game.
-                This is in addition to the Asset you received after getting to Friendly status. <em>
-                Each player and character may only have up to 3 NPCs at Bonded status during the game</em>.
-                <Footnote name={footnoteCount++}>
-                    This was partially to mitigate the fact that NPCs can only be bonded to one individual (and in
-                    extreme cases 2). We didn&apos;t want people to be closed out of getting anyone bonded because
-                    someone
-                    just spent their whole game grabbing up all the NPCs.
-                </Footnote>
-            </dd>
-        </dl>
+                </React.Fragment>
+            },
+            {
+                title: "Loathing",
+                content: <React.Fragment>
+                    If a PC has earned the ire of an NPC, they will receive penalties to actions where they are involved
+                    and
+                    they may flat out refuse to have anything to do with you, which could affect your relationship to
+                    the
+                    NPCs they have connections with.
+
+                </React.Fragment>
+            },
+            {
+                title: "Warm",
+                content: <React.Fragment>
+                    This is a level you can reach through interacting with NPCs through email and having positive
+                    interactions with them.
+                    <Footnote name={footnoteCount++}>
+                        The reason you cannot get higher than Warm without spending actions is that we did not want to
+                        mechanically benefit people who had more time to send emails.
+                    </Footnote> Merely
+                    positively communicating with an NPC a handful of times may be enough for some, but other NPCs
+                    may need more or specific types of interactions. NPCs are people, and everyone is different!
+                    <Footnote name={footnoteCount++}>
+                        I&apos;d say be careful with this- make sure that your control are relatively similar in
+                        what&apos;s
+                        necessary
+                        to get to warm with their NPCs. NPCs can differ, but you don&apos;t want some control giving
+                        this
+                        out
+                        after a single interaction and others not for several weeks.
+                    </Footnote> NPCs
+                    who are Warm with you will be more forthcoming in messages. There is no limit to the number of NPCs
+                    you can attain Warm status with.
+
+                </React.Fragment>
+            },
+            {
+                title: "Friendly",
+                content: <React.Fragment>
+                    This level is only reachable by doing an Action involving the NPC in question. Depending on your
+                    role or
+                    on the NPC, more than one Action may be required. When you reach Friendly status with an NPC, you
+                    will
+                    acquire them as a Bond. This is a special type of Asset that you can use in your Actions. This
+                    represents that your relationship with this person is now close enough to you that they are willing
+                    to
+                    help you out with most requests. Be sure to discuss with them through role play (RP) over email what
+                    you
+                    are asking them to do to ensure that they are interested and willing in helping you out with your
+                    action. There is no limit to the number of NPCs you can attain Friendly status with.
+
+                </React.Fragment>
+            },
+            {
+                title: "Bonded",
+                content: <React.Fragment>
+                    This level is only reachable by doing an Action involving the NPC in question, specifically
+                    something
+                    they want to accomplish, in addition to regular email interaction. This NPC will trust you almost
+                    implicitly and provide you with information, assistance, and resources as needed. When you reach
+                    Bonded
+                    status with a character, you gain a permanent Trait or Asset that you can use for the rest of the
+                    game.
+                    This is in addition to the Asset you received after getting to Friendly status. <em>
+                    Each player and character may only have up to 3 NPCs at Bonded status during the game</em>.
+                    <Footnote name={footnoteCount++}>
+                        This was partially to mitigate the fact that NPCs can only be bonded to one individual (and in
+                        extreme cases 2). We didn&apos;t want people to be closed out of getting anyone bonded because
+                        someone
+                        just spent their whole game grabbing up all the NPCs.
+                    </Footnote>
+
+                </React.Fragment>
+            }
+        ]}/>
 
         <p>
             If you devote an action to becoming Friendly or Bonded with an NPC, you will be informed of such in your
@@ -675,8 +693,7 @@ export default function GodsWars() {
             come about organically through communication rather than through action resolutions.
             <Footnote name={footnoteCount++}>
                 Didn&apos;t have this in the last iteration of the bonded system, which made it extra tough when you
-                lost out
-                on NPCs as it could be unexpected. This way at least you knew a bit in advance
+                lost out on NPCs as it could be unexpected. This way at least you knew a bit in advance
             </Footnote>
         </p>
 
@@ -966,65 +983,65 @@ export default function GodsWars() {
             </Footnote>
         </p>
 
-        <dl className="sm:grid sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12">
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Neutral
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                The default position a PC will have with a God if they have not had an interaction or have lacked
-                meaningful interaction. At this level, Gods can be assumed to act in their self-interest and will not be
-                willing to do favors or give particularly useful information to the PC, unless it benefits them in some
-                way. Gods may give out Quests at this level when asked explicitly.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Disfavoured
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                If a PC has, through their own actions or via rumours spread about their actions (based on their actions
-                or interactions with other PCs and NPCs), earned a poor reputation with a God, they will likely be
-                unfriendlier in email communications and reluctant to provide you with information. They are not willing
-                to give out Quests to PCs at this level
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Condemned
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                If a PC has earned the ire of a God, they will receive penalties to actions where they are involved and
-                they may flat out refuse to have anything to do with you, which could affect other Gods or NPCs they
-                have connections with. They are not willing to give out Quests to PCs at this level.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Preferred
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                You can reach Preferred status through email and having positive interactions with them. Each God is
-                going to have different preferences and personalities and appealing to these can help you gain Preferred
-                status. Gods who you have Preferred status with will be more forthcoming in messages. There is no limit
-                to the number of Gods you can attain Preferred status with. Gods will be willing to give out Quests at
-                this level, but you may need to encourage them to do so.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Favoured
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                This level is only reachable by doing an Action involving the God in question. At this level, Gods are
-                going to be more likely to share information with you or give you limited assistance in actions. Unlike
-                NPCs at Friendly, Gods cannot be used as assets, but may give out assets through doing Quests for them.
-                Gods will happily offer you Quests at Favoured status. When you reach Favoured status with a God, you
-                will increase your progress in that God’s Aspect. There is no limit to the number of Gods you can reach
-                Favoured status with.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Blessed
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                This level is only reachable by doing a special Quest for a God, as well as regular email interaction.
-                The God will trust that you are working in their favour and will favour you in the competition for
-                Ascension. When you reach Blessed status with a God, you will increase your progress in that God’s
-                Aspect. Because this is a competition and the Gods get jealous of one another, each player may only
-                reach Blessed status with one God.
-            </dd>
-        </dl>
+        <DescriptionList list={[
+            {
+                title: "Neutral",
+                content: <React.Fragment>
+                    The default position a PC will have with a God if they have not had an interaction or have lacked
+                    meaningful interaction. At this level, Gods can be assumed to act in their self-interest and will
+                    not be willing to do favors or give particularly useful information to the PC, unless it benefits
+                    them in some way. Gods may give out Quests at this level when asked explicitly.
+                </React.Fragment>
+            },
+            {
+                title: "Disfavoured",
+                content: <React.Fragment>
+                    If a PC has, through their own actions or via rumours spread about their actions (based on their
+                    actions or interactions with other PCs and NPCs), earned a poor reputation with a God, they will
+                    likely be unfriendlier in email communications and reluctant to provide you with information. They
+                    are not willing to give out Quests to PCs at this level
+                </React.Fragment>
+            },
+            {
+                title: "Condemned",
+                content: <React.Fragment>
+                    If a PC has earned the ire of a God, they will receive penalties to actions where they are involved
+                    and they may flat out refuse to have anything to do with you, which could affect other Gods or NPCs
+                    they have connections with. They are not willing to give out Quests to PCs at this level.
+                </React.Fragment>
+            },
+            {
+                title: "Preferred",
+                content: <React.Fragment>
+                    You can reach Preferred status through email and having positive interactions with them. Each God is
+                    going to have different preferences and personalities and appealing to these can help you gain
+                    Preferred status. Gods who you have Preferred status with will be more forthcoming in messages.
+                    There is no limit to the number of Gods you can attain Preferred status with. Gods will be willing
+                    to give out Quests at this level, but you may need to encourage them to do so.
+                </React.Fragment>
+            },
+            {
+                title: "Favoured",
+                content: <React.Fragment>
+                    This level is only reachable by doing an Action involving the God in question. At this level, Gods
+                    are going to be more likely to share information with you or give you limited assistance in actions.
+                    Unlike NPCs at Friendly, Gods cannot be used as assets, but may give out assets through doing Quests
+                    for them. Gods will happily offer you Quests at Favoured status. When you reach Favoured status with
+                    a God, you will increase your progress in that God’s Aspect. There is no limit to the number of Gods
+                    you can reach Favoured status with.
+                </React.Fragment>
+            },
+            {
+                title: "Blessed",
+                content: <React.Fragment>
+                    This level is only reachable by doing a special Quest for a God, as well as regular email
+                    interaction. The God will trust that you are working in their favour and will favour you in the
+                    competition for Ascension. When you reach Blessed status with a God, you will increase your progress
+                    in that God’s Aspect. Because this is a competition and the Gods get jealous of one another, each
+                    player may only reach Blessed status with one God.
+                </React.Fragment>
+            },
+        ]}/>
 
         <p>
             Just because you cannot attain Blessed status with a particular God does not mean that pursuing devotion

@@ -7,6 +7,7 @@ import linkImage from "./links.png";
 import wealthImage from "./wealth.png";
 import mightImage from "./might.png";
 import magicImage from "./magic.png";
+import DescriptionList from "../../../../components/DescriptionList";
 
 export function Councils() {
     let footnoteCount = 1;
@@ -256,57 +257,56 @@ export function Councils() {
             from each land would rise, the geographical layout and factional nature of its inhabitants always
             led to a quick downfall.
         </p>
-        <dl className="sm:grid sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12">
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Plains of Duerbar
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                The majority of the Elpor Basin is made up of the Plains of Duerbar. These fertile rolling hills
-                are home
-                to <strong>humans</strong>, <strong>hobbits</strong>, <strong>centaurs</strong>, <strong>orcs</strong>,
-                and <strong>giants</strong>. The Plains of Duerbar have no defensible chokepoint, so no great
-                settlements of any kind were ever established.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Glimline Forests
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                The Elpor Basin is dotted with great stands of towering trees. These Glimline Forests are home
-                to <strong>elves</strong>, <strong>treefolk</strong>, <strong>satyrs</strong>, <strong>fairies</strong>,
-                and <strong>unicorns</strong>. The Glimline Forests are separated by great distances, making it
-                impossible for one faction to rule them all.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Mountains of Skaar
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                Surrounding the Elpor Basin on three sides are the Mountains of Skaar. These treacherous cliffs
-                are home
-                to <strong>dragonborn</strong>, <strong>avian</strong>, <strong>gargoyles</strong>, <strong>ettercaps</strong>,
-                and <strong>sphinx</strong>. Being a thin line of a mountain range surrounding the Basin, the
-                length of the territory is interminable making it impractical for any ruler to control it in its
-                entirety.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Underland
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                Under the entire Elpor Basin lies the Underland, a vast network of caves home
-                to <strong>dwarves</strong>, <strong>goblins</strong>, <strong>myconids</strong>, <strong>minotaurs</strong>,
-                and <strong>formians</strong>. The Underland connects to all other regions, making it impossible
-                to form any real border to defend.
-            </dd>
-            <dt className="font-bold lg:col-span-2 sm:text-right pr-4">
-                Silver Coast (may not occur in playtest)
-            </dt>
-            <dd className="sm:col-span-3 md:col-span-5 lg:col-span-10">
-                The Elpor Basin empties into the Silver Sea on one side. This forms the Silver Coast which is
-                populated
-                by <strong>merfolk</strong>, <strong>reptilians</strong>, <strong>tortles</strong>, <strong>slimelings</strong>,
-                and <strong>crabfolk</strong>. The residents of the Silver Coast were never adept enough and
-                travelling inland, so any of their threats were pushed back to the sea.
-            </dd>
-        </dl>
+        <DescriptionList list={[
+            {
+                title: "Plains of Duerbar",
+                content: <React.Fragment>
+                    The majority of the Elpor Basin is made up of the Plains of Duerbar. These fertile rolling hills are
+                    home
+                    to <strong>humans</strong>, <strong>hobbits</strong>, <strong>centaurs</strong>, <strong>orcs</strong>,
+                    and <strong>giants</strong>. The Plains of Duerbar have no defensible chokepoint, so no great
+                    settlements of any kind were ever established.
+                </React.Fragment>
+            },
+            {
+                title: "Glimline Forests",
+                content: <React.Fragment>
+                    The Elpor Basin is dotted with great stands of towering trees. These Glimline Forests are home
+                    to <strong>elves</strong>, <strong>treefolk</strong>, <strong>satyrs</strong>, <strong>fairies</strong>,
+                    and <strong>unicorns</strong>. The Glimline Forests are separated by great distances, making it
+                    impossible for one faction to rule them all.
+                </React.Fragment>
+            },
+            {
+                title: "Mountains of Skaar",
+                content: <React.Fragment>
+                    Surrounding the Elpor Basin on three sides are the Mountains of Skaar. These treacherous cliffs are
+                    home
+                    to <strong>dragonborn</strong>, <strong>avian</strong>, <strong>gargoyles</strong>, <strong>ettercaps</strong>,
+                    and <strong>sphinx</strong>. Being a thin line of a mountain range surrounding the Basin, the length
+                    of the territory is interminable making it impractical for any ruler to control it in its entirety.
+                </React.Fragment>
+            },
+            {
+                title: "Underland",
+                content: <React.Fragment>
+                    Under the entire Elpor Basin lies the Underland, a vast network of caves home
+                    to <strong>dwarves</strong>, <strong>goblins</strong>, <strong>myconids</strong>, <strong>minotaurs</strong>,
+                    and <strong>formians</strong>. The Underland connects to all other regions, making it impossible to
+                    form any real border to defend.
+                </React.Fragment>
+            },
+            {
+                title: " Silver Coast (may not occur in playtest)",
+                content: <React.Fragment>
+                    The Elpor Basin empties into the Silver Sea on one side. This forms the Silver Coast which is
+                    populated
+                    by <strong>merfolk</strong>, <strong>reptilians</strong>, <strong>tortles</strong>, <strong>slimelings</strong>,
+                    and <strong>crabfolk</strong>. The residents of the Silver Coast were never adept enough and
+                    travelling inland, so any of their threats were pushed back to the sea.
+                </React.Fragment>
+            },
+        ]}/>
         <p>
             The world outside the Elpor Basin is largely a mystery to the basin’s residents. Every now and again
             rumors, merchants, and delegations make their way into Elpor Basin… but the all consuming wars turn
