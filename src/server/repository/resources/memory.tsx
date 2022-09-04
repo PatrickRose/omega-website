@@ -3,6 +3,7 @@ import { GameResourceProps } from "../../../components/DesignerResource";
 import { Councils } from "./councils/councils";
 import GodsWars from "./gods-wars/gods-wars";
 import Tempest from "./tempest/tempest";
+import RunningHot from "./running-hot/running-hot";
 
 
 const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
@@ -106,7 +107,7 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
                 In the near future, Britain is facing economic ruin. Following the success of the “Megacorp” experiment in the United States they attempt to do the same – they offer several multi-billion corporations the chance to buy a large part of the British landscape and create their own city state, where they can make their own laws if they wish.
             </p>
         </React.Fragment>,
-        content: <p>TODO</p>
+        content: <RunningHot />
     }
 }
 

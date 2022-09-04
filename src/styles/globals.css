@@ -45,4 +45,17 @@
     .resource-details h5 {
         @apply text-lg
     }
+
+    .table-of-contents {
+      counter-reset: item;
+    }
+
+    .table-of-contents li:before {
+      content: counters(item, ".") ". ";
+      counter-increment: item
+    }
+
+    .table-of-contents li.acknowledge:before {
+      content: 'A. '
+    }
 }
