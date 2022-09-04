@@ -76,7 +76,7 @@ export default function GodsWars() {
 
         <p>
             Love is in the air as the Season begins in (near) London 1880! Lilian Thompson and Victor Moore are the most
-            eligible debutantes, the so-called &quote;catches&quote; of the season. Attend balls and other social
+            eligible debutantes, the so-called &quot;catches&quot; of the season. Attend balls and other social
             events, romance and befriend other mortals and demigods alike, while you increase devotion to and complete
             Quests for the Gods.
         </p>
@@ -823,7 +823,7 @@ export default function GodsWars() {
                 <br/>
                 For example, don&apos;t assume that other people will consent in your writing. When you say you&apos;re
                 going to
-                do something, adding something like &quote;if they allow it&quote; is really appreciated. Even if
+                do something, adding something like &quot;if they allow it&quot; is really appreciated. Even if
                 you&apos;re in a
                 relationship with a character, respecting boundaries is so important!
             </Footnote>
@@ -927,7 +927,7 @@ export default function GodsWars() {
             will be available, both on the Wiki and on CANDI. You can also speak with Tiresias, a neutral NPC designed
             to help you with the Gods’ Wars competition, for advice about gaining the favour of particular Gods
             <Footnote name={footnoteCount++}>
-                Most games will have a &quote;helper&quote; NPC. They are not always explicitly labelled like this, but
+                Most games will have a &quot;helper&quot; NPC. They are not always explicitly labelled like this, but
                 we felt we
                 wanted to do so in this case, especially if people were confused about the rules of the competition.
             </Footnote>
