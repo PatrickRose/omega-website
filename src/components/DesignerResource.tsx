@@ -2,6 +2,7 @@ import React, {useId, useState} from "react";
 import {Hero, HeroHeading, MainContent} from "./Hero";
 import {Game} from "../types/types";
 import Link from "next/link";
+import Image, {ImageProps} from "next/image";
 
 type GameID = 'councils-of-elporia'
             | 'gods-wars'
@@ -52,6 +53,15 @@ export function Footnote({name, children}: {name: string|number, children: React
     </React.Fragment>
 }
 
+export function GameImage({image, alt}: {image: ImageProps["src"], alt: string}) {
+    return <div className="flex justify-items-center justify-center py-2">
+        <div className="md:w-3/4 lg:w-1/2">
+            <Image src={image} alt={alt} />
+        </div>
+    </div>
+}
+
+
 export default function DesignerResource({resource}: {resource: GameResourceProps}) {
     return <React.Fragment>
         <Hero>
@@ -68,8 +78,8 @@ export default function DesignerResource({resource}: {resource: GameResourceProp
             <div className="resource-details">
                 {
                     resource.resourceType == 'external'
-                        ? <Link href={resource.link}>This resource is hosted externally</Link>
-                        : resource.content
+                    ? <Link href={resource.link}>This resource is hosted externally</Link>
+                    : resource.content
                 }
             </div>
         </MainContent>

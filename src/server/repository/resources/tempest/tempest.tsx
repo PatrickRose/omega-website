@@ -1,7 +1,7 @@
 import React from "react";
 
-import {Footnote} from "../../../../components/DesignerResource";
-import Image, {ImageProps} from "next/image";
+import {Footnote, GameImage} from "../../../../components/DesignerResource";
+import Image from "next/image"
 
 import gameLogo from "./game-logo.png"
 import image2 from "./image2.jpg";
@@ -14,13 +14,6 @@ import image8 from "./image8.jpg";
 import image9 from "./image9.jpg";
 import image10 from "./image10.jpg";
 
-function GameImage({image, alt}: {image: ImageProps["src"], alt: string}) {
-    return <div className="flex justify-items-center justify-center py-2">
-        <div className="md:w-3/4 lg:w-1/2">
-            <Image src={image} alt={alt} />
-        </div>
-    </div>
-}
 
 function TableHeader({children, scope}: {children: React.ReactNode, scope?: 'col'|'row'}) {
     return <th className="border border-omega-dark p-2" scope={scope ?? 'col'}>
