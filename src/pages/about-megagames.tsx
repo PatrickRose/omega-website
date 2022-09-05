@@ -72,7 +72,7 @@ export default function AboutMegagames() {
             </h2>
 
             <p className="py-2">
-                In 2015, popular UK Board Game site <a href="https://www.shutupandsitdown.com/">Shut Up & Sit
+                In 2014, popular UK Board Game site <a href="https://www.shutupandsitdown.com/">Shut Up & Sit
                     Down</a> were invited to come and film the first run of Jim Wallman&apos;s Watch The Skies, heralding a major
                 explosion of interest in the hobby. These videos are a great introduction to how a megagame can play.
             </p>
