@@ -290,7 +290,7 @@ export default function Tempest() {
         <h4 className="text-xl">
             Attempting the Impossible
             <Footnote name={footnoteCount++}>
-                Sadly an important section, as it happens sometimes. It&apos;s kind covering yourself and warning players to expect consequences for their craziest shenanigans.
+                Sadly an important section, as it happens sometimes. It&apos;s kind of covering yourself and warning players to expect consequences for their craziest shenanigans.
             </Footnote>
         </h4>
 
@@ -566,7 +566,7 @@ export default function Tempest() {
                 I think explaining why rules exist helps to build trust, as these games can cause a lot of paranoia.
                 <br />
                 <br />
-                If you&apos;re considering letter players share or hack one another&apos;s communication for a pbem... take a step back. How might that change their behaviour? Does it encourage them to stop playing? To send fewer emails, or to speak in code? Is that something you want? Is that something they&apos;re going to enjoy?
+                If you&apos;re considering letting players share or hack one another&apos;s communication for a pbem... take a step back. How might that change their behaviour? Does it encourage them to stop playing? To send fewer emails, or to speak in code? Is that something you want? Is that something they&apos;re going to enjoy?
                 <br />
                 <br />
                 I&apos;m an extremist and avoid even letting magical NPCs read player communications. It&apos;s not fun to deal with such beings, believe me - what if you want to complain behind their backs, or plot against them?
@@ -641,7 +641,7 @@ export default function Tempest() {
         <p>
             You are welcome to note “red lines” in action submissions - things within your character’s control they would not do under any circumstance. For example, a player robbing a bank might note that physically harming anyone is a red line. This is helpful for Control to know, as this was a possible outcome, and they will respect this. This rule cannot be used to evade complications beyond your character’s direct control (“My character would never fumble a catch and this is a red line for me” or “This NPC being offended by action likely to offend them is a red line for me”); this rule is only there to ensure Control respects your character’s volition, morality, and values.
             <Footnote name={footnoteCount++}>
-                I tried to be too combative in this section, but as you can tell from reading people have tried to abuse a player safety rule and I&apos;m now making it clear that, nope, not what this rule is about.
+                I tried not to be too combative in this section, but players have previously tried to exploit this safety rule to get the results they wanted and I&apos;m now making it extreme clear that this is not what this rule is for.
                 <br />
                 <br />
                 It is an important rule, though. Action resolutions in these games - your PC being taken off you by Control - are always... tricky. Rememer my point earlier about agency. Players get <strong>very</strong> emotionally invested. Make their character do things they feel they would not and they&apos;re likely to be unhappy or complain.
@@ -769,7 +769,7 @@ export default function Tempest() {
         <h4 className="text-lg">
             Will Injury dice prevent me from succeeding?
             <Footnote name={footnoteCount++}>
-                This is clear in the rules, but it a little complicated so here&apos;s I&apos;m makng it extra clear. I fully expect to correct this during the game also.
+                This is clear in the rules, but it is a little complicated so here&apos;s I&apos;m making it extra clear.
             </Footnote>
         </h4>
 
