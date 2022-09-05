@@ -49,9 +49,9 @@ export default function AboutMegagames() {
             </p>
 
             <p>
-                Their origin lies in government wargaming exercises - initially designed for training leaders and
-                informing policy, the format has since expanded to a growing hobbyist audience. Themes have expanded
-                too, with recent megagames covering every topic from zombie outbreaks to high-school drama.
+                Megagaming initially grew out of the hobbyist wargaming scene in the UK, as designers sought
+                to more faithfully capture the human element in conflict. Themes have expanded too, with 
+                recent megagames covering every topic from zombie outbreaks to high-school drama.
             </p>
 
             <p className="py-2">
