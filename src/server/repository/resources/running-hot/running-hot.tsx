@@ -434,8 +434,7 @@ export default function RunningHot() {
                 pick up.
                 <br/>
                 <br/>
-                What I&apos;m saying is: handwaving information is <em>very</em>
-                valuable.
+                What I&apos;m saying is: handwaving information is <em>very</em> valuable.
             </Footnote>
         </p>
 
@@ -513,7 +512,7 @@ export default function RunningHot() {
             action has reactions and (unintended) consequences.
             <Footnote name={footnoteCount++}>
                 This is a very important warning - there&apos;s a difference between a player going off being a little
-                chaos gremlin (as I have the completely unfair reputation as having), and someone taking a baseball bat
+                chaos gremlin (as I have the completely unfair reputation of having), and someone taking a baseball bat
                 to the whole game and ruining everyone&apos;s day.
                 <br/>
                 <br/>
@@ -718,7 +717,7 @@ export default function RunningHot() {
         <h5 className='text-lg' id='job-postings'>
             Job Postings
             <Footnote name={footnoteCount++}>
-                This is a rule that sounds really great when you come up with it, but doesn&apost;t really work in
+                This is a rule that sounds really great when you come up with it, but doesn&apos;t really work in
                 practice. Can you spot the point where even the rulebook says this is a bad idea?
             </Footnote>
         </h5>
@@ -766,10 +765,10 @@ export default function RunningHot() {
             relevant.
             <Footnote name={footnoteCount++}>
                 Did you spot the line? It&apos;s this one:
-                <q>
-                    Players may skip the job posting step if they have a specific contact they wish to pursue.
+                <q className="block">
+                    Players may skip the job posting step if they have a specific contact they wish to pursue
                 </q>
-                . The intention was that players use the job posting mechanic to initiate a relationship with a runner
+                The intention was that players use the job posting mechanic to initiate a relationship with a runner
                 and then use that for the rest of the game - but its just faster to go speak to a runner randomly and
                 get going that way.
             </Footnote>
@@ -1207,7 +1206,7 @@ export default function RunningHot() {
             the other hand, getting the populace on side may help convince the UK Government to repeat the experiment
             and to keep their hands off Procatorion.
             <Footnote name={footnoteCount++}>
-                Looking back on this, Stability and Civil Unrest as so linked that having two separate trackers was a
+                Looking back on this, Stability and Civil Unrest are so linked that having two separate trackers was a
                 bit messy. What I really wanted was a way of showing unhappiness which would then affect the Stability
                 tracker later.
             </Footnote>
@@ -1251,7 +1250,7 @@ export default function RunningHot() {
                 Council Control&apos;s brief to inform us of those game state changes
                 <br/>
                 4) Does the Council happen at the same speed at the rest of the game? If not, then immediately number 3
-                is out. There&apos;s an in-built lag between an event happening in game and the Council making a
+                is out. There&apos;s an built-in lag between an event happening in game and the Council making a
                 decision, so make sure your Council is as fast, <em>if not faster</em>, than the rest of the game.
                 Running Hot&apos;s solution is to brief Council Control to force agendas onto the mat.
             </Footnote>
@@ -2442,8 +2441,9 @@ export default function RunningHot() {
                 Some equipment cards may provide a Runner with more accesses
             </Footnote>
             <Footnote name={footnoteCount++}>
-                Still not happy with this rule. It lets everyone do what they want to do, but they don&apos;t punished
-                for setting off every alarm as they go in. Something that I want to tweak for a future run I think.
+                Still not happy with this rule. It lets everyone do what they want to do, but they don&apos;t
+                get punished for setting off every alarm as they go in. Something that I want to tweak for a future
+                run I think.
             </Footnote>
         </p>
         <p>
