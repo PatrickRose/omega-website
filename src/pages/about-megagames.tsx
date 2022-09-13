@@ -49,9 +49,9 @@ export default function AboutMegagames() {
             </p>
 
             <p>
-                Their origin lies in government wargaming exercises - initially designed for training leaders and
-                informing policy, the format has since expanded to a growing hobbyist audience. Themes have expanded
-                too, with recent megagames covering every topic from zombie outbreaks to high-school drama.
+                Megagaming initially grew out of the hobbyist wargaming scene in the UK, as designers sought
+                to more faithfully capture the human element in conflict. Themes have expanded too, with 
+                recent megagames covering every topic from zombie outbreaks to high-school drama.
             </p>
 
             <p className="py-2">
@@ -72,7 +72,7 @@ export default function AboutMegagames() {
             </h2>
 
             <p className="py-2">
-                In 2015, popular UK Board Game site <a href="https://www.shutupandsitdown.com/">Shut Up & Sit
+                In 2014, popular UK Board Game site <a href="https://www.shutupandsitdown.com/">Shut Up & Sit
                     Down</a> were invited to come and film the first run of Jim Wallman&apos;s Watch The Skies, heralding a major
                 explosion of interest in the hobby. These videos are a great introduction to how a megagame can play.
             </p>
