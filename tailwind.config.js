@@ -18,6 +18,9 @@ module.exports = {
           dark: "#124E6E"
         }
       },
+      maxHeight: {
+        '112': '28rem'
+      },
       minWidth: {
         '0': '0',
         '1/4': '25%',
