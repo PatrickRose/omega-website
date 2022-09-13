@@ -29,4 +29,33 @@
     .future + .past hr {
         display: inherit;
     }
+
+    .resource-details * {
+        @apply py-1;
+    }
+
+    .resource-details ul, .resource-details ol {
+        @apply pl-6
+    }
+
+    .resource-details h4 {
+        @apply text-xl
+    }
+
+    .resource-details h5 {
+        @apply text-lg
+    }
+
+    .table-of-contents {
+      counter-reset: item;
+    }
+
+    .table-of-contents li:before {
+      content: counters(item, ".") ". ";
+      counter-increment: item
+    }
+
+    .table-of-contents li.acknowledge:before {
+      content: 'A. '
+    }
 }

@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import {Either, isLeft, isRight} from "fp-ts/Either";
 import {Game} from "../../types/types";
-import {faEnvelopeOpenText} from "@fortawesome/free-solid-svg-icons/faEnvelopeOpenText";
-import {faDesktop} from "@fortawesome/free-solid-svg-icons/faDesktop";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import {Hero, HeroHeading, MainContent} from "../../components/Hero";
@@ -10,7 +8,7 @@ import {dateSorter, getJSDateFromOmegaDate, getStringFromOmegaDate} from "../../
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import {getGamesRepo} from "../../server/repository/games";
 import {MakeLeft} from "../../utils/io-ts-helpers";
-import {gameUtils} from "../../utils/games";
+import {GAME_ICONS, gameUtils} from "../../utils/games";
 
 
 type GamesState = {
@@ -20,16 +18,11 @@ type GamesState = {
     past?: boolean
 }
 
-const icons = {
-    'Play-By-Email': faEnvelopeOpenText,
-    'Online game': faDesktop
-}
-
 function FetchedMegagame(props: Game) {
     return <li className={`grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4 ${getJSDateFromOmegaDate(props.date) > new Date() ? 'future' : 'past'}`}>
         <hr className="col-span-12" />
         <div className="col-span-1 text-center flex flex-col justify-center items-center">
-            <FontAwesomeIcon icon={icons[props.type]} title={props.type} className="h-full w-full"/>
+            <FontAwesomeIcon icon={GAME_ICONS[props.type]} title={props.type} className="h-full w-full"/>
         </div>
         <div className="sm:col-span-11 col-span-4">
             <h2 className="text-2xl hover:text-omega">
