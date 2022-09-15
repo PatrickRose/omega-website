@@ -22,10 +22,10 @@ function GameDescriptions() {
         }
     ];
 
-    return <dl className="md:flex flex-row py-2">
+    return <dl className="flex-row py-2 md:flex">
         {
-            gameTypes.map(value => <div className="flex-1 md:px-2 md:pb-0 pb-1" key={value.type}>
-                <dt className="text-2xl md:text-center flex-1">
+            gameTypes.map(value => <div className="flex-1 pb-1 md:px-2 md:pb-0" key={value.type}>
+                <dt className="flex-1 text-2xl md:text-center">
                     {value.type}
                 </dt>
                 <dd>
@@ -48,7 +48,7 @@ export default function Planning() {
                 OMEGA aims to put a selection of games on each year, normally falling under one of two types:
             </p>
             <GameDescriptions />
-            <h2 className="text-3xl py-3">Running a game with us</h2>
+            <h2 className="py-3 text-3xl">Running a game with us</h2>
             <p>
                 OMEGA are always looking for new game designs to run online.
                 Throughout the year, the Steering Committee will put out a call for game pitches.
@@ -57,7 +57,7 @@ export default function Planning() {
                 If your game is selected for the OMEGA calendar, then the Steering Committee will work
                 with you and help with marketing, logistics and any technical issues you might have.
             </p>
-            <h3 className="text-2xl pt-2">
+            <h3 className="pt-2 text-2xl">
                 Existing in-person designs
             </h3>
             <p>
@@ -68,14 +68,14 @@ export default function Planning() {
                 If you&apos;re interested in having your game ported, feel free to <Link href="/contact"><a>get in touch and see how
                     we can help you</a></Link>.
             </p>
-            <h2 className="text-3xl py-3">Help to run games</h2>
+            <h2 className="py-3 text-3xl">Help to run games</h2>
             <p>
                 OMEGA is always looking for people to help run games, either by providing
                 technical expertise or by being part of the Control team. Being part of the Control team
                 for a megagame every so often is highly recommended, especially for those who play a
                 lot of games! To find out more, <a href={DISCORD_LINK}>join our Discord server</a>.
             </p>
-            <div className="w-full flex justify-center p-2">
+            <div className="flex w-full justify-center p-2">
                 <Image className="lg:w-3/4" src={completedAction} alt="" />
             </div>
         </MainContent>

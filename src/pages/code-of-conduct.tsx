@@ -7,7 +7,7 @@ export default function CodeOfConduct() {
             <HeroHeading>Code of conduct</HeroHeading>
         </Hero>
         <MainContent>
-            <p className="text-2xl py-2">
+            <p className="py-2 text-2xl">
                 OMEGA believes in promoting diversity and inclusion - it’s the best and healthiest way to help the
                 megagame community grow, and it’s the right thing to do.
             </p>

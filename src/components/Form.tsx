@@ -58,12 +58,12 @@ export function TextInput({ label, name, ...props }: { label: string, name: stri
 
 export function SubmitButton({ disabled, children, ...props }: { disabled: boolean } & JSX.IntrinsicElements['button']) {
     return <div className="flex" >
-        <button type="submit" className="btn-link m-4 p-4 w-full" disabled={disabled} {...props}>{children} </button >
+        <button type="submit" className="btn-link m-4 w-full p-4" disabled={disabled} {...props}>{children} </button >
     </div >
 }
 
 export function SuccessMessage({ children }: { children: ReactNode }) {
-    return <div className="py-2 w-full bg-green-200 rounded">
+    return <div className="w-full rounded bg-green-200 py-2">
         <div className="p-2">
             {children}
         </div>

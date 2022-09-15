@@ -16,7 +16,7 @@ type ExampleActionProps = {
 
 function ExampleAction(props: ExampleActionProps) {
     return <React.Fragment>
-        <blockquote className="ml-4 pl-2 border-l-4">
+        <blockquote className="ml-4 border-l-4 pl-2">
             <p>
                 <em>
                     <u>{props.actionName}:</u> {props.actionDescription}
@@ -37,7 +37,7 @@ export default function GodsWars() {
 
     return <React.Fragment>
         <div className="text-center">
-            <div className="flex justify-items-center justify-center py-2">
+            <div className="flex justify-center justify-items-center py-2">
                 <div className="w-2/4">
                     <Image layout="responsive" src={gameLogo} alt="Gods' Wars Game Logo"
                            title="Gods' Wars Game Logo"/>
@@ -377,7 +377,7 @@ export default function GodsWars() {
             </Footnote>
         </p>
 
-        <table className="border border-collapse">
+        <table className="border-collapse border">
             <thead>
                 <tr>
                     <th className="border p-2">1</th>
@@ -562,25 +562,25 @@ export default function GodsWars() {
             and will not be tracked using the rules discussed below.
         </p>
 
-        <table className="w-full border border-collapse text-center border-omega-dark">
+        <table className="border-omega-dark w-full border-collapse border text-center">
             <tbody>
                 <tr>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Loathing
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Unfriendly
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Neutral
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Warm
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Friendly
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Bonded
                     </td>
                 </tr>
@@ -949,25 +949,25 @@ export default function GodsWars() {
             Zeus: 4 PCs at Preferred, 3 PCs at Favoured, 0 at Blessed
         </p>
 
-        <table className="w-full border border-collapse text-center border-omega-dark">
+        <table className="border-omega-dark w-full border-collapse border text-center">
             <tbody>
                 <tr>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Condemned
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Disfavoured
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Neutral
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Preferred
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Favoured
                     </td>
-                    <td className="border border-omega-dark p-4">
+                    <td className="border-omega-dark border p-4">
                         Blessed
                     </td>
                 </tr>

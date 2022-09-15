@@ -21,11 +21,11 @@ type GamesState = {
 function FetchedMegagame(props: Game) {
     return <li className={`grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4 ${getJSDateFromOmegaDate(props.date) > new Date() ? 'future' : 'past'}`}>
         <hr className="col-span-12" />
-        <div className="col-span-1 text-center flex flex-col justify-center items-center">
+        <div className="col-span-1 flex flex-col items-center justify-center text-center">
             <FontAwesomeIcon icon={GAME_ICONS[props.type]} title={props.type} className="h-full w-full"/>
         </div>
-        <div className="sm:col-span-11 col-span-4">
-            <h2 className="text-2xl hover:text-omega">
+        <div className="col-span-4 sm:col-span-11">
+            <h2 className="hover:text-omega text-2xl">
                 <Link href={`/games/${props._id}`}>
                     <a>{props.name}</a>
                 </Link>
@@ -47,8 +47,8 @@ function GameListFilter(
     }
 ) {
     return <div className="pb-4">
-        <div className="flex md:flex-row flex-col">
-            <div className="flex-1 flex flex-col justify-center">
+        <div className="flex flex-col md:flex-row">
+            <div className="flex flex-1 flex-col justify-center">
                 <div>
                     <label className="pr-1" htmlFor="game-filter">Showing</label>
                     <select id="game-filter" onChange={props.onChange} value={props.value}>
@@ -58,7 +58,7 @@ function GameListFilter(
                     </select>
                 </div>
             </div>
-            <div className="flex-1 flex flex-col justify-center">
+            <div className="flex flex-1 flex-col justify-center">
                 <div>
                     <input id="only-future" type="checkbox" checked={props.past} onChange={props.onChange}/>
                     <label className="pl-1" htmlFor="only-future">Show past games</label>

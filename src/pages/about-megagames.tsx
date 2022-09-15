@@ -6,7 +6,7 @@ type MegagameVideoProps = { title: string, youtubeID: string };
 
 function MegagameVideo({ youtubeID, title }: MegagameVideoProps) {
     return <React.Fragment>
-        <h3 className="flex-1 text-xl font-bold text-center pb-4">{title}</h3>
+        <h3 className="flex-1 pb-4 text-center text-xl font-bold">{title}</h3>
         <div className="aspect-w-16 aspect-h-9">
             <iframe
                 src={`https://www.youtube.com/embed/${youtubeID}`} title={`YouTube video player: ${title}`}
@@ -67,7 +67,7 @@ export default function AboutMegagames() {
                 grand strategy, alliances and betrayals, and roleplaying. We hope to see you at one soon!
             </p>
 
-            <h2 className="text-2xl py-2 font-bold">
+            <h2 className="py-2 text-2xl font-bold">
                 Videos
             </h2>
 

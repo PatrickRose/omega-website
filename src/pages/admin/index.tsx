@@ -10,7 +10,7 @@ import { LinkDef } from "../../utils/utils";
 
 function AdminSection({ title, sectionLinks, children }: { title: string, sectionLinks: LinkDef[], children?: ReactNode }) {
     return <React.Fragment>
-        <h1 className="text-2xl py-2">{title}</h1>
+        <h1 className="py-2 text-2xl">{title}</h1>
         <ul className="py-2">
             {
                 sectionLinks.map(
@@ -103,7 +103,7 @@ export default function AdminPage() {
         </Hero>
         <MainContent>
             <div className="flex justify-center py-2">
-                <button type="button" className="btn-link min-w-full md:min-w-3/4 p-2" onClick={logout} disabled={loggingOut}>
+                <button type="button" className="btn-link md:min-w-3/4 min-w-full p-2" onClick={logout} disabled={loggingOut}>
                     Log out
                 </button>
             </div>

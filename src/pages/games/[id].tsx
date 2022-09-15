@@ -64,7 +64,7 @@ class FetchedGame extends GameStructure<{ game: Game }> {
     protected getSubHeading(): React.ReactElement {
         const {game} = this.props;
 
-        return <p className="font-bold pb-8">
+        return <p className="pb-8 font-bold">
             <span className="text-xl">
                 {game.designer}
             </span>
@@ -96,7 +96,7 @@ class LoadingGame extends GameStructure<{}> {
                     .fill(null)
                     .map((value, index) =>
                         <TextRow key={index}
-                                 className="bg-gray-500 mb-2"/>
+                                 className="mb-2 bg-gray-500"/>
                     )
             }
         </React.Fragment>
@@ -105,10 +105,10 @@ class LoadingGame extends GameStructure<{}> {
     protected getSubHeading(): React.ReactElement {
         return <div className="flex flex-col items-center justify-center">
             <div className="w-2/6 pb-2">
-                <TextRow className="bg-white h-6" height={false}/>
+                <TextRow className="h-6 bg-white" height={false}/>
             </div>
             <div className="w-1/6">
-                <TextRow className="bg-white h-6" height={false}/>
+                <TextRow className="h-6 bg-white" height={false}/>
             </div>
         </div>;
     }

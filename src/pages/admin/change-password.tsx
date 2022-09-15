@@ -113,7 +113,7 @@ export default function AdminPage() {
         </Hero>
         <MainContent>
             {user.passwordNeedsReset &&
-            <div className="py-2 w-full bg-red-200 rounded"><p className="p-2 text-center">You must change your password
+            <div className="w-full rounded bg-red-200 py-2"><p className="p-2 text-center">You must change your password
                 before you can access the rest of the admin functions</p></div>}
             <Formik
                 initialValues={originalValues}

@@ -10,12 +10,12 @@ function Resource({resource}: { resource: GameResourceProps }) {
         : resource.link
 
     return <div className="py-4">
-        <h2 className="text-2xl hover:text-omega">
+        <h2 className="hover:text-omega text-2xl">
             <Link href={link} target="_blank">
                 {resource.gameName}
             </Link>
         </h2>
-        <p className="font-bold py-2">
+        <p className="py-2 font-bold">
             {resource.designerName}
         </p>
         <div className="resource-details">
