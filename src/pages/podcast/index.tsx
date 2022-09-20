@@ -30,7 +30,7 @@ function CatcherFeed({link, description, icon}: CatcherFeedProps) {
 
 function PodcastEpisode(props: PodcastEpisode) {
     return <li className="py-2">
-        <h2 className="text-2xl hover:text-omega">
+        <h2 className="hover:text-omega text-2xl">
             <Link
                 href={props.link}>
                 <a>{props.title}</a>
@@ -105,7 +105,7 @@ export default function Podcast(props: InferGetStaticPropsType<typeof getStaticP
             <HeroHeading>
                 Control Panel - a Play-by-Email Megagame Podcast
             </HeroHeading>
-            <p className="text-center pb-2">
+            <p className="pb-2 text-center">
                 Interested in the Play-by-Email games that OMEGA put on? Join Steph, Stu and Kyle as they
                 discuss Play-by-Email games in depth, from how to play them, to how to create them to
                 the stories they&apos;ve picked up along the way!

@@ -48,7 +48,7 @@ function ContactMethods() {
     const items = contactMethods.map(
         value => <React.Fragment key={value.title}>
             <FontAwesomeIcon icon={value.icon} size="10x" className="w-full" title={value.title} />
-            <h2 className="text-2xl py-4">{value.title}</h2>
+            <h2 className="py-4 text-2xl">{value.title}</h2>
             {value.description}
         </React.Fragment >
     );

@@ -14,7 +14,7 @@ export function Councils() {
 
     return <React.Fragment>
         <div className="text-center">
-            <div className="flex justify-items-center justify-center py-2">
+            <div className="flex justify-center justify-items-center py-2">
                 <div className="w-2/4">
                     <Image layout="responsive" src={elporiaLogo} alt="The Councils of Elporia logo"
                            title="The Councils of Elporia logo"/>
@@ -27,7 +27,7 @@ export function Councils() {
             <p className="italic">Symbols from TheNounProject: kareemov1000, Hassan Ali, Sergey Demushkin,
                 Rainbow Designs, texar tantular, hand shake by Robert Bjurshagen & Alina Oleynik.</p>
         </div>
-        <h3 className="text-4xl text-center py-2">
+        <h3 className="py-2 text-center text-4xl">
             Player Handbook
             <Footnote name={footnoteCount++}>
                 I usually make 2 handbooks: 1 for players and 1 for control team members. Think of it like a D&D
@@ -93,13 +93,13 @@ export function Councils() {
             <li><a href="#tonal-guide">Tonal Guide (High-Fantasy Medieval)</a></li>
             <li>
                 <a href="#elpor-basin">The Elpor Basin</a>
-                <ol className="ml-4 list-disc list-inside">
+                <ol className="ml-4 list-inside list-disc">
                     <li><a href="#councils">The Councils of Elporia</a></li>
                 </ol>
             </li>
             <li>
                 <a href="#player-safety">Player Safety and Inclusion</a>
-                <ol className="ml-4 list-disc list-inside">
+                <ol className="ml-4 list-inside list-disc">
                     <li>
                         <a href="#controversial">Potentially Controversial Topics</a>
                     </li>
@@ -118,7 +118,7 @@ export function Councils() {
             </li>
             <li>
                 <a href="#phase-1">Phase I. Draft Aspects</a>
-                <ol className="ml-4 list-disc list-inside">
+                <ol className="ml-4 list-inside list-disc">
                     <li>
                         <a href="#linking">Linking Aspects</a>
                     </li>
@@ -136,7 +136,7 @@ export function Councils() {
                 <a href="#phase-2">
                     Phase II. Council Sessions
                 </a>
-                <ol className="ml-4 list-disc list-inside">
+                <ol className="ml-4 list-inside list-disc">
                     <li>
                         <a href="#voting">
                             The Voting Process
@@ -704,7 +704,7 @@ export function Councils() {
         </p>
 
         <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12">
-            <div className="text-center self-center">
+            <div className="self-center text-center">
                 <Image src={linkImage} width={50} height={50} alt="Icon used for a link" title="Icon used for a link"/>
             </div>
             <div className="colspan-3 md:col-span-5 lg:col-span-11">
@@ -753,7 +753,7 @@ export function Councils() {
             these Resources in different ways and they may have different effects at various points of the game.
         </p>
 
-        <div className="grid gap-2 grid-cols-4 md:grid-cols-6 lg:grid-cols-12">
+        <div className="grid grid-cols-4 gap-2 md:grid-cols-6 lg:grid-cols-12">
             <div className="text-center">
                 <div>
                     <Image src={wealthImage} width="50" height="50" alt="Icon used for wealth"
@@ -761,7 +761,7 @@ export function Councils() {
                 </div>
                 <span className="text-orange-500">Wealth</span>
             </div>
-            <p className="colspan-3 md:col-span-5 lg:col-span-11 self-center">
+            <p className="colspan-3 self-center md:col-span-5 lg:col-span-11">
                 Represents material assets and other objects of quantifiable value
             </p>
             <div className="text-center">
@@ -771,7 +771,7 @@ export function Councils() {
                 </div>
                 <span className="text-red-800">Might</span>
             </div>
-            <p className="colspan-3 md:col-span-5 lg:col-span-11 self-center">
+            <p className="colspan-3 self-center md:col-span-5 lg:col-span-11">
                 Represents military power and the ability to accomplish things through acts of violence.
             </p>
             <div className="text-center">
@@ -781,7 +781,7 @@ export function Councils() {
                 </div>
                 <span className="text-purple-700">Magic</span>
             </div>
-            <div className="colspan-3 md:col-span-5 lg:col-span-11 self-center">
+            <div className="colspan-3 self-center md:col-span-5 lg:col-span-11">
                 Represents magical abilities and spellcraft.
             </div>
 

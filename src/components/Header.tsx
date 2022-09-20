@@ -114,15 +114,15 @@ const Navbar = () => {
 
     const maxHeight = getMaxHeight();
 
-    return <nav className="bg-gray-800 navbar">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
+    return <nav className="navbar bg-gray-800">
+        <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
                     {
                         // Mobile menu button-->
                     }
                     <button type="button"
-                        className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                         aria-controls="mobile-menu" aria-expanded={ariaExpanded}
                         onClick={changeHidden}
                     >
@@ -141,15 +141,15 @@ const Navbar = () => {
                         <FontAwesomeIcon className={"h-6 w-6 " + (hidden ? 'hidden' : 'block')} icon={faTimes} />
                     </button>
                 </div>
-                <div className="flex-1 flex items-center justify-center md:items-stretch md:justify-start">
-                    <div className="shrink-0 flex items-center">
+                <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+                    <div className="flex shrink-0 items-center">
                         <Image
                             src={omegaLogo} alt="OMEGA logo"
                             height="32"
                             width="32"
                         />
                     </div>
-                    <div className="hidden sm:block sm:ml-6">
+                    <div className="hidden sm:ml-6 sm:block">
                         <div className="flex space-x-4">
                             <NavigationLinks />
                             {
@@ -165,7 +165,7 @@ const Navbar = () => {
             // Mobile menu, show/hide based on menu state.
         }
         <div className={'sm:hidden transition-all duration-500 ease-in ' + (hidden ? 'max-h-0 opacity-0' : maxHeight)} id="mobile-menu">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="space-y-1 px-2 pt-2 pb-3">
                 <NavigationLinks mobile={true} />
             </div>
         </div>

@@ -15,19 +15,19 @@ import image10 from "./image10.jpg";
 
 
 function TableHeader({children, scope}: { children: React.ReactNode, scope?: 'col' | 'row' }) {
-    return <th className="border border-omega-dark p-2" scope={scope ?? 'col'}>
+    return <th className="border-omega-dark border p-2" scope={scope ?? 'col'}>
         {children}
     </th>
 }
 
 function TableCell({children}: { children?: React.ReactNode }) {
-    return <td className="border border-omega-dark p-2">
+    return <td className="border-omega-dark border p-2">
         {children}
     </td>
 }
 
 function Quote({children}: { children: React.ReactNode }) {
-    return <div className="italic text-center">
+    return <div className="text-center italic">
         {children}
     </div>
 }
@@ -245,7 +245,7 @@ export default function Tempest() {
             which may be with or without complication. Please see the examples section below.
         </p>
 
-        <table className="border border-collapse w-full">
+        <table className="w-full border-collapse border">
             <thead>
                 <tr>
                     <TableHeader>

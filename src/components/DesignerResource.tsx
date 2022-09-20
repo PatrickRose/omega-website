@@ -38,7 +38,7 @@ export function Footnote({name, children}: {name: string|number, children: React
 
     return <React.Fragment>
         <button
-            className="ml-1 px-1 text-sm btn-link"
+            className="btn-link ml-1 px-1 text-sm"
             onClick={() => setDisplay(!display)}
             aria-controls={id}
         >
@@ -54,7 +54,7 @@ export function Footnote({name, children}: {name: string|number, children: React
 }
 
 export function GameImage({image, alt}: {image: ImageProps["src"], alt: string}) {
-    return <div className="flex justify-items-center justify-center py-2">
+    return <div className="flex justify-center justify-items-center py-2">
         <div className="md:w-3/4 lg:w-1/2">
             <Image src={image} alt={alt} />
         </div>
@@ -66,7 +66,7 @@ export default function DesignerResource({resource}: {resource: GameResourceProp
     return <React.Fragment>
         <Hero>
             <HeroHeading>{resource.gameName}</HeroHeading>
-            <p className="text-center font-bold pb-8 text-xl">
+            <p className="pb-8 text-center text-xl font-bold">
                 {resource.designerName}
             </p>
         </Hero>

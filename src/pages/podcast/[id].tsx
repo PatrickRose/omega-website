@@ -75,7 +75,7 @@ export default function Podcast(props: InferGetStaticPropsType<typeof getStaticP
             <HeroHeading>
                 Episode {podcast.number}: {podcast.title}
             </HeroHeading>
-            <p className="font-bold pb-8 text-center">
+            <p className="pb-8 text-center font-bold">
                 {getStringFromOmegaDate(podcast.date)}
             </p>
         </Hero>
