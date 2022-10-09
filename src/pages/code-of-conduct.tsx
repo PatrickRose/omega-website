@@ -35,6 +35,15 @@ export default function CodeOfConduct() {
                 We understand that there is always room for improvement in the area of diversity and inclusion, and we
                 welcome feedback on this code of conduct or any other aspect of how we manage our games and community.
             </p>
+
+            <p className="py-2">
+                <a href="https://docs.google.com/document/d/1FaelhmttFFEtUagvbUlhohMBQEk_yVb-RTyAXpdopF8/edit?usp=sharing"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                >
+                Please also see our Official OMEGA Disciplinary Policy here.
+                </a>
+            </p>
         </MainContent>
     </React.Fragment>
 }
