@@ -16,6 +16,6 @@ export function HeroHeading(props: { className?: string, children: ReactNode, pa
     </h1>;
 }
 
-export function MainContent(props: { children: ReactNode }) {
-    return <div className={`${padding} py-8 flex-1`}>{props.children}</div>;
+export function MainContent(props: { children: ReactNode, className?: string }) {
+    return <div className={`${padding} ${props.className ?? ''} py-8 flex-1`}>{props.children}</div>;
 }
