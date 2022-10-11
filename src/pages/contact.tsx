@@ -62,9 +62,14 @@ export default function Contact() {
                 Contact us!
             </HeroHeading>
         </Hero>
-        <MainContent>
-            You can get in contact with the OMEGA team in one of the following ways
-            <ContactMethods />
+        <MainContent className="flex flex-col justify-between content-center">
+            <p className="py-2">
+                You can get in contact with the OMEGA team in one of the following ways
+            </p>
+            <ContactMethods/>
+            <p className="py-2">
+                We understand that there is always room for improvement and we welcome your feedback!
+            </p>
         </MainContent>
     </React.Fragment>
 }
