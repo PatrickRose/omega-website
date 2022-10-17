@@ -819,10 +819,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mapbox/node-pre-gyp@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.9.tgz#09a8781a3a036151cdebbe8719d6f8b25d4058bc"
-  integrity sha512-aDF3S3rK9Q2gey/WAttUlISduDItz5BU3306M9Eyv6/oS40aMprnopshtlKTykxRNIBEZuRMaZAnbrQ4QtKGyw==
+"@mapbox/node-pre-gyp@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.10.tgz#8e6735ccebbb1581e5a7e652244cadc8a844d03c"
+  integrity sha512-4ySo4CjzStuprMwk35H5pPbkymjv1SF3jGLj6rAHp/xT/RF7TL7bd9CTm1xDY49K2qF7jmR/g7k+SkLETP6opA==
   dependencies:
     detect-libc "^2.0.0"
     https-proxy-agent "^5.0.0"
@@ -1504,12 +1504,12 @@ arg@^5.0.2:
   resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.2.tgz#c81433cc427c92c4dcf4865142dbca6f15acd59c"
   integrity sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==
 
-argon2@^0.29.1:
-  version "0.29.1"
-  resolved "https://registry.yarnpkg.com/argon2/-/argon2-0.29.1.tgz#e6b621ba5dcaf02ea8246669532c2934799973e3"
-  integrity sha512-bWXzAsQA0B6EFWZh5li+YBk+muoknAb8KacAi1h/bC6Gigy9p5ANbrPvpnjTIb7i9I11/8Df6FeSxpJDK3vy4g==
+argon2@^0.30.1:
+  version "0.30.1"
+  resolved "https://registry.yarnpkg.com/argon2/-/argon2-0.30.1.tgz#7c719b27956553c7066a07583bc0a36f5b3ef9b5"
+  integrity sha512-wJYS8ebn6zHZwv4/iOOdlW1KUuLdbyIyhGsT51j6d9l5cRrHQU8pl817ubAxNgnS1jrbW/NGwegN3YrV0d5jRg==
   dependencies:
-    "@mapbox/node-pre-gyp" "^1.0.9"
+    "@mapbox/node-pre-gyp" "^1.0.10"
     "@phc/format" "^1.0.0"
     node-addon-api "^5.0.0"
 
