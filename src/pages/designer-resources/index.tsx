@@ -28,6 +28,18 @@ export default function DesignerResources() {
     const resources = Object.entries(RESOURCES);
 
     resources.sort(([_, a], [__, b]) => {
+        const aResourceType = a.resourceType;
+        const bResourceType = b.resourceType;
+
+        if (aResourceType != bResourceType) {
+            if (aResourceType == 'pitch-doc' && bResourceType != 'pitch-doc') {
+                return 1;
+            }
+            if (aResourceType != 'pitch-doc' && bResourceType == 'pitch-doc') {
+                return -1;
+            }
+        }
+
         const aName = a.gameName;
         const bName = b.gameName;
 

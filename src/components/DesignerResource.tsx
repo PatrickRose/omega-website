@@ -9,7 +9,9 @@ type GameID = 'councils-of-elporia'
             | 'tempest'
             | 'running-hot'
             | 'red-planet-rising'
-            | 'aftermath';
+            | 'aftermath'
+            | 'pitching-rubric'
+            | 'successful-pitches';
 
 type BaseResourceProps = {
     id: GameID,
@@ -25,7 +27,7 @@ type SiteResource = BaseResourceProps & {
 }
 
 type ExternalResource = BaseResourceProps & {
-    resourceType: 'external',
+    resourceType: 'external' | 'pitch-doc',
     link: string,
 }
 
@@ -77,7 +79,7 @@ export default function DesignerResource({resource}: {resource: GameResourceProp
             <hr className="py-2"/>
             <div className="resource-details">
                 {
-                    resource.resourceType == 'external'
+                    resource.resourceType != 'site'
                     ? <Link href={resource.link}>This resource is hosted externally</Link>
                     : resource.content
                 }
