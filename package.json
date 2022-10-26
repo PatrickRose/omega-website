@@ -34,7 +34,7 @@
     "io-ts-types": "^0.5.19",
     "iron-session": "^6.2.1",
     "jest-environment-jsdom": "^29.1.2",
-    "mongodb": "^4.10.0",
+    "mongodb": "^4.11.0",
     "monocle-ts": "^2.3.13",
     "newtype-ts": "^0.3.5",
     "next": "^12.3.1",
