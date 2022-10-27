@@ -108,6 +108,33 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
             </p>
         </React.Fragment>,
         content: <RunningHot />
+    },
+    'pitching-rubric': {
+        id: 'pitching-rubric',
+        resourceType: 'pitch-doc',
+        type: "Play-By-Email",
+        gameName: 'PbEm Pitching Rubric',
+        designerName: "OMEGA Steering Committee",
+        details: <React.Fragment>
+            <p>
+                Steering has developed a rubric with which they evaluated pitches for Play-By-Email games for the first half of 2023.
+            </p>
+        </React.Fragment>,
+        link: 'https://docs.google.com/spreadsheets/d/1D7yCjlKM3Cw-lSHYPXadzkfJTA9-bRZ2mYYW7nua7F0/edit#gid=0',
+    },
+    'successful-pitches': {
+        id: 'successful-pitches',
+        resourceType: 'pitch-doc',
+        type: "Play-By-Email",
+        gameName: 'Successful PbEm Pitch Examples',
+        designerName: "OMEGA Steering Committee",
+        details: <React.Fragment>
+            <p>
+                With permission from the designers who have submitted pitches, Steering released some of 
+                the successful pitches for the first half of 2023.
+            </p>
+        </React.Fragment>,
+        link: 'https://docs.google.com/document/d/1xtxjSxXBGsYGTCcF8OY8dkiMmzzgb9ePwv76r-lls8I/edit?usp=sharing',
     }
 }
 

@@ -86,7 +86,7 @@ export default function RunningHot() {
         <IndentedOl includeNumber={false} className="table-of-contents">
             <TableOfContentsLi className="font-bold">
                 <a href="#background">Background</a>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#whats-the-background">
                             What&apos;s the background
@@ -113,7 +113,7 @@ export default function RunningHot() {
             </TableOfContentsLi>
             <TableOfContentsLi className="font-bold">
                 <a href="#turn-structure">Turn structure</a>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#setup-phase">
                             Setup Phase
@@ -164,7 +164,7 @@ export default function RunningHot() {
                 <a href="#subgames">
                     Sub-games
                 </a>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#council">
                             Council
@@ -193,7 +193,7 @@ export default function RunningHot() {
                         </TableOfContentsLi>
                     </IndentedOl>
                 </IndentedOl>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#research">
                             Research
@@ -238,7 +238,7 @@ export default function RunningHot() {
                         </TableOfContentsLi>
                     </IndentedOl>
                 </IndentedOl>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#facility-defence">
                             Facility Defence
@@ -274,7 +274,7 @@ export default function RunningHot() {
                         </IndentedOl>
                     </TableOfContentsLi>
                 </IndentedOl>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#runs">
                             Runs
@@ -303,7 +303,7 @@ export default function RunningHot() {
                         </TableOfContentsLi>
                     </IndentedOl>
                 </IndentedOl>
-                <IndentedOl includeNumber={false} className="font-normal table-of-contents">
+                <IndentedOl includeNumber={false} className="table-of-contents font-normal">
                     <TableOfContentsLi>
                         <a href="#other-runner-actions">
                             Other Runner actions
@@ -333,7 +333,7 @@ export default function RunningHot() {
                     Acknowledgements
                 </a>
             </TableOfContentsLi>
-            <TableOfContentsLi className="font-bold acknowledge">
+            <TableOfContentsLi className="acknowledge font-bold">
                 <a href="#glossary">
                     Glossary
                 </a>

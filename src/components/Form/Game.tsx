@@ -63,7 +63,7 @@ function FormErrorMessage({errors, touched}: FormErrorMessageProps) {
     }
 
     return <ValidationError showError={errorDivs.length > 0} id="form-errors">
-        <ul className="pl-8 list-disc">{errorDivs}</ul>
+        <ul className="list-disc pl-8">{errorDivs}</ul>
     </ValidationError>
 }
 
@@ -117,7 +117,7 @@ export function GameAdmin(
         {
             props => {
                 return <div className="flex flex-col lg:flex-row">
-                    <div className="px-2 flex-1">
+                    <div className="flex-1 px-2">
                         <Form>
                             {
                                 successMessage.message
@@ -168,7 +168,7 @@ export function GameAdmin(
                                     href="https://daringfireball.net/projects/markdown/">markdown</a>. A preview is
                                     shown, but the main thing is:
                                 </p>
-                                <ul className="pl-8 list-disc">
+                                <ul className="list-disc pl-8">
                                     <li>Links are written using <code className="code-snippet">[Link
                                         Text](http://link/goes/here)</code></li>
                                     <li>You can add list of items using a series of <code
@@ -238,7 +238,7 @@ export function GameAdmin(
                             </SubmitButton>
                         </Form>
                     </div>
-                    <div aria-live="polite" className="px-2 flex-1">
+                    <div aria-live="polite" className="flex-1 px-2">
                         <h2 className="text-2xl">Game preview</h2>
                         <GamePreview values={props.values}/>
                     </div>

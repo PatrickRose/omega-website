@@ -25,11 +25,11 @@ const homeLinks: LinkDef[] = [
 ]
 
 function HomePageLinks() {
-    return <div className="flex justify-center pb-16 flex-col sm:flex-row">
+    return <div className="flex flex-col justify-center pb-16 sm:flex-row">
         {
             homeLinks.map(value => <Link
                 href={value.linkPath} key={value.linkText}>
-                <a className="flex-1 flex justify-center flex-col sm:m-1 m-4 p-4 btn-link border-2">
+                <a className="btn-link m-4 flex flex-1 flex-col justify-center border-2 p-4 sm:m-1">
                     {value.linkText}
                 </a>
             </Link>)
@@ -38,14 +38,14 @@ function HomePageLinks() {
 }
 
 function Megagame({value}: { value: Game }) {
-    return <div className="flex-1 px-3 flex flex-col">
-        <h3 className="text-center text-xl pb-2">
+    return <div className="flex flex-1 flex-col px-3">
+        <h3 className="pb-2 text-center text-xl">
             <Link href={`/games/${value._id}`}><a>{value.name}</a></Link>
         </h3>
         <p className="flex-1">{value.preamble}</p>
         <div className="flex">
             <Link href={`/games/${value._id}`}>
-                <a className="btn-link m-4 p-4 w-full">Book a space</a>
+                <a className="btn-link m-4 w-full p-4">Book a space</a>
             </Link>
         </div>
     </div>
@@ -60,7 +60,7 @@ function UpcomingEvents({events}: { events: Game[] }) {
             <p>However, feel free to look at <Link href="/games#past">our past games</Link></p>
         </div>
     } else {
-        eventList = <div className="lg:w-3/4 flex flex-col sm:flex-row"> {events.map(
+        eventList = <div className="flex flex-col sm:flex-row lg:w-3/4"> {events.map(
             value => <Megagame value={value} key={value._id}/>
         )
         }
@@ -68,7 +68,7 @@ function UpcomingEvents({events}: { events: Game[] }) {
     }
 
 
-    return <div className="w-full flex p-4 justify-center">{eventList}</div>
+    return <div className="flex w-full justify-center p-4">{eventList}</div>
 }
 
 export const getStaticProps: GetStaticProps<{ upcomingGames: Game[] }> = async () => {
@@ -98,7 +98,7 @@ export default function Home({upcomingGames}: InferGetStaticPropsType<typeof get
             <HeroHeading>
                 OMEGA hosts and produces online megagames.
             </HeroHeading>
-            <p className="text-xl pb-16">
+            <p className="pb-16 text-xl">
                 From grand strategy to roleplay, economics to fireballs, our games blend serious
                 political simulation with emergent storytelling in settings both mundane and fantastical.
             </p>
@@ -107,7 +107,7 @@ export default function Home({upcomingGames}: InferGetStaticPropsType<typeof get
         <MainContent>
             <h2 className="text-2xl">Our next events</h2>
             <UpcomingEvents events={upcomingGames}/>
-            <div className="w-full flex justify-center">
+            <div className="flex w-full justify-center">
                 <Image src={godsWar} className="lg:w-2/4" alt=""/>
             </div>
         </MainContent>

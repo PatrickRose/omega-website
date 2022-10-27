@@ -10,12 +10,12 @@ function Resource({resource}: { resource: GameResourceProps }) {
         : resource.link
 
     return <div className="py-4">
-        <h2 className="text-2xl hover:text-omega">
+        <h2 className="hover:text-omega text-2xl">
             <Link href={link} target="_blank">
                 {resource.gameName}
             </Link>
         </h2>
-        <p className="font-bold py-2">
+        <p className="py-2 font-bold">
             {resource.designerName}
         </p>
         <div className="resource-details">
@@ -28,6 +28,18 @@ export default function DesignerResources() {
     const resources = Object.entries(RESOURCES);
 
     resources.sort(([_, a], [__, b]) => {
+        const aResourceType = a.resourceType;
+        const bResourceType = b.resourceType;
+
+        if (aResourceType != bResourceType) {
+            if (aResourceType == 'pitch-doc' && bResourceType != 'pitch-doc') {
+                return 1;
+            }
+            if (aResourceType != 'pitch-doc' && bResourceType == 'pitch-doc') {
+                return -1;
+            }
+        }
+
         const aName = a.gameName;
         const bName = b.gameName;
 
