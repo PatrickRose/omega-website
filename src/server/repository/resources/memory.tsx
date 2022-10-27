@@ -130,8 +130,8 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
         designerName: "OMEGA Steering Committee",
         details: <React.Fragment>
             <p>
-                With permission from the designers who have submitted pitches, Steering released the successful pitches
-                for the first half of 2023
+                With permission from the designers who have submitted pitches, Steering released some of 
+                the successful pitches for the first half of 2023.
             </p>
         </React.Fragment>,
         link: 'https://docs.google.com/document/d/1xtxjSxXBGsYGTCcF8OY8dkiMmzzgb9ePwv76r-lls8I/edit?usp=sharing',
