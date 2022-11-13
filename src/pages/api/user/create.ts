@@ -1,12 +1,17 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import {isLeft, isRight, Left, Right} from "fp-ts/Either";
-import { getUserRepo } from '../../../server/repository/user';
-import { ApiResult, CreateUserFailed, CreateUserResult, CreateUserSuccess } from '../../../types/types';
-import { CreateUserFormValuesDecode } from '../../../types/io-ts-def';
-import { MakeLeft, MakeRight } from '../../../utils/io-ts-helpers';
-import { DEFAULT_PASSWORD } from '../../../server/repository/user/consts';
-import {sessionOptions} from "../../../lib/session";
-import {withIronSessionApiRoute} from "iron-session/next";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { isLeft, isRight, Left, Right } from "fp-ts/Either";
+import { getUserRepo } from "../../../server/repository/user";
+import {
+    ApiResult,
+    CreateUserFailed,
+    CreateUserResult,
+    CreateUserSuccess
+} from "../../../types/types";
+import { CreateUserFormValuesDecode } from "../../../types/io-ts-def";
+import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
+import { DEFAULT_PASSWORD } from "../../../server/repository/user/consts";
+import { sessionOptions } from "../../../lib/session";
+import { withIronSessionApiRoute } from "iron-session/next";
 
 function makeSuccessResult(message: string): Right<CreateUserSuccess> {
     return MakeRight({
@@ -19,15 +24,16 @@ function makeFailedResult(message: string): Left<CreateUserFailed> {
     return MakeLeft({
         result: "Failure",
         message
-    })
+    });
 }
 
 async function getResult(body: unknown): Promise<ApiResult<CreateUserResult>> {
     if (!CreateUserFormValuesDecode.is(body)) {
         return {
             status: 400,
-            body: makeFailedResult('Invalid request body - missing either username or password')
-
+            body: makeFailedResult(
+                "Invalid request body - missing either username or password"
+            )
         };
     }
 
@@ -36,8 +42,10 @@ async function getResult(body: unknown): Promise<ApiResult<CreateUserResult>> {
     if (isLeft(userRepoBase)) {
         return {
             status: 500,
-            body: makeFailedResult(`Database was not set up correctly - please contact the webmaster: ${userRepoBase.left}`)
-        }
+            body: makeFailedResult(
+                `Database was not set up correctly - please contact the webmaster: ${userRepoBase.left}`
+            )
+        };
     }
 
     const userRepo = userRepoBase.right;
@@ -47,7 +55,7 @@ async function getResult(body: unknown): Promise<ApiResult<CreateUserResult>> {
         // The user already exists, tell them off
         return {
             status: 400,
-            body: makeFailedResult('A user with that username already exists')
+            body: makeFailedResult("A user with that username already exists")
         };
     }
 
@@ -56,23 +64,30 @@ async function getResult(body: unknown): Promise<ApiResult<CreateUserResult>> {
     if (isRight(create)) {
         return {
             status: 200,
-            body: makeSuccessResult(`Created user with username ${body.username} and password ${DEFAULT_PASSWORD}`)
+            body: makeSuccessResult(
+                `Created user with username ${body.username} and password ${DEFAULT_PASSWORD}`
+            )
         };
     }
 
     return {
         status: 400,
-        body: makeFailedResult(`Failed to create user, please wait and try again: ${create.left}`)
+        body: makeFailedResult(
+            `Failed to create user, please wait and try again: ${create.left}`
+        )
     };
 }
 
-export default withIronSessionApiRoute(loginRoute, sessionOptions)
+export default withIronSessionApiRoute(loginRoute, sessionOptions);
 
-async function loginRoute(req: NextApiRequest, res: NextApiResponse<CreateUserResult>) {
+async function loginRoute(
+    req: NextApiRequest,
+    res: NextApiResponse<CreateUserResult>
+) {
     const data = await req.body;
 
     if (!req.session?.user?.isLoggedIn) {
-        res.status(403).json(makeFailedResult('You are not logged in'));
+        res.status(403).json(makeFailedResult("You are not logged in"));
         return;
     }
 

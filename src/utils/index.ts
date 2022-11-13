@@ -1,4 +1,4 @@
-import {Game, OmegaDate} from "../types/types";
+import { Game, OmegaDate } from "../types/types";
 
 export function getJSDateFromOmegaDate(date: OmegaDate): Date {
     const val = new Date();
@@ -12,16 +12,13 @@ export function getStringFromJSDate(date: Date): string {
 }
 
 export function getStringFromOmegaDate(date: OmegaDate): string {
-    const jsDate = getJSDateFromOmegaDate(date)
+    const jsDate = getJSDateFromOmegaDate(date);
 
     if (date.day === null) {
-        return new Intl.DateTimeFormat(
-            [],
-            {
-                month: "long",
-                year: "numeric"
-            }
-        ).format(jsDate);
+        return new Intl.DateTimeFormat([], {
+            month: "long",
+            year: "numeric"
+        }).format(jsDate);
     }
 
     return getStringFromJSDate(jsDate);
@@ -41,14 +38,13 @@ export function dateSorter(a: Game, b: Game): number {
 
     if (aDateAsJS < currentDate && bDateAsJS < currentDate) {
         reverseOrder = false;
-    }
-    else if (aDateAsJS < currentDate) {
+    } else if (aDateAsJS < currentDate) {
         return 1;
     } else if (bDateAsJS < currentDate) {
         return -1;
     }
 
-    let keys: (keyof typeof aDate)[] = ['year', 'month', 'day'];
+    let keys: (keyof typeof aDate)[] = ["year", "month", "day"];
 
     for (let key of keys) {
         const aDateKeyVal = aDate[key];
@@ -65,9 +61,8 @@ export function dateSorter(a: Game, b: Game): number {
             return reverseOrder ? 1 : -1;
         }
 
-
         if (aDateKeyVal !== bDateKeyVal) {
-            let diff = bDateKeyVal - aDateKeyVal
+            let diff = bDateKeyVal - aDateKeyVal;
 
             return reverseOrder ? -diff : diff;
         }

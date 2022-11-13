@@ -4,26 +4,28 @@
 
 @layer components {
     a {
-        @apply underline hover:text-omega-dark
+        @apply underline hover:text-omega-dark;
     }
 
     .btn-link {
-        @apply rounded-lg border-gray-800 duration-500 bg-omega-dark text-white hover:text-black text-center hover:bg-omega-light disabled:opacity-50 transition-link
+        @apply rounded-lg border-gray-800 duration-500 bg-omega-dark text-white hover:text-black text-center hover:bg-omega-light disabled:opacity-50 transition-link;
     }
 
-    a.btn-link, .navbar a {
-        @apply no-underline
+    a.btn-link,
+    .navbar a {
+        @apply no-underline;
     }
 
     #__next {
-        @apply flex-1 flex flex-col
+        @apply flex-1 flex flex-col;
     }
 
     .code-snippet {
-        @apply bg-gray-300 text-pink-800
+        @apply bg-gray-300 text-pink-800;
     }
 
-    .future hr, .past hr {
+    .future hr,
+    .past hr {
         display: none;
     }
     .future + .past hr {
@@ -34,28 +36,29 @@
         @apply py-1;
     }
 
-    .resource-details ul, .resource-details ol {
-        @apply pl-6
+    .resource-details ul,
+    .resource-details ol {
+        @apply pl-6;
     }
 
     .resource-details h4 {
-        @apply text-xl
+        @apply text-xl;
     }
 
     .resource-details h5 {
-        @apply text-lg
+        @apply text-lg;
     }
 
     .table-of-contents {
-      counter-reset: item;
+        counter-reset: item;
     }
 
     .table-of-contents li:before {
-      content: counters(item, ".") ". ";
-      counter-increment: item
+        content: counters(item, ".") ". ";
+        counter-increment: item;
     }
 
     .table-of-contents li.acknowledge:before {
-      content: 'A. '
+        content: "A. ";
     }
 }

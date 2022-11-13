@@ -1,16 +1,15 @@
-import { Either } from 'fp-ts/lib/Either';
-import { MongoClient } from 'mongodb';
-import { DBUser } from '../../../types/types';
-import { MakeLeft, MakeRight } from '../../../utils/io-ts-helpers';
-import initialiseMongo from '../../mongo';
-import { hashPassword } from './argon';
-import { DEFAULT_PASSWORD } from './consts';
+import { Either } from "fp-ts/lib/Either";
+import { MongoClient } from "mongodb";
+import { DBUser } from "../../../types/types";
+import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
+import initialiseMongo from "../../mongo";
+import { hashPassword } from "./argon";
+import { DEFAULT_PASSWORD } from "./consts";
 import UserRepository from "./index";
-import {isLeft} from "fp-ts/Either";
+import { isLeft } from "fp-ts/Either";
 
 export class MongoRepository implements UserRepository {
-
-    constructor(private readonly mongo: MongoClient) { }
+    constructor(private readonly mongo: MongoClient) {}
 
     static APIInstance(): Either<string, MongoRepository> {
         const client = initialiseMongo();
@@ -39,12 +38,10 @@ export class MongoRepository implements UserRepository {
             }
 
             return MakeRight(user);
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
             return MakeLeft(false);
-        }
-        finally {
+        } finally {
             await this.mongo.close();
         }
     }
@@ -61,31 +58,37 @@ export class MongoRepository implements UserRepository {
                 _id: username,
                 password: await hashPassword(DEFAULT_PASSWORD),
                 passwordNeedsReset: true
-            }
+            };
 
             await userCollection.insertOne(user);
 
             return MakeRight(true);
-        }
-        catch (e) {
-            return MakeLeft((e as Error).message)
-        }
-        finally {
+        } catch (e) {
+            return MakeLeft((e as Error).message);
+        } finally {
             await this.mongo.close();
         }
     }
 
     private readonly _collectionName = "users";
 
-    async update(username: string, user: DBUser): Promise<Either<string, true>> {
+    async update(
+        username: string,
+        user: DBUser
+    ): Promise<Either<string, true>> {
         try {
             await this.mongo.connect();
 
             const database = this.mongo.db();
 
-            const userCollection = database.collection<DBUser>(this._collectionName);
+            const userCollection = database.collection<DBUser>(
+                this._collectionName
+            );
 
-            const result = await userCollection.updateOne({ _id: username }, { "$set": user });
+            const result = await userCollection.updateOne(
+                { _id: username },
+                { $set: user }
+            );
 
             if (result.matchedCount == 1) {
                 return MakeRight(true);
@@ -93,12 +96,12 @@ export class MongoRepository implements UserRepository {
 
             console.log(result);
 
-            return MakeLeft(`Failed to update - matched ${result.matchedCount} when updating ${username}`);
-        }
-        catch (e) {
-            return MakeLeft((e as Error).message)
-        }
-        finally {
+            return MakeLeft(
+                `Failed to update - matched ${result.matchedCount} when updating ${username}`
+            );
+        } catch (e) {
+            return MakeLeft((e as Error).message);
+        } finally {
             await this.mongo.close();
         }
     }
