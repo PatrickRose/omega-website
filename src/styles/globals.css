@@ -61,4 +61,21 @@
     .table-of-contents li.acknowledge:before {
         content: "A. ";
     }
+
+    .tag {
+        top: 0px;
+        left: 0px;
+        color: whitesmoke;
+        font-family: Arial;
+        text-decoration: none;
+        margin: 0 10px 15px 0;
+        line-height: 18px;
+        text-align: center;
+        font-size: 12px;
+        padding: 1px 5px;
+        display: inline-block;
+        border-radius: 3px;
+        background: blueviolet;
+        margin-left: 8px;
+    }
 }

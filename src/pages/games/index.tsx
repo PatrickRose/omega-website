@@ -22,6 +22,9 @@ type GamesState = {
 };
 
 function FetchedMegagame(props: Game) {
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
     return (
         <li
             className={`grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4 ${
@@ -43,6 +46,9 @@ function FetchedMegagame(props: Game) {
                     <Link href={`/games/${props._id}`}>
                         <a>{props.name}</a>
                     </Link>
+                    {getJSDateFromOmegaDate(props.date) < currentDate ? (
+                        <p className="tag">Active Game</p>
+                    ) : null}
                 </h2>
                 <p className="font-bold">{props.designer}</p>
                 <p>{getStringFromOmegaDate(props.date)}</p>
