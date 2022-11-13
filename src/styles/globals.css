@@ -3,59 +3,79 @@
 @tailwind utilities;
 
 @layer components {
-    a {
-        @apply underline hover:text-omega-dark
-    }
+	a {
+		@apply underline hover:text-omega-dark;
+	}
 
-    .btn-link {
-        @apply rounded-lg border-gray-800 duration-500 bg-omega-dark text-white hover:text-black text-center hover:bg-omega-light disabled:opacity-50 transition-link
-    }
+	.btn-link {
+		@apply rounded-lg border-gray-800 duration-500 bg-omega-dark text-white hover:text-black text-center hover:bg-omega-light disabled:opacity-50 transition-link;
+	}
 
-    a.btn-link, .navbar a {
-        @apply no-underline
-    }
+	a.btn-link,
+	.navbar a {
+		@apply no-underline;
+	}
 
-    #__next {
-        @apply flex-1 flex flex-col
-    }
+	#__next {
+		@apply flex-1 flex flex-col;
+	}
 
-    .code-snippet {
-        @apply bg-gray-300 text-pink-800
-    }
+	.code-snippet {
+		@apply bg-gray-300 text-pink-800;
+	}
 
-    .future hr, .past hr {
-        display: none;
-    }
-    .future + .past hr {
-        display: inherit;
-    }
+	.future hr,
+	.past hr {
+		display: none;
+	}
+	.future + .past hr {
+		display: inherit;
+	}
 
-    .resource-details * {
-        @apply py-1;
-    }
+	.resource-details * {
+		@apply py-1;
+	}
 
-    .resource-details ul, .resource-details ol {
-        @apply pl-6
-    }
+	.resource-details ul,
+	.resource-details ol {
+		@apply pl-6;
+	}
 
-    .resource-details h4 {
-        @apply text-xl
-    }
+	.resource-details h4 {
+		@apply text-xl;
+	}
 
-    .resource-details h5 {
-        @apply text-lg
-    }
+	.resource-details h5 {
+		@apply text-lg;
+	}
 
-    .table-of-contents {
-      counter-reset: item;
-    }
+	.table-of-contents {
+		counter-reset: item;
+	}
 
-    .table-of-contents li:before {
-      content: counters(item, ".") ". ";
-      counter-increment: item
-    }
+	.table-of-contents li:before {
+		content: counters(item, '.') '. ';
+		counter-increment: item;
+	}
 
-    .table-of-contents li.acknowledge:before {
-      content: 'A. '
-    }
+	.table-of-contents li.acknowledge:before {
+		content: 'A. ';
+	}
+
+	.tag {
+		top: 0px;
+		left: 0px;
+		color: whitesmoke;
+		font-family: Arial;
+		text-decoration: none;
+		margin: 0 10px 15px 0;
+		line-height: 18px;
+		text-align: center;
+		font-size: 12px;
+		padding: 1px 5px;
+		display: inline-block;
+		border-radius: 3px;
+		background: blueviolet;
+		margin-left: 8px;
+	}
 }
