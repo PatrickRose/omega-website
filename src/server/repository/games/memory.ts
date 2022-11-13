@@ -3,16 +3,15 @@ import GamesRepository from "./index";
 import { Either } from "fp-ts/Either";
 import { Game } from "../../../types/types";
 import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
-import { dateSorter} from "../../../utils";
+import { dateSorter } from "../../../utils";
 import { allGames } from "./gamelist";
-import {gameUtils} from "../../../utils/games";
-
+import { gameUtils } from "../../../utils/games";
 
 export class MemoryRepository implements GamesRepository {
     private games: Game[];
 
     static APIInstance(): MemoryRepository {
-        return new MemoryRepository(allGames)
+        return new MemoryRepository(allGames);
     }
 
     constructor(games: Game[]) {
@@ -20,7 +19,9 @@ export class MemoryRepository implements GamesRepository {
     }
 
     async upcomingEvents(limit: number): Promise<Either<false, Game[]>> {
-        const games: Game[] = this.games.filter((game) => gameUtils.isUpcoming(game));
+        const games: Game[] = this.games.filter((game) =>
+            gameUtils.isUpcoming(game)
+        );
 
         games.sort(dateSorter);
 
@@ -29,9 +30,9 @@ export class MemoryRepository implements GamesRepository {
 
     async all(): Promise<Either<false, Game[]>> {
         return {
-            _tag: 'Right',
+            _tag: "Right",
             right: this.games
-        }
+        };
     }
 
     async get(id: string): Promise<Either<false, Game>> {
@@ -58,10 +59,10 @@ export class MemoryRepository implements GamesRepository {
             if (existingGame._id === id) {
                 this.games[gameKey] = game;
 
-                return MakeRight(true)
+                return MakeRight(true);
             }
         }
 
-        return MakeLeft('Did not find game');
+        return MakeLeft("Did not find game");
     }
 }

@@ -1,17 +1,26 @@
-import * as argon2 from "argon2"
-import { isLeft, isRight, Left, Right } from 'fp-ts/lib/Either'
-import { withIronSessionApiRoute } from 'iron-session/next'
-import { NextApiRequest, NextApiResponse } from 'next'
-import { sessionOptions } from "../../../lib/session"
-import { getUserRepo } from "../../../server/repository/user"
-import { hashPassword } from "../../../server/repository/user/argon"
-import { ChangePasswordFormValuesDecode } from "../../../types/io-ts-def"
-import { ApiResult, ChangePasswordFailed, ChangePasswordResult, ChangePasswordSuccess, User } from "../../../types/types"
-import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers"
+import * as argon2 from "argon2";
+import { isLeft, isRight, Left, Right } from "fp-ts/lib/Either";
+import { withIronSessionApiRoute } from "iron-session/next";
+import { NextApiRequest, NextApiResponse } from "next";
+import { sessionOptions } from "../../../lib/session";
+import { getUserRepo } from "../../../server/repository/user";
+import { hashPassword } from "../../../server/repository/user/argon";
+import { ChangePasswordFormValuesDecode } from "../../../types/io-ts-def";
+import {
+    ApiResult,
+    ChangePasswordFailed,
+    ChangePasswordResult,
+    ChangePasswordSuccess,
+    User
+} from "../../../types/types";
+import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
 
 export default withIronSessionApiRoute(changePassword, sessionOptions);
 
-function makeSuccess(message: string, user: User): Right<ChangePasswordSuccess> {
+function makeSuccess(
+    message: string,
+    user: User
+): Right<ChangePasswordSuccess> {
     return MakeRight({
         result: "Success",
         message,
@@ -26,19 +35,22 @@ function makeFailure(message: string): Left<ChangePasswordFailed> {
     });
 }
 
-async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePasswordResult>> {
+async function getResult(
+    body: unknown,
+    user?: User
+): Promise<ApiResult<ChangePasswordResult>> {
     if (!user) {
         return {
             status: 401,
-            body: makeFailure('You are not logged in')
-        }
+            body: makeFailure("You are not logged in")
+        };
     }
 
     if (!ChangePasswordFormValuesDecode.is(body)) {
         return {
             status: 400,
-            body: makeFailure('Invalid request body - missing required fields')
-        }
+            body: makeFailure("Invalid request body - missing required fields")
+        };
     }
 
     const userRepoBase = getUserRepo();
@@ -46,7 +58,9 @@ async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePa
     if (isLeft(userRepoBase)) {
         return {
             status: 500,
-            body: makeFailure(`Failed to create user, please wait and try again: ${userRepoBase.left}`)
+            body: makeFailure(
+                `Failed to create user, please wait and try again: ${userRepoBase.left}`
+            )
         };
     }
 
@@ -57,17 +71,19 @@ async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePa
     if (isLeft(dbUserResult)) {
         return {
             status: 400,
-            body: makeFailure('Could not find your user. Please wait and try again')
+            body: makeFailure(
+                "Could not find your user. Please wait and try again"
+            )
         };
     }
 
     const dbUser = dbUserResult.right;
 
     // Verify the hash
-    if (!await argon2.verify(dbUser.password, body.originalPassword)) {
+    if (!(await argon2.verify(dbUser.password, body.originalPassword))) {
         return {
             status: 400,
-            body: makeFailure('Your original password did not match')
+            body: makeFailure("Your original password did not match")
         };
     }
 
@@ -86,21 +102,21 @@ async function getResult(body: unknown, user?: User): Promise<ApiResult<ChangePa
 
     return {
         status: 200,
-        body: makeSuccess(
-            'Password changed successfully',
-            {
-                ...user,
-                passwordNeedsReset: false
-            }
-        ),
-    }
+        body: makeSuccess("Password changed successfully", {
+            ...user,
+            passwordNeedsReset: false
+        })
+    };
 }
 
-async function changePassword(req: NextApiRequest, res: NextApiResponse<ChangePasswordResult>) {
+async function changePassword(
+    req: NextApiRequest,
+    res: NextApiResponse<ChangePasswordResult>
+) {
     const data = await req.body;
 
     if (!req.session?.user?.isLoggedIn) {
-        res.status(403).json(makeFailure('You are not logged in'));
+        res.status(403).json(makeFailure("You are not logged in"));
         return;
     }
 

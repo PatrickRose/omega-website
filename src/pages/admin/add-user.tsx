@@ -11,32 +11,40 @@ import { MakeLeft } from "../../utils/io-ts-helpers";
 export default function AdminPage() {
     // If the user isn't logged in, send them to the admin page
     const { user } = useUser({
-        redirectTo: '/admin/login',
+        redirectTo: "/admin/login"
     });
 
-    const [successMessage, setSuccessMessage] = useState<string>('');
+    const [successMessage, setSuccessMessage] = useState<string>("");
 
     // It's possible for this to be undefined if the user hasn't logged in yet
     // Since we have to wait for the api response, make sure this returns an empty page
     if (!user?.isLoggedIn) {
-        return <MainContent><p>Loading admin page</p></MainContent>
+        return (
+            <MainContent>
+                <p>Loading admin page</p>
+            </MainContent>
+        );
     }
 
-    const onSubmit = async (values: FormikValues, { setSubmitting, setErrors, setValues }: FormikHelpers<CreateUserFormValues>) => {
+    const onSubmit = async (
+        values: FormikValues,
+        {
+            setSubmitting,
+            setErrors,
+            setValues
+        }: FormikHelpers<CreateUserFormValues>
+    ) => {
         // Attempt to log in
         try {
-            setSuccessMessage('');
-            const response = await fetch(
-                '/api/user/create',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                    },
-                    body: JSON.stringify(values)
-                }
-            );
+            setSuccessMessage("");
+            const response = await fetch("/api/user/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(values)
+            });
 
             let data: CreateUserResult;
 
@@ -49,67 +57,69 @@ export default function AdminPage() {
                     data = MakeLeft({
                         result: "Failure",
                         message: `Error when sending API request (unknown API result - ${origData})`
-                    })
+                    });
                 }
-            }
-            catch (e) {
+            } catch (e) {
                 data = MakeLeft({
                     result: "Failure",
-                    message: 'Error when sending API request, please wait and try again'
-                })
+                    message:
+                        "Error when sending API request, please wait and try again"
+                });
             }
 
             if (isLeft(data)) {
                 setErrors({ username: data.left.message });
             } else {
                 setSuccessMessage(data.right.message);
-                setValues({ username: '' }, false);
+                setValues({ username: "" }, false);
             }
-        }
-        finally {
+        } finally {
             setSubmitting(false);
         }
-    }
+    };
 
     const validate = (values: FormikValues) => {
         const errors: Partial<CreateUserFormValues> = {};
 
         if (!values.username) {
-            errors.username = 'Specify the username';
+            errors.username = "Specify the username";
         }
 
         return errors;
-    }
+    };
 
-    return <React.Fragment>
-        <Hero>
-            <HeroHeading>Add new user</HeroHeading>
-        </Hero>
-        <MainContent>
-            <Formik
-                initialValues={{ username: '' }}
-                onSubmit={onSubmit}
-                validate={validate}
-            >
-                {
-                    props => {
-                        return <Form>
-                            {
-                                successMessage
-                                && <SuccessMessage>{successMessage}</SuccessMessage>
-                            }
-                            <TextInput
-                                label="Username"
-                                name="username"
-                                type="text"
-                            />
-                            <SubmitButton disabled={props.isSubmitting}>
-                                Create user
-                            </SubmitButton>
-                        </Form>
-                    }
-                }
-            </Formik>
-        </MainContent>
-    </React.Fragment>;
+    return (
+        <React.Fragment>
+            <Hero>
+                <HeroHeading>Add new user</HeroHeading>
+            </Hero>
+            <MainContent>
+                <Formik
+                    initialValues={{ username: "" }}
+                    onSubmit={onSubmit}
+                    validate={validate}
+                >
+                    {(props) => {
+                        return (
+                            <Form>
+                                {successMessage && (
+                                    <SuccessMessage>
+                                        {successMessage}
+                                    </SuccessMessage>
+                                )}
+                                <TextInput
+                                    label="Username"
+                                    name="username"
+                                    type="text"
+                                />
+                                <SubmitButton disabled={props.isSubmitting}>
+                                    Create user
+                                </SubmitButton>
+                            </Form>
+                        );
+                    }}
+                </Formik>
+            </MainContent>
+        </React.Fragment>
+    );
 }
