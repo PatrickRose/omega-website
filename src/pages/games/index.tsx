@@ -7,12 +7,12 @@ import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import {
     dateSorter,
     getJSDateFromOmegaDate,
-    getStringFromOmegaDate
+    getStringFromOmegaDate,
 } from "../../utils";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { getGamesRepo } from "../../server/repository/games";
 import { MakeLeft } from "../../utils/io-ts-helpers";
-import { GAME_ICONS, gameUtils } from "../../utils/games";
+import { GAME_ICONS, gameUtils, isGameActive } from "../../utils/games";
 
 type GamesState = {
     fetched: boolean;
@@ -46,7 +46,7 @@ function FetchedMegagame(props: Game) {
                     <Link href={`/games/${props._id}`}>
                         <a>{props.name}</a>
                     </Link>
-                    {getJSDateFromOmegaDate(props.date) < currentDate ? (
+                    {isGameActive(props) ? (
                         <p className="tag">Active Game</p>
                     ) : null}
                 </h2>
