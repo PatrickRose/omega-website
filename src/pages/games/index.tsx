@@ -47,7 +47,7 @@ function FetchedMegagame(props: Game) {
                         <a>{props.name}</a>
                     </Link>
                     {isGameActive(props) ? (
-                        <p className="tag">Active Game</p>
+                        <span className="p-1 m-2 text-center rounded text-base bg-omega-dark text-omega-light">Active Game</span>
                     ) : null}
                 </h2>
                 <p className="font-bold">{props.designer}</p>
