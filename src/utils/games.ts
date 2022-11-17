@@ -50,6 +50,20 @@ export const gameUtils: GameUtils<Game> & {
         return this.getUtils(value).isUpcoming(value);
     }
 };
+
+export const isGameActive = (game: PlayByEmailGame | Game) => {
+    const start = getJSDateFromOmegaDate(game.date);
+    const today = new Date();
+    start.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    if (game.type === "Play-By-Email") {
+        const end = getJSDateFromOmegaDate(game.endDate);
+        end.setHours(0, 0, 0, 0);
+        return +start <= +today && end > today;
+    } else return +start === +today;
+};
+
 export const GAME_ICONS: { [key in Game["type"]]: IconDefinition } = {
     "Play-By-Email": faEnvelopeOpenText,
     "Online game": faDesktop

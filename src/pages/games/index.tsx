@@ -12,7 +12,7 @@ import {
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { getGamesRepo } from "../../server/repository/games";
 import { MakeLeft } from "../../utils/io-ts-helpers";
-import { GAME_ICONS, gameUtils } from "../../utils/games";
+import { GAME_ICONS, gameUtils, isGameActive } from "../../utils/games";
 
 type GamesState = {
     fetched: boolean;
@@ -22,6 +22,9 @@ type GamesState = {
 };
 
 function FetchedMegagame(props: Game) {
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+
     return (
         <li
             className={`grid sm:grid-cols-12 grid-cols-5 gap-4 pb-4 ${
@@ -43,6 +46,11 @@ function FetchedMegagame(props: Game) {
                     <Link href={`/games/${props._id}`}>
                         <a>{props.name}</a>
                     </Link>
+                    {isGameActive(props) ? (
+                        <span className="p-1 m-2 text-center rounded text-base bg-omega-dark text-omega-light">
+                            Active Game
+                        </span>
+                    ) : null}
                 </h2>
                 <p className="font-bold">{props.designer}</p>
                 <p>{getStringFromOmegaDate(props.date)}</p>
