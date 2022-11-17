@@ -7,7 +7,7 @@ import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import {
     dateSorter,
     getJSDateFromOmegaDate,
-    getStringFromOmegaDate,
+    getStringFromOmegaDate
 } from "../../utils";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { getGamesRepo } from "../../server/repository/games";
@@ -47,7 +47,9 @@ function FetchedMegagame(props: Game) {
                         <a>{props.name}</a>
                     </Link>
                     {isGameActive(props) ? (
-                        <span className="p-1 m-2 text-center rounded text-base bg-omega-dark text-omega-light">Active Game</span>
+                        <span className="p-1 m-2 text-center rounded text-base bg-omega-dark text-omega-light">
+                            Active Game
+                        </span>
                     ) : null}
                 </h2>
                 <p className="font-bold">{props.designer}</p>

@@ -52,7 +52,6 @@ export const gameUtils: GameUtils<Game> & {
 };
 
 export const isGameActive = (game: PlayByEmailGame | Game) => {
-
     const start = getJSDateFromOmegaDate(game.date);
     const today = new Date();
     start.setHours(0, 0, 0, 0);
@@ -61,13 +60,11 @@ export const isGameActive = (game: PlayByEmailGame | Game) => {
     if (game.type === "Play-By-Email") {
         const end = getJSDateFromOmegaDate(game.endDate);
         end.setHours(0, 0, 0, 0);
-        return (+start <= +today && end > today)
-    }
-    else return (+start === +today )
+        return +start <= +today && end > today;
+    } else return +start === +today;
+};
 
-}
-
-	export const GAME_ICONS: { [key in Game["type"]]: IconDefinition } = {
+export const GAME_ICONS: { [key in Game["type"]]: IconDefinition } = {
     "Play-By-Email": faEnvelopeOpenText,
     "Online game": faDesktop
 };
