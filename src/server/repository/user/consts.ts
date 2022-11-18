@@ -1,1 +1,1 @@
-export const DEFAULT_PASSWORD = 'OmegaTestPasswordPleaseReset';
+export const DEFAULT_PASSWORD = "OmegaTestPasswordPleaseReset";

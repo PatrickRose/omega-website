@@ -1,5 +1,5 @@
-import { NoMatch } from '../components/NoMatch';
+import { NoMatch } from "../components/NoMatch";
 
 export default function Custom404() {
-    return <NoMatch />
+    return <NoMatch />;
 }

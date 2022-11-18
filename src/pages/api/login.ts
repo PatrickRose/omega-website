@@ -1,22 +1,26 @@
-import * as argon2 from "argon2"
-import {isLeft} from 'fp-ts/lib/Either'
-import {withIronSessionApiRoute} from 'iron-session/next'
-import {NextApiRequest, NextApiResponse} from 'next'
-import {sessionOptions} from '../../lib/session'
-import {getUserRepo} from '../../server/repository/user'
-import {hashPassword} from "../../server/repository/user/argon"
-import {DEFAULT_PASSWORD} from "../../server/repository/user/consts"
-import {LoginFormValuesDecode} from '../../types/io-ts-def'
-import {LoginFailed, User} from '../../types/types'
+import * as argon2 from "argon2";
+import { isLeft } from "fp-ts/lib/Either";
+import { withIronSessionApiRoute } from "iron-session/next";
+import { NextApiRequest, NextApiResponse } from "next";
+import { sessionOptions } from "../../lib/session";
+import { getUserRepo } from "../../server/repository/user";
+import { hashPassword } from "../../server/repository/user/argon";
+import { DEFAULT_PASSWORD } from "../../server/repository/user/consts";
+import { LoginFormValuesDecode } from "../../types/io-ts-def";
+import { LoginFailed, User } from "../../types/types";
 
 export default withIronSessionApiRoute(loginRoute, sessionOptions);
 
-async function loginRoute(req: NextApiRequest, res: NextApiResponse<User | LoginFailed>) {
+async function loginRoute(
+    req: NextApiRequest,
+    res: NextApiResponse<User | LoginFailed>
+) {
     const body = await req.body;
 
     if (!LoginFormValuesDecode.is(body)) {
         res.status(400).json({
-            message: 'Invalid request body - missing either username or password'
+            message:
+                "Invalid request body - missing either username or password"
         });
         return;
     }
@@ -26,7 +30,7 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse<User | Login
     const userRepoBase = getUserRepo();
     if (isLeft(userRepoBase)) {
         res.status(500).json({
-            message: (`Database was not set up correctly - please contact the webmaster: ${userRepoBase.left}`)
+            message: `Database was not set up correctly - please contact the webmaster: ${userRepoBase.left}`
         });
         return;
     }
@@ -45,7 +49,9 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse<User | Login
     //    the argon2 protections)
     // c) The data you get out of this is the OMEGA games list, which is a low value target anyway
     // TODO: Add rate limiting
-    const dbHash = isLeft(user) ? (await hashPassword(body.password + 'ALWAYS FAIL')) : user.right.password;
+    const dbHash = isLeft(user)
+        ? await hashPassword(body.password + "ALWAYS FAIL")
+        : user.right.password;
 
     let loggedIn = false;
 
@@ -66,8 +72,12 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse<User | Login
     }
 
     const userSession: User = loggedIn
-        ? {isLoggedIn: true, login: body.username, passwordNeedsReset: passwordNeedsReset}
-        : {isLoggedIn: false, login: '', passwordNeedsReset: false};
+        ? {
+              isLoggedIn: true,
+              login: body.username,
+              passwordNeedsReset: passwordNeedsReset
+          }
+        : { isLoggedIn: false, login: "", passwordNeedsReset: false };
 
     try {
         if (loggedIn) {
