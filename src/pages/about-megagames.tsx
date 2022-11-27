@@ -87,6 +87,15 @@ export default function AboutMegagames() {
                 </p>
 
                 <p className="py-2">
+                    A play by email megagame (PBEM) is a megagame played over a
+                    period of weeks, usually with each week corresponding to a
+                    turn, with players communicating via email and/or via
+                    specialist apps. Most OMEGA PBEMs have used a custom app,
+                    CANDI, and have had a greater focus on roleplaying and
+                    narrative rather than strategy and operational play.
+                </p>
+
+                <p className="py-2">
                     Whatever your preferred form of tabletop gaming, you’ll find
                     something in megagames that excites you - grand strategy,
                     alliances and betrayals, and roleplaying. We hope to see you
