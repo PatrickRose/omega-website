@@ -22,14 +22,16 @@ const FEED_LINKS: CatcherFeedProps[] = [
 
 function CatcherFeed({ link, description, icon }: CatcherFeedProps) {
     return (
-        (<Link href={link} title={description} className="p-4">
-
+        <Link
+            href={link}
+            title={description}
+            className="p-4"
+        >
             <FontAwesomeIcon
                 icon={icon}
                 size="2x"
             />
-
-        </Link>)
+        </Link>
     );
 }
 
@@ -37,9 +39,7 @@ function PodcastEpisode(props: PodcastEpisode) {
     return (
         <li className="py-2">
             <h2 className="hover:text-omega text-2xl">
-                <Link href={props.link}>
-                    {props.title}
-                </Link>
+                <Link href={props.link}>{props.title}</Link>
             </h2>
             <p>{getStringFromOmegaDate(props.date)}</p>
             <p className="mt-1 pb-2">{props.description}</p>
@@ -69,10 +69,7 @@ function PodcastList(props: PodcastListParams) {
                     Try refreshing your browser and trying again. If that
                     doesn&apos;t work,{" "}
                     <Link href="contact">
-
-                            send the webmaster a message through the contact
-                            page
-
+                        send the webmaster a message through the contact page
                     </Link>
                 </p>
             </React.Fragment>

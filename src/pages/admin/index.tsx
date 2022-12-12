@@ -26,9 +26,7 @@ function AdminSection({
                         key={val.linkPath}
                         className="py-1"
                     >
-                        <Link href={val.linkPath}>
-                            {val.linkText}
-                        </Link>
+                        <Link href={val.linkPath}>{val.linkText}</Link>
                     </li>
                 ))}
             </ul>

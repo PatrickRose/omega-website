@@ -37,10 +37,11 @@ abstract class GameStructure<T> extends React.Component<T> {
                 </Hero>
                 <MainContent>
                     <div className="flex justify-center">
-                        <Link href="/games" className="btn-link my-4 px-4 py-2">
-
-                                &laquo; Back to games list
-
+                        <Link
+                            href="/games"
+                            className="btn-link my-4 px-4 py-2"
+                        >
+                            &laquo; Back to games list
                         </Link>
                     </div>
                     {this.getMainContent()}

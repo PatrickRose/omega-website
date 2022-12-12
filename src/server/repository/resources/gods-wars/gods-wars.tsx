@@ -46,7 +46,8 @@ export default function GodsWars() {
                             style={{
                                 width: "100%",
                                 height: "auto"
-                            }} />
+                            }}
+                        />
                     </div>
                 </div>
                 <h2 className="text-center text-4xl">
@@ -638,7 +639,8 @@ export default function GodsWars() {
                     style={{
                         maxWidth: "100%",
                         height: "auto"
-                    }} />
+                    }}
+                />
             </div>
 
             <h3 className="text-2xl">Being a London Resident</h3>
@@ -1053,7 +1055,8 @@ export default function GodsWars() {
                 style={{
                     maxWidth: "100%",
                     height: "auto"
-                }} />
+                }}
+            />
 
             <h3 className="text-2xl">Being a Demigod</h3>
 

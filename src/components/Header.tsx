@@ -78,7 +78,11 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
                 }
 
                 return (
-                    <Link href={linkdef.linkPath} key={linkdef.linkPath} className={className}>
+                    <Link
+                        href={linkdef.linkPath}
+                        key={linkdef.linkPath}
+                        className={className}
+                    >
                         {linkdef.linkText}
                     </Link>
                 );
@@ -174,7 +178,8 @@ const Navbar = () => {
                                 style={{
                                     maxWidth: "100%",
                                     height: "auto"
-                                }} />
+                                }}
+                            />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">

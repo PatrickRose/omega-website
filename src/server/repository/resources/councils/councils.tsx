@@ -25,7 +25,8 @@ export function Councils() {
                             style={{
                                 width: "100%",
                                 height: "auto"
-                            }} />
+                            }}
+                        />
                     </div>
                 </div>
                 <h2 className="text-center text-2xl">
@@ -933,7 +934,8 @@ export function Councils() {
                         style={{
                             maxWidth: "100%",
                             height: "auto"
-                        }} />
+                        }}
+                    />
                 </div>
                 <div className="colspan-3 md:col-span-5 lg:col-span-11">
                     <p>
@@ -1003,7 +1005,8 @@ export function Councils() {
                             style={{
                                 maxWidth: "100%",
                                 height: "auto"
-                            }} />
+                            }}
+                        />
                     </div>
                     <span className="text-orange-500">Wealth</span>
                 </div>
@@ -1022,7 +1025,8 @@ export function Councils() {
                             style={{
                                 maxWidth: "100%",
                                 height: "auto"
-                            }} />
+                            }}
+                        />
                     </div>
                     <span className="text-red-800">Might</span>
                 </div>
@@ -1041,7 +1045,8 @@ export function Councils() {
                             style={{
                                 maxWidth: "100%",
                                 height: "auto"
-                            }} />
+                            }}
+                        />
                     </div>
                     <span className="text-purple-700">Magic</span>
                 </div>

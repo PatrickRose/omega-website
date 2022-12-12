@@ -28,14 +28,13 @@ function HomePageLinks() {
     return (
         <div className="flex flex-col justify-center pb-16 sm:flex-row">
             {homeLinks.map((value) => (
-                (<Link
+                <Link
                     href={value.linkPath}
                     key={value.linkText}
-                    className="btn-link m-4 flex flex-1 flex-col justify-center border-2 p-4 sm:m-1">
-
+                    className="btn-link m-4 flex flex-1 flex-col justify-center border-2 p-4 sm:m-1"
+                >
                     {value.linkText}
-
-                </Link>)
+                </Link>
             ))}
         </div>
     );
@@ -45,13 +44,14 @@ function Megagame({ value }: { value: Game }) {
     return (
         <div className="flex flex-1 flex-col px-3">
             <h3 className="pb-2 text-center text-xl">
-                <Link href={`/games/${value._id}`}>
-                    {value.name}
-                </Link>
+                <Link href={`/games/${value._id}`}>{value.name}</Link>
             </h3>
             <p className="flex-1">{value.preamble}</p>
             <div className="flex">
-                <Link href={`/games/${value._id}`} className="btn-link m-4 w-full p-4">
+                <Link
+                    href={`/games/${value._id}`}
+                    className="btn-link m-4 w-full p-4"
+                >
                     Book a space
                 </Link>
             </div>
@@ -139,7 +139,8 @@ export default function Home({
                         style={{
                             maxWidth: "100%",
                             height: "auto"
-                        }} />
+                        }}
+                    />
                 </div>
             </MainContent>
         </React.Fragment>

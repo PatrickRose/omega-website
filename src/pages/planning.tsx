@@ -103,7 +103,8 @@ export default function Planning() {
                         style={{
                             maxWidth: "100%",
                             height: "auto"
-                        }} />
+                        }}
+                    />
                 </div>
             </MainContent>
         </React.Fragment>
