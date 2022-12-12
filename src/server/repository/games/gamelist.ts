@@ -71,7 +71,7 @@ As Thou Commands is a rules-light megagame where the players create and run fict
             "In the near future, Britain is facing economic ruin. Following the success of the “Megacorp” experiment in the United States they attempt to do the same – they offer several multi-billion corporations the chance to buy a large part of the British landscape and create their own city state, where they can make their own laws if they wish.",
         fullDescription: `We are proud to announce the fifth running of Running Hot, which debuted at Online Megagame Con earlier this year, featuring the designer Patrick Rose. I was able to play in the first two games, and we've made substantial improvements since then, that we're excited to show you.
 
-Running Hot is a “pre-cyberpunk” megagame. Players will play either the corporations trying to make money and further their political agendas or the runners who are the deniable resources that the corporations may use to achieve said resources. This game takes a slightly different tack to most cyberpunk settings, in that the game will explore the beginning of the dystopia that is to be expected of a cyberpunk setting. 
+Running Hot is a “pre-cyberpunk” megagame. Players will play either the corporations trying to make money and further their political agendas or the runners who are the deniable resources that the corporations may use to achieve said resources. This game takes a slightly different tack to most cyberpunk settings, in that the game will explore the beginning of the dystopia that is to be expected of a cyberpunk setting.
 
 [Tickets available through Eventbrite now!](https://www.eventbrite.com/e/running-hot-august-7-2021-tickets-149489309549)`,
         type: "Online game"
@@ -88,7 +88,7 @@ Running Hot is a “pre-cyberpunk” megagame. Players will play either the corp
         preamble:
             "A fantasy-themed Council meeting game looking at interpersonal behaviours whilst planning the final assault to overthrow the Dark Lord",
         fullDescription: `Join the OMEGA community as they play a short length megagame-experience, designed by [Jim Wallman](https://www.stonepaperscissors.co.uk/) (*Watch The Skies*, *Urban Nightmare*)
-        
+
 [To sign up, please fill out this Google Docs spreadsheet](https://docs.google.com/spreadsheets/d/1NsVZn-Zbw-xT0eFgzN6x59P7W0mNEUAgeMv5p7QgFXY/edit?fbclid=IwAR2PV7SrxWcQdwUGHlaAI_nxIDfPRTIgov7l-qNTaxF5z3UCE6IL9lGeVcg#gid=0)
 
 Good vs Evil… vs personal gain?
@@ -216,17 +216,17 @@ Fight for the right to be the city’s protector, or aid in the quest to find on
             "You are a demigod, competing against others in Victorian London during the 1880 season to impress the Olympian gods and win Ascension to Godhood.",
         fullDescription: `You are a demigod, a child of one of the Olympian Gods, invited to London to compete in the Gods’ Wars. With what you assume is a little bit of divine intervention, your dream job and lodgings are conveniently available there for you to easily relocate and participate.
 
-The Gods’ Wars- a competition among demigods in which the winners become Gods themselves- have been run countless times across countless worlds, with countless themes. Demigods have intervened to rig elections, intercede in succession crises, start wars, and more! This time, the Olympians of the Greek pantheon are hosting it and the theme is love. 
+The Gods’ Wars- a competition among demigods in which the winners become Gods themselves- have been run countless times across countless worlds, with countless themes. Demigods have intervened to rig elections, intercede in succession crises, start wars, and more! This time, the Olympians of the Greek pantheon are hosting it and the theme is love.
 
 It is the start of the season in (near) London 1880. People are scrambling to find love and acquire proposals from the most eligible members of society. Attend balls and other social events, and romance and befriend mortals and demigods alike.
 
-However, in order to Ascend, demigod participants must please the Gods. The Gods are fickle and varied. Some may urge war, others peace, and still others, love. In order to truly understand and satisfy them, you will have to develop relationships with them and score points in their Aspect. Aspects suggested by this year’s Godly spectators include Bonding, Justice, Arts, Sporting, Scholarship, Pugilism, Fabrication, Balance, Trickery, and Hedonism. Complete Quests for specific Gods or take other actions related to these Aspects and win their favor. 
+However, in order to Ascend, demigod participants must please the Gods. The Gods are fickle and varied. Some may urge war, others peace, and still others, love. In order to truly understand and satisfy them, you will have to develop relationships with them and score points in their Aspect. Aspects suggested by this year’s Godly spectators include Bonding, Justice, Arts, Sporting, Scholarship, Pugilism, Fabrication, Balance, Trickery, and Hedonism. Complete Quests for specific Gods or take other actions related to these Aspects and win their favor.
 
 Will you win the honor and privilege of ascending to Godhood or will you pursue love, wherever it may lead?
 
- - [Please complete the interest form here](https://forms.gle/egAwWbNw7VRwLjfA6) - **This is just the interest form. Signups for this game will be sent out around October 1st to the email provided in the interest form.** 
- - [You can also read our preliminary rulebook here](https://docs.google.com/document/d/1nQtxo_y9eROU3a2WwY24SlX8c8GEj65i04NnkLuKbRo/edit#) 
- - [You can read some in game lore here](https://docs.google.com/document/d/1FLLwYwSP5mOw0SFCp9WlhwHLwuNoqjuST7g5loX52mI/edit#) 
+ - [Please complete the interest form here](https://forms.gle/egAwWbNw7VRwLjfA6) - **This is just the interest form. Signups for this game will be sent out around October 1st to the email provided in the interest form.**
+ - [You can also read our preliminary rulebook here](https://docs.google.com/document/d/1nQtxo_y9eROU3a2WwY24SlX8c8GEj65i04NnkLuKbRo/edit#)
+ - [You can read some in game lore here](https://docs.google.com/document/d/1FLLwYwSP5mOw0SFCp9WlhwHLwuNoqjuST7g5loX52mI/edit#)
 `,
         type: "Play-By-Email"
     },
@@ -264,7 +264,7 @@ Now it’s spring, everyone who’s left – yourselves included – has realise
         preamble:
             "Inspired by Horrible Games The King's Dilemma, As Thou Commands is a council-driven megagame where players cooperatively generate a medieval kingdom and then try to shape its path through history.",
         fullDescription: `Tickets for As Thou Commands will be sold via the Megacon website, and will be made available soon.
-        
+
 The monarch has united the realm and birthed a new kingdom. That was the easy part... Now it's time to carve the land into duchies and rule over them. What will your noble house prioritize? Will you make friends or enemies with your neighbors? Will the kingdom survive or fall apart and be forgotten? Your choices decide!
 
 As Thou Commands is a rules-light megagame where the players create and run fictional feudal duchies. These duchies comprise an entire medieval kingdom, and players’ decisions will have impacts both near and far. Play alternates between drafting narrative elements and participating in council sessions where players will try to negotiate beneficial outcomes to the thorny issues bedeviling the kingdom.`,
