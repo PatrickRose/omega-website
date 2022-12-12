@@ -27,7 +27,7 @@ function AdminSection({
                         className="py-1"
                     >
                         <Link href={val.linkPath}>
-                            <a>{val.linkText}</a>
+                            {val.linkText}
                         </Link>
                     </li>
                 ))}

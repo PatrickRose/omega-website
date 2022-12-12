@@ -78,11 +78,8 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
                 }
 
                 return (
-                    <Link
-                        href={linkdef.linkPath}
-                        key={linkdef.linkPath}
-                    >
-                        <a className={className}>{linkdef.linkText}</a>
+                    <Link href={linkdef.linkPath} key={linkdef.linkPath} className={className}>
+                        {linkdef.linkText}
                     </Link>
                 );
             })}

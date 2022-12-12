@@ -110,7 +110,7 @@ export default function CreateGame() {
                     node: (
                         <>
                             <Link href={`/games/${data.right.game._id}`}>
-                                <a>You may view this game here</a>
+                                You may view this game here
                             </Link>
                         </>
                     )

@@ -82,7 +82,7 @@ export default function Planning() {
                     If you&apos;re interested in having your game ported, feel
                     free to{" "}
                     <Link href="/contact">
-                        <a>get in touch and see how we can help you</a>
+                        get in touch and see how we can help you
                     </Link>
                     .
                 </p>

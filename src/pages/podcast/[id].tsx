@@ -89,10 +89,10 @@ export default function Podcast(
             </Hero>
             <MainContent>
                 <div className="flex justify-center">
-                    <Link href="/podcast">
-                        <a className="btn-link my-4 px-4 py-2">
+                    <Link href="/podcast" className="btn-link my-4 px-4 py-2">
+
                             &laquo; Back to list of episodes
-                        </a>
+
                     </Link>
                 </div>
                 <p>{podcast.description}</p>

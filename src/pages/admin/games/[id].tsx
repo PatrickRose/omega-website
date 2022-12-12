@@ -149,7 +149,7 @@ export default function SingleGame({
                     node: (
                         <>
                             <Link href={`/games/${data.right.game._id}`}>
-                                <a>You may view this game here</a>
+                                You may view this game here
                             </Link>
                             . Please note that some caching is in place, so you
                             might need to wait 60 seconds to see your changes
