@@ -1,6 +1,6 @@
 import React from "react";
 import { Footnote } from "../../../../components/DesignerResource";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import elporiaLogo from "./game-logo.png";
 import linkImage from "./links.png";

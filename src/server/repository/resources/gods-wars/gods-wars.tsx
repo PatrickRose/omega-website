@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Footnote } from "../../../../components/DesignerResource";
 
 import gameLogo from "./game-logo.png";

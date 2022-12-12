@@ -2,7 +2,7 @@ import React, { useId, useState } from "react";
 import { Hero, HeroHeading, MainContent } from "./Hero";
 import { Game } from "../types/types";
 import Link from "next/link";
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps } from "next/legacy/image";
 
 type GameID =
     | "councils-of-elporia"

@@ -3,7 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { isLeft, isRight } from "fp-ts/Either";
 import { getGamesRepo } from "../server/repository/games";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { LinkDef } from "../utils/utils";
 import { Hero, HeroHeading, MainContent } from "../components/Hero";
 import { Game } from "../types/types";
