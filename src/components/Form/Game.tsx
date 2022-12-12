@@ -442,7 +442,7 @@ function validateDate(
     return MakeLeft(`The month didn't match.
 The passed form values were { year:${values[key].year}, month: ${
         values[key].month
-    }, day: ${values[key].day ?? null} }. 
+    }, day: ${values[key].day ?? null} }.
 The generated date was { year:${jsDate.getFullYear()}, month: ${
         jsDate.getMonth() - 1
     }, day: ${jsDate.getDay()} }

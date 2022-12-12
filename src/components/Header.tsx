@@ -81,8 +81,9 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
                     <Link
                         href={linkdef.linkPath}
                         key={linkdef.linkPath}
+                        className={className}
                     >
-                        <a className={className}>{linkdef.linkText}</a>
+                        {linkdef.linkText}
                     </Link>
                 );
             })}
@@ -174,6 +175,10 @@ const Navbar = () => {
                                 alt="OMEGA logo"
                                 height="32"
                                 width="32"
+                                style={{
+                                    maxWidth: "100%",
+                                    height: "auto"
+                                }}
                             />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
