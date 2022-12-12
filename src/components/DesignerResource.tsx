@@ -2,7 +2,7 @@ import React, { useId, useState } from "react";
 import { Hero, HeroHeading, MainContent } from "./Hero";
 import { Game } from "../types/types";
 import Link from "next/link";
-import Image, { ImageProps } from "next/legacy/image";
+import Image, { ImageProps } from "next/image";
 
 type GameID =
     | "councils-of-elporia"
@@ -79,7 +79,10 @@ export function GameImage({
                 <Image
                     src={image}
                     alt={alt}
-                />
+                    style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                    }} />
             </div>
         </div>
     );

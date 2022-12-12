@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -171,7 +171,10 @@ const Navbar = () => {
                                 alt="OMEGA logo"
                                 height="32"
                                 width="32"
-                            />
+                                style={{
+                                    maxWidth: "100%",
+                                    height: "auto"
+                                }} />
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">

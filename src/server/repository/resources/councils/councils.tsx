@@ -1,6 +1,6 @@
 import React from "react";
 import { Footnote } from "../../../../components/DesignerResource";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import elporiaLogo from "./game-logo.png";
 import linkImage from "./links.png";
@@ -18,11 +18,14 @@ export function Councils() {
                 <div className="flex justify-center justify-items-center py-2">
                     <div className="w-2/4">
                         <Image
-                            layout="responsive"
                             src={elporiaLogo}
                             alt="The Councils of Elporia logo"
                             title="The Councils of Elporia logo"
-                        />
+                            sizes="100vw"
+                            style={{
+                                width: "100%",
+                                height: "auto"
+                            }} />
                     </div>
                 </div>
                 <h2 className="text-center text-2xl">
@@ -927,7 +930,10 @@ export function Councils() {
                         height={50}
                         alt="Icon used for a link"
                         title="Icon used for a link"
-                    />
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
                 </div>
                 <div className="colspan-3 md:col-span-5 lg:col-span-11">
                     <p>
@@ -994,7 +1000,10 @@ export function Councils() {
                             height="50"
                             alt="Icon used for wealth"
                             title="Icon used for wealth"
-                        />
+                            style={{
+                                maxWidth: "100%",
+                                height: "auto"
+                            }} />
                     </div>
                     <span className="text-orange-500">Wealth</span>
                 </div>
@@ -1010,7 +1019,10 @@ export function Councils() {
                             height="50"
                             alt="Icon used for might"
                             title="Icon used for might"
-                        />
+                            style={{
+                                maxWidth: "100%",
+                                height: "auto"
+                            }} />
                     </div>
                     <span className="text-red-800">Might</span>
                 </div>
@@ -1026,7 +1038,10 @@ export function Councils() {
                             height="50"
                             alt="Icon used for magic"
                             title="Icon used for magic"
-                        />
+                            style={{
+                                maxWidth: "100%",
+                                height: "auto"
+                            }} />
                     </div>
                     <span className="text-purple-700">Magic</span>
                 </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { Footnote } from "../../../../components/DesignerResource";
 
 import gameLogo from "./game-logo.png";
@@ -39,11 +39,14 @@ export default function GodsWars() {
                 <div className="flex justify-center justify-items-center py-2">
                     <div className="w-2/4">
                         <Image
-                            layout="responsive"
                             src={gameLogo}
                             alt="Gods' Wars Game Logo"
                             title="Gods' Wars Game Logo"
-                        />
+                            sizes="100vw"
+                            style={{
+                                width: "100%",
+                                height: "auto"
+                            }} />
                     </div>
                 </div>
                 <h2 className="text-center text-4xl">
@@ -632,7 +635,10 @@ export default function GodsWars() {
                 <Image
                     src={victorian}
                     alt=""
-                />
+                    style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                    }} />
             </div>
 
             <h3 className="text-2xl">Being a London Resident</h3>
@@ -1044,7 +1050,10 @@ export default function GodsWars() {
             <Image
                 src={background}
                 alt=""
-            />
+                style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                }} />
 
             <h3 className="text-2xl">Being a Demigod</h3>
 
