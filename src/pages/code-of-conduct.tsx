@@ -71,6 +71,16 @@ export default function CodeOfConduct() {
                         here.
                     </a>
                 </p>
+
+                <p className="py">
+                    <a
+                        href="https://docs.google.com/document/d/1AwMyFuv6i7RJ336SnN6v37jj3C_GKbQqU4gdmogYSuo/edit?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Please also see our OMEGA by-laws here
+                    </a>
+                </p>
             </MainContent>
         </React.Fragment>
     );

@@ -82,7 +82,7 @@ export default function Planning() {
                     If you&apos;re interested in having your game ported, feel
                     free to{" "}
                     <Link href="/contact">
-                        <a>get in touch and see how we can help you</a>
+                        get in touch and see how we can help you
                     </Link>
                     .
                 </p>
@@ -100,6 +100,10 @@ export default function Planning() {
                         className="lg:w-3/4"
                         src={completedAction}
                         alt=""
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }}
                     />
                 </div>
             </MainContent>

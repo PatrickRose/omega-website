@@ -43,9 +43,7 @@ function FetchedMegagame(props: Game) {
             </div>
             <div className="col-span-4 sm:col-span-11">
                 <h2 className="hover:text-omega text-2xl">
-                    <Link href={`/games/${props._id}`}>
-                        <a>{props.name}</a>
-                    </Link>
+                    <Link href={`/games/${props._id}`}>{props.name}</Link>
                     {isGameActive(props) ? (
                         <span className="p-1 m-2 text-center rounded text-base bg-omega-dark text-omega-light">
                             Active Game
@@ -135,10 +133,7 @@ function GameList(props: GameListParams) {
                     Try refreshing your browser and trying again. If that
                     doesn&apos;t work,{" "}
                     <Link href="contact">
-                        <a>
-                            send the webmaster a message through the contact
-                            page
-                        </a>
+                        send the webmaster a message through the contact page
                     </Link>
                 </p>
             </React.Fragment>
