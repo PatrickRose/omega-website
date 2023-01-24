@@ -164,7 +164,7 @@ const RESOURCES: { [key in GameResourceProps["id"]]: GameResourceProps } = {
                 </p>
             </React.Fragment>
         ),
-        link: "https://docs.google.com/spreadsheets/d/1D7yCjlKM3Cw-lSHYPXadzkfJTA9-bRZ2mYYW7nua7F0/edit#gid=0"
+        link: "https://docs.google.com/spreadsheets/d/1cD_XzJbyoFImGG1B8fybxFqH_o49gl-XVBC__OWqsEw/edit?usp=sharing"
     },
     "successful-pitches": {
         id: "successful-pitches",
