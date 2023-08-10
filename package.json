@@ -44,7 +44,7 @@
         "react-markdown": "^8.0.7",
         "rss-parser": "^3.13.0",
         "swr": "^2.1.5",
-        "typescript": "^5.0.4",
+        "typescript": "^5.1.6",
         "uuid": "^9.0.0"
     },
     "devDependencies": {
