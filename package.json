@@ -61,7 +61,7 @@
         "@types/uuid": "^9.0.2",
         "autoprefixer": "^10.4.14",
         "babel-jest": "^29.6.2",
-        "eslint": "^8.46.0",
+        "eslint": "^8.47.0",
         "eslint-config-next": "^13.4.13",
         "eslint-config-prettier": "^9.0.0",
         "husky": ">=6",
