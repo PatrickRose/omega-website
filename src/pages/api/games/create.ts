@@ -10,10 +10,10 @@ import {
 } from "../../../types/types";
 import { CreateGameFormValuesDecode } from "../../../types/io-ts-def";
 import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
-import { sessionOptions } from "../../../lib/session";
-import { withIronSessionApiRoute } from "iron-session/next";
+import { IronSessionData, sessionOptions } from "../../../lib/session";
 import { getGamesRepo } from "../../../server/repository/games";
 import { clearGameCaches } from "../../../lib/cacheClear";
+import { getIronSession } from "iron-session";
 
 function makeSuccessResult(
     message: string,
@@ -128,15 +128,18 @@ async function getResult(body: unknown): Promise<ApiResult<CreateGameResult>> {
     };
 }
 
-export default withIronSessionApiRoute(loginRoute, sessionOptions);
-
-async function loginRoute(
+export default async function loginRoute(
     req: NextApiRequest,
     res: NextApiResponse<CreateGameResult>
 ) {
+    const session = await getIronSession<IronSessionData>(
+        req,
+        res,
+        sessionOptions
+    );
     const data = await req.body;
 
-    if (!req.session?.user?.isLoggedIn) {
+    if (!session?.user?.isLoggedIn) {
         res.status(403).json(makeFailedResult("You are not logged in"));
         return;
     }
