@@ -1,8 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getGamesRepo } from "../../../server/repository/games";
 import { isLeft, isRight, Left, Right } from "fp-ts/Either";
-import { withIronSessionApiRoute } from "iron-session/next";
-import { sessionOptions } from "../../../lib/session";
+import { IronSessionData, sessionOptions } from "../../../lib/session";
 import {
     ApiResult,
     EditGameFailed,
@@ -13,10 +12,9 @@ import {
 import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
 import { EditGameFormValuesDecode } from "../../../types/io-ts-def";
 import { clearGameCaches } from "../../../lib/cacheClear";
+import { getIronSession } from "iron-session";
 
 const gameRespository = getGamesRepo();
-
-export default withIronSessionApiRoute(handler, sessionOptions);
 
 function makeSuccessResult(
     message: string,
@@ -117,8 +115,13 @@ async function getResult(
 
 async function updateGame(req: NextApiRequest, res: NextApiResponse) {
     const data = await req.body;
+    const session = await getIronSession<IronSessionData>(
+        req,
+        res,
+        sessionOptions
+    );
 
-    if (!req.session?.user?.isLoggedIn) {
+    if (!session?.user?.isLoggedIn) {
         res.status(403).json(makeFailedResult("You are not logged in"));
         return;
     }
@@ -138,7 +141,10 @@ async function updateGame(req: NextApiRequest, res: NextApiResponse) {
     }
 }
 
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
     if (req.method?.toUpperCase() == "POST") {
         await updateGame(req, res);
     } else {

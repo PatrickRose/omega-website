@@ -32,7 +32,7 @@
         "fp-ts": "^2.16.2",
         "io-ts": "^2.2.20",
         "io-ts-types": "^0.5.19",
-        "iron-session": "^6.3.1",
+        "iron-session": "^8.0.1",
         "jest-environment-jsdom": "^29.7.0",
         "mongodb": "^6.3.0",
         "monocle-ts": "^2.3.13",
