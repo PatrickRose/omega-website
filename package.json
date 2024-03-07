@@ -80,7 +80,7 @@
         "test": "jest",
         "lint": "next lint",
         "ts:watch": "tsc --noEmit --incremental --watch",
-        "prepare": "husky install"
+        "prepare": "husky"
     },
     "lint-staged": {
         "*.js": "eslint --cache --fix",
