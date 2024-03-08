@@ -24,9 +24,9 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: "yarn"
-            - run: yarn install
-            - run: yarn build
-            - run: yarn test
-            - run: yarn prettier --check .
-            - run: yarn next lint
+                  cache: "npm"
+            - run: npm ci
+            - run: npm run build
+            - run: npm run test
+            - run: npx prettier --check .
+            - run: npx next lint
