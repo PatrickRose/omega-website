@@ -1,6 +1,6 @@
 import React from "react";
 import { Either, isLeft } from "fp-ts/Either";
-import { PodcastEpisode } from "../../types/types";
+import { PodcastEpisode as PodcastEpisodeType } from "../../types/types";
 import Link from "next/link";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -35,7 +35,7 @@ function CatcherFeed({ link, description, icon }: CatcherFeedProps) {
     );
 }
 
-function PodcastEpisode(props: PodcastEpisode) {
+function PodcastEpisode(props: PodcastEpisodeType) {
     return (
         <li className="py-2">
             <h2 className="hover:text-omega text-2xl">
@@ -52,7 +52,7 @@ function PodcastEpisode(props: PodcastEpisode) {
 }
 
 type PodcastListParams = {
-    podcastList: Either<false, PodcastEpisode[]>;
+    podcastList: Either<false, PodcastEpisodeType[]>;
 };
 
 function PodcastList(props: PodcastListParams) {
@@ -93,7 +93,7 @@ function PodcastList(props: PodcastListParams) {
 }
 
 export const getStaticProps: GetStaticProps<{
-    podcastList: Either<false, PodcastEpisode[]>;
+    podcastList: Either<false, PodcastEpisodeType[]>;
 }> = async () => {
     const podcastRepo = getPodcastRepo();
 
