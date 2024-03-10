@@ -185,7 +185,7 @@ const Navbar = () => {
                                 }}
                             />
                         </div>
-                        <div className="hidden sm:ml-6 sm:block">
+                        <div className="hidden md:ml-6 md:block">
                             <div className="flex space-x-4">
                                 <NavigationLinks />
                                 {
@@ -202,7 +202,7 @@ const Navbar = () => {
             }
             <div
                 className={
-                    "sm:hidden transition-all duration-500 ease-in " +
+                    "md:hidden transition-all duration-500 ease-in " +
                     (hidden ? "max-h-0 opacity-0" : maxHeight)
                 }
                 id="mobile-menu"
