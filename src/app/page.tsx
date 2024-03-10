@@ -89,32 +89,21 @@ function UpcomingEvents({ events }: { events: Game[] }) {
     return <div className="flex w-full justify-center p-4">{eventList}</div>;
 }
 
-export const getStaticProps: GetStaticProps<{
-    upcomingGames: Game[];
-}> = async () => {
+async function getGames(): Promise<Game[]> {
     const gamesRepo = getGamesRepo();
 
     if (isLeft(gamesRepo)) {
-        return {
-            props: {
-                upcomingGames: []
-            }
-        };
+        return [];
     }
 
     const upcomingGames = await gamesRepo.right.upcomingEvents(3);
 
-    return {
-        props: {
-            upcomingGames: isRight(upcomingGames) ? upcomingGames.right : []
-        },
-        revalidate: 60
-    };
-};
+    return isRight(upcomingGames) ? upcomingGames.right : [];
+}
 
-export default function Home({
-    upcomingGames
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default async function Home() {
+    const upcomingGames = await getGames();
+
     return (
         <React.Fragment>
             <Hero>
