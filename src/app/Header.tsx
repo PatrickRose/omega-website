@@ -9,6 +9,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { LinkDef } from "../utils/utils";
 import omegaLogo from "../../public/logo.svg";
+import { CSSTransition } from "react-transition-group";
 
 const links: LinkDef[] = [
     {
@@ -200,16 +201,23 @@ const Navbar = () => {
             {
                 // Mobile menu, show/hide based on menu state.
             }
-            <div
-                className={
-                    "md:hidden transition-all duration-500 ease-in " +
-                    (hidden ? "max-h-0 opacity-0" : maxHeight)
-                }
-                id="mobile-menu"
-            >
-                <div className="space-y-1 px-2 pt-2 pb-3">
-                    <NavigationLinks mobile={true} />
-                </div>
+            <div id="mobile-menu">
+                <CSSTransition
+                    className="space-y-1 px-2 pt-2 pb-3"
+                    in={!hidden}
+                    classNames={{
+                        enterActive:
+                            "transition-opacity duration-300 opacity-100",
+                        enter: "opacity-0",
+                        exitActive: "transition-opacity duration-300 opacity-0"
+                    }}
+                    timeout={300}
+                    unmountOnExit={true}
+                >
+                    <div>
+                        <NavigationLinks mobile={true} />
+                    </div>
+                </CSSTransition>
             </div>
         </nav>
     );
