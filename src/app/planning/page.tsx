@@ -1,10 +1,10 @@
 import React from "react";
-import { Hero, HeroHeading, MainContent } from "../components/Hero";
-import { Game } from "../types/types";
+import { Hero, HeroHeading, MainContent } from "../../components/Hero";
+import { Game } from "../../types/types";
 import Link from "next/link";
 import Image from "next/image";
-import completedAction from "../../public/completed-action.png";
-import { DISCORD_LINK } from "./contact";
+import completedAction from "../../../public/completed-action.png";
+import { DISCORD_LINK } from "../../pages/contact";
 
 function GameDescriptions() {
     const gameTypes: { type: Game["type"]; description: React.ReactElement }[] =
@@ -81,7 +81,7 @@ export default function Planning() {
                 <p>
                     If you&apos;re interested in having your game ported, feel
                     free to{" "}
-                    <Link href="/contact">
+                    <Link href="/src/pages/contact">
                         get in touch and see how we can help you
                     </Link>
                     .
