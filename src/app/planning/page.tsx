@@ -4,7 +4,8 @@ import { Game } from "../../types/types";
 import Link from "next/link";
 import Image from "next/image";
 import completedAction from "../../../public/completed-action.png";
-import { DISCORD_LINK } from "../../pages/contact";
+
+import { DISCORD_LINK } from "../contact/DISCORD_LINK";
 
 function GameDescriptions() {
     const gameTypes: { type: Game["type"]; description: React.ReactElement }[] =
@@ -81,7 +82,7 @@ export default function Planning() {
                 <p>
                     If you&apos;re interested in having your game ported, feel
                     free to{" "}
-                    <Link href="/src/pages/contact">
+                    <Link href="/contact">
                         get in touch and see how we can help you
                     </Link>
                     .
