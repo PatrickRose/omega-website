@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, HeroHeading, MainContent } from "../components/Hero";
+import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 
 export default function CodeOfConduct() {
     return (

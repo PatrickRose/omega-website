@@ -92,31 +92,12 @@ function PodcastList(props: PodcastListParams) {
     );
 }
 
-export const getStaticProps: GetStaticProps<{
-    podcastList: Either<false, PodcastEpisodeType[]>;
-}> = async () => {
+export default async function Podcast() {
     const podcastRepo = getPodcastRepo();
 
-    if (isLeft(podcastRepo)) {
-        return {
-            props: { podcastList: MakeLeft(false) }
-        };
-    }
-
-    const podcastList = await podcastRepo.right.all();
-
-    return {
-        props: {
-            podcastList: podcastList
-        },
-        revalidate: 3600
-    };
-};
-
-export default function Podcast(
-    props: InferGetStaticPropsType<typeof getStaticProps>
-) {
-    const podcastList = props.podcastList;
+    const podcastList = isLeft(podcastRepo)
+        ? MakeLeft<false>(false)
+        : await podcastRepo.right.all();
 
     return (
         <React.Fragment>

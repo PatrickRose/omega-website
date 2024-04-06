@@ -15,7 +15,7 @@ export function NoMatch() {
                 </p>
                 <p>
                     Try going back in your browser and trying again. If that
-                    doesn&apos;t work,
+                    doesn&apos;t work,{" "}
                     <Link href="/contact">
                         send the webmaster a message through the contact page
                     </Link>

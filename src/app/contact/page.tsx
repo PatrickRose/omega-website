@@ -1,13 +1,12 @@
 import React from "react";
-import { Hero, HeroHeading, MainContent } from "../components/Hero";
+import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons/faDiscord";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons/faEnvelope";
-import { ResponsiveItemList } from "../components/ResponsiveItemList";
-
-export const DISCORD_LINK = "https://discord.gg/gVxGUERQTq";
+import { ResponsiveItemList } from "../../components/ResponsiveItemList";
+import { DISCORD_LINK } from "./DISCORD_LINK";
 
 function ContactMethods() {
     const contactMethods: {

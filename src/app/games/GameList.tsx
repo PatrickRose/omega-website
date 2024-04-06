@@ -1,20 +1,14 @@
-import React, { useState } from "react";
-import { Either, isLeft, isRight } from "fp-ts/Either";
-import { Game } from "../../types/types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import { Hero, HeroHeading, MainContent } from "../../components/Hero";
-import {
-    dateSorter,
-    getJSDateFromOmegaDate,
-    getStringFromOmegaDate
-} from "../../utils";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { getGamesRepo } from "../../server/repository/games";
-import { MakeLeft } from "../../utils/io-ts-helpers";
-import { GAME_ICONS, gameUtils, isGameActive } from "../../utils/games";
+"use client";
 
-type GamesState = {
+import { Game } from "../../types/types";
+import React, { useEffect, useState } from "react";
+import { getJSDateFromOmegaDate, getStringFromOmegaDate } from "../../utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GAME_ICONS, gameUtils, isGameActive } from "../../utils/games";
+import Link from "next/link";
+import { Either, isLeft } from "fp-ts/Either";
+
+export type GamesState = {
     fetched: boolean;
     gameList: Either<false, Game[]>;
     filter?: Game["type"];
@@ -117,7 +111,7 @@ type GameListParams = {
     past: boolean;
 };
 
-function GameList(props: GameListParams) {
+export function GameList(props: GameListParams) {
     const { filter, changeFilter, past } = props;
 
     let gameList: Array<Game>;
@@ -176,47 +170,19 @@ function GameList(props: GameListParams) {
     );
 }
 
-export const getStaticProps: GetStaticProps<{
-    gameList: Either<false, Game[]>;
-}> = async () => {
-    const gamesRepo = getGamesRepo();
-
-    if (isLeft(gamesRepo)) {
-        return {
-            props: { gameList: MakeLeft(false) }
-        };
-    }
-
-    const gameList = await gamesRepo.right.all();
-
-    if (isRight(gameList)) {
-        // Sort mutates the value
-        gameList.right.sort(dateSorter);
-    }
-
-    return {
-        props: {
-            gameList
-        },
-        revalidate: 60
-    };
-};
-
-export default function Games(
-    props: InferGetStaticPropsType<typeof getStaticProps>
-) {
-    const gameList = props.gameList;
-
-    let pastDefault = undefined;
-
-    if (typeof window !== "undefined") {
-        if (window.location.hash) {
-            pastDefault = window.location.hash === "#past";
-        }
-    }
-
-    const [past, setPast] = useState(pastDefault);
+export function GameListWrapper({
+    gameList
+}: {
+    gameList: GamesState["gameList"];
+}) {
+    const [past, setPast] = useState<boolean>();
     const [filter, setFilter] = useState<Game["type"] | undefined>(undefined);
+
+    useEffect(() => {
+        if (window.location.hash && past === undefined) {
+            setPast(true);
+        }
+    }, [past]);
 
     const changeFilter = (
         event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -234,19 +200,13 @@ export default function Games(
             setPast(event.target.checked);
         }
     };
+
     return (
-        <React.Fragment>
-            <Hero>
-                <HeroHeading>Upcoming games</HeroHeading>
-            </Hero>
-            <MainContent>
-                <GameList
-                    gameList={gameList}
-                    filter={filter}
-                    changeFilter={changeFilter}
-                    past={past === undefined ? false : past}
-                />
-            </MainContent>
-        </React.Fragment>
+        <GameList
+            gameList={gameList}
+            changeFilter={changeFilter}
+            filter={filter}
+            past={!!past}
+        />
     );
 }

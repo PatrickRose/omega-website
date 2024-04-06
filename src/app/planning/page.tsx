@@ -1,10 +1,11 @@
 import React from "react";
-import { Hero, HeroHeading, MainContent } from "../components/Hero";
-import { Game } from "../types/types";
+import { Hero, HeroHeading, MainContent } from "../../components/Hero";
+import { Game } from "../../types/types";
 import Link from "next/link";
 import Image from "next/image";
-import completedAction from "../../public/completed-action.png";
-import { DISCORD_LINK } from "./contact";
+import completedAction from "../../../public/completed-action.png";
+
+import { DISCORD_LINK } from "../contact/DISCORD_LINK";
 
 function GameDescriptions() {
     const gameTypes: { type: Game["type"]; description: React.ReactElement }[] =
