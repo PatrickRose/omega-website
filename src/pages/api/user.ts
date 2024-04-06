@@ -1,16 +1,23 @@
-import { withIronSessionApiRoute } from "iron-session/next";
-import { sessionOptions } from "../../lib/session";
+import { IronSessionData, sessionOptions } from "../../lib/session";
 import { NextApiRequest, NextApiResponse } from "next";
 import { User } from "../../types/types";
+import { getIronSession } from "iron-session";
 
-export default withIronSessionApiRoute(userRoute, sessionOptions);
+export default async function userRoute(
+    req: NextApiRequest,
+    res: NextApiResponse<User>
+) {
+    const session = await getIronSession<IronSessionData>(
+        req,
+        res,
+        sessionOptions
+    );
 
-async function userRoute(req: NextApiRequest, res: NextApiResponse<User>) {
-    if (req.session.user) {
+    if (session.user) {
         // in a real world application you might read the user id from the session and then do a database request
         // to get more information on the user if needed
         res.json({
-            ...req.session.user,
+            ...session.user,
             isLoggedIn: true
         });
     } else {

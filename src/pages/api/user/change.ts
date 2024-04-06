@@ -1,8 +1,7 @@
 import * as argon2 from "argon2";
 import { isLeft, isRight, Left, Right } from "fp-ts/lib/Either";
-import { withIronSessionApiRoute } from "iron-session/next";
 import { NextApiRequest, NextApiResponse } from "next";
-import { sessionOptions } from "../../../lib/session";
+import { IronSessionData, sessionOptions } from "../../../lib/session";
 import { getUserRepo } from "../../../server/repository/user";
 import { hashPassword } from "../../../server/repository/user/argon";
 import { ChangePasswordFormValuesDecode } from "../../../types/io-ts-def";
@@ -14,8 +13,7 @@ import {
     User
 } from "../../../types/types";
 import { MakeLeft, MakeRight } from "../../../utils/io-ts-helpers";
-
-export default withIronSessionApiRoute(changePassword, sessionOptions);
+import { getIronSession } from "iron-session";
 
 function makeSuccess(
     message: string,
@@ -109,22 +107,27 @@ async function getResult(
     };
 }
 
-async function changePassword(
+export default async function changePassword(
     req: NextApiRequest,
     res: NextApiResponse<ChangePasswordResult>
 ) {
     const data = await req.body;
+    const session = await getIronSession<IronSessionData>(
+        req,
+        res,
+        sessionOptions
+    );
 
-    if (!req.session?.user?.isLoggedIn) {
+    if (!session?.user?.isLoggedIn) {
         res.status(403).json(makeFailure("You are not logged in"));
         return;
     }
 
-    const { status, body } = await getResult(data, req.session.user);
+    const { status, body } = await getResult(data, session.user);
 
     if (isRight(body)) {
-        req.session.user = body.right.user;
-        await req.session.save();
+        session.user = body.right.user;
+        await session.save();
     }
 
     res.status(status).json(body);

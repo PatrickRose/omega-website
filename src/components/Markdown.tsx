@@ -1,6 +1,5 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import { Components } from "react-markdown/lib/ast-to-react";
+import ReactMarkdown, { Components } from "react-markdown";
 
 export default function Markdown(props: { markdown: string }) {
     const { markdown } = props;

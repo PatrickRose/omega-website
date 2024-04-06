@@ -1,6 +1,6 @@
 import React from "react";
 import { Either, isLeft } from "fp-ts/Either";
-import { PodcastEpisode } from "../../types/types";
+import { PodcastEpisode as PodcastEpisodeType } from "../../types/types";
 import Link from "next/link";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -35,7 +35,7 @@ function CatcherFeed({ link, description, icon }: CatcherFeedProps) {
     );
 }
 
-function PodcastEpisode(props: PodcastEpisode) {
+function PodcastEpisode(props: PodcastEpisodeType) {
     return (
         <li className="py-2">
             <h2 className="hover:text-omega text-2xl">
@@ -52,7 +52,7 @@ function PodcastEpisode(props: PodcastEpisode) {
 }
 
 type PodcastListParams = {
-    podcastList: Either<false, PodcastEpisode[]>;
+    podcastList: Either<false, PodcastEpisodeType[]>;
 };
 
 function PodcastList(props: PodcastListParams) {
@@ -92,31 +92,12 @@ function PodcastList(props: PodcastListParams) {
     );
 }
 
-export const getStaticProps: GetStaticProps<{
-    podcastList: Either<false, PodcastEpisode[]>;
-}> = async () => {
+export default async function Podcast() {
     const podcastRepo = getPodcastRepo();
 
-    if (isLeft(podcastRepo)) {
-        return {
-            props: { podcastList: MakeLeft(false) }
-        };
-    }
-
-    const podcastList = await podcastRepo.right.all();
-
-    return {
-        props: {
-            podcastList: podcastList
-        },
-        revalidate: 3600
-    };
-};
-
-export default function Podcast(
-    props: InferGetStaticPropsType<typeof getStaticProps>
-) {
-    const podcastList = props.podcastList;
+    const podcastList = isLeft(podcastRepo)
+        ? MakeLeft<false>(false)
+        : await podcastRepo.right.all();
 
     return (
         <React.Fragment>

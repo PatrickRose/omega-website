@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useId, useState } from "react";
 import { Hero, HeroHeading, MainContent } from "./Hero";
 import { Game } from "../types/types";
