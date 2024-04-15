@@ -55,7 +55,7 @@
         "@testing-library/user-event": "^14.5.2",
         "@types/express": "^4.17.21",
         "@types/jest": "^29.5.12",
-        "@types/node": "^20.12.5",
+        "@types/node": "^20.12.7",
         "@types/react": "^18.2.78",
         "@types/react-dom": "^18.2.25",
         "@types/react-test-renderer": "^18.0.7",
