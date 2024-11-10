@@ -12,11 +12,10 @@ function isPBEM(game: Game): game is PlayByEmailGame {
     return isRight(PlayByEmailGameDecode.decode(game));
 }
 
-export default async function SingleGame({
-    params
-}: {
-    params: { id: string };
+export default async function SingleGame(props: {
+    params: Promise<{ id: string }>;
 }) {
+    const params = await props.params;
     const gameRepo = getGamesRepo();
 
     if (isLeft(gameRepo)) {

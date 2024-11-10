@@ -33,7 +33,10 @@ export const generateStaticParams = async function (): Promise<
     });
 };
 
-export default async function Podcast({ params }: { params: { id: string } }) {
+export default async function Podcast(props: {
+    params: Promise<{ id: string }>;
+}) {
+    const params = await props.params;
     const repo = getPodcastRepo();
 
     if (isLeft(repo)) {

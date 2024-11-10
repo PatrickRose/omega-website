@@ -5,11 +5,10 @@ import DesignerResource, {
     GameResourceProps
 } from "../../../components/DesignerResource";
 
-export default function DesignerResourcePage({
-    params
-}: {
-    params: { id: keyof typeof RESOURCES };
+export default async function DesignerResourcePage(props: {
+    params: Promise<{ id: keyof typeof RESOURCES }>;
 }) {
+    const params = await props.params;
     const details = RESOURCES[params.id];
 
     return <DesignerResource resource={details} />;
