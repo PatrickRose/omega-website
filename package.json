@@ -46,7 +46,7 @@
         "rss-parser": "^3.13.0",
         "swr": "^2.2.5",
         "typescript": "^5.7.2",
-        "uuid": "^11.0.3"
+        "uuid": "^11.0.4"
     },
     "devDependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.2",
