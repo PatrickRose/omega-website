@@ -30,7 +30,7 @@
         "feed": "^4.2.2",
         "formik": "^2.4.6",
         "fp-ts": "^2.16.9",
-        "io-ts": "^2.2.21",
+        "io-ts": "^2.2.22",
         "io-ts-types": "^0.5.19",
         "iron-session": "^8.0.4",
         "jest-environment-jsdom": "^29.7.0",
