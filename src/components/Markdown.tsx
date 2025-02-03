@@ -16,7 +16,6 @@ export default function Markdown(props: { markdown: string }) {
                 {...props}
             />
         ),
-        // eslint-disable-next-line jsx-a11y/heading-has-content
         h3: ({ node, ...props }) => (
             <h3
                 className="py-2 text-2xl"
