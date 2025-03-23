@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -124,6 +124,7 @@ function getMaxHeight(): string {
 
 const Navbar = () => {
     const [hidden, swapHidden] = useState<boolean>(true);
+    const mobileRef = useRef();
 
     const changeHidden = () => {
         swapHidden((prev) => !prev);
@@ -203,6 +204,7 @@ const Navbar = () => {
             }
             <div id="mobile-menu">
                 <CSSTransition
+                    nodeRef={mobileRef}
                     className="space-y-1 px-2 pt-2 pb-3"
                     in={!hidden}
                     classNames={{
