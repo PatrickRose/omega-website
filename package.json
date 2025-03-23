@@ -52,6 +52,7 @@
         "@eslint/eslintrc": "^3.2.0",
         "@eslint/js": "^9.19.0",
         "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/postcss": "^4.0.15",
         "@testing-library/jest-dom": "^6.6.3",
         "@testing-library/react": "^16.0.1",
         "@testing-library/user-event": "^14.5.2",
@@ -62,7 +63,6 @@
         "@types/react-dom": "18.3.1",
         "@types/react-test-renderer": "^18.3.0",
         "@types/uuid": "^10.0.0",
-        "autoprefixer": "^10.4.20",
         "babel-jest": "^29.7.0",
         "eslint": "^9.19.0",
         "eslint-config-next": "^15.2.3",
@@ -74,7 +74,7 @@
         "postcss": "^8.5.1",
         "prettier": "3.4.2",
         "react-test-renderer": "^18.3.1",
-        "tailwindcss": "^3.4.17"
+        "tailwindcss": "^4.0.15"
     },
     "scripts": {
         "dev": "next dev --turbopack",
