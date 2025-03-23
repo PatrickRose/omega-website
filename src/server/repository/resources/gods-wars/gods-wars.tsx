@@ -1475,7 +1475,7 @@ export default function GodsWars() {
 
             <ExampleAction
                 actionName="Dazzling Proposal"
-                actionDescription="I have been courting Alex Stillwell for several weeks now and we have grown very close. I will plan a dazzling proposal, involving a trip to Hyde Park in which I will serenade them when we stroll beneath the oak tree where we first kissed. Next, I will row us out to the middle of the lake there, kiss them, and present them with the ring before asking them to marry me. Later, I will tell Aphrodite that I have fulfilled her Quest to find true love and gush to her about my new fiance."
+                actionDescription="I have been courting Alex Stillwell for several weeks now and we have grown very close. I will plan a dazzling proposal, involving a trip to Hyde Park in which I will serenade them when we stroll beneath the oak tree where we first kissed. Next, I will row us out to the middle of the lake there, kiss them, and present them with the ring-3 before asking them to marry me. Later, I will tell Aphrodite that I have fulfilled her Quest to find true love and gush to her about my new fiance."
             />
 
             <h4 className="text-xl">Aoratos</h4>

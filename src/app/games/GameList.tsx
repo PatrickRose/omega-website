@@ -39,7 +39,7 @@ function FetchedMegagame(props: Game) {
                 <h2 className="hover:text-omega text-2xl">
                     <Link href={`/games/${props._id}`}>{props.name}</Link>
                     {isGameActive(props) ? (
-                        <span className="p-1 m-2 text-center rounded text-base bg-omega-dark text-omega-light">
+                        <span className="p-1 m-2 text-center rounded-sm text-base bg-omega-dark text-omega-light">
                             Active Game
                         </span>
                     ) : null}

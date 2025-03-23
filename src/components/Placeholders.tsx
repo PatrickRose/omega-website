@@ -5,7 +5,7 @@ export function TextRow(props: { className: string; height?: boolean }) {
 
     return (
         <div
-            className={`${props.className} w-full delay-100 ${height} rounded animate-placeholder`}
+            className={`${props.className} w-full delay-100 ${height} rounded-sm animate-placeholder`}
         />
     );
 }
@@ -13,7 +13,7 @@ export function TextRow(props: { className: string; height?: boolean }) {
 export function Circle(props: { className: string }) {
     return (
         <div
-            className={`${props.className} delay-100 rounded-full text-center h-16 w-16 rounded animate-placeholder`}
+            className={`${props.className} delay-100 rounded-full text-center h-16 w-16 rounded-sm animate-placeholder`}
         />
     );
 }

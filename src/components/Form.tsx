@@ -172,7 +172,7 @@ export function SubmitButton({
 
 export function SuccessMessage({ children }: { children: ReactNode }) {
     return (
-        <div className="w-full rounded bg-green-200 py-2">
+        <div className="w-full rounded-sm bg-green-200 py-2">
             <div className="p-2">{children}</div>
         </div>
     );
