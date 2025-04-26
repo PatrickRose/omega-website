@@ -120,7 +120,7 @@ export default function AdminPage() {
             </Hero>
             <MainContent>
                 {user.passwordNeedsReset && (
-                    <div className="w-full rounded bg-red-200 py-2">
+                    <div className="w-full rounded-sm bg-red-200 py-2">
                         <p className="p-2 text-center">
                             You must change your password before you can access
                             the rest of the admin functions
