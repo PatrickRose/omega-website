@@ -124,7 +124,7 @@ function getMaxHeight(): string {
 
 const Navbar = () => {
     const [hidden, swapHidden] = useState<boolean>(true);
-    const mobileRef = useRef();
+    const mobileRef = useRef(null);
 
     const changeHidden = () => {
         swapHidden((prev) => !prev);
