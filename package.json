@@ -74,7 +74,7 @@
         "postcss": "^8.5.3",
         "prettier": "3.6.2",
         "react-test-renderer": "^19.1.0",
-        "tailwindcss": "^4.1.4"
+        "tailwindcss": "^4.1.13"
     },
     "scripts": {
         "dev": "next dev --turbopack",
