@@ -26,7 +26,7 @@
         "@tailwindcss/forms": "^0.5.10",
         "@types/react-transition-group": "^4.4.12",
         "argon2": "^0.43.0",
-        "body-parser": "^2.2.0",
+        "body-parser": "^2.2.1",
         "feed": "^5.1.0",
         "formik": "^2.4.6",
         "fp-ts": "^2.16.10",
