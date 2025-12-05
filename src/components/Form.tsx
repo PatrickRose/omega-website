@@ -38,7 +38,7 @@ export function SelectInput({
     label,
     name,
     ...props
-}: { label: string; name: string } & JSX.IntrinsicElements["select"]) {
+}: { label: string; name: string } & React.JSX.IntrinsicElements["select"]) {
     const [field, meta] = useField({ name, ...props });
 
     const showError = Boolean(meta.touched && meta.error);
@@ -77,7 +77,7 @@ export function TextAreaInput({
     label,
     name,
     ...props
-}: { label: string; name: string } & JSX.IntrinsicElements["textarea"]) {
+}: { label: string; name: string } & React.JSX.IntrinsicElements["textarea"]) {
     const [field, meta] = useField({ name, ...props });
 
     const showError = Boolean(meta.touched && meta.error);
@@ -116,7 +116,7 @@ export function TextInput({
     label,
     name,
     ...props
-}: { label: string; name: string } & JSX.IntrinsicElements["input"]) {
+}: { label: string; name: string } & React.JSX.IntrinsicElements["input"]) {
     const [field, meta] = useField({ name, ...props });
 
     const showError = Boolean(meta.touched && meta.error);
@@ -155,7 +155,7 @@ export function SubmitButton({
     disabled,
     children,
     ...props
-}: { disabled: boolean } & JSX.IntrinsicElements["button"]) {
+}: { disabled: boolean } & React.JSX.IntrinsicElements["button"]) {
     return (
         <div className="flex">
             <button
