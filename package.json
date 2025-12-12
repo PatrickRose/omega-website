@@ -46,7 +46,7 @@
         "rss-parser": "^3.13.0",
         "swr": "^2.3.3",
         "typescript": "^5.8.3",
-        "uuid": "^11.1.0"
+        "uuid": "^13.0.0"
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.3.1",
