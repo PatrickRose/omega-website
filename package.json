@@ -39,8 +39,8 @@
         "newtype-ts": "^0.3.5",
         "next": "15.4.10",
         "normalize.css": "^8.0.1",
-        "react": "^19.1.1",
-        "react-dom": "^19.2.1",
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3",
         "react-markdown": "^10.1.0",
         "react-transition-group": "^4.4.5",
         "rss-parser": "^3.13.0",
@@ -73,7 +73,7 @@
         "lint-staged": ">=16",
         "postcss": "^8.5.3",
         "prettier": "3.6.2",
-        "react-test-renderer": "^19.1.0",
+        "react-test-renderer": "^19.2.3",
         "tailwindcss": "^4.1.17"
     },
     "scripts": {
