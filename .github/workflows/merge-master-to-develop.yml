@@ -1,0 +1,45 @@
+name: Merge master to develop
+
+on:
+    push:
+        branches: [master]
+
+jobs:
+    merge-to-develop:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Configure git
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+
+            - name: Create merge branch and PR
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  BRANCH_NAME="auto-merge/master-to-develop-$(date +%Y%m%d-%H%M%S)"
+
+                  # Checkout develop and create a new branch from it
+                  git checkout develop
+                  git checkout -b "$BRANCH_NAME"
+
+                  # Merge master into the branch
+                  git merge origin/master -m "Merge master into develop"
+
+                  # Push the branch
+                  git push origin "$BRANCH_NAME"
+
+                  # Create a PR and enable auto-merge
+                  PR_URL=$(gh pr create \
+                      --base develop \
+                      --head "$BRANCH_NAME" \
+                      --title "Merge master into develop" \
+                      --body "Automated PR to merge master changes back into develop.")
+
+                  gh pr merge "$PR_URL" --auto --merge --delete-branch

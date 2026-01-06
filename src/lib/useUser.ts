@@ -11,7 +11,7 @@ export default function useUser({
     forcePasswordChange = true
 } = {}): {
     user: User | undefined;
-    mutateUser: SWRResponse<User | undefined, any>["mutate"];
+    mutateUser: SWRResponse<User | undefined, unknown>["mutate"];
 } {
     const { data: user, mutate: mutateUser } = useSWR<User | undefined>(
         "/api/user",

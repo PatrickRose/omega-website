@@ -60,7 +60,7 @@ function FormErrorMessage({ errors, touched }: FormErrorMessageProps) {
         ["endDate", "End date"]
     ];
 
-    for (let [key, label] of keys) {
+    for (const [key, label] of keys) {
         if (key == "date") {
             if (errors.date && touched.date) {
                 errorDivs.push(
@@ -459,7 +459,7 @@ export function validate(values: FormikValues) {
         | CreateGameFormValues
     ))[] = ["name", "designer", "type", "preamble", "fullDescription"];
 
-    for (let required of requiredFields) {
+    for (const required of requiredFields) {
         if (!values[required]) {
             errors[required] = "You must provide a value";
         }
