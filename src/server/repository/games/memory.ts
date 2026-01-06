@@ -36,7 +36,7 @@ export class MemoryRepository implements GamesRepository {
     }
 
     async get(id: string): Promise<Either<false, Game>> {
-        for (let game of this.games) {
+        for (const game of this.games) {
             if (game._id === id) {
                 return MakeRight(game);
             }
@@ -54,7 +54,7 @@ export class MemoryRepository implements GamesRepository {
     }
 
     async update(id: string, game: Game): Promise<Either<string, true>> {
-        for (let gameKey in this.games) {
+        for (const gameKey in this.games) {
             const existingGame = this.games[gameKey];
             if (existingGame._id === id) {
                 this.games[gameKey] = game;

@@ -99,12 +99,12 @@ export default function SingleGame({
                 "year"
             ];
 
-            for (let key of outerKeys) {
+            for (const key of outerKeys) {
                 if (!postValues[key]) {
                     continue;
                 }
 
-                for (let innerKey of innerKeys) {
+                for (const innerKey of innerKeys) {
                     postValues[key][innerKey] = Number.parseInt(
                         postValues[key][innerKey]
                     );
@@ -133,7 +133,7 @@ export default function SingleGame({
                         message: `Error when sending API request (unknown API result - ${origData})`
                     });
                 }
-            } catch (e) {
+            } catch {
                 data = MakeLeft({
                     result: "Failure",
                     message:

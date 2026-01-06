@@ -96,32 +96,6 @@ const NavigationLinks = (props: { mobile?: boolean }) => {
     );
 };
 
-function getMaxHeight(): string {
-    switch (links.length) {
-        case 1:
-            return "max-h-16";
-        case 2:
-            return "max-h-32";
-        case 3:
-            return "max-h-48";
-        case 4:
-            return "max-h-64";
-        case 5:
-            return "max-h-72";
-        case 6:
-            return "max-h-80";
-        case 7:
-        case 8:
-            return "max-h-96";
-        case 9:
-            return "max-h-112";
-        default:
-            throw Error(
-                `Don't know what the max height for a menu with ${links.length} items in it`
-            );
-    }
-}
-
 const Navbar = () => {
     const [hidden, swapHidden] = useState<boolean>(true);
     const mobileRef = useRef(null);
@@ -131,8 +105,6 @@ const Navbar = () => {
     };
 
     const ariaExpanded = hidden ? "false" : "true";
-
-    const maxHeight = getMaxHeight();
 
     return (
         <nav className="navbar bg-gray-800">
