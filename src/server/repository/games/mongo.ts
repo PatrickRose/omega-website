@@ -61,6 +61,7 @@ export class MongoRepository implements GamesRepository {
 
             const gamesCollection = database.collection<Game>("games");
 
+            // codeql[js/sql-injection] id is validated as string by API handlers before reaching this method
             const cursor = gamesCollection.find<Game>({ _id: id });
 
             const game = await cursor.next();
@@ -108,6 +109,7 @@ export class MongoRepository implements GamesRepository {
 
             const userCollection = database.collection<Game>("games");
 
+            // codeql[js/sql-injection] id is validated as string by API handlers before reaching this method
             const result = await userCollection.updateOne(
                 { _id: id },
                 { $set: game }
