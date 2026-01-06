@@ -1,7 +1,7 @@
 "use client";
 
 import { Game } from "../../types/types";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { getJSDateFromOmegaDate, getStringFromOmegaDate } from "../../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GAME_ICONS, gameUtils, isGameActive } from "../../utils/games";
@@ -175,14 +175,14 @@ export function GameListWrapper({
 }: {
     gameList: GamesState["gameList"];
 }) {
-    const [past, setPast] = useState<boolean>();
-    const [filter, setFilter] = useState<Game["type"] | undefined>(undefined);
-
-    useEffect(() => {
-        if (window.location.hash && past === undefined) {
-            setPast(true);
+    const [past, setPast] = useState<boolean | undefined>(() => {
+        // Initialize from URL hash on client only
+        if (typeof window !== "undefined" && window.location.hash) {
+            return true;
         }
-    }, [past]);
+        return undefined;
+    });
+    const [filter, setFilter] = useState<Game["type"] | undefined>(undefined);
 
     const changeFilter = (
         event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>

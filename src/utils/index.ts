@@ -44,9 +44,9 @@ export function dateSorter(a: Game, b: Game): number {
         return -1;
     }
 
-    let keys: (keyof typeof aDate)[] = ["year", "month", "day"];
+    const keys: (keyof typeof aDate)[] = ["year", "month", "day"];
 
-    for (let key of keys) {
+    for (const key of keys) {
         const aDateKeyVal = aDate[key];
         const bDateKeyVal = bDate[key];
         if (aDateKeyVal === null) {
@@ -62,7 +62,7 @@ export function dateSorter(a: Game, b: Game): number {
         }
 
         if (aDateKeyVal !== bDateKeyVal) {
-            let diff = bDateKeyVal - aDateKeyVal;
+            const diff = bDateKeyVal - aDateKeyVal;
 
             return reverseOrder ? -diff : diff;
         }

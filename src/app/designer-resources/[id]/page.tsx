@@ -1,9 +1,6 @@
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import React from "react";
 import RESOURCES from "../../../server/repository/resources/memory";
-import DesignerResource, {
-    GameResourceProps
-} from "../../../components/DesignerResource";
+import DesignerResource from "../../../components/DesignerResource";
 
 export default async function DesignerResourcePage(props: {
     params: Promise<{ id: keyof typeof RESOURCES }>;

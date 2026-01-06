@@ -1,14 +1,7 @@
 import React from "react";
 import { isLeft } from "fp-ts/Either";
-import { PodcastEpisode } from "../../../types/types";
 import Link from "next/link";
 import { Hero, HeroHeading, MainContent } from "../../../components/Hero";
-import {
-    GetStaticPaths,
-    GetStaticPathsResult,
-    GetStaticProps,
-    InferGetStaticPropsType
-} from "next";
 import { getPodcastRepo } from "../../../server/repository/podcast";
 import { getStringFromOmegaDate } from "../../../utils";
 import { notFound } from "next/navigation";

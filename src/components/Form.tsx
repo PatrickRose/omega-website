@@ -3,8 +3,8 @@ import React, { ReactNode } from "react";
 
 // Error type for a given form
 // This essentially says "For any key of the given value, we accept a string if it isn't an object, otherwise we recurse into the type definition for that key"
-export type FormError<Type extends { [key: string]: any }> = Partial<{
-    [Prop in keyof Type]: Type[Prop] extends { [key: string]: any }
+export type FormError<Type extends Record<string, unknown>> = Partial<{
+    [Prop in keyof Type]: Type[Prop] extends Record<string, unknown>
         ? FormError<Type[Prop]>
         : string;
 }>;

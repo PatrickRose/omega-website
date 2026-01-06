@@ -31,7 +31,7 @@ export default function Login() {
 
             try {
                 data = await response.json();
-            } catch (e) {
+            } catch {
                 data = false;
             }
 
