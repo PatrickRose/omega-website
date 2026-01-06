@@ -3,7 +3,6 @@ import { Either, isLeft } from "fp-ts/Either";
 import { PodcastEpisode as PodcastEpisodeType } from "../../types/types";
 import Link from "next/link";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { MakeLeft } from "../../utils/io-ts-helpers";
 import { getPodcastRepo } from "../../server/repository/podcast";
 import { getStringFromOmegaDate } from "../../utils";

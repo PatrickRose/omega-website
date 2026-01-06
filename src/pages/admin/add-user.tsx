@@ -59,7 +59,7 @@ export default function AdminPage() {
                         message: `Error when sending API request (unknown API result - ${origData})`
                     });
                 }
-            } catch (e) {
+            } catch {
                 data = MakeLeft({
                     result: "Failure",
                     message:

@@ -1,5 +1,4 @@
 import React from "react";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { isLeft, isRight } from "fp-ts/Either";
 import { getGamesRepo } from "../server/repository/games";
 import Link from "next/link";

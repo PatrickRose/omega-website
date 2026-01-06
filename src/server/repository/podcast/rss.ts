@@ -13,7 +13,7 @@ export class RssRepository implements PodcastRepository {
     constructor(rssUrl: string) {
         this.rssUrl = rssUrl;
 
-        this.rssParser = new Parser<{}, {}>();
+        this.rssParser = new Parser();
     }
 
     all(): Promise<Either<false, PodcastEpisode[]>> {
@@ -47,7 +47,7 @@ export class RssRepository implements PodcastRepository {
     }
 
     private convertToEpisodes(
-        output: Parser.Output<{}>
+        output: Parser.Output<object>
     ): Either<false, PodcastEpisode[]> {
         const toReturn: PodcastEpisode[] = output.items.map((item) => {
             const pubDate = new Date(item.pubDate ?? "");

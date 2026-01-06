@@ -29,7 +29,7 @@ function Resource({ resource }: { resource: GameResourceProps }) {
 export default function DesignerResources() {
     const resources = Object.entries(RESOURCES);
 
-    resources.sort(([_, a], [__, b]) => {
+    resources.sort(([, a], [, b]) => {
         const aResourceType = a.resourceType;
         const bResourceType = b.resourceType;
 
