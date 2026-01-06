@@ -84,7 +84,7 @@
         "lint": "next lint",
         "ts:watch": "tsc --noEmit --incremental --watch",
         "prepare": "husky",
-        "postinstall": "npm rebuild argon2 --build-from-source"
+        "postinstall": "npm rebuild argon2 -- --build-from-source"
     },
     "lint-staged": {
         "*.js": "eslint --cache --fix",
