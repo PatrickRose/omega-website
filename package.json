@@ -45,7 +45,7 @@
         "react-transition-group": "^4.4.5",
         "rss-parser": "^3.13.0",
         "swr": "^2.3.8",
-        "typescript": "^5.8.3",
+        "typescript": "^5.9.3",
         "uuid": "^13.0.0"
     },
     "devDependencies": {
