@@ -289,7 +289,7 @@ export function GameAdmin({
                                         <ValidationError
                                             showError={Boolean(
                                                 props.touched.date?.day &&
-                                                    props.errors.date?.day
+                                                props.errors.date?.day
                                             )}
                                             id="date.day-validation"
                                         >
@@ -349,7 +349,7 @@ export function GameAdmin({
                                         <ValidationError
                                             showError={Boolean(
                                                 props.touched.endDate?.day &&
-                                                    props.errors.endDate?.day
+                                                props.errors.endDate?.day
                                             )}
                                             id="endDate.day-validation"
                                         >

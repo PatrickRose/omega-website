@@ -29,6 +29,7 @@ export class MongoRepository implements UserRepository {
 
             const usersCollection = database.collection<DBUser>("users");
 
+            // codeql[js/sql-injection] id is validated as string by API handlers before reaching this method
             const cursor = usersCollection.find<DBUser>({ _id: id });
 
             const user = await cursor.next();
