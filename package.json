@@ -44,7 +44,7 @@
         "react-markdown": "^10.1.0",
         "react-transition-group": "^4.4.5",
         "rss-parser": "^3.13.0",
-        "swr": "^2.4.1",
+        "swr": "^2.4.2",
         "typescript": "^6.0.3",
         "uuid": "^14.0.0"
     },
