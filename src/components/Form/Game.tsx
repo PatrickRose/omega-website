@@ -455,8 +455,7 @@ export function validate(values: FormikValues) {
     const errors: FormError<EditGameFormValues | CreateGameFormValues> = {};
 
     const requiredFields: (keyof (
-        | EditGameFormValues
-        | CreateGameFormValues
+        EditGameFormValues | CreateGameFormValues
     ))[] = ["name", "designer", "type", "preamble", "fullDescription"];
 
     for (const required of requiredFields) {

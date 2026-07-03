@@ -71,7 +71,7 @@
         "jest": "^30.4.2",
         "lint-staged": ">=17",
         "postcss": "^8.5.15",
-        "prettier": "3.8.3",
+        "prettier": "3.9.4",
         "react-test-renderer": "^19.2.7",
         "tailwindcss": "^4.3.0"
     },
