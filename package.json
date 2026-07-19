@@ -27,7 +27,7 @@
         "@types/react-transition-group": "^4.4.12",
         "argon2": "^0.44.0",
         "body-parser": "^2.2.2",
-        "feed": "^5.2.1",
+        "feed": "^6.0.0",
         "formik": "^2.4.9",
         "fp-ts": "^2.16.11",
         "io-ts": "^2.2.22",
