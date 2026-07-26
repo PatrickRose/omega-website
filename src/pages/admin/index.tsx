@@ -76,6 +76,10 @@ export default function AdminPage() {
         {
             linkPath: "/admin/change-password",
             linkText: "Change password"
+        },
+        {
+            linkPath: "/admin/reset-password",
+            linkText: "Reset a user's password"
         }
     ];
 
