@@ -54,6 +54,12 @@ export class MongoRepository implements GamesRepository {
     }
 
     async get(id: string): Promise<Either<false, Game>> {
+        // Guard against NoSQL operator injection: `id` is used directly in a
+        // query filter, so ensure it is a plain string before querying.
+        if (typeof id !== "string") {
+            return MakeLeft(false);
+        }
+
         try {
             await this.mongo.connect();
 
@@ -61,7 +67,6 @@ export class MongoRepository implements GamesRepository {
 
             const gamesCollection = database.collection<Game>("games");
 
-            // codeql[js/sql-injection] id is validated as string by API handlers before reaching this method
             const cursor = gamesCollection.find<Game>({ _id: id });
 
             const game = await cursor.next();
@@ -102,6 +107,12 @@ export class MongoRepository implements GamesRepository {
     }
 
     async update(id: string, game: Game): Promise<Either<string, true>> {
+        // Guard against NoSQL operator injection: `id` is used directly in a
+        // query filter, so ensure it is a plain string before querying.
+        if (typeof id !== "string") {
+            return MakeLeft("Invalid id - must be a string");
+        }
+
         try {
             await this.mongo.connect();
 
@@ -109,7 +120,6 @@ export class MongoRepository implements GamesRepository {
 
             const userCollection = database.collection<Game>("games");
 
-            // codeql[js/sql-injection] id is validated as string by API handlers before reaching this method
             const result = await userCollection.updateOne(
                 { _id: id },
                 { $set: game }
