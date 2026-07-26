@@ -40,6 +40,19 @@ export type ChangePasswordResult = t.TypeOf<
     typeof types.ChangePasswordResultDecode
 >;
 
+export type ResetPasswordFormValues = t.TypeOf<
+    typeof types.ResetPasswordFormValuesDecode
+>;
+export type ResetPasswordSuccess = t.TypeOf<
+    typeof types.ResetPasswordSuccessDecode
+>;
+export type ResetPasswordFailed = t.TypeOf<
+    typeof types.ResetPasswordFailedDecode
+>;
+export type ResetPasswordResult = t.TypeOf<
+    typeof types.ResetPasswordResultDecode
+>;
+
 export type CreateGameFormValues = t.TypeOf<
     typeof types.CreateGameFormValuesDecode
 >;
