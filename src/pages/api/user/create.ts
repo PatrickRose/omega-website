@@ -89,7 +89,7 @@ export default async function loginRoute(
     );
     const data = await req.body;
 
-    if (session?.user?.isLoggedIn) {
+    if (!session?.user?.isLoggedIn) {
         res.status(403).json(makeFailedResult("You are not logged in"));
         return;
     }
