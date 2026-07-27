@@ -149,6 +149,25 @@ export const ChangePasswordResultDecode = either(
     ChangePasswordSuccessDecode
 );
 
+export const ResetPasswordFormValuesDecode = t.type({
+    username: t.string
+});
+
+export const ResetPasswordSuccessDecode = t.type({
+    result: t.literal("Success"),
+    message: t.string
+});
+
+export const ResetPasswordFailedDecode = t.type({
+    result: t.literal("Failure"),
+    message: t.string
+});
+
+export const ResetPasswordResultDecode = either(
+    ResetPasswordFailedDecode,
+    ResetPasswordSuccessDecode
+);
+
 export const CreateGameFormValuesDecode = t.type({
     name: t.string,
     date: DateDecode,
