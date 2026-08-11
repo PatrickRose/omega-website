@@ -58,8 +58,8 @@
         "@types/express": "^5.0.6",
         "@types/jest": "^30.0.0",
         "@types/node": "^26.0.1",
-        "@types/react": "19.2.17",
-        "@types/react-dom": "19.2.3",
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.4",
         "@types/react-test-renderer": "^19.1.0",
         "@types/uuid": "^11.0.0",
         "babel-jest": "^30.4.1",
@@ -90,7 +90,7 @@
         "*.{js,css,md}": "prettier --write"
     },
     "overrides": {
-        "@types/react": "19.2.17",
-        "@types/react-dom": "19.2.3"
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.4"
     }
 }
