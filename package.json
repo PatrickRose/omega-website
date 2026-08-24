@@ -70,7 +70,7 @@
         "identity-obj-proxy": "^3.0.0",
         "jest": "^30.4.2",
         "lint-staged": ">=17",
-        "postcss": "^8.5.15",
+        "postcss": "^8.5.26",
         "prettier": "3.9.6",
         "react-test-renderer": "^19.2.8",
         "tailwindcss": "^4.3.0"
