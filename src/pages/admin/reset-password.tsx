@@ -1,21 +1,43 @@
 import { Form, Formik, FormikHelpers, FormikValues } from "formik";
 import { isLeft } from "fp-ts/lib/Either";
 import React, { useState } from "react";
-import { SubmitButton, SuccessMessage, TextInput } from "../../components/Form";
+import useSWR from "swr";
+import {
+    SelectInput,
+    SubmitButton,
+    SuccessMessage
+} from "../../components/Form";
 import { Hero, HeroHeading, MainContent } from "../../components/Hero";
 import useUser from "../../lib/useUser";
-import { ResetPasswordResultDecode } from "../../types/io-ts-def";
+import {
+    ResetPasswordResultDecode,
+    UserListAPIDecode
+} from "../../types/io-ts-def";
 import {
     ResetPasswordFormValues,
-    ResetPasswordResult
+    ResetPasswordResult,
+    UserListAPI
 } from "../../types/types";
 import { MakeLeft } from "../../utils/io-ts-helpers";
+
+const fetcher = (url: string) =>
+    fetch(url)
+        .then((res) => res.json())
+        .then((data: unknown): UserListAPI => {
+            if (UserListAPIDecode.is(data)) {
+                return data;
+            }
+
+            return { users: [] };
+        });
 
 export default function ResetPasswordPage() {
     // If the user isn't logged in, send them to the admin page
     const { user } = useUser({
         redirectTo: "/admin/login"
     });
+
+    const { data: userList } = useSWR<UserListAPI>("/api/user/list", fetcher);
 
     const [successMessage, setSuccessMessage] = useState<string>("");
 
@@ -84,11 +106,13 @@ export default function ResetPasswordPage() {
         const errors: Partial<ResetPasswordFormValues> = {};
 
         if (!values.username) {
-            errors.username = "Specify the username";
+            errors.username = "Select a user";
         }
 
         return errors;
     };
+
+    const usernames = userList?.users ?? [];
 
     return (
         <React.Fragment>
@@ -96,31 +120,47 @@ export default function ResetPasswordPage() {
                 <HeroHeading>Reset a user&apos;s password</HeroHeading>
             </Hero>
             <MainContent>
-                <Formik
-                    initialValues={{ username: "" }}
-                    onSubmit={onSubmit}
-                    validate={validate}
-                >
-                    {(props) => {
-                        return (
-                            <Form>
-                                {successMessage && (
-                                    <SuccessMessage>
-                                        {successMessage}
-                                    </SuccessMessage>
-                                )}
-                                <TextInput
-                                    label="Username"
-                                    name="username"
-                                    type="text"
-                                />
-                                <SubmitButton disabled={props.isSubmitting}>
-                                    Reset password
-                                </SubmitButton>
-                            </Form>
-                        );
-                    }}
-                </Formik>
+                {userList === undefined ? (
+                    <p>Loading users...</p>
+                ) : usernames.length === 0 ? (
+                    <p>There are no users to reset.</p>
+                ) : (
+                    <Formik
+                        initialValues={{ username: "" }}
+                        onSubmit={onSubmit}
+                        validate={validate}
+                    >
+                        {(props) => {
+                            return (
+                                <Form>
+                                    {successMessage && (
+                                        <SuccessMessage>
+                                            {successMessage}
+                                        </SuccessMessage>
+                                    )}
+                                    <SelectInput
+                                        label="Username"
+                                        name="username"
+                                        value={props.values.username}
+                                    >
+                                        <option value="">Select a user</option>
+                                        {usernames.map((username) => (
+                                            <option
+                                                key={username}
+                                                value={username}
+                                            >
+                                                {username}
+                                            </option>
+                                        ))}
+                                    </SelectInput>
+                                    <SubmitButton disabled={props.isSubmitting}>
+                                        Reset password
+                                    </SubmitButton>
+                                </Form>
+                            );
+                        }}
+                    </Formik>
+                )}
             </MainContent>
         </React.Fragment>
     );

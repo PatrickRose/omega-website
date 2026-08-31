@@ -52,6 +52,30 @@ export class MongoRepository implements UserRepository {
         }
     }
 
+    async list(): Promise<Either<false, string[]>> {
+        try {
+            await this.mongo.connect();
+
+            const database = this.mongo.db();
+
+            const usersCollection = database.collection<DBUser>("users");
+
+            const cursor = usersCollection.find<DBUser>(
+                {},
+                { projection: { _id: 1 } }
+            );
+
+            const users = await cursor.toArray();
+
+            return MakeRight(users.map((user) => user._id));
+        } catch (e) {
+            console.log(e);
+            return MakeLeft(false);
+        } finally {
+            await this.mongo.close();
+        }
+    }
+
     async insert(username: string): Promise<Either<string, true>> {
         try {
             await this.mongo.connect();
