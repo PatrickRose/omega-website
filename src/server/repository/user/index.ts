@@ -4,6 +4,7 @@ import { MongoRepository } from "./mongo";
 
 export default interface UserRepository {
     get: (id: string) => Promise<Either<false, DBUser>>;
+    list: () => Promise<Either<false, string[]>>;
     insert: (id: string) => Promise<Either<string, true>>;
     update: (id: string, user: DBUser) => Promise<Either<string, true>>;
 }
