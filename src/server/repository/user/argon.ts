@@ -1,6 +1,6 @@
 import * as argon2 from "argon2";
 
-const ARGON_CONSTANTS: argon2.Options & { raw?: false } = {
+const ARGON_CONSTANTS: argon2.HashOptions & { raw?: false } = {
     type: argon2.argon2id,
     timeCost: 5
 };

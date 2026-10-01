@@ -22,6 +22,12 @@ export class MongoRepository implements UserRepository {
     }
 
     async get(id: string): Promise<Either<false, DBUser>> {
+        // Guard against NoSQL operator injection: `id` is used directly in a
+        // query filter, so ensure it is a plain string before querying.
+        if (typeof id !== "string") {
+            return MakeLeft(false);
+        }
+
         try {
             await this.mongo.connect();
 
@@ -29,7 +35,6 @@ export class MongoRepository implements UserRepository {
 
             const usersCollection = database.collection<DBUser>("users");
 
-            // codeql[js/sql-injection] id is validated as string by API handlers before reaching this method
             const cursor = usersCollection.find<DBUser>({ _id: id });
 
             const user = await cursor.next();
@@ -77,6 +82,12 @@ export class MongoRepository implements UserRepository {
         username: string,
         user: DBUser
     ): Promise<Either<string, true>> {
+        // Guard against NoSQL operator injection: `username` is used directly
+        // in a query filter, so ensure it is a plain string before querying.
+        if (typeof username !== "string") {
+            return MakeLeft("Invalid username - must be a string");
+        }
+
         try {
             await this.mongo.connect();
 
