@@ -37,7 +37,7 @@
         "mongodb": "^7.6.0",
         "monocle-ts": "^2.3.13",
         "newtype-ts": "^0.3.5",
-        "next": "16.2.11",
+        "next": "16.3.8",
         "normalize.css": "^8.0.1",
         "react": "19.3.0",
         "react-dom": "19.3.0",
@@ -50,6 +50,7 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.39.2",
+        "@jest/globals": "^30.5.2",
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/postcss": "^4.3.3",
         "@testing-library/jest-dom": "^7.0.1",
