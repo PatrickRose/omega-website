@@ -40,6 +40,8 @@ export type ChangePasswordResult = t.TypeOf<
     typeof types.ChangePasswordResultDecode
 >;
 
+export type UserListAPI = t.TypeOf<typeof types.UserListAPIDecode>;
+
 export type ResetPasswordFormValues = t.TypeOf<
     typeof types.ResetPasswordFormValuesDecode
 >;
