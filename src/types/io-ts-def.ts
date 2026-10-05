@@ -149,6 +149,10 @@ export const ChangePasswordResultDecode = either(
     ChangePasswordSuccessDecode
 );
 
+export const UserListAPIDecode = t.type({
+    users: t.array(t.string)
+});
+
 export const ResetPasswordFormValuesDecode = t.type({
     username: t.string
 });
