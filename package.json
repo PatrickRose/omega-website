@@ -37,7 +37,7 @@
         "mongodb": "^7.8.0",
         "monocle-ts": "^2.3.13",
         "newtype-ts": "^0.3.5",
-        "next": "16.4.1",
+        "next": "16.4.5",
         "normalize.css": "^8.0.1",
         "react": "19.3.1",
         "react-dom": "19.3.1",
