@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "engines": {
-        "node": "22.x"
+        "node": "26.x"
     },
     "browserslist": {
         "production": [
@@ -86,12 +86,16 @@
         "test": "jest",
         "lint": "eslint .",
         "ts:watch": "tsc --noEmit --incremental --watch",
-        "prepare": "husky",
-        "postinstall": "npm rebuild argon2 -- --build-from-source"
+        "prepare": "husky"
     },
     "lint-staged": {
         "*.js": "eslint --cache --fix",
         "*.{js,css,md}": "prettier --write"
+    },
+    "allowScripts": {
+        "argon2": true,
+        "unrs-resolver": true,
+        "@parcel/watcher": false
     },
     "overrides": {
         "@types/react": "19.3.0",
