@@ -3,6 +3,9 @@
     "description": "Website for the Omega Megagames group",
     "version": "1.0.0",
     "license": "MIT",
+    "engines": {
+        "node": "22.x"
+    },
     "browserslist": {
         "production": [
             ">0.2%",
